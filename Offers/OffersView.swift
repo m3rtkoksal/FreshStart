@@ -20,7 +20,7 @@ struct OffersView: View {
                 DGTitle(
                     title: "Purchase Plans",
                     subtitle: "You can see packages from this list",
-                    bottomPadding: -5)
+                    bottomPadding: -20)
                 
                 if viewModel.offers.isEmpty {
                     Spacer()
@@ -38,6 +38,7 @@ struct OffersView: View {
                                     purchaseAction: { selectedProduct in
                                         viewModel.purchaseProduct(product: selectedProduct)
                                     })
+                                .padding(.top, 30)
                             }
                         }
                         .frame(maxWidth: .infinity)

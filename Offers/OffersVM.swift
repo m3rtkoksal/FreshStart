@@ -118,6 +118,9 @@ class OffersVM: BaseViewModel, SKPaymentTransactionObserver, SKProductsRequestDe
             print("Product available: \(product.localizedTitle) - \(product.priceLocale.currencySymbol ?? "")\(product.price)")
         }
         
+        // Sort the products by price (ascending order)
+        offers.sort { $0.price.doubleValue < $1.price.doubleValue }
+        
         // Check for invalid product identifiers
         if !response.invalidProductIdentifiers.isEmpty {
             print("Invalid product identifiers found: \(response.invalidProductIdentifiers)")

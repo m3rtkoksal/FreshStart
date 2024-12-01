@@ -74,6 +74,13 @@ struct DietPlanSheetView: View {
             DGButton(text: "Select This As My Diet Plan", backgroundColor: .mkOrange) {
                 viewModel.showChangeAlert = true
             }
+            .conditionalOpacityAndDisable(isEnabled: (dietPlan.id ?? "") != (ProfileManager.shared.user.defaultDietPlanId ?? ""))
+            .onAppear {
+                print("dietPlan.id: \(dietPlan.id ?? "nil")")
+                print("defaultDietPlanId: \(ProfileManager.shared.user.defaultDietPlanId ?? "nil")")
+            }
+           
+
         }
         .padding(.top, 30)
     }
