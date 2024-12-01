@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "no-red-meat.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
