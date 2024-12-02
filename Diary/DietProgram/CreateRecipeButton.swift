@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CreateRecipeElementView: View {
+struct CreateRecipeButton: View {
     var dietPlanId: String
     var meal: Meal
     var index: Int
@@ -18,15 +18,12 @@ struct CreateRecipeElementView: View {
     var body: some View {
         Group {
             Button(action: {
+                viewModel.showIndicator = true
                 if shouldRegenerateRecipe {
                     shouldRegenerateRecipe = false
-                    viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { recipe in
-                        print(recipe!)
-                    }
+                    viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { recipe in }
                 } else {
-                    viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { success in
-                        print(success)
-                    }
+                    viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { success in }
                 }
             }) {
                 VStack(spacing: 0) {

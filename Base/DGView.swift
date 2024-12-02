@@ -44,10 +44,12 @@ struct DGView<Content: View>: View {
             
             // Main Content
             content
+                .disabled(showIndicator)
             
             // Loading Indicator
             if showIndicator {
                 DGLoadingView()
+                    .transition(.opacity)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -58,7 +60,7 @@ struct DGView<Content: View>: View {
         case .black:
             return Color.black
         case .solidWhite:
-            return Color.solidWhite
+            return Color.white
         case .transparent:
             return Color.clear
         }

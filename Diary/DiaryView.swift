@@ -290,7 +290,7 @@ struct DiaryView: View {
                     VStack {
                         Spacer()
                         HStack(spacing: 0) {
-                            ReCreateMealElementView(viewModel: self.viewModel,
+                            ReCreateMealButton(viewModel: self.viewModel,
                                                     dietPlanId: viewModel.dietPlan.id ?? "",
                                                     meal: $viewModel.dietPlan.meals[index],
                                                     shouldRegenerateRecipe: $shouldRegenerateRecipe,
@@ -298,7 +298,7 @@ struct DiaryView: View {
                             Divider()
                                 .frame(width: 1, height: 35)
                                 .background(Color.black)
-                            CreateRecipeElementView(dietPlanId: viewModel.dietPlan.id ?? "",
+                            CreateRecipeButton(dietPlanId: viewModel.dietPlan.id ?? "",
                                                     meal: viewModel.dietPlan.meals[index],
                                                     index: index,
                                                     shouldRegenerateRecipe: $shouldRegenerateRecipe)

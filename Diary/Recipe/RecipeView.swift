@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RecipeView: View {
     @StateObject var viewModel = RecipeVM()
-    var recipe: Recipe // Pass recipe to this view
+    var recipe: Recipe
     
     var body: some View {
         DGView(currentViewModel: viewModel,
@@ -36,28 +36,28 @@ struct RecipeView: View {
                             VStack {
                                 Text("Kcal")
                                     .foregroundColor(.mkPurple)
-                                Text("\(viewModel.nutrients?.kcal ?? 0)")
+                                Text("\(viewModel.mealNutrients?.kcal ?? 0)")
                                     .foregroundColor(.black)
                             }
                             .frame(maxWidth: .infinity)
                             VStack {
                                 Text("Protein")
                                     .foregroundColor(.mkPurple)
-                                Text("\(viewModel.nutrients?.protein ?? 0) gr")
+                                Text("\(viewModel.mealNutrients?.protein ?? 0) gr")
                                     .foregroundColor(.black)
                             }
                             .frame(maxWidth: .infinity)
                             VStack {
                                 Text("Carbohydrate")
                                     .foregroundColor(.mkPurple)
-                                Text("\(viewModel.nutrients?.carbohydrate ?? 0) gr")
+                                Text("\(viewModel.mealNutrients?.carbohydrate ?? 0) gr")
                                     .foregroundColor(.black)
                             }
                             .frame(maxWidth: .infinity)
                             VStack {
                                 Text("Fat")
                                     .foregroundColor(.mkPurple)
-                                Text("\(viewModel.nutrients?.fat ?? 0) gr")
+                                Text("\(viewModel.mealNutrients?.fat ?? 0) gr")
                                     .foregroundColor(.black)
                             }
                             .frame(maxWidth: .infinity)
