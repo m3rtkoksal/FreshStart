@@ -99,7 +99,6 @@ class SavedPlanViewModel: BaseViewModel {
                 
                 // Update UI on the main thread
                 DispatchQueue.main.async {
-                    ProfileManager.shared.setUserDietPlans(fetchedDietPlans)
                     self.dietPlans = fetchedDietPlans
                     self.createdPlanCount = fetchedDietPlans.count
                     self.showIndicator = false

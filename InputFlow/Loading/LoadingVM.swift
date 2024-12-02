@@ -51,9 +51,6 @@ class LoadingVM: BaseViewModel {
                     ProfileManager.shared.setDefaultDietPlanId(newDietPlan.id ?? "")
                     self.saveDefaultPlanIdToFirestore(planId: newDietPlan.id ?? "")
                     // Update the current user's diet plans
-                    var currentDietPlans = ProfileManager.shared.user.dietPlans
-                    currentDietPlans.append(newDietPlan)
-                    ProfileManager.shared.setUserDietPlans(currentDietPlans)
                     completion(newDietPlan)
                 } else {
                     self.openAIManager.alertMessage = "No response meals received. Please try again."

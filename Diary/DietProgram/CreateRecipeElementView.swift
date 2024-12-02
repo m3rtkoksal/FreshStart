@@ -12,32 +12,23 @@ struct CreateRecipeElementView: View {
     var dietPlanId: String
     var meal: Meal
     var index: Int
-    
-    @StateObject private var openAIManager = OpenAIManager()
     @State private var recipe: Recipe?
     @StateObject var viewModel: DiaryVM
-    @State private var isLoading = false // Loading indicator for the button
-    @State private var isRecipeLoaded = false
+    @State private var goToSavedRecipe: Bool = false
     @Binding var shouldRegenerateRecipe: Bool
     
     var body: some View {
-        NavigationStack {
+        Group {
             Button(action: {
-                isLoading = true
                 if shouldRegenerateRecipe {
                     shouldRegenerateRecipe = false
                     generateNewRecipe()
-                }
-                viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { existingRecipe in
-                    if let recipe = existingRecipe {
-                        DispatchQueue.main.async {
-                            self.recipe = recipe
-                            self.isRecipeLoaded = true
+                } else {
+                    self.goToSavedRecipe = true
+                    viewModel.performTaskWithIndicator {
+                        viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { success in
                         }
-                    } else {
-                        generateNewRecipe()
                     }
-                    isLoading = false
                 }
             }) {
                 VStack(spacing: 0) {
@@ -54,27 +45,27 @@ struct CreateRecipeElementView: View {
                             .rect(bottomTrailingRadius: 30))
                 }
                 .background(Color.clear)
+                
             }
             .padding(.trailing, 20)
-            
-            .navigationDestination(isPresented: $isRecipeLoaded) {
-                RecipeView(index: index, dietPlanId: dietPlanId, mealTitle: meal.name)
-            }
         }
-       
+        .navigationDestination(isPresented: $goToSavedRecipe) {
+            RecipeView(viewModel: self.viewModel)
+        }
     }
     
     private func generateNewRecipe() {
-        viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { newRecipe in
-            DispatchQueue.main.async {
-                if let newRecipe = newRecipe {
-                    self.recipe = newRecipe
-                    self.isRecipeLoaded = true
-                } else {
-                    // Handle failure case
-                    self.isRecipeLoaded = false
+        viewModel.performTaskWithIndicator {
+            viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { newRecipe in
+                DispatchQueue.main.async {
+                    if let newRecipe = newRecipe {
+                        self.recipe = newRecipe
+                        self.goToSavedRecipe = true
+                    } else {
+                        // Handle failure case
+                        self.goToSavedRecipe = false
+                    }
                 }
-                self.isLoading = false
             }
         }
     }

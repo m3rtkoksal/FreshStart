@@ -112,8 +112,8 @@ final class ProfileManager: ObservableObject {
         self.user.frequency = frequency
     }
     
-    func setUserDietPlans(_ dietPlans: [DietPlan]) {
-        self.user.dietPlans = dietPlans
+    func setUserDietPlanCount(_ count: Int) {
+        self.user.dietPlanCount = count
     }
     
     func setDefaultDietPlan(_ dietPlan: DietPlan) {

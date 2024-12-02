@@ -23,6 +23,7 @@ struct DiaryView: View {
     @State private var isHeaderVisible = true
     @State private var scrollOffset: CGFloat = 0
     var edges = UIApplication.shared.windows.first?.safeAreaInsets ?? .zero
+    @State private var isDataLoaded = false
     
     var body: some View {
         DGView(currentViewModel: viewModel,
@@ -91,29 +92,30 @@ struct DiaryView: View {
                     .coordinateSpace(name: "ScrollView")
                 })
                 .onAppear {
+                    guard !isDataLoaded else { return }
+                    viewModel.showIndicator = true
+                    isDataLoaded = true
                     viewModel.fetchMaxCountFromFirestore()
                     if let cachedDietPlan = ProfileManager.shared.user.defaultDietPlan {
-                        // Use the cached diet plan
                         viewModel.dietPlan = cachedDietPlan
                         print("Using cached diet plan: \(cachedDietPlan)")
                         processDietPlan(cachedDietPlan)
+                        viewModel.showIndicator = false
                     } else {
-                        // Fallback to fetching the diet plan from Firestore
                         viewModel.fetchDietPlan { dietPlan in
                             if let dietPlan = dietPlan {
-                                // Cache the fetched diet plan in ProfileManager
                                 ProfileManager.shared.setDefaultDietPlan(dietPlan)
                                 viewModel.dietPlan = dietPlan
                                 print("Diet plan fetched: \(dietPlan)")
                                 processDietPlan(dietPlan)
                             } else {
-                                // Handle the case where no diet plan is fetched
                                 print("No diet plan found")
                             }
+                            viewModel.showIndicator = false
                         }
                     }
                 }
-
+                
                 .onDisappear {
                     viewModel.showIndicator = true
                     if let dietPlanId = viewModel.dietPlan.id, !dietPlanId.isEmpty {
@@ -125,6 +127,14 @@ struct DiaryView: View {
                     // Trigger action when `lastDietPlan` changes
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         viewModel.dietPlan = newDietPlan
+                        processDietPlan(newDietPlan)
+                    }
+                }
+                .onChange(of: ProfileManager.shared.user.defaultDietPlan) { newDietPlan in
+                    if let newDietPlan = newDietPlan {
+                        viewModel.dietPlan = newDietPlan
+                        print("Updated diet plan: \(newDietPlan)")
+                        processDietPlan(newDietPlan)
                     }
                 }
             }
@@ -216,8 +226,8 @@ struct DiaryView: View {
     
     func createRemainingPlansText() -> some View {
         Group {
-            if viewModel.maxPlanCount > ProfileManager.shared.user.dietPlans.count {
-                Text("You can create \(viewModel.maxPlanCount - ProfileManager.shared.user.dietPlans.count) more")
+            if viewModel.maxPlanCount > ProfileManager.shared.user.dietPlanCount ?? 0 {
+                Text("You can create \(viewModel.maxPlanCount - (ProfileManager.shared.user.dietPlanCount ?? 0)) more")
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
@@ -251,7 +261,7 @@ struct DiaryView: View {
             }
             .padding(.bottom, 150)
             .conditionalOpacityAndDisable(
-                isEnabled: ProfileManager.shared.user.dietPlans.count < viewModel.maxPlanCount)
+                isEnabled: ProfileManager.shared.user.dietPlanCount ?? 0 < viewModel.maxPlanCount)
         }
         .navigationDestination(isPresented: $viewModel.goToCreateNewPlan) {
             HealthKitPermissionView()

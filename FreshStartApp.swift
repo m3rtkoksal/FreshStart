@@ -54,7 +54,10 @@ struct FreshStartApp: App {
             switch newPhase {
             case .active:
                 NotificationManager.shared.startInactivityTimer()
-                handleDailyLogin()
+                fetchDietPlanCount { dietPlanCount in
+                    handleDailyLogin(dietPlanCount: dietPlanCount)
+                }
+                
             case .background:
                 NotificationManager.shared.stopInactivityTimer()   // Stop timer when app goes to background
             default:
@@ -63,7 +66,7 @@ struct FreshStartApp: App {
         }
     }
     
-    private func handleDailyLogin() {
+    private func handleDailyLogin(dietPlanCount: Int) {
         guard authManager.isLoggedIn, let userId = Auth.auth().currentUser?.uid else { return }
         
         let userRef = Firestore.firestore().collection("users").document(userId)
@@ -76,38 +79,78 @@ struct FreshStartApp: App {
                     let lastLogin = lastLoginDate.dateValue()
                     
                     if !calendar.isDateInToday(lastLogin) {
-                        updateDailyLoginData(userRef: userRef, currentDate: currentDate, isPremiumUser: data["isPremiumUser"] as? Bool ?? false)
+                        updateDailyLoginData(userRef: userRef, currentDate: currentDate, isPremiumUser: data["isPremiumUser"] as? Bool ?? false, dietPlanCount: dietPlanCount)
                     }
                 } else {
                     // First login, no previous date
-                    updateDailyLoginData(userRef: userRef, currentDate: Date(), isPremiumUser: data["isPremiumUser"] as? Bool ?? false)
+                    updateDailyLoginData(userRef: userRef, currentDate: Date(), isPremiumUser: data["isPremiumUser"] as? Bool ?? false, dietPlanCount: dietPlanCount)
                 }
             } else {
                 // No user document, create new entry
-                updateDailyLoginData(userRef: userRef, currentDate: Date(), isPremiumUser: false)
+                updateDailyLoginData(userRef: userRef, currentDate: Date(), isPremiumUser: false, dietPlanCount: dietPlanCount)
             }
         }
     }
     
-    private func updateDailyLoginData(userRef: DocumentReference, currentDate: Date, isPremiumUser: Bool) {
+    private func updateDailyLoginData(userRef: DocumentReference, currentDate: Date, isPremiumUser: Bool, dietPlanCount: Int) {
         var updatedMaxMealCount = 1
         var updatedMaxPlanCount = 1
         
         if isPremiumUser {
-            updatedMaxMealCount = 3
-            updatedMaxPlanCount = 3 + ProfileManager.shared.user.dietPlans.count
+            updatedMaxMealCount = 5
+            updatedMaxPlanCount = 3 + dietPlanCount
         }
         
         userRef.updateData([
             "dailyLoginCount": FieldValue.increment(Int64(1)),
             "lastLoginDate": Timestamp(date: currentDate),
             "maxMealCount": updatedMaxMealCount,
-            "maxPlanCount": updatedMaxPlanCount
+            "maxPlanCount": updatedMaxPlanCount,
+            "isPremiumUser": isPremiumUser
         ]) { error in
             if let error = error {
                 print("Error updating login data: \(error.localizedDescription)")
             } else {
                 print("Daily login updated successfully.")
+            }
+        }
+    }
+    
+    func fetchDietPlanCount(completion: @escaping (Int) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user ID found.")
+            completion(0)
+            return
+        }
+        
+        let userRef = Firestore.firestore().collection("users").document(userId)
+        
+        userRef.getDocument { snapshot, error in
+            if let error = error {
+                print("Error fetching user document: \(error.localizedDescription)")
+                completion(0)
+                return
+            }
+            
+            // Try to fetch the default diet plan ID from the user's document
+            if let data = snapshot?.data(),
+               let planId = data["defaultDietPlanId"] as? String {
+                // If a default plan ID exists, count the diet plans related to the user
+                Firestore.firestore().collection("dietPlans").whereField("userId", isEqualTo: userId).getDocuments { querySnapshot, queryError in
+                    if let queryError = queryError {
+                        print("Error fetching diet plans count: \(queryError.localizedDescription)")
+                        completion(0)
+                        return
+                    }
+                    
+                    // Return the count of documents in the query result
+                    let count = querySnapshot?.documents.count ?? 0
+                    ProfileManager.shared.setUserDietPlanCount(count)
+                    completion(count)
+                }
+            } else {
+                print("No default diet plan ID found in user document.")
+                completion(0)
             }
         }
     }

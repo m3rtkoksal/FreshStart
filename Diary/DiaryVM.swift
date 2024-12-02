@@ -30,6 +30,10 @@ class DiaryVM: BaseViewModel {
     @Published var topScrollOffset: CGFloat = 0
     @Published var bottomScrollOffset: CGFloat = 0
     private var hasUsedFallback = false
+    @Published var recipe = Recipe()
+    @Published var purpose: String?
+    @Published var mealTitle: String = ""
+    @Published var nutrients: TotalNutrients?
     
     var mealIcons: [String] {
         [
@@ -56,7 +60,6 @@ class DiaryVM: BaseViewModel {
                 fat: partialResult.fat + mealNutrients.fat
             )
         }
-        
         return TotalNutrients(
             kcal: initialNutrients.kcal - selectedNutrients.kcal,
             protein: initialNutrients.protein - selectedNutrients.protein,
@@ -156,49 +159,48 @@ class DiaryVM: BaseViewModel {
         }
     }
 
-    func fetchRecipeFromFirestore(dietPlanId: String, index: Int, completion: @escaping (Recipe?) -> Void) {
+    func fetchRecipeFromFirestore(dietPlanId: String, index: Int, completion: @escaping (Bool) -> Void) {
+        self.showIndicator = true
         let db = Firestore.firestore()
         let docRef = db.collection("dietPlans").document(dietPlanId)
-
+        defer {
+            self.showIndicator = false
+        }
         docRef.getDocument { document, error in
             if let error = error {
-                print("Error fetching document: \(error.localizedDescription)")
-                completion(nil)
+                print("Error fetching document: \(error)")
+                completion(false)
                 return
             }
-
-            guard let data = document?.data() else {
-                print("No data found for the document.")
-                completion(nil)
+            
+            guard let data = document?.data(),
+                  let recipes = data["recipes"] as? [String: Any],
+                  let recipeData = recipes[String(index)] as? [String: Any] else {
+                print("Recipe not found for index \(index)")
+                completion(false)
                 return
             }
-
-            // Log the fetched data for debugging
-            print("Fetched data: \(data)")
-
-            // Check if 'recipes' is a map and fetch the correct recipe by index
-            if let recipesMap = data["recipes"] as? [String: Any] {
-                // Get the recipe for the specified index
-                if let recipeData = recipesMap["\(index)"] as? [String: Any] {
-                    // Log the structure of the recipes map for debugging
-                    print("Fetched recipe data at index \(index): \(recipeData)")
-
-                    do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: recipeData)
-                        let decoder = JSONDecoder()
-                        let recipe = try decoder.decode(Recipe.self, from: jsonData)
-                        completion(recipe)
-                    } catch {
-                        print("Error decoding recipe at index \(index): \(error.localizedDescription)")
-                        completion(nil)
+            
+            do {
+                let recipeDataJSON = try JSONSerialization.data(withJSONObject: recipeData)
+                let recipe = try JSONDecoder().decode(Recipe.self, from: recipeDataJSON)
+                self.recipe = recipe
+                self.mealTitle = recipe.name
+                // Fetch the meal nutrients from the meals array
+                if let meals = data["meals"] as? [[String: Any]], let meal = meals.first {
+                    if let mealNutrients = meal["nutrients"] as? [String: Any] {
+                        self.nutrients = TotalNutrients(from: mealNutrients)
                     }
-                } else {
-                    print("No recipe found at index \(index)")
-                    completion(nil)
                 }
-            } else {
-                print("No 'recipes' field or wrong type in Firestore document")
-                completion(nil)
+                
+                if let purpose = data["purpose"] as? String {
+                    self.purpose = purpose
+                }
+                self.showIndicator = false
+                completion(true)
+            } catch {
+                print("Error decoding recipe data: \(error)")
+                completion(false)
             }
         }
     }
@@ -319,6 +321,7 @@ class DiaryVM: BaseViewModel {
                 if success {
                     print("Meal saved successfully:")
                     print(responseMeals)
+                    self.showIndicator = false
                     self.fetchDietPlan(byId: dietPlanId) { success in
                         if success {
                             print("Updated diet plan set as default.")
@@ -348,10 +351,11 @@ class DiaryVM: BaseViewModel {
                     dietPlan.userId = data["userId"] as? String ?? ""
                     dietPlan.purpose = data["purpose"] as? String ?? ""
                     dietPlan.dietPreference = data["dietPreference"] as? String ?? ""
-
+                    self.showIndicator = false
                     DispatchQueue.main.async {
                         // Update default diet plan
                         ProfileManager.shared.setDefaultDietPlan(dietPlan)
+                        self.showIndicator = false
                         completion(true)
                     }
                 } catch {
@@ -391,7 +395,6 @@ class DiaryVM: BaseViewModel {
                         completion(nil)
                         return
                     }
-                    
                     if let planSnapshot = planSnapshot, planSnapshot.exists, let planData = planSnapshot.data() {
                         do {
                             var dietPlan = try Firestore.Decoder().decode(DietPlan.self, from: planData)
@@ -424,6 +427,7 @@ class DiaryVM: BaseViewModel {
                             do {
                                 var dietPlan = try Firestore.Decoder().decode(DietPlan.self, from: planData)
                                 dietPlan.id = planSnapshot.documentID
+                                self.showIndicator = false
                                 completion(dietPlan)
                             } catch {
                                 print("Error decoding fallback diet plan: \(error.localizedDescription)")

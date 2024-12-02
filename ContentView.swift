@@ -21,6 +21,7 @@ struct ContentView: View {
     @State private var dailyDietPlanCount: Int = 0
     @State private var dailyLoginCount: Int = 0
     @State private var dailyMealRecreateCount: Int = 0
+    @State private var fetchedDietPlans: [DietPlan] = []
     
     var body: some View {
         ZStack {
@@ -313,7 +314,6 @@ struct ContentView: View {
         db.collection("dietPlans")
             .whereField("userId", isEqualTo: userId)
             .getDocuments { (querySnapshot, error) in
-                var fetchedDietPlans: [DietPlan] = []
                 
                 if let error = error {
                     AnalyticsHelper.log("Error fetching diet plans", eventParameters: ["error" : error.localizedDescription])
@@ -349,7 +349,7 @@ struct ContentView: View {
                 
                 DispatchQueue.main.async {
                     if let lastDietPlan = fetchedDietPlans.first {
-                        ProfileManager.shared.setUserDietPlans(fetchedDietPlans)
+                        ProfileManager.shared.setUserDietPlanCount(fetchedDietPlans.count)
                         self.lastDietPlanId = lastDietPlan.id ?? ""
                         print("the latest diet plan ID: \(lastDietPlanId)")
                         completion(true)
@@ -451,12 +451,13 @@ struct ContentView: View {
     }
     
     private func updateLoginData(userRef: DocumentReference, currentDate: Date, isPremiumUser: Bool) {
+        let dietPlanCount = self.fetchedDietPlans.count
         var updatedMaxMealCount = 1
         var updatedMaxPlanCount = 1
         
         if isPremiumUser {
-            updatedMaxMealCount = 3
-            updatedMaxPlanCount = 3 + ProfileManager.shared.user.dietPlans.count
+            updatedMaxMealCount = 5
+            updatedMaxPlanCount = 3 + dietPlanCount
         }
         
         // Locally increment daily login count

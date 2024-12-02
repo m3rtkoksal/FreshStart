@@ -19,7 +19,6 @@ class OffersVM: BaseViewModel, SKPaymentTransactionObserver, SKProductsRequestDe
     @Published var purchaseCompleted: Bool = false
     @Published var additionalDays = 0
     @Published var subscriptionEndDate: Date = Date()
-    
     private var productIdentifiers: Set<String> = ["week_one", "week_two", "month_one", "month_six", "year_one"]
     private var productRequest: SKProductsRequest?
     
@@ -67,7 +66,8 @@ class OffersVM: BaseViewModel, SKPaymentTransactionObserver, SKProductsRequestDe
     private func handlePurchase(transaction: SKPaymentTransaction) {
         // Grant access to the purchased content
         if let userId = Auth.auth().currentUser?.uid {
-            updateSubscriptionDetailsInFirestore(userId: userId)
+            let additionalDays = calculateAdditionalDays(for: transaction)
+            updateSubscriptionDetailsInFirestore(userId: userId, additionalDays: additionalDays)
         }
         purchaseCompleted = true
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -84,52 +84,74 @@ class OffersVM: BaseViewModel, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     private func handleRestored(transaction: SKPaymentTransaction) {
-        // Restore purchases
         if let userId = Auth.auth().currentUser?.uid {
-            updateSubscriptionDetailsInFirestore(userId: userId)
+            let additionalDays = calculateAdditionalDays(for: transaction)
+            updateSubscriptionDetailsInFirestore(userId: userId, additionalDays: additionalDays)
         }
         SKPaymentQueue.default().finishTransaction(transaction)
     }
-    private func updateSubscriptionDetailsInFirestore(userId: String) {
+    
+    private func updateSubscriptionDetailsInFirestore(userId: String, additionalDays: Int) {
         let db = Firestore.firestore()
-        let subscriptionEndDate = Calendar.current.date(byAdding: .day, value: additionalDays, to: Date()) ?? Date()
-        
-        let dataToSave: [String: Any] = [
-            "subscriptionEndDate": subscriptionEndDate,
-            "isPremiumUser": true
-        ]
-        
-        db.collection("users").document(userId).setData(dataToSave, merge: true) { error in
+        db.collection("users").document(userId).getDocument { document, error in
             if let error = error {
-                self.errorMessage = error.localizedDescription
-                self.showAlert = true
+                print("Error fetching document: \(error.localizedDescription)")
+                return
+            }
+            
+            if let document = document, document.exists {
+                let data = document.data()
+                let currentEndDateTimestamp = data?["subscriptionEndDate"] as? Timestamp
+                var currentEndDate = currentEndDateTimestamp?.dateValue() ?? Date()
+                currentEndDate.addTimeInterval(TimeInterval(additionalDays * 86400))
+                let dataToSave: [String: Any] = [
+                    "subscriptionEndDate": currentEndDate,
+                    "isPremiumUser": true,
+                    "maxmaxMealCount": 5,
+                    "maxPlanCount": 3 + (ProfileManager.shared.user.dietPlanCount ?? 0)
+                ]
+                
+                db.collection("users").document(userId).setData(dataToSave, merge: true) { error in
+                    if let error = error {
+                        print("Error updating subscription details: \(error.localizedDescription)")
+                    } else {
+                        print("Successfully updated subscription details in Firestore.")
+                    }
+                }
             } else {
-                print("Successfully updated subscription details in Firestore.")
+                print("Document does not exist.")
             }
         }
     }
+    private func calculateAdditionalDays(for transaction: SKPaymentTransaction) -> Int {
+        // Return days based on the product identifier
+        switch transaction.payment.productIdentifier {
+        case "week_one":
+            return 7  // 7 days for the 1-week subscription
+        case "week_two":
+            return 14  // 14 days for the 2-week subscription
+        case "month_one":
+            return 30  // 30 days for the 1-month subscription
+        case "month_six":
+            return 180  // 180 days for the 6-month subscription
+        case "year_one":
+            return 365  // 365 days for the 1-year subscription
+        default:
+            return 0  // Default to 0 days if product identifier is not recognized
+        }
+    }
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        // Clear any previous product list
-        offers.removeAll()
-        
-        // Iterate through the received products
+        DispatchQueue.main.async {
+            self.offers.removeAll() // Ensure modification is done on the main thread
+        }
         for product in response.products {
-            offers.append(product) // Add valid products to the offerings array
-            print("Product available: \(product.localizedTitle) - \(product.priceLocale.currencySymbol ?? "")\(product.price)")
+            DispatchQueue.main.async {
+                self.offers.append(product) // Add valid products to the offerings array
+                print("Product available: \(product.localizedTitle) - \(product.priceLocale.currencySymbol ?? "")\(product.price)")
+            }
         }
-        
-        // Sort the products by price (ascending order)
-        offers.sort { $0.price.doubleValue < $1.price.doubleValue }
-        
-        // Check for invalid product identifiers
-        if !response.invalidProductIdentifiers.isEmpty {
-            print("Invalid product identifiers found: \(response.invalidProductIdentifiers)")
-        }
-        
-        // Handle empty response scenario
-        if response.products.isEmpty {
-            errorMessage = "No products available."
-            showAlert = true
+        DispatchQueue.main.async {
+            self.offers.sort { $0.price.doubleValue < $1.price.doubleValue } // Sorting on main thread
         }
     }
 }

@@ -31,7 +31,7 @@ class UserInputModel: ObservableObject {
     @Published var steps: Int?
     @Published var currentPurpose: String?
     @Published var frequency: Int?
-    @Published var dietPlans: [DietPlan] = []
+    @Published var dietPlanCount: Int?
     @Published var defaultDietPlan: DietPlan?
     @Published var allergens: [Allergen] = []
     @Published var subscriptionEndDate: Date = Date()
