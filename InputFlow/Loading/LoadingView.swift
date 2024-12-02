@@ -19,7 +19,7 @@ struct LoadingView: View {
     @State var defaultDietPlan: DietPlan?
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .black,
                showIndicator: $viewModel.showIndicator) {
             

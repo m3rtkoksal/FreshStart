@@ -12,7 +12,7 @@ struct ResourcesView: View {
     @StateObject private var viewModel = ResourcesVM()
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                  showIndicator: $viewModel.showIndicator) {
             VStack {

@@ -17,7 +17,7 @@ struct PasswordResetView: View {
     @State private var showAlert = false
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .black,
                showIndicator: $viewModel.showIndicator) {
             VStack{

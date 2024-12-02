@@ -21,7 +21,7 @@ struct ProfileView: View {
     @ObservedObject private var notificationManager = NotificationManager.shared
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             ScrollView(showsIndicators: false) {

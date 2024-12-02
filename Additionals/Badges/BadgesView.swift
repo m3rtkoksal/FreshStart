@@ -14,7 +14,7 @@ struct BadgesView: View {
     let gridLayout = [GridItem(.fixed(100)), GridItem(.fixed(100)), GridItem(.fixed(100)), GridItem(.fixed(100))]
     let spacing: CGFloat = 10
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .black,
                showIndicator: $viewModel.showIndicator) {
             VStack {

@@ -84,7 +84,7 @@ struct BodyFatRankingView: View {
     var body: some View {
         VStack {
             if rankings.isEmpty {
-                DGLoadingView()
+                FreshStartLoadingView()
             } else {
                 HStack {
                     Text("Ranking")
@@ -126,7 +126,7 @@ struct MuscleMassRankingView: View {
         
         VStack(alignment: .leading) {
             if rankings.isEmpty {
-                DGLoadingView()
+                FreshStartLoadingView()
             } else {
                 HStack {
                     Text("Ranking")
@@ -164,7 +164,7 @@ struct DailyLoginRankingView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if rankings.isEmpty {
-                DGLoadingView()
+                FreshStartLoadingView()
             } else {
                 HStack {
                     Text("Ranking")

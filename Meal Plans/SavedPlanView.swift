@@ -19,7 +19,7 @@ struct SavedPlanView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator
         ) {

@@ -13,7 +13,7 @@ struct OffersView: View {
     @AppStorage("selectedTab") private var selectedTabRaw: String = MainTabView.Tab.diary.rawValue
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack {

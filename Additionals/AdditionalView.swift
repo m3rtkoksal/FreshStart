@@ -13,7 +13,7 @@ struct AdditionalView: View {
     @ObservedObject private var notificationManager = NotificationManager.shared
     @StateObject private var viewModel = AdditionalVM()
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing: 30) {

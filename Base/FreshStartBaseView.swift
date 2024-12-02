@@ -1,5 +1,5 @@
 //
-//  DGView.swift
+//  FreshStartBaseView.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -14,7 +14,7 @@ enum DGViewBackgroundType {
     case transparent
 }
 
-struct DGView<Content: View>: View {
+struct FreshStartBaseView<Content: View>: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     let currentViewModel: BaseViewModel
     @State private var isSuccess = true
@@ -48,7 +48,7 @@ struct DGView<Content: View>: View {
             
             // Loading Indicator
             if showIndicator {
-                DGLoadingView()
+                FreshStartLoadingView()
                     .transition(.opacity)
             }
         }

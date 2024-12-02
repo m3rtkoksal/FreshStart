@@ -1,5 +1,5 @@
 //
-//  DGLoadingView.swift
+//  FreshStartLoadingView.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGLoadingView: View {
+struct FreshStartLoadingView: View {
     @State private var rotationAngle: Double = 0
     
     var body: some View {
@@ -27,6 +27,6 @@ struct DGLoadingView: View {
 // Preview for the loading view
 struct DGLoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        DGLoadingView()
+        FreshStartLoadingView()
     }
 }

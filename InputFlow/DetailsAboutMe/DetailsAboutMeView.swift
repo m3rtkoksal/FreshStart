@@ -32,7 +32,7 @@ struct DetailsAboutMeView: View {
     @State private var tempWeight: Double? = nil
     var body: some View {
         ZStack {
-            DGView(currentViewModel: viewModel,
+            FreshStartBaseView(currentViewModel: viewModel,
                    background: .solidWhite,
                    showIndicator: $viewModel.showIndicator) {
                 VStack {

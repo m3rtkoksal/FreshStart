@@ -13,7 +13,7 @@ struct AllRankingView: View {
     @State private var selectedRankType: RankListType = .bodyFat
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack {

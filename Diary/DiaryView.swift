@@ -27,12 +27,12 @@ struct DiaryView: View {
     @State private var isDataLoaded = false
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator
         ) {
             if viewModel.showIndicator {
-                DGLoadingView()
+                FreshStartLoadingView()
             } else if ProfileManager.shared.user.defaultDietPlanId == nil {
                 // No diet plan exists, show a placeholder or empty state view
                 EmptyDietPlanView()

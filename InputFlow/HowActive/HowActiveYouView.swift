@@ -13,7 +13,7 @@ struct HowActiveYouView: View {
     @StateObject private var viewModel = HowActiveYouVM()
     
     var body: some View {
-        DGView(currentViewModel: viewModel,
+        FreshStartBaseView(currentViewModel: viewModel,
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing:20) {
