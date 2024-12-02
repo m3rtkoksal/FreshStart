@@ -30,9 +30,6 @@ class DiaryVM: BaseViewModel {
     @Published var topScrollOffset: CGFloat = 0
     @Published var bottomScrollOffset: CGFloat = 0
     private var hasUsedFallback = false
-    @Published var recipe = Recipe()
-    @Published var purpose: String?
-    @Published var mealTitle: String = ""
     @Published var nutrients: TotalNutrients?
     
     var mealIcons: [String] {
@@ -67,7 +64,6 @@ class DiaryVM: BaseViewModel {
             fat: initialNutrients.fat - selectedNutrients.fat
         )
     }
-    
     func deleteDietPlanEntry(dietPlan: DietPlan, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let id = dietPlan.id, !id.isEmpty else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Diet plan ID is missing."])))
@@ -159,81 +155,67 @@ class DiaryVM: BaseViewModel {
         }
     }
 
-    func fetchRecipeFromFirestore(dietPlanId: String, index: Int, completion: @escaping (Bool) -> Void) {
-        self.showIndicator = true
+    private func fetchDietPlan(byId planId: String, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
-        let docRef = db.collection("dietPlans").document(dietPlanId)
-        defer {
-            self.showIndicator = false
-        }
-        docRef.getDocument { document, error in
+        db.collection("dietPlans").document(planId).getDocument { document, error in
             if let error = error {
-                print("Error fetching document: \(error)")
+                print("Error fetching diet plan by ID: \(error.localizedDescription)")
                 completion(false)
-                return
-            }
-            
-            guard let data = document?.data(),
-                  let recipes = data["recipes"] as? [String: Any],
-                  let recipeData = recipes[String(index)] as? [String: Any] else {
-                print("Recipe not found for index \(index)")
-                completion(false)
-                return
-            }
-            
-            do {
-                let recipeDataJSON = try JSONSerialization.data(withJSONObject: recipeData)
-                let recipe = try JSONDecoder().decode(Recipe.self, from: recipeDataJSON)
-                self.recipe = recipe
-                self.mealTitle = recipe.name
-                // Fetch the meal nutrients from the meals array
-                if let meals = data["meals"] as? [[String: Any]], let meal = meals.first {
-                    if let mealNutrients = meal["nutrients"] as? [String: Any] {
-                        self.nutrients = TotalNutrients(from: mealNutrients)
-                    }
-                }
-                
-                if let purpose = data["purpose"] as? String {
-                    self.purpose = purpose
-                }
-                self.showIndicator = false
-                completion(true)
-            } catch {
-                print("Error decoding recipe data: \(error)")
-                completion(false)
-            }
-        }
-    }
-    
-    func saveRecipeToFirestore(dietPlanId: String, index: Int, recipe: Recipe, completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-        let dietPlanRef = db.collection("dietPlans").document(dietPlanId)
-        
-        // Encode the Recipe into a dictionary
-        do {
-            let recipeData = try JSONEncoder().encode(recipe)
-            if let recipeDict = try JSONSerialization.jsonObject(with: recipeData, options: []) as? [String: Any] {
-                dietPlanRef.updateData([
-                    "recipes.\(index)": recipeDict
-                ]) { error in
-                    if let error = error {
-                        print("Error saving recipe to Firestore: \(error.localizedDescription)")
-                        completion(false)
-                    } else {
-                        print("Recipe saved successfully under \(index)")
+            } else if let document = document, let data = document.data() {
+                do {
+                    var dietPlan = try document.data(as: DietPlan.self)
+                    dietPlan.id = document.documentID
+                    dietPlan.createdAt = data["createdAt"] as? Date ?? Date()
+                    dietPlan.userId = data["userId"] as? String ?? ""
+                    dietPlan.purpose = data["purpose"] as? String ?? ""
+                    dietPlan.dietPreference = data["dietPreference"] as? String ?? ""
+                    self.showIndicator = false
+                    DispatchQueue.main.async {
+                        // Update default diet plan
+                        ProfileManager.shared.setDefaultDietPlan(dietPlan)
+                        self.showIndicator = false
                         completion(true)
                     }
+                } catch {
+                    print("Error decoding diet plan: \(error.localizedDescription)")
+                    completion(false)
                 }
             } else {
-                print("Failed to serialize recipe data")
                 completion(false)
             }
-        } catch {
-            print("Error encoding recipe: \(error)")
-            completion(false)
         }
     }
     
+    func generateAndSaveNewMeal(dietPlanId: String, meal: Meal, index: Int, completion: @escaping (Meal?) -> Void) {
+        self.showIndicator = true
+        OpenAIManager.shared.generateNewMealPrompt(meal: meal) { responseMeals in
+            guard let responseMeals = responseMeals else {
+                completion(nil)
+                self.showIndicator = false
+                return
+            }
+            
+            // Save the new meal to Firestore
+            self.saveNewMealToFirestore(dietPlanId: dietPlanId, index: index, meal: responseMeals) { success in
+                self.showIndicator = false
+                if success {
+                    print("Meal saved successfully:")
+                    print(responseMeals)
+                    self.showIndicator = false
+                    self.fetchDietPlan(byId: dietPlanId) { success in
+                        if success {
+                            print("Updated diet plan set as default.")
+                        } else {
+                            print("Failed to fetch updated diet plan.")
+                        }
+                    }
+                    completion(responseMeals)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+    }
     
     func saveNewMealToFirestore(dietPlanId: String, index: Int, meal: Meal, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
@@ -275,100 +257,7 @@ class DiaryVM: BaseViewModel {
             }
         }
     }
-    
-    func generateRecipeFromMeal(meal: Meal, completion: @escaping (Recipe?) -> Void) {
-        openAIManager.generateRecipePrompt(meal: meal) { responseRecipe in
-            DispatchQueue.main.async {
-                completion(responseRecipe)
-            }
-        }
-    }
-    
-    func generateAndSaveNewRecipe(dietPlanId: String, meal: Meal, index: Int, completion: @escaping (Recipe?) -> Void) {
-        self.showIndicator = true
-        OpenAIManager.shared.generateRecipePrompt(meal: meal) { generatedRecipe in
-            guard let generatedRecipe = generatedRecipe else {
-                completion(nil)
-                self.showIndicator = false
-                return
-            }
-            
-            // Save the generated recipe to Firestore and then notify
-            self.saveRecipeToFirestore(dietPlanId: dietPlanId, index: index, recipe: generatedRecipe) { success in
-                self.showIndicator = false
-                if success {
-                    completion(generatedRecipe)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-    }
-    
-    
-    func generateAndSaveNewMeal(dietPlanId: String, meal: Meal, index: Int, completion: @escaping (Meal?) -> Void) {
-        self.showIndicator = true
-        OpenAIManager.shared.generateNewMealPrompt(meal: meal) { responseMeals in
-            guard let responseMeals = responseMeals else {
-                completion(nil)
-                self.showIndicator = false
-                return
-            }
-            
-            // Save the new meal to Firestore
-            self.saveNewMealToFirestore(dietPlanId: dietPlanId, index: index, meal: responseMeals) { success in
-                self.showIndicator = false
-                if success {
-                    print("Meal saved successfully:")
-                    print(responseMeals)
-                    self.showIndicator = false
-                    self.fetchDietPlan(byId: dietPlanId) { success in
-                        if success {
-                            print("Updated diet plan set as default.")
-                        } else {
-                            print("Failed to fetch updated diet plan.")
-                        }
-                    }
-                    completion(responseMeals)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-    }
-    
-    private func fetchDietPlan(byId planId: String, completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-        db.collection("dietPlans").document(planId).getDocument { document, error in
-            if let error = error {
-                print("Error fetching diet plan by ID: \(error.localizedDescription)")
-                completion(false)
-            } else if let document = document, let data = document.data() {
-                do {
-                    var dietPlan = try document.data(as: DietPlan.self)
-                    dietPlan.id = document.documentID
-                    dietPlan.createdAt = data["createdAt"] as? Date ?? Date()
-                    dietPlan.userId = data["userId"] as? String ?? ""
-                    dietPlan.purpose = data["purpose"] as? String ?? ""
-                    dietPlan.dietPreference = data["dietPreference"] as? String ?? ""
-                    self.showIndicator = false
-                    DispatchQueue.main.async {
-                        // Update default diet plan
-                        ProfileManager.shared.setDefaultDietPlan(dietPlan)
-                        self.showIndicator = false
-                        completion(true)
-                    }
-                } catch {
-                    print("Error decoding diet plan: \(error.localizedDescription)")
-                    completion(false)
-                }
-            } else {
-                completion(false)
-            }
-        }
-    }
 
-    
     func fetchDietPlan(completion: @escaping (DietPlan?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("No user ID found.")

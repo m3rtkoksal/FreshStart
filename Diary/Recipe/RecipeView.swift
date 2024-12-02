@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct RecipeView: View {
-    @StateObject var viewModel: DiaryVM
+    @StateObject var viewModel = RecipeVM()
+    var recipe: Recipe // Pass recipe to this view
     
     var body: some View {
         DGView(currentViewModel: viewModel,
@@ -23,74 +24,73 @@ struct RecipeView: View {
                     bottomPadding: -10)
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                            HStack(alignment: .center) {
-                                if let iconName = PurposeInputVM().getIcon(for: viewModel.purpose ?? "") {
-                                    Image(iconName)
-                                        .resizable()
-                                        .frame(width: 46, height: 46)
-                                }
-                                Text(viewModel.mealTitle)
-                                    .font(.montserrat(.bold, size: 20))
+                        HStack(alignment: .center) {
+                            Image(viewModel.iconName ?? "")
+                                .resizable()
+                                .frame(width: 46, height: 46)
+                            Text(viewModel.mealTitle)
+                                .font(.montserrat(.bold, size: 20))
+                                .foregroundColor(.black)
+                        }
+                        HStack {
+                            VStack {
+                                Text("Kcal")
+                                    .foregroundColor(.mkPurple)
+                                Text("\(viewModel.nutrients?.kcal ?? 0)")
                                     .foregroundColor(.black)
                             }
-                            HStack {
-                                VStack {
-                                    Text("Kcal")
-                                        .foregroundColor(.mkPurple)
-                                    Text("\(viewModel.nutrients?.kcal ?? 0)")
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
-                                VStack {
-                                    Text("Protein")
-                                        .foregroundColor(.mkPurple)
-                                    Text("\(viewModel.nutrients?.protein ?? 0) gr")
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
-                                VStack {
-                                    Text("Carbohydrate")
-                                        .foregroundColor(.mkPurple)
-                                    Text("\(viewModel.nutrients?.carbohydrate ?? 0) gr")
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
-                                VStack {
-                                    Text("Fat")
-                                        .foregroundColor(.mkPurple)
-                                    Text("\(viewModel.nutrients?.fat ?? 0) gr")
-                                        .foregroundColor(.black)
-                                }
-                                .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity)
+                            VStack {
+                                Text("Protein")
+                                    .foregroundColor(.mkPurple)
+                                Text("\(viewModel.nutrients?.protein ?? 0) gr")
+                                    .foregroundColor(.black)
                             }
-                            .font(.montserrat(.medium, size: 10))
-                            .padding(.vertical, 15)
-                            
-                            Text("Ingredients:")
-                                .font(.montserrat(.medium, size: 14))
-                                .padding(.bottom, 5)
-                            
-                        ForEach(viewModel.recipe.ingredients.indices, id: \.self) { index in
+                            .frame(maxWidth: .infinity)
+                            VStack {
+                                Text("Carbohydrate")
+                                    .foregroundColor(.mkPurple)
+                                Text("\(viewModel.nutrients?.carbohydrate ?? 0) gr")
+                                    .foregroundColor(.black)
+                            }
+                            .frame(maxWidth: .infinity)
+                            VStack {
+                                Text("Fat")
+                                    .foregroundColor(.mkPurple)
+                                Text("\(viewModel.nutrients?.fat ?? 0) gr")
+                                    .foregroundColor(.black)
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        .font(.montserrat(.medium, size: 10))
+                        .padding(.vertical, 15)
+                        
+                        Text("Ingredients:")
+                            .font(.montserrat(.medium, size: 14))
+                            .padding(.bottom, 5)
+                        
+                        ForEach(recipe.ingredients.indices, id: \.self) { index in
                             HStack {
                                 Circle()
                                     .fill(index % 2 == 0 ? Color.mkOrange : Color.mkPurple)
                                     .frame(width: 2, height: 2) // Adjust the size for visibility
-                                Text("\(viewModel.recipe.ingredients[index].quantity) - \(viewModel.recipe.ingredients[index].item)")
+                                Text("\(recipe.ingredients[index].quantity) - \(recipe.ingredients[index].item)")
                                     .font(.montserrat(.regular, size: 16))
                             }
                         }
-                            .padding(.leading, 10)
-                            .padding(.bottom, 10)
-                            Text("Instructions:")
-                                .font(.montserrat(.medium, size: 14))
-                                .padding(.bottom, 5)
-                            
-                        Text(viewModel.recipe.instructions)
-                                .font(.montserrat(.regular, size: 16))
-                                .lineSpacing(8)
-                                .foregroundColor(.black)
-                                .padding(.bottom, 20)
-                                .padding(.horizontal, 10)
+                        .padding(.leading, 10)
+                        .padding(.bottom, 10)
+                        
+                        Text("Instructions:")
+                            .font(.montserrat(.medium, size: 14))
+                            .padding(.bottom, 5)
+                        
+                        Text(recipe.instructions)
+                            .font(.montserrat(.regular, size: 16))
+                            .lineSpacing(8)
+                            .foregroundColor(.black)
+                            .padding(.bottom, 20)
+                            .padding(.horizontal, 10)
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
@@ -113,6 +113,13 @@ struct RecipeView: View {
                     leading:
                         DGBackButton()
                 )
+        }
+        .onAppear {
+            viewModel.fetchDietPlan(byId: ProfileManager.shared.user.defaultDietPlanId ?? "") { success in
+                if success {
+                    print(success)
+                }
+            }
         }
     }
 }

@@ -17,7 +17,6 @@ struct ReCreateMealElementView: View {
     @Binding var shouldRegenerateRecipe: Bool
     var index: Int
     
-    
     var body: some View {
         NavigationStack {
             Button(action: {

@@ -21,6 +21,7 @@ struct DiaryView: View {
     @State var maxMealCount: Int = 0
     @State private var shouldRegenerateRecipe = false
     @State private var isHeaderVisible = true
+    @State private var showIndicator = false
     @State private var scrollOffset: CGFloat = 0
     var edges = UIApplication.shared.windows.first?.safeAreaInsets ?? .zero
     @State private var isDataLoaded = false
@@ -93,7 +94,6 @@ struct DiaryView: View {
                 })
                 .onAppear {
                     guard !isDataLoaded else { return }
-                    viewModel.showIndicator = true
                     isDataLoaded = true
                     viewModel.fetchMaxCountFromFirestore()
                     if let cachedDietPlan = ProfileManager.shared.user.defaultDietPlan {
@@ -117,7 +117,6 @@ struct DiaryView: View {
                 }
                 
                 .onDisappear {
-                    viewModel.showIndicator = true
                     if let dietPlanId = viewModel.dietPlan.id, !dietPlanId.isEmpty {
                         MealManager.shared.saveSelectedMeals(dietPlanId: dietPlanId, selectedMeals: selectedMeals)
                     } else {
@@ -302,7 +301,6 @@ struct DiaryView: View {
                             CreateRecipeElementView(dietPlanId: viewModel.dietPlan.id ?? "",
                                                     meal: viewModel.dietPlan.meals[index],
                                                     index: index,
-                                                    viewModel: self.viewModel,
                                                     shouldRegenerateRecipe: $shouldRegenerateRecipe)
                         }
                         .padding(.bottom, 10)

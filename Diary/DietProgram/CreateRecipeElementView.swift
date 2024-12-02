@@ -12,9 +12,7 @@ struct CreateRecipeElementView: View {
     var dietPlanId: String
     var meal: Meal
     var index: Int
-    @State private var recipe: Recipe?
-    @StateObject var viewModel: DiaryVM
-    @State private var goToSavedRecipe: Bool = false
+    @StateObject private var viewModel = RecipeVM()
     @Binding var shouldRegenerateRecipe: Bool
     
     var body: some View {
@@ -22,12 +20,12 @@ struct CreateRecipeElementView: View {
             Button(action: {
                 if shouldRegenerateRecipe {
                     shouldRegenerateRecipe = false
-                    generateNewRecipe()
+                    viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { recipe in
+                        print(recipe!)
+                    }
                 } else {
-                    self.goToSavedRecipe = true
-                    viewModel.performTaskWithIndicator {
-                        viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { success in
-                        }
+                    viewModel.fetchRecipeFromFirestore(dietPlanId: dietPlanId, index: index) { success in
+                        print(success)
                     }
                 }
             }) {
@@ -49,24 +47,8 @@ struct CreateRecipeElementView: View {
             }
             .padding(.trailing, 20)
         }
-        .navigationDestination(isPresented: $goToSavedRecipe) {
-            RecipeView(viewModel: self.viewModel)
-        }
-    }
-    
-    private func generateNewRecipe() {
-        viewModel.performTaskWithIndicator {
-            viewModel.generateAndSaveNewRecipe(dietPlanId: dietPlanId, meal: meal, index: index) { newRecipe in
-                DispatchQueue.main.async {
-                    if let newRecipe = newRecipe {
-                        self.recipe = newRecipe
-                        self.goToSavedRecipe = true
-                    } else {
-                        // Handle failure case
-                        self.goToSavedRecipe = false
-                    }
-                }
-            }
+        .navigationDestination(isPresented: $viewModel.goToSavedRecipe) {
+            RecipeView(viewModel: viewModel, recipe: viewModel.recipe)
         }
     }
 }
