@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGPasswordValidationTextField: View {
+struct FSPasswordValidationTextField: View {
     var placeholder: String
     var prompt: String
     @Binding var text: String

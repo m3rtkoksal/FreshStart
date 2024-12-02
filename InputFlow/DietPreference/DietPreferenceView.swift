@@ -18,7 +18,7 @@ struct DietPreferenceView: View {
                showIndicator: $viewModel.showIndicator) {
             
             VStack(spacing: 15) {
-                DGTitle(
+                FSTitle(
                     title: "Diet Preference",
                     subtitle: "Please select your diet preference",
                     bottomPadding: 0)
@@ -52,7 +52,7 @@ struct DietPreferenceView: View {
                     .padding(.top, 20)
                 }
                 Spacer()
-                DGButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserDietPreference(selectedDietPreference?.title ?? "")
                     viewModel.goToHowActiveView = true
@@ -67,10 +67,10 @@ struct DietPreferenceView: View {
                .navigationBarBackButtonHidden()
                .navigationBarItems(
                 leading:
-                    DGBackButton(),
+                    FreshStartBackButton(),
                 trailing:
                     HStack {
-                        DGProgressBar(progressCount: Constant.progressCount, currentProgress: 2, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                        FSProgressBar(progressCount: Constant.progressCount, currentProgress: 2, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                         Spacer()
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }

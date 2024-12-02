@@ -23,7 +23,7 @@ struct AllRankingView: View {
                         set: { selectedRankType = RankListType(rawValue: $0) ?? .bodyFat }
                     ),
                     segmentNames: viewModel.chartSegmentItems)
-                DGTitle(
+                FSTitle(
                     title: "All Rankings",
                     subtitle: "",
                     bottomPadding: -5)
@@ -67,7 +67,7 @@ struct AllRankingView: View {
         }
                .navigationBarBackButtonHidden()
                .navigationBarItems(
-                leading: DGBackButton()
+                leading: FreshStartBackButton()
                )
     }
 }

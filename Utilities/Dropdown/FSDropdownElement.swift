@@ -1,5 +1,5 @@
 //
-//  DGDropdownElement.swift
+//  FSDropdownElement.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct DGDropdownElement: View {
-    var item: DGDropdownItemModel
+struct FSDropdownElement: View {
+    var item: FSDropdownItemModel
     var isChosen: Bool
     
     var body: some View {
@@ -27,6 +27,6 @@ struct DGDropdownElement: View {
 
 struct DGDropdownElement_Previews: PreviewProvider {
     static var previews: some View {
-        DGDropdownElement(item: DGDropdownItemModel(icon: "", text: "Lorem Ipsum"), isChosen: false)
+        FSDropdownElement(item: FSDropdownItemModel(icon: "", text: "Lorem Ipsum"), isChosen: false)
     }
 }

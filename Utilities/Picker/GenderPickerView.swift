@@ -10,8 +10,8 @@ import SwiftUI
 
 struct GenderPickerView: View {
     @StateObject private var viewModel = DetailsAboutMeVM()
-    @Binding var genderOptions: [DGDropdownItemModel]
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var genderOptions: [FSDropdownItemModel]
+    @Binding var selectedItem: FSDropdownItemModel
     @Binding var isExpanded: Bool
     
     var body: some View {

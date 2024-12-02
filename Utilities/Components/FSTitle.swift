@@ -1,5 +1,5 @@
 //
-//  DGTitle.swift
+//  FSTitle.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGTitle: View {
+struct FSTitle: View {
     
     var title: String
     var subtitle: String

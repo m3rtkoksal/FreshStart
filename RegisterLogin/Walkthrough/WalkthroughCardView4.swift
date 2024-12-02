@@ -40,7 +40,7 @@ struct WalkthroughCardView4: View {
                 Spacer()
             }
             .padding(.top,40)
-            DGButton(text: "Let's go", backgroundColor: .mkOrange, textColor: .black) {
+            FreshStartButton(text: "Let's go", backgroundColor: .mkOrange, textColor: .black) {
                 onNext()
             }
             .padding(.top,50)

@@ -23,7 +23,7 @@ struct WalkthroughView: View {
             VStack {
                 HStack {
                     Spacer()
-                    DGProgressBar(progressCount: walkthroughs.count, currentProgress: currentCardIndex)
+                    FSProgressBar(progressCount: walkthroughs.count, currentProgress: currentCardIndex)
                         .frame(width: 100, height: 30)
                         .padding(.trailing, 20)
                 }

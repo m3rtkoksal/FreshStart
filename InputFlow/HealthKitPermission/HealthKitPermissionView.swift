@@ -42,7 +42,7 @@ struct HealthKitPermissionView: View {
                background: .solidWhite,
                  showIndicator: $viewModel.showIndicator) {
                 VStack {
-                    DGTitle(
+                    FSTitle(
                         title: "Health Data",
                         subtitle: "",
                         bottomPadding: 20)
@@ -114,9 +114,9 @@ struct HealthKitPermissionView: View {
                                 .strokeBorder(lineWidth: 1)
                         )
                         .padding(.top)
-                        DGDivider(title: "Or enter Manually")
+                        FreshStartDivider(title: "Or enter Manually")
                         Spacer()
-                        DGButton(text: "Enter Manually", backgroundColor: .mkOrange) {
+                        FreshStartButton(text: "Enter Manually", backgroundColor: .mkOrange) {
                             viewModel.goToBMIInputPage = true
                         }
                         Button(action: {
@@ -143,7 +143,7 @@ struct HealthKitPermissionView: View {
                                     .navigationBarBackButtonHidden(true)
                                     .navigationBarItems(
                                         leading:
-                                            DGDismissButton(presentationMode: presentationMode)
+                                            FreshStartDismissButton(presentationMode: presentationMode)
                                     )
         }
                  .onChange(of: scenePhase, perform: handleScenePhaseChange)

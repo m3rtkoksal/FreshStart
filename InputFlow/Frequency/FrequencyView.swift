@@ -18,7 +18,7 @@ struct FrequencyView: View {
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing:20) {
-                DGTitle(
+                FSTitle(
                     title: "How many meals",
                     subtitle: "Select how many meals do you eat a day including snacks",
                     bottomPadding: 0)
@@ -38,7 +38,7 @@ struct FrequencyView: View {
                     }
                     .padding(.vertical, 10)
                 }
-                DGButton(text: "Next", backgroundColor: .mkOrange.opacity(0.9)) {
+                FreshStartButton(text: "Next", backgroundColor: .mkOrange.opacity(0.9)) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserMealFrequency(selectedFrequency?.numberOfMeals ?? 0)
                     viewModel.goToAllergensView = true
@@ -52,10 +52,10 @@ struct FrequencyView: View {
                .navigationBarBackButtonHidden()
                .navigationBarItems(
                 leading:
-                    DGBackButton(),
+                    FreshStartBackButton(),
                 trailing:
                     HStack {
-                        DGProgressBar(progressCount: Constant.progressCount, currentProgress: 5, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                        FSProgressBar(progressCount: Constant.progressCount, currentProgress: 5, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                         Spacer()
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }

@@ -18,7 +18,7 @@ struct BadgesView: View {
                background: .black,
                showIndicator: $viewModel.showIndicator) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Your Achievements",
                     subtitle: "Earn badges by completing challenges and reaching your goals.",
                     bottomPadding: -5,
@@ -51,7 +51,7 @@ struct BadgesView: View {
         }
                .navigationBarBackButtonHidden()
                .navigationBarItems(
-                leading: DGBackButton(color: .white)
+                leading: FreshStartBackButton(color: .white)
                )
     }
 }

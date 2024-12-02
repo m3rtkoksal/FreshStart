@@ -18,7 +18,7 @@ struct PurposeInputView: View {
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing: 20) {
-                DGTitle(
+                FSTitle(
                     title: "What’s your goal?",
                     subtitle: "Let’s focus on one goal to begin with.")
                 ScrollView {
@@ -34,7 +34,7 @@ struct PurposeInputView: View {
                         }
                     }
                 }
-                DGButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserCurrentPurpose(selectedPurpose?.title ?? "")
                     viewModel.goToFrequencyView = true
@@ -52,10 +52,10 @@ struct PurposeInputView: View {
                .navigationTitle("")
                .navigationBarItems(
                 leading:
-                    DGBackButton(),
+                    FreshStartBackButton(),
                 trailing:
                     HStack {
-                        DGProgressBar(progressCount: Constant.progressCount, currentProgress: 4, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                        FSProgressBar(progressCount: Constant.progressCount, currentProgress: 4, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                         Spacer()
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }

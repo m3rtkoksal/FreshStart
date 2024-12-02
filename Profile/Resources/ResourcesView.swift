@@ -16,7 +16,7 @@ struct ResourcesView: View {
                background: .solidWhite,
                  showIndicator: $viewModel.showIndicator) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Disclaimer & Data Privacy",
                     subtitle: "",
                     bottomPadding: 0)
@@ -31,7 +31,7 @@ struct ResourcesView: View {
                  .navigationBarBackButtonHidden()
                  .navigationBarItems(
                     leading:
-                        DGBackButton()
+                        FreshStartBackButton()
                  )
                  .onAppear {
                      viewModel.fetchResources()

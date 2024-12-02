@@ -10,9 +10,9 @@ import SwiftUI
 
 struct HeightPickerView: View {
     @StateObject private var viewModel = DetailsAboutMeVM()
-    @Binding var lengthOptions: [DGDropdownItemModel]
+    @Binding var lengthOptions: [FSDropdownItemModel]
     @Binding var selectedUnit: LengthUnit
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var selectedItem: FSDropdownItemModel
     @Binding var isExpanded: Bool
     
     let units: [LengthUnit] = [.cm, .ft]

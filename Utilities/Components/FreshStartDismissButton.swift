@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGDismissButton: View {
+struct FreshStartDismissButton: View {
     @Environment(\.dismiss) private var dismiss
     var presentationMode: Binding<PresentationMode>
     var toRoot = false

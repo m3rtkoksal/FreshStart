@@ -10,9 +10,9 @@ import SwiftUI
 
 struct WeightPickerView: View {
     @StateObject private var viewModel = DetailsAboutMeVM()
-    @Binding var weightOptions: [DGDropdownItemModel]
+    @Binding var weightOptions: [FSDropdownItemModel]
     @Binding var selectedUnit: WeightUnit
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var selectedItem: FSDropdownItemModel
     @Binding var isExpanded: Bool
     
     let units: [WeightUnit] = [.kg, .lbs]

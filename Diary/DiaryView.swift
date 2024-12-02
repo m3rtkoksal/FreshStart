@@ -204,7 +204,7 @@ struct DiaryView: View {
     
     private func DeleteButtonView() -> some View {
         VStack(spacing: 10) {
-            DGButton(text: "Delete Plan", backgroundColor: .mkOrange, textColor: .black) {
+            FreshStartButton(text: "Delete Plan", backgroundColor: .mkOrange, textColor: .black) {
                 viewModel.showIndicator = true
                 viewModel.deleteDietPlanEntry(dietPlan: viewModel.dietPlan) { result in
                     viewModel.showIndicator = false
@@ -246,7 +246,7 @@ struct DiaryView: View {
     
     private func EmptyDietPlanView() -> some View {
         VStack {
-            DGTitle(
+            FSTitle(
                 title: "Purchase Your First Diet Plan",
                 subtitle: "You currently do not have any diet plans.")
             ScrollView {
@@ -255,7 +255,7 @@ struct DiaryView: View {
             }
             Spacer()
             createRemainingPlansText()
-            DGButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+            FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
                 viewModel.goToCreateNewPlan = true
             }
             .padding(.bottom, 150)
@@ -313,7 +313,7 @@ struct DiaryView: View {
             .navigationTitle(viewModel.dietPlan.createdAt?.getFormattedDate(format: "dd.MM.yyyy HH:mm") ?? "N/A")
             .navigationBarItems(
                 leading:
-                    DGBackButton()
+                    FreshStartBackButton()
             )
             Link("Learn more about diet and nutrition", destination: URL(string: "https://www.niddk.nih.gov/health-information/diet-nutrition")!)
                 .font(.montserrat(.medium, size: 14))

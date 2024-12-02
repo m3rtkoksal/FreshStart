@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGTextField: View {
+struct FSTextField: View {
     @Binding var text: String
     var placeholder: String
     var fontColor: Color

@@ -71,7 +71,7 @@ struct DietPlanSheetView: View {
     
     func ChangeDefaultButtonView() -> some View {
         VStack {
-            DGButton(text: "Select This As My Diet Plan", backgroundColor: .mkOrange) {
+            FreshStartButton(text: "Select This As My Diet Plan", backgroundColor: .mkOrange) {
                 viewModel.showChangeAlert = true
             }
             .conditionalOpacityAndDisable(isEnabled: (dietPlan.id ?? "") != (ProfileManager.shared.user.defaultDietPlanId ?? ""))

@@ -18,7 +18,7 @@ struct RecipeView: View {
                showIndicator: $viewModel.showIndicator
         ) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Your Recipe For \(viewModel.mealTitle)",
                     subtitle: "",
                     bottomPadding: -10)
@@ -111,7 +111,7 @@ struct RecipeView: View {
                 .navigationBarBackButtonHidden()
                 .navigationBarItems(
                     leading:
-                        DGBackButton()
+                        FreshStartBackButton()
                 )
         }
         .onAppear {

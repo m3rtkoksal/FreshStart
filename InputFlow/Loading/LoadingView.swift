@@ -25,7 +25,7 @@ struct LoadingView: View {
             
             NavigationStack {
                 VStack {
-                    DGTitle(
+                    FSTitle(
                         title: "Creating your diet plan",
                         subtitle: " Customizing your experience...  \n\n Analyzing your health data... \n\n Adding your goal... \n\n",
                         color: .white)

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGProfileElement: View {
+struct FreshStartProfileElement: View {
     let title: String
     let description: String
     let buttonIcon: String?
@@ -66,21 +66,21 @@ struct DGProfileElement: View {
 struct DGProfileElement_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DGProfileElement(
+            FreshStartProfileElement(
                 title: "Müşteri ID",
                 description: "The White House The White House",
                 buttonIcon: "pasteGoIcon",
                 buttonAction: { }
             )
             
-            DGProfileElement(
+            FreshStartProfileElement(
                 title: "Müşteri ID",
                 description: "The White House",
                 buttonIcon: "pasteGoIcon",
                 buttonAction: { }
             )
             
-            DGProfileElement(
+            FreshStartProfileElement(
                 title: "Müşteri ID",
                 description: "The White House",
                 buttonIcon: nil,

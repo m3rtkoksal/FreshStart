@@ -22,7 +22,7 @@ struct LoginView: View {
             GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        DGTitle(
+                        FSTitle(
                             title: "Welcome to FreshStart",
                             subtitle: "Hello there, sign in to  continue!")
                         
@@ -44,21 +44,21 @@ struct LoginView: View {
                             .padding(.trailing, 20)
                         }
                         .padding(.top,10)
-                        DGButton(text: "Login", backgroundColor: .mkOrange, textColor: .black) {
+                        FreshStartButton(text: "Login", backgroundColor: .mkOrange, textColor: .black) {
                             signIn()
                         }
                         .padding(.top, 20)
                         Spacer(minLength: geometry.size.height * 0.3)
                         VStack(spacing: 50){
-                            DGDivider(title: "Or Login with")
+                            FreshStartDivider(title: "Or Login with")
                             VStack(spacing:10) {
-                                DGButton(
+                                FreshStartButton(
                                     image: "google-icon",
                                     text: "Connect with Google",
                                     backgroundColor: .white) {
                                         viewModel.signUpWithGoogle()
                                     }
-                                DGButton(
+                                FreshStartButton(
                                     image: "apple_icon",
                                     text: "Connect with Apple  ",
                                     backgroundColor: .mkPurple,

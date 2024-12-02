@@ -21,7 +21,7 @@ struct PasswordResetView: View {
                background: .black,
                showIndicator: $viewModel.showIndicator) {
             VStack{
-                DGTitle(
+                FSTitle(
                     title: "Forgot Password",
                     subtitle: "Please enter your email address to recieve your password reset code",
                     color: .white)
@@ -32,7 +32,7 @@ struct PasswordResetView: View {
                     placeholder: "Email Address"
                 )
                 
-                DGButton(text: "Reset Password", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Reset Password", backgroundColor: .mkOrange) {
                     sendPasswordReset()
                     self.showAlert = true
                 }
@@ -49,7 +49,7 @@ struct PasswordResetView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading:
-                    DGBackButton(color: .white)
+                    FreshStartBackButton(color: .white)
             )
             .alert(isPresented: $showAlert) {
                 Alert(

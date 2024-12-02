@@ -10,8 +10,8 @@ import SwiftUI
 
 struct GenderPickerModifier: ViewModifier {
     @Binding var isExpanded: Bool
-    @Binding var genderOptions: [DGDropdownItemModel]
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var genderOptions: [FSDropdownItemModel]
+    @Binding var selectedItem: FSDropdownItemModel
     var buttonAction: (() -> Void)?
     
     func body(content: Content) -> some View {
@@ -51,9 +51,9 @@ struct GenderPickerModifier: ViewModifier {
 
 extension View {
     func genderPickerModifier(
-        genderOptions: Binding<[DGDropdownItemModel]>,
+        genderOptions: Binding<[FSDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        selectedItem: Binding<DGDropdownItemModel>,
+        selectedItem: Binding<FSDropdownItemModel>,
         buttonAction: (() -> Void)? = nil
     ) -> some View {
         modifier(GenderPickerModifier(

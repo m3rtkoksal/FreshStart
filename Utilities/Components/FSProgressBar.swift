@@ -1,5 +1,5 @@
 //
-//  DGProgressBar.swift
+//  FSProgressBar.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGProgressBar: View {
+struct FSProgressBar: View {
     let progressCount: Int
     let currentProgress: Int
     var color: Color = .mkOrange
@@ -55,5 +55,5 @@ struct DGProgressBar: View {
 }
 
 #Preview {
-    DGProgressBar(progressCount: 4, currentProgress: 3)
+    FSProgressBar(progressCount: 4, currentProgress: 3)
 }

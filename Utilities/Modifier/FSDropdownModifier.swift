@@ -1,5 +1,5 @@
 //
-//  DGDropdownModifier.swift
+//  FSDropdownModifier.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct DGDropdownModifier: ViewModifier {
-    @Binding var itemList: [DGDropdownItemModel]
+struct FSDropdownModifier: ViewModifier {
+    @Binding var itemList: [FSDropdownItemModel]
     @Binding var isExpanded: Bool
-    @Binding var choosenItem: DGDropdownItemModel
+    @Binding var choosenItem: FSDropdownItemModel
     var buttonAction: (() -> Void)?
     var selectedLengthUnit: LengthUnit = .cm
     var selectedWeightUnit: WeightUnit = .kg
@@ -32,9 +32,9 @@ struct DGDropdownModifier: ViewModifier {
             if isExpanded {
                 VStack {
                     Spacer()
-                    DGDropdown(
+                    FSDropdown(
                         itemList: $itemList,
-                        choosenItem: $choosenItem,
+                        chosenItem: $choosenItem,
                         isExpanded: $isExpanded
                     )
                 }
@@ -46,13 +46,13 @@ struct DGDropdownModifier: ViewModifier {
 }
 
 extension View {
-    func dgDropdownModifier(
-        itemList: Binding<[DGDropdownItemModel]>,
+    func fsDropdownModifier(
+        itemList: Binding<[FSDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        choosenItem: Binding<DGDropdownItemModel>,
+        choosenItem: Binding<FSDropdownItemModel>,
         buttonAction: (() -> Void)? = nil
     ) -> some View {
-        modifier(DGDropdownModifier(
+        modifier(FSDropdownModifier(
             itemList: itemList,
             isExpanded: isExpanded,
             choosenItem: choosenItem

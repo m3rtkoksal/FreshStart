@@ -16,17 +16,17 @@ struct DetailsAboutMeView: View {
     @State private var birthdayText: String = ""
     @State private var birthday: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
     @StateObject private var viewModel = DetailsAboutMeVM()
-    @State private var selectedLengthItem = DGDropdownItemModel(id: "", text: "")
+    @State private var selectedLengthItem = FSDropdownItemModel(id: "", text: "")
     @State private var selectedLengthUnit: LengthUnit = .cm
     @State private var selectedPurposeSegmentIndex = 0
     @State private var selectedGenderSegmentIndex = 0
     @State private var isDatePickerVisible = true
     @State private var isLengthExpanded = false
     @State private var isGenderExpanded = false
-    @State private var selectedWeightItem = DGDropdownItemModel(id: "", text: "")
+    @State private var selectedWeightItem = FSDropdownItemModel(id: "", text: "")
     @State private var selectedWeightUnit: WeightUnit = .kg
     @State private var isWeightExpanded = false
-    @State private var selectedGenderItem = DGDropdownItemModel(id: "", text: "")
+    @State private var selectedGenderItem = FSDropdownItemModel(id: "", text: "")
     @State private var goToDietPreference = false
     @State private var tempLength: Double? = nil
     @State private var tempWeight: Double? = nil
@@ -36,11 +36,11 @@ struct DetailsAboutMeView: View {
                    background: .solidWhite,
                    showIndicator: $viewModel.showIndicator) {
                 VStack {
-                    DGTitle(
+                    FSTitle(
                         title: "Details About You",
                         subtitle: "FreshStart needs to know a bit about your physiology to create the most suitable plan for you.")
                     VStack(alignment: .leading, spacing: 0) {
-                        DGDropdownField(
+                        FSDropdownField(
                             title: "Please select your gender",
                             isExpanded: $isGenderExpanded,
                             chosenItem: $selectedGenderItem)
@@ -69,7 +69,7 @@ struct DetailsAboutMeView: View {
                             .background(Color.clear)
                             DatePickerView()
                         }
-                        DGDropdownField(
+                        FSDropdownField(
                             title: "How tall are you?",
                             isExpanded: $isLengthExpanded,
                             chosenItem: $selectedLengthItem
@@ -84,7 +84,7 @@ struct DetailsAboutMeView: View {
                                 tempLength = 0.0
                             }
                         }
-                        DGDropdownField(
+                        FSDropdownField(
                             title: "How much do you weight?",
                             isExpanded: $isWeightExpanded,
                             chosenItem: $selectedWeightItem
@@ -104,7 +104,7 @@ struct DetailsAboutMeView: View {
                             .background(Color.black)
                     }
                     Spacer()
-                    DGButton(text: "Next", backgroundColor: .mkOrange) {
+                    FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
                         viewModel.showIndicator = true
                         if let hkBiologicalSex = viewModel.genderStringToHKBiologicalSex(viewModel.genderOptions[selectedGenderSegmentIndex].text) {
                             ProfileManager.shared.setUserGender(hkBiologicalSex)
@@ -124,10 +124,10 @@ struct DetailsAboutMeView: View {
                 .navigationBarBackButtonHidden()
                 .navigationBarItems(
                  leading:
-                     DGBackButton(),
+                     FreshStartBackButton(),
                  trailing:
                      HStack {
-                         DGProgressBar(progressCount: Constant.progressCount, currentProgress: 1, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                         FSProgressBar(progressCount: Constant.progressCount, currentProgress: 1, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                          Spacer()
                              .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                      }
@@ -142,7 +142,7 @@ struct DetailsAboutMeView: View {
                     if let gender = ProfileManager.shared.user.gender {
                         let genderString = healthKitManager.hkBiologicalSexToGenderString(gender)
                         // Find the index by comparing the string with a property in SegmentTitle
-                        selectedGenderItem = viewModel.genderOptions.first { $0.text.lowercased() == genderString.lowercased() } ?? DGDropdownItemModel(id: "", text: "")
+                        selectedGenderItem = viewModel.genderOptions.first { $0.text.lowercased() == genderString.lowercased() } ?? FSDropdownItemModel(id: "", text: "")
                     }
                     if let birthdayString = ProfileManager.shared.user.birthday {
                         let formatter = DateFormatter()
@@ -156,12 +156,12 @@ struct DetailsAboutMeView: View {
                     }
                     if let height = ProfileManager.shared.user.height {
                         let heightString = String(format: "%.0f", height * 100) // Convert height to string
-                        selectedLengthItem = viewModel.lengthOptions.first { $0.id == heightString } ?? DGDropdownItemModel(id: "", text: "")
+                        selectedLengthItem = viewModel.lengthOptions.first { $0.id == heightString } ?? FSDropdownItemModel(id: "", text: "")
                     }
                     if let weight = ProfileManager.shared.user.weight {
                         // Convert weight to an integer string by removing the decimal part
                         let weightString = String(format: "%.0f", weight) // Use "%.0f" to keep only the integer part
-                        selectedWeightItem = viewModel.weightOptions.first { $0.id == weightString } ?? DGDropdownItemModel(id: "", text: "")
+                        selectedWeightItem = viewModel.weightOptions.first { $0.id == weightString } ?? FSDropdownItemModel(id: "", text: "")
                     }
                 }
                 .onDisappear {

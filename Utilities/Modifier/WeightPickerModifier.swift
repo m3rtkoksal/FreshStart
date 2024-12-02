@@ -14,9 +14,9 @@ enum WeightUnit: String, CaseIterable {
 }
 
 struct WeightPickerModifier: ViewModifier {
-    @Binding var weightOptions: [DGDropdownItemModel]
+    @Binding var weightOptions: [FSDropdownItemModel]
     @Binding var isExpanded: Bool
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var selectedItem: FSDropdownItemModel
     @Binding var selectedUnit: WeightUnit
     var buttonAction: (() -> Void)?
     
@@ -59,9 +59,9 @@ struct WeightPickerModifier: ViewModifier {
 
 extension View {
     func weightPickerModifier(
-        weightOptions: Binding<[DGDropdownItemModel]>,
+        weightOptions: Binding<[FSDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        selectedItem: Binding<DGDropdownItemModel>,
+        selectedItem: Binding<FSDropdownItemModel>,
         selectedUnit: Binding<WeightUnit>,
         buttonAction: (() -> Void)? = nil
     ) -> some View {

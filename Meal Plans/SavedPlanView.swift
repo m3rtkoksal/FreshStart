@@ -26,7 +26,7 @@ struct SavedPlanView: View {
             ZStack {
                 ScrollView {
                     VStack {
-                        DGTitle(
+                        FSTitle(
                             title: "Your Saved Diet Plans",
                             subtitle: "You can see details of your previous meal plans from this list",
                             bottomPadding: 0
@@ -57,7 +57,7 @@ struct SavedPlanView: View {
                         Spacer()
                         createRemainingPlansText()
                         
-                        DGButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+                        FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
                             viewModel.goToCreateNewPlan = true
                         }
                         .padding(.bottom, 100)
@@ -84,7 +84,7 @@ struct SavedPlanView: View {
             .navigationBarTitle("")
             .navigationBarBackButtonHidden()
             .navigationBarItems(
-                leading: DGBackButton()
+                leading: FreshStartBackButton()
             )
         }
     }

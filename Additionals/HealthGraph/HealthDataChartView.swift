@@ -39,7 +39,7 @@ struct HealthDataChartView: View {
                     .tabViewStyle(PageTabViewStyle())
                     .padding(.horizontal, 33)
                 }
-                DGProgressBar(progressCount: HealthChartType.allCases.count, currentProgress: selectedChartType.rawValue,color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                FSProgressBar(progressCount: HealthChartType.allCases.count, currentProgress: selectedChartType.rawValue,color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                     .frame(width: 100, height: 7)
                     .padding(.bottom, 20)
                     .padding(.top, 10)
@@ -61,7 +61,7 @@ struct HealthDataChartView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationBarItems(
-            leading: DGBackButton()
+            leading: FreshStartBackButton()
         )
     }
     

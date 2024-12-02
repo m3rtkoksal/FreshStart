@@ -17,7 +17,7 @@ struct HowActiveYouView: View {
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing:20) {
-                DGTitle(
+                FSTitle(
                     title: "How active are you?",
                     subtitle: "Exclude sports and strenuous activities like running, playing basketball, or working out.",
                     bottomPadding: 0)
@@ -36,7 +36,7 @@ struct HowActiveYouView: View {
                 }
                 .padding(.bottom)
                 Spacer()
-                DGButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
                     ProfileManager.shared.setUserActivity(viewModel.selectedActivity?.title ?? "")
                     viewModel.goToPurpose = true
                 }
@@ -55,10 +55,10 @@ struct HowActiveYouView: View {
                .navigationBarBackButtonHidden()
                .navigationBarItems(
                 leading:
-                    DGBackButton(),
+                    FreshStartBackButton(),
                 trailing:
                     HStack {
-                        DGProgressBar(progressCount: Constant.progressCount, currentProgress: 3, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                        FSProgressBar(progressCount: Constant.progressCount, currentProgress: 3, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                         Spacer()
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }

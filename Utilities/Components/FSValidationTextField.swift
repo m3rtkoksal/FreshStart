@@ -1,5 +1,5 @@
 //
-//  DGValidationTextField.swift
+//  FSValidationTextField.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-struct DGValidationTextField: View {
+struct FSValidationTextField: View {
     var placeholder: String
     var prompt: String
     @Binding var text: String
@@ -20,7 +20,7 @@ struct DGValidationTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
-                DGTextField(
+                FSTextField(
                     text: $text,
                     placeholder: placeholder,
                     fontColor: .otherGray
@@ -67,7 +67,7 @@ struct DGValidationTextField_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.lightTeal
-            DGValidationTextField(
+            FSValidationTextField(
                 placeholder: "Enter text",
                 prompt: "This is a validation prompt.",
                 text: $text,

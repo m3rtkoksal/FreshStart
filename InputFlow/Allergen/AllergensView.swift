@@ -21,7 +21,7 @@ struct AllergensView: View {
                showIndicator: $viewModel.showIndicator
         ) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Allergens",
                     subtitle: "If you have any allergies, please select your   allergens from the list.",
                     bottomPadding: 0)
@@ -63,7 +63,7 @@ struct AllergensView: View {
                         .frame(height: 30)
                 }
                 .padding(.top, 30)
-                DGButton(text: "Create Diet Plan", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Create Diet Plan", backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     // Set selected allergens to user input model
                     ProfileManager.shared.setUserAllergens(
@@ -88,10 +88,10 @@ struct AllergensView: View {
             .navigationBarBackButtonHidden()
             .navigationBarItems(
                 leading:
-                    DGBackButton(),
+                    FreshStartBackButton(),
                 trailing:
                     HStack {
-                        DGProgressBar(progressCount: Constant.progressCount, currentProgress: 6, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
+                        FSProgressBar(progressCount: Constant.progressCount, currentProgress: 6, color: .mkPurple, dotColor: .mkPurple.opacity(0.5))
                         Spacer()
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }

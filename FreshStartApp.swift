@@ -172,9 +172,6 @@ struct FreshStartApp: App {
         func application(_ application: UIApplication,
                          didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
             FirebaseApp.configure()
-            // Initialize AppCheck with DeviceCheck provider
-            let providerFactory = DeviceCheckProviderFactory()
-            AppCheck.setAppCheckProviderFactory(providerFactory)
             return true
         }
         

@@ -16,7 +16,7 @@ class HealthKitPermissionVM: BaseViewModel {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var healthKitManager = HealthKitManager()
     @Published var goToBMIInputPage = false
-    @Published var menuPickerItems:[DGDropdownItemModel] = []
+    @Published var menuPickerItems:[FSDropdownItemModel] = []
     @Published var goToHealthPermission = false
     @Published var goToLogin = false
     @Published var goToPrivacyPolicy = false
@@ -24,8 +24,8 @@ class HealthKitPermissionVM: BaseViewModel {
     
     func fetchMenuItems() {
         self.menuPickerItems = [
-            DGDropdownItemModel(id: "0", icon: "male", text: "Male", hasArrow: false),
-            DGDropdownItemModel(id: "1", icon: "female", text: "Female", hasArrow: false)
+            FSDropdownItemModel(id: "0", icon: "male", text: "Male", hasArrow: false),
+            FSDropdownItemModel(id: "1", icon: "female", text: "Female", hasArrow: false)
         ]
     }
 }

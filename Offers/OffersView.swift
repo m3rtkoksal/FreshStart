@@ -17,7 +17,7 @@ struct OffersView: View {
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Purchase Plans",
                     subtitle: "You can see packages from this list",
                     bottomPadding: -20)
@@ -53,7 +53,7 @@ struct OffersView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationBarItems(
-            leading: DGBackButton()
+            leading: FreshStartBackButton()
         )
         .alert(isPresented: $viewModel.showAlert) {
             Alert(

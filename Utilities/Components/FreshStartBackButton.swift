@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGBackButton: View {
+struct FreshStartBackButton: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var router: BindingRouter
     var color: Color = .black

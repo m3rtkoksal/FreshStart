@@ -20,7 +20,7 @@ struct RegisterView: View {
     @State private var errorMessage = ""
     @State private var errorTitle = ""
     @State private var showAlert = false
-    @State private var choosenItem = DGDropdownItemModel(text: "")
+    @State private var choosenItem = FSDropdownItemModel(text: "")
     @State private var showGenderMenu = false
     
     var body: some View {
@@ -30,7 +30,7 @@ struct RegisterView: View {
             GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        DGTitle(
+                        FSTitle(
                             title: "Registiration",
                             subtitle: "Please enter your information to create new account",
                             bottomPadding: 10)
@@ -52,7 +52,7 @@ struct RegisterView: View {
                                                       validator: validationModel.passwordValidator,
                                                       placeholder: "Password")
                             VStack(spacing: 50) {
-                                DGButton(text: "Create Account", backgroundColor: .mkOrange) {
+                                FreshStartButton(text: "Create Account", backgroundColor: .mkOrange) {
                                     self.viewModel.showIndicator = true
                                     self.signUp(
                                         email: validationModel.email,
@@ -68,15 +68,15 @@ struct RegisterView: View {
                                     validationModel.lastNameValidator.isValid
                                 )
                                 Spacer(minLength: geometry.size.height * 0.13)
-                                DGDivider(title: "or Register with")
+                                FreshStartDivider(title: "or Register with")
                                 VStack(spacing: 10) {
-                                    DGButton(
+                                    FreshStartButton(
                                         image: "google-icon",
                                         text: "Connect with Google",
                                         backgroundColor: .white) {
                                             viewModel.signUpWithGoogle()
                                         }
-                                    DGButton(
+                                    FreshStartButton(
                                         image: "apple_icon",
                                         text: "Connect with Apple  ",
                                         backgroundColor: .mkPurple,

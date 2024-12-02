@@ -41,7 +41,7 @@ struct ChangeNameView: View {
                background: .solidWhite,
                showIndicator: $viewModel.showIndicator) {
             VStack {
-                DGTitle(
+                FSTitle(
                     title: "Information of You",
                     subtitle: "You can change your information in here")
                 ValidatingTextField(
@@ -50,7 +50,7 @@ struct ChangeNameView: View {
                     placeholder: getPlaceholder()
                 )
                 Spacer()
-                DGButton(text: "Update", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "Update", backgroundColor: .mkOrange) {
                     switch fieldType {
                     case .firstName:
                         viewModel.updateFirstName(newFirstName: validationModel.firstName)
@@ -69,7 +69,7 @@ struct ChangeNameView: View {
             .navigationBarBackButtonHidden()
             .navigationBarItems(
                 leading:
-                    DGBackButton()
+                    FreshStartBackButton()
             )
         }
     }

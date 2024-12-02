@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGButton: View {
+struct FreshStartButton: View {
     let image: String?
     let text: String
     let backgroundColor: Color
@@ -52,13 +52,13 @@ struct DGButton: View {
 }
 
 #Preview {
-    DGButton(image: "backButton", text: "Yo") {
+    FreshStartButton(image: "backButton", text: "Yo") {
         print("Button with image tapped")
     }
 }
 
 #Preview {
-    DGButton(text: "Yo") {
+    FreshStartButton(text: "Yo") {
         print("Button without image tapped")
     }
 }

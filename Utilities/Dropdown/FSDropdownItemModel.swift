@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGDropdownItemModel: Codable, Hashable {
+struct FSDropdownItemModel: Codable, Hashable {
     var id : String?
     var icon: String? = ""
     var text: String
@@ -16,10 +16,10 @@ struct DGDropdownItemModel: Codable, Hashable {
     var hasArrow: Bool?
 }
 
-struct DGDropdown: View {
-    @Binding var itemList: [DGDropdownItemModel]
+struct FSDropdown: View {
+    @Binding var itemList: [FSDropdownItemModel]
     @State private var totalHeight :CGFloat = 0
-    @Binding var choosenItem: DGDropdownItemModel
+    @Binding var chosenItem: FSDropdownItemModel
     @Binding var isExpanded: Bool
     var choosenItemColored: Bool = false
     
@@ -37,11 +37,11 @@ struct DGDropdown: View {
                     ForEach(itemList, id: \.self) { item in
                         Button {
                             withAnimation {
-                                choosenItem = item
+                                chosenItem = item
                                 isExpanded = false
                             }
                         } label: {
-                            DGDropdownElement(item: item, isChosen: choosenItemColored ? choosenItem == item : false)
+                            FSDropdownElement(item: item, isChosen: choosenItemColored ? chosenItem == item : false)
                         }
                         if itemList.last != item {
                             Divider()

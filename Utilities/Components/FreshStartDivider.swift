@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DGDivider: View {
+struct FreshStartDivider: View {
     @State var title: String
     var body: some View {
         HStack {
@@ -30,5 +30,5 @@ struct DGDivider: View {
 }
 
 #Preview {
-    DGDivider(title: "Or Login with")
+    FreshStartDivider(title: "Or Login with")
 }

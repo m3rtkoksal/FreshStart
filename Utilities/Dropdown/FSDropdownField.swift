@@ -1,5 +1,5 @@
 //
-//  DGDropdownField.swift
+//  FSDropdownField.swift
 //  FreshStart
 //
 //  Created by Mert Köksal on 1.12.2024.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct DGDropdownField: View {
+struct FSDropdownField: View {
     var title: String
     @Binding var isExpanded: Bool
-    @Binding var chosenItem: DGDropdownItemModel
+    @Binding var chosenItem: FSDropdownItemModel
     var isHiddenChangeText: Bool = false
     
     var body: some View {
@@ -46,10 +46,10 @@ struct DGDropdownField: View {
 
 struct DGDropdownField_Previews: PreviewProvider {
     static var previews: some View {
-        DGDropdownField(
+        FSDropdownField(
             title: "Title",
             isExpanded: .constant(false),
-            chosenItem: .constant(DGDropdownItemModel(icon: "", text: ""))
+            chosenItem: .constant(FSDropdownItemModel(icon: "", text: ""))
         )
     }
 }

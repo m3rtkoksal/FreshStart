@@ -37,46 +37,46 @@ struct ProfileView: View {
                     }
                     .padding(.leading, 20)
                     VStack {
-                        DGProfileElement(title: "Username",
+                        FreshStartProfileElement(title: "Username",
                                          description: ProfileManager.shared.user.userName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeUsername = true
                         }
-                        DGProfileElement(title: "Name",
+                        FreshStartProfileElement(title: "Name",
                                          description: ProfileManager.shared.user.firstName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeFirstName = true
                         }
-                        DGProfileElement(title: "Surname",
+                        FreshStartProfileElement(title: "Surname",
                                          description: ProfileManager.shared.user.lastName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeSurname = true
                         }
-                        DGProfileElement(title: "Birthday",
+                        FreshStartProfileElement(title: "Birthday",
                                          description: ProfileManager.shared.user.birthday ?? "",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Email",
+                        FreshStartProfileElement(title: "Email",
                                          description: ProfileManager.shared.user.email ?? "",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Gender",
+                        FreshStartProfileElement(title: "Gender",
                                          description: healthKitManager.hkBiologicalSexToGenderString(ProfileManager.shared.user.gender ?? HKBiologicalSex(rawValue: 3)!),
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Height",
+                        FreshStartProfileElement(title: "Height",
                                          description: "\(Int((ProfileManager.shared.user.height ?? 0.0) * 100)) cm",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Weight",
+                        FreshStartProfileElement(title: "Weight",
                                          description: "\(Int((ProfileManager.shared.user.weight ?? 0.0))) kg",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Body Fat Percentage",
+                        FreshStartProfileElement(title: "Body Fat Percentage",
                                          description: "\(Int((ProfileManager.shared.user.bodyFatPercentage ?? 0.0) * 100)) %",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Lean Body Mass",
+                        FreshStartProfileElement(title: "Lean Body Mass",
                                          description: "\(Int((ProfileManager.shared.user.leanBodyMass ?? 0.0))) kg",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Resting Energy",
+                        FreshStartProfileElement(title: "Resting Energy",
                                          description: "\(Int((ProfileManager.shared.user.restingEnergy ?? 0.0))) kcal",
                                          buttonIcon: nil) { }
-                        DGProfileElement(title: "Active Energy",
+                        FreshStartProfileElement(title: "Active Energy",
                                          description: "\(Int((ProfileManager.shared.user.activeEnergy ?? 0.0))) kcal",
                                          buttonIcon: nil,
                                          isLastElement: true) { }
@@ -100,24 +100,24 @@ struct ProfileView: View {
                     VStack {
                         Divider()
                             .background(Color.black)
-                        DGProfileElement(title: "Notifications",
+                        FreshStartProfileElement(title: "Notifications",
                                          description: "",
                                          buttonIcon: notificationIcon()) {
                             if let url = URL(string: UIApplication.openSettingsURLString) {
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }
                         }
-                        DGProfileElement(title: "Disclaimer & Data Privacy",
+                        FreshStartProfileElement(title: "Disclaimer & Data Privacy",
                                          description: "",
                                          buttonIcon: "chevron.compact.right") {
                             viewModel.goToResources = true
                         }
-                        DGProfileElement(title: "Contact support",
+                        FreshStartProfileElement(title: "Contact support",
                                          description: "",
                                          buttonIcon: "chevron.compact.right") {
                             viewModel.goToContactSupport = true
                         }
-                        DGProfileElement(title: "Leave a review",
+                        FreshStartProfileElement(title: "Leave a review",
                                          description: "",
                                          buttonIcon: "chevron.compact.right",
                                          isLastElement: true) {

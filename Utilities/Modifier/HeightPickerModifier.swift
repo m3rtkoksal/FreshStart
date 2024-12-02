@@ -14,9 +14,9 @@ enum LengthUnit: String, CaseIterable {
 }
 
 struct HeightPickerModifier: ViewModifier {
-    @Binding var lengthOptions: [DGDropdownItemModel]
+    @Binding var lengthOptions: [FSDropdownItemModel]
     @Binding var isExpanded: Bool
-    @Binding var selectedItem: DGDropdownItemModel
+    @Binding var selectedItem: FSDropdownItemModel
     @Binding var selectedUnit: LengthUnit
     var buttonAction: (() -> Void)?
     
@@ -59,9 +59,9 @@ struct HeightPickerModifier: ViewModifier {
 
 extension View {
     func heightPickerModifier(
-        lengthOptions: Binding<[DGDropdownItemModel]>,
+        lengthOptions: Binding<[FSDropdownItemModel]>,
         isExpanded: Binding<Bool>,
-        selectedItem: Binding<DGDropdownItemModel>,
+        selectedItem: Binding<FSDropdownItemModel>,
         selectedUnit: Binding<LengthUnit>,
         buttonAction: (() -> Void)? = nil
     ) -> some View {
