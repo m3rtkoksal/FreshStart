@@ -83,8 +83,8 @@ struct ProfileView: View {
                     }
                 }
                 
-                SubscriptionElement()
-                    .padding(.vertical, -10)
+//                SubscriptionElement()
+//                    .padding(.vertical, -10)
                 
                 VStack {
                     HStack(spacing: 10) {

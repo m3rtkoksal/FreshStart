@@ -101,10 +101,11 @@ struct SavedPlanView: View {
             } else {
                 Text("You can watch an advertisement to create new plan")
                     .underline()
-                    .padding(.bottom)
+                    .padding()
                     .font(.montserrat(.medium, size: 14))
                     .foregroundColor(.black)
                     .hiddenConditionally(isHidden: viewModel.showIndicator)
+                    .frame(alignment: .center)
             }
         }
         .background(Color.clear)

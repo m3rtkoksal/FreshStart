@@ -111,7 +111,6 @@ struct ContentView: View {
         fetchDietPlansAndDefaultDietPlanId { success in
             if !success {
                 print("Failed to load diet plans and default diet plan ID.")
-                // We still allow the flow to continue if diet plans fail
             } else {
                 print("Successfully loaded diet plans and default diet plan ID.")
             }

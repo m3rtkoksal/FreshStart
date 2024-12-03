@@ -155,7 +155,7 @@ struct RegisterView: View {
                     "username": "",
                     "email": email,
                     "maxPlanCount": 1,
-                    "maxMealCount": 1
+                    "maxMealCount": 4
                 ]) { err in
                     if let err = err {
                         self.errorTitle = "Error saving user data"
