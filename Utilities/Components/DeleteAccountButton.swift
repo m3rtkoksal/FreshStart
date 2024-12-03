@@ -28,7 +28,7 @@ struct DeleteAccountButton: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 38)
                         .strokeBorder(Color.black, lineWidth: 2)
-                        .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0) // Shadow effect
+                        .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0)
                 )
         }
         .onChange(of: deleteConfirmation) { newValue in
@@ -39,61 +39,71 @@ struct DeleteAccountButton: View {
     }
     
     func deleteUserAccount() {
-        // Get the current user
         guard let user = Auth.auth().currentUser else {
             print("No user is signed in.")
             return
         }
         
-        // First, sign out from Firebase
-        do {
-            // Sign out from Firebase
-            try Auth.auth().signOut()
-
-            // Check if the user is signed in with Google
-            if let googleUser = GIDSignIn.sharedInstance.currentUser {
-                // Sign out from Google
-                GIDSignIn.sharedInstance.signOut()
-                print("User signed out from Google.")
-            }
-            
-            // Check if the user is signed in with Apple
-            if let appleUser = user.providerData.first(where: { $0.providerID == "apple.com" }) {
-                // Sign out from Apple
-                let provider = OAuthProvider(providerID: "apple.com")
-                provider.getCredentialWith(nil) { credential, error in
-                    if let error = error {
-                        print("Error signing out from Apple: \(error.localizedDescription)")
-                        return
-                    }
-                    Auth.auth().currentUser?.link(with: credential!) { _, error in
+        let userId = user.uid
+        let db = Firestore.firestore()
+        
+        // Delete health data
+        let healthDataRef = db.collection("healthData").whereField("userId", isEqualTo: userId)
+        healthDataRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching health data: \(error.localizedDescription)")
+            } else {
+                for document in querySnapshot?.documents ?? [] {
+                    document.reference.delete { error in
                         if let error = error {
-                            print("Apple sign-out error: \(error.localizedDescription)")
+                            print("Error deleting health data document: \(error.localizedDescription)")
                         } else {
-                            print("User signed out from Apple.")
+                            print("Health data document deleted successfully.")
                         }
                     }
                 }
             }
-
-            // Delete user data from Firestore
-            deleteUserDataFromFirestore(userIdentifier: user.uid)
-
+        }
+        
+        // Delete diet plans
+        let dietPlansRef = db.collection("dietPlans").whereField("userId", isEqualTo: userId)
+        dietPlansRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching diet plans: \(error.localizedDescription)")
+            } else {
+                for document in querySnapshot?.documents ?? [] {
+                    document.reference.delete { error in
+                        if let error = error {
+                            print("Error deleting diet plan document: \(error.localizedDescription)")
+                        } else {
+                            print("Diet plan document deleted successfully.")
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Delete user document
+        db.collection("users").document(userId).delete { error in
+            if let error = error {
+                print("Error deleting user document: \(error.localizedDescription)")
+            } else {
+                print("User document deleted successfully.")
+            }
+        }
+        
+        // Perform sign-out
+        signOutUser()
+    }
+    
+    func signOutUser() {
+        GIDSignIn.sharedInstance.signOut()
+        do {
+            try Auth.auth().signOut()
+            AuthenticationManager.shared.logOut()
+            print("User signed out successfully.")
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError.localizedDescription)")
         }
     }
-
-    // Function to delete the user data from Firestore
-    func deleteUserDataFromFirestore(userIdentifier: String) {
-        let db = Firestore.firestore()
-        db.collection("users").document(userIdentifier).delete { error in
-            if let error = error {
-                print("Error deleting user data from Firestore: \(error.localizedDescription)")
-            } else {
-                print("User data deleted successfully from Firestore.")
-            }
-        }
-    }
-
 }
