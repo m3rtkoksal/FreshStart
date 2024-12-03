@@ -39,8 +39,9 @@ struct HealthKitPermissionView: View {
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
-               background: .solidWhite,
-                 showIndicator: $viewModel.showIndicator) {
+                           background: .solidWhite,
+                           showIndicator: $viewModel.showIndicator) {
+            ScrollView {
                 VStack {
                     FSTitle(
                         title: "Health Data",
@@ -138,15 +139,16 @@ struct HealthKitPermissionView: View {
                     .navigationDestination(isPresented: $viewModel.goToBMIInputPage) {
                         DetailsAboutMeView()
                     }
-                    
                 }
-                                    .navigationBarBackButtonHidden(true)
-                                    .navigationBarItems(
-                                        leading:
-                                            FreshStartDismissButton(presentationMode: presentationMode)
-                                    )
+            }
+            
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading:
+                    FreshStartDismissButton(presentationMode: presentationMode)
+            )
         }
-                 .onChange(of: scenePhase, perform: handleScenePhaseChange)
+                           .onChange(of: scenePhase, perform: handleScenePhaseChange)
     }
     
     private func checkHealthKitAuthorization() {

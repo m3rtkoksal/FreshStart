@@ -136,19 +136,23 @@ class LoginVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorization
         self.showIndicator = true
         guard let presentingVC = UIApplication.shared.connectedScenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene,
               let rootViewController = presentingVC.keyWindow?.rootViewController else {
+            self.showIndicator = false
             return
         }
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [weak self] signInResult, error in
             if error != nil {
+                self?.showIndicator = false
                 return
             }
             
             guard let googleUser = signInResult?.user else {
+                self?.showIndicator = false
                 return
             }
 
             guard let idToken = googleUser.idToken else {
+                self?.showIndicator = false
                 return
             }
             
@@ -159,12 +163,15 @@ class LoginVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorization
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: googleUser.accessToken.tokenString)
             Auth.auth().signIn(with: credential) { authResult, error in
                 if error != nil {
+                    self?.showIndicator = false
                     return
                 }
                 if let firebaseUser = authResult?.user {
                     self?.saveGoogleUserToFirestore(userIdentifier: firebaseUser.uid, name: name,surname: surname, email: email) {
-                        self?.showIndicator = true
+                        self?.showIndicator = false
                     }
+                } else {
+                    self?.showIndicator = false
                 }
             }
         }

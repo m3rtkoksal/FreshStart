@@ -48,7 +48,7 @@ struct LoginView: View {
                             signIn()
                         }
                         .padding(.top, 20)
-                        Spacer(minLength: geometry.size.height * 0.3)
+                        Spacer(minLength: geometry.size.height * 0.2)
                         VStack(spacing: 50){
                             FreshStartDivider(title: "Or Login with")
                             VStack(spacing:10) {

@@ -14,6 +14,10 @@ struct AllergensView: View {
     @StateObject private var viewModel = AllergensVM()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State private var selectedAllergens: Set<String> = []
+    let allergenWidth = UIScreen.screenWidth * 0.3
+    let typeWidth = UIScreen.screenWidth * 0.2
+    let severityWidth = UIScreen.screenWidth * 0.2
+    let addWidth = UIScreen.screenWidth * 0.1
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
@@ -28,16 +32,15 @@ struct AllergensView: View {
                 ScrollView {
                     HStack {
                         Text("Allergen")
-                            .frame(width: 100, alignment: .center)
+                            .frame(width: allergenWidth, alignment: .center)
                         Text("Allergen Type")
-                            .frame(width: 140, alignment: .center)
+                            .frame(width: typeWidth, alignment: .center)
                         Text("Severity Level")
-                            .frame(width: 90, alignment: .center)
-                            .offset(x: -5)
+                            .frame(width: severityWidth, alignment: .center)
                         Text("Add")
-                            .frame(width: 60, alignment: .center)
-                            .offset(x: 5)
+                            .frame(width: addWidth, alignment: .center)
                     }
+                    .padding(.horizontal, 20)
                     .font(.montserrat(.medium, size: 12))
                     .foregroundColor(.black)
 
@@ -78,6 +81,7 @@ struct AllergensView: View {
                     viewModel.goToLoadingView = true
                 }
             }
+            .frame(maxWidth: UIScreen.screenWidth)
             .navigationDestination(isPresented: $viewModel.goToLoadingView) {
                 LoadingView()
             }

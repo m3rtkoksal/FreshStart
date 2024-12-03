@@ -51,7 +51,7 @@ struct RegisterView: View {
                             SecureValidatingTextField(text: $validationModel.password,
                                                       validator: validationModel.passwordValidator,
                                                       placeholder: "Password")
-                            VStack(spacing: 50) {
+                            VStack(spacing: 40) {
                                 FreshStartButton(text: "Create Account", backgroundColor: .mkOrange) {
                                     self.viewModel.showIndicator = true
                                     self.signUp(
@@ -67,7 +67,7 @@ struct RegisterView: View {
                                     validationModel.firstNameValidator.isValid &&
                                     validationModel.lastNameValidator.isValid
                                 )
-                                Spacer(minLength: geometry.size.height * 0.13)
+                                Spacer(minLength: geometry.size.height * 0.1)
                                 FreshStartDivider(title: "or Register with")
                                 VStack(spacing: 10) {
                                     FreshStartButton(
@@ -120,7 +120,7 @@ struct RegisterView: View {
             }
             .navigationBarBackButtonHidden(true)
             .fullScreenCover(isPresented: $viewModel.goToLogin) {
-                NavigationView {
+                NavigationStack {
                    LoginView()
                 }
                 .environmentObject(
@@ -128,7 +128,7 @@ struct RegisterView: View {
                 )
             }
             .fullScreenCover(isPresented: $viewModel.goToHealthPermission) {
-                NavigationView {
+                NavigationStack {
                    HealthKitPermissionView()
                 }
                 .environmentObject(
