@@ -11,8 +11,9 @@ import SwiftUI
 struct BadgesView: View {
     @StateObject var viewModel = BadgesVM()
     @State var selectedBadge = BadgeModel()
-    let gridLayout = [GridItem(.fixed(100)), GridItem(.fixed(100)), GridItem(.fixed(100)), GridItem(.fixed(100))]
-    let spacing: CGFloat = 10
+    let gridLayout = [GridItem(.adaptive(minimum: 90, maximum: 100), spacing: 10)]
+    let horizontalPadding: CGFloat = UIScreen.main.bounds.width > 375 ? 16 : 8
+    
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
                background: .black,
@@ -30,7 +31,7 @@ struct BadgesView: View {
                         .padding(.horizontal)
                 } else {
                     ScrollView(.vertical) {
-                        LazyVGrid(columns: gridLayout, spacing: spacing) {
+                        LazyVGrid(columns: gridLayout, spacing: 10) {
                             ForEach(viewModel.badges) { badge in
                                 BadgeElementView(badge: badge)
                                     .onTapGesture {
@@ -39,7 +40,7 @@ struct BadgesView: View {
                                     }
                             }
                         }
-                        .padding()
+                        .padding(.horizontal, horizontalPadding)
                     }
                     Spacer()
                 }

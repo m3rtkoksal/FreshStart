@@ -125,7 +125,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                     "surname": fullName?.familyName ?? "",
                     "email": email ?? "",
                     "maxPlanCount": 1,
-                    "maxMealCount": 1,
+                    "maxMealCount": 4,
                     "dailyLoginCount" : 1
                 ]) { error in
                     if let error = error {
@@ -236,7 +236,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                     "surname": surname ?? "",
                     "email": email ?? "",
                     "maxPlanCount": 1,
-                    "maxMealCount": 1,
+                    "maxMealCount": 4,
                     "dailyLoginCount": 1
                 ]) { error in
                     if let error = error {

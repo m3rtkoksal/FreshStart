@@ -166,6 +166,7 @@ struct DiaryView: View {
         }
         .padding(.top, 100)
         .padding(.horizontal, 40)
+        .frame(maxWidth: UIScreen.screenWidth)
     }
     
     func HeaderView() -> some View {
@@ -342,7 +343,7 @@ struct InfoCardElement: View {
 
 struct NutrientChartExplainText: View {
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack(alignment: .leading) {
             Spacer()
                 .frame(height: 30)
             HStack(spacing: 15) {
@@ -410,5 +411,6 @@ struct WaterTrackView: View {
             .padding(.horizontal, 20)
         }
         .padding(.vertical, 50)
+        .frame(maxWidth: UIScreen.screenWidth)
     }
 }

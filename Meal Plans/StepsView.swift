@@ -91,7 +91,7 @@ struct Outline: View {
         ZStack {
             Circle()
                 .fill(Color.clear)
-                .frame(width: 150, height: 150)
+                .frame(width: 130, height: 130)
                 .overlay(
                     Circle()
                         .trim(from: 0, to: CGFloat(steps) / percentage )
@@ -109,7 +109,7 @@ struct Track: View {
         ZStack {
             Circle()
                 .fill(Color.clear)
-                .frame(width: 150, height: 150)
+                .frame(width: 130, height: 130)
                 .overlay(
                     Circle()
                         .stroke(style: StrokeStyle(lineWidth: 20))
