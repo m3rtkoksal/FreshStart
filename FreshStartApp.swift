@@ -93,7 +93,7 @@ struct FreshStartApp: App {
     }
     
     private func updateDailyLoginData(userRef: DocumentReference, currentDate: Date, isPremiumUser: Bool, dietPlanCount: Int) {
-        var updatedMaxMealCount = 1
+        var updatedMaxMealCount = 3
         var updatedMaxPlanCount = 1
         
         if isPremiumUser {
@@ -172,6 +172,8 @@ struct FreshStartApp: App {
         func application(_ application: UIApplication,
                          didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
             FirebaseApp.configure()
+            let providerFactory = DeviceCheckProviderFactory()
+            AppCheck.setAppCheckProviderFactory(providerFactory)
             return true
         }
         

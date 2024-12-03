@@ -60,9 +60,11 @@ struct SavedPlanView: View {
                             viewModel.goToCreateNewPlan = true
                         }
                         .padding(.bottom, 100)
-                        .conditionalOpacityAndDisable(isEnabled: viewModel.dietPlans.count < viewModel.maxPlanCount &&
-                                                      ProfileManager.shared.user.isPremium == true &&
-                                                      ProfileManager.shared.user.subscriptionEndDate > Date())
+                        .conditionalOpacityAndDisable(isEnabled: viewModel.dietPlans.count < viewModel.maxPlanCount
+//                                                      &&
+//                                                      ProfileManager.shared.user.isPremium == true &&
+//                                                      ProfileManager.shared.user.subscriptionEndDate > Date()
+                        )
                     }
                 }
             }

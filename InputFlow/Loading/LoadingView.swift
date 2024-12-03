@@ -32,7 +32,15 @@ struct LoadingView: View {
                     Spacer()
                     ZStack {
                         if !openAIManager.showAlert {
-                            LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
+                            GeometryReader { geometry in
+                                ZStack {
+                                    LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
+                                        .frame(width: geometry.size.width)
+                                        .clipped()
+                                        .ignoresSafeArea(edges: .bottom)
+                                }
+                            }
+                            
                         }
                     }
                     .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
@@ -62,9 +70,9 @@ struct LoadingView: View {
                                 group.leave()
                             }
                             group.enter()
-                            viewModel.updateMaxPlanCountFirestore { success in
+                            viewModel.updateMaxCountFirestore { success in
                                 if !success {
-                                    print("Failed to update maxPlanCount.")
+                                    print("Failed to update maxCount.")
                                     allSuccess = false
                                 }
                                 group.leave()

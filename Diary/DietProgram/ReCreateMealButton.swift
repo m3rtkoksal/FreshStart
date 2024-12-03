@@ -48,9 +48,11 @@ struct ReCreateMealButton: View {
         }
         
         .padding(.leading, 21)
-        .conditionalOpacityAndDisable(isEnabled: viewModel.maxMealCount > 0 &&
-                                      ProfileManager.shared.user.isPremium == true &&
-                                      ProfileManager.shared.user.subscriptionEndDate > Date())
+        .conditionalOpacityAndDisable(isEnabled: viewModel.maxMealCount > 0
+//                                      &&
+//                                      ProfileManager.shared.user.isPremium == true &&
+//                                      ProfileManager.shared.user.subscriptionEndDate > Date()
+        )
         .onAppear {
             viewModel.fetchMaxCountFromFirestore()
         }

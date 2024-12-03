@@ -63,18 +63,22 @@ class LoadingVM: BaseViewModel {
         }
     }
     
-    func updateMaxPlanCountFirestore(completion: @escaping (Bool) -> Void) {
+    func updateMaxCountFirestore(completion: @escaping (Bool) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(false)
             return
         }
+        let updatedMaxPlanCount = max(maxPlanCount - 1, 0)
+        let updatedMaxMealCount = max(maxMealCount, 1)
         let userRef = Firestore.firestore().collection("users").document(userId)
-        userRef.updateData(["maxPlanCount": maxPlanCount - 1]) { error in
+        userRef.updateData(["maxPlanCount": updatedMaxPlanCount])
+        userRef.updateData(["maxMealCount": updatedMaxMealCount])
+        { error in
             if let error = error {
-                print("Error saving maxPlanCount: \(error.localizedDescription)")
+                print("Error saving maxCount: \(error.localizedDescription)")
                 completion(false)
             } else {
-                print("maxPlanCount saved successfully.")
+                print("maxCount saved successfully.")
                 completion(true)
             }
         }
@@ -93,14 +97,11 @@ class LoadingVM: BaseViewModel {
                 return
             }
             
-            guard let document = document, document.exists,
-                  let maxPlanCount = document.get("maxPlanCount") as? Int,
-                  let maxMealCount = document.get("maxMealCount") as? Int else {
-                completion(false)
-                return
-            }
-            self.maxMealCount = maxMealCount
-            self.maxPlanCount = maxPlanCount
+            let maxPlanCount = document?.get("maxPlanCount") as? Int
+            let maxMealCount = document?.get("maxMealCount") as? Int
+            
+            self.maxMealCount = maxMealCount ?? 4
+            self.maxPlanCount = maxPlanCount ?? 1
             print("Fetched max counts successfully.")
             completion(true)
         }

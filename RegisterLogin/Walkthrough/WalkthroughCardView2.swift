@@ -39,14 +39,18 @@ struct WalkthroughCardView2: View {
             .padding(.top,50)
             .padding(.leading, 30)
             Spacer()
-            ZStack {
-                Image("walkthrough2ImageSet")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea(edges: .bottom)
+            GeometryReader { geometry in
+                ZStack {
+                    Image("walkthrough2ImageSet")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geometry.size.width)
+                        .clipped()
+                        .ignoresSafeArea(edges: .bottom)
+                }
             }
-            .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
         }
+        .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
     }
 }
 

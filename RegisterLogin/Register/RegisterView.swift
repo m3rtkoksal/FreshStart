@@ -120,7 +120,7 @@ struct RegisterView: View {
             )
             .navigationBarBackButtonHidden(true)
             .fullScreenCover(isPresented: $viewModel.goToLogin) {
-                NavigationStack {
+                NavigationView {
                    LoginView()
                 }
                 .environmentObject(
@@ -128,12 +128,10 @@ struct RegisterView: View {
                 )
             }
             .fullScreenCover(isPresented: $viewModel.goToHealthPermission) {
-                NavigationStack {
-                   HealthKitPermissionView()
-                }
-                .environmentObject(
-                    BindingRouter($viewModel.goToHealthPermission)
-                )
+                HealthKitPermissionView()
+                    .environmentObject(
+                        BindingRouter($viewModel.goToHealthPermission)
+                    )
             }
             .onAppear {
                 viewModel.fetchMenuItems()

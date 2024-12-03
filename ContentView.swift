@@ -451,7 +451,7 @@ struct ContentView: View {
     
     private func updateLoginData(userRef: DocumentReference, currentDate: Date, isPremiumUser: Bool) {
         let dietPlanCount = self.fetchedDietPlans.count
-        var updatedMaxMealCount = 1
+        var updatedMaxMealCount = 3
         var updatedMaxPlanCount = 1
         
         if isPremiumUser {
