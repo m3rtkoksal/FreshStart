@@ -13,6 +13,17 @@ struct StepsView: View {
     private var healthStore = HealthKitManager()
     @State private var stepsToday: Int = 0
     @State private var dailyStepGoal: Double = 8000
+    private var circleSize: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        
+        // Adjust based on device height
+        if screenHeight <= 812 { // Small screens (e.g., iPhone 13 Mini)
+            return screenWidth * 0.34
+        } else { // Larger screens
+            return screenWidth * 0.36
+        }
+    }
     
     var body: some View {
         VStack {
@@ -27,9 +38,9 @@ struct StepsView: View {
                 .padding(.bottom, 10)
             
             ZStack {
-                Track()
+                Track(size: circleSize)
                 Label(steps: stepsToday)
-                Outline(steps: stepsToday)
+                Outline(steps: stepsToday, size: circleSize)
             }
             
         }
@@ -85,31 +96,37 @@ struct Label: View {
 
 struct Outline: View {
     var steps: Int
+    var size: CGFloat
     var percentage: CGFloat = 8000
     var colors : [Color] = [Color.mkOrange]
     var body: some View {
         ZStack {
             Circle()
                 .fill(Color.clear)
-                .frame(width: 130, height: 130)
+                .frame(width: size, height: size)
                 .overlay(
                     Circle()
                         .trim(from: 0, to: CGFloat(steps) / percentage )
                         .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center, startAngle: .zero, endAngle: .init(degrees: 360)))
                         .rotationEffect(Angle(degrees: 270.0))
-                ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+                )
+                .animation(
+                    .spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0),
+                    value: steps
+                )
         }
     }
 }
 
 struct Track: View {
+    var size: CGFloat
     var colors: [Color] = [Color.black]
     var body: some View {
         ZStack {
             Circle()
                 .fill(Color.clear)
-                .frame(width: 130, height: 130)
+                .frame(width: size, height: size)
                 .overlay(
                     Circle()
                         .stroke(style: StrokeStyle(lineWidth: 20))
