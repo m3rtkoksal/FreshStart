@@ -17,7 +17,7 @@ struct MainTabView: View {
         case mealPlans
         case profile
         case additional
-//        case offerings
+        case offerings
     }
     
     private var selectedTab: Tab {
@@ -36,8 +36,8 @@ struct MainTabView: View {
                     AdditionalView()
                 case .profile:
                     ProfileView()
-//                case .offerings:
-//                    OffersView()
+                case .offerings:
+                    OffersView()
                 }
                 
                 HStack {
@@ -118,22 +118,22 @@ struct MainTabView: View {
                         .opacity(0.85)
                         .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
                 )
-//                .overlay(
-//                    Button(action: {
-//                        selectedTabRaw = Tab.offerings.rawValue
-//                    }) {
-//                        ZStack {
-//                            Circle()
-//                                .frame(width: 56, height: 56)
-//                                .foregroundColor(.black)
-//                                .opacity(0.7)
-//                            Image("offeringsTab")
-//                                .resizable()
-//                                .frame(width: 24, height: 24)
-//                        }
-//                        .offset(y: -40)
-//                    }
-//                )
+                .overlay(
+                    Button(action: {
+                        selectedTabRaw = Tab.offerings.rawValue
+                    }) {
+                        ZStack {
+                            Circle()
+                                .frame(width: 56, height: 56)
+                                .foregroundColor(.black)
+                                .opacity(0.7)
+                            Image("offeringsTab")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                        }
+                        .offset(y: -40)
+                    }
+                )
             }
             .navigationBarHidden(true)
     }
