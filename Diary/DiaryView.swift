@@ -28,8 +28,8 @@ struct DiaryView: View {
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
-               background: .solidWhite,
-               showIndicator: $viewModel.showIndicator
+                           background: .solidWhite,
+                           showIndicator: $viewModel.showIndicator
         ) {
             if viewModel.showIndicator {
                 FreshStartLoadingView()
@@ -82,7 +82,7 @@ struct DiaryView: View {
                                 .frame(height: 0, alignment: .top)
                             }
                         NutrientChartExplainText()
-//                        SubscriptionElement()
+                        //                        SubscriptionElement()
                         InfoCardElement()
                         MealsView(selectedMeals: $selectedMeals)
                         DeleteButtonView()
@@ -250,10 +250,10 @@ struct DiaryView: View {
             FSTitle(
                 title: "Purchase Your First Diet Plan",
                 subtitle: "You currently do not have any diet plans.")
-//            ScrollView {
-//                SubscriptionElement()
-//                    .padding(.top)
-//            }
+            //            ScrollView {
+            //                SubscriptionElement()
+            //                    .padding(.top)
+            //            }
             Spacer()
             createRemainingPlansText()
             FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
@@ -292,17 +292,17 @@ struct DiaryView: View {
                         Spacer()
                         HStack(spacing: 0) {
                             ReCreateMealButton(viewModel: self.viewModel,
-                                                    dietPlanId: viewModel.dietPlan.id ?? "",
-                                                    meal: $viewModel.dietPlan.meals[index],
-                                                    shouldRegenerateRecipe: $shouldRegenerateRecipe,
-                                                    index: index)
+                                               dietPlanId: viewModel.dietPlan.id ?? "",
+                                               meal: $viewModel.dietPlan.meals[index],
+                                               shouldRegenerateRecipe: $shouldRegenerateRecipe,
+                                               index: index)
                             Divider()
                                 .frame(width: 1, height: 35)
                                 .background(Color.black)
                             CreateRecipeButton(dietPlanId: viewModel.dietPlan.id ?? "",
-                                                    meal: viewModel.dietPlan.meals[index],
-                                                    index: index,
-                                                    shouldRegenerateRecipe: $shouldRegenerateRecipe)
+                                               meal: viewModel.dietPlan.meals[index],
+                                               index: index,
+                                               shouldRegenerateRecipe: $shouldRegenerateRecipe)
                         }
                         .padding(.bottom, 10)
                     }
@@ -368,49 +368,50 @@ struct WaterTrackView: View {
             if filledGlasses < 8 {
                 waterIntake += 250
                 filledGlasses += 1
-                
                 MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
             }
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 30)
                     .foregroundColor(Color.mkPurple)
-                VStack {
-                    HStack{
-                        Text("Water")
-                            .font(.montserrat(.semiBold, size: 18))
-                            .foregroundColor(.white)
-                            .underline()
-                        Spacer()
-                        Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
-                            .foregroundColor(.white)
-                    }
-                    .padding(.horizontal, 30)
-                    HStack{
-                        ForEach(0..<8){ index in
-                            Image("glassWater")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                                .opacity(index < filledGlasses ? 1 : 0.3)
+                    .frame(width: UIScreen.screenWidth - 40, height: 160)
+                    .overlay(
+                        VStack {
+                            HStack{
+                                Text("Water")
+                                    .font(.montserrat(.semiBold, size: 18))
+                                    .foregroundColor(.white)
+                                    .underline()
+                                Spacer()
+                                Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.horizontal, 30)
+                            HStack {
+                                ForEach(0..<8){ index in
+                                    Image("glassWater")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .opacity(index < filledGlasses ? 1 : 0.3)
+                                }
+                            }
+                            .padding(.horizontal, 40)
+                            HStack{
+                                Spacer()
+                                Text("Remember to stay hydrated!")
+                                    .font(.montserrat(.medium, size: 12))
+                                    .foregroundColor(.white)
+                                Image("infoWater")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.top, 25)
                         }
-                    }
-                    .padding(.horizontal, 20)
-                    HStack{
-                        Spacer()
-                        Text("Remember to stay hydrated!")
-                            .font(.montserrat(.medium, size: 12))
-                            .foregroundColor(.white)
-                        Image("infoWater")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                    }
-                    .padding(.horizontal, 20)
-                }
-                .padding(.vertical,20)
+                            .padding(.vertical,20)
+                    )
             }
-            .padding(.horizontal, 20)
         }
         .padding(.vertical, 50)
-        .frame(maxWidth: UIScreen.screenWidth)
     }
 }
