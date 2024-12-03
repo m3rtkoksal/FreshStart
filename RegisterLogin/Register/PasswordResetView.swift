@@ -51,16 +51,17 @@ struct PasswordResetView: View {
                 leading:
                     FreshStartBackButton(color: .white)
             )
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Password Reset"),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("OK")) {
+            .fsAlertModifier(
+                isPresented: $showAlert,
+                title: "Password Reset",
+                message: errorMessage,
+                confirmButtonText: "OK",
+                confirmAction: {
+                    withAnimation {
                         showAlert = false
-                        self.dismiss()
                     }
-                )
-            }
+                }
+            )
         }
     }
     func sendPasswordReset() {

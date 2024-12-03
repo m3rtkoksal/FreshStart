@@ -25,20 +25,23 @@ struct DietPlanSheetView: View {
                 HeaderView()
                 MealsView()
                 ChangeDefaultButtonView()
-                    .alert(isPresented: $viewModel.showChangeAlert) {
-                        Alert(
-                            title: Text("Confirm Diet Plan Change"),
-                            message: Text("Are you sure you want to change your default diet plan?"),
-                            primaryButton: .destructive(Text("Yes")) {
-                                withAnimation {
-                                    viewModel.saveDefaultPlanToFirestore(planId: dietPlan.id ?? "")
-                                    ProfileManager.shared.setDefaultDietPlanId(dietPlan.id ?? "")
-                                    selectedTabRaw = MainTabView.Tab.diary.rawValue
-                                }
-                            },
-                            secondaryButton: .cancel()
-                        )
-                    }
+                    .fsAlertModifier(
+                        isPresented: $viewModel.showChangeAlert,
+                        title: "Confirm Diet Plan Change",
+                        message: "Are you sure you want to change your default diet plan?",
+                        confirmButtonText: "Confirm",
+                        cancelButtonText: "Cancel",
+                        confirmAction: {
+                            withAnimation {
+                                viewModel.saveDefaultPlanToFirestore(planId: dietPlan.id ?? "")
+                                ProfileManager.shared.setDefaultDietPlanId(dietPlan.id ?? "")
+                                selectedTabRaw = MainTabView.Tab.diary.rawValue
+                            }
+                        },
+                        cancelAction: {
+                            viewModel.showChangeAlert = false
+                        }
+                    )
             }
         }
     }

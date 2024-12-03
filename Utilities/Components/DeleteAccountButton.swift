@@ -9,9 +9,11 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 struct DeleteAccountButton: View {
-    @State private var showDeleteAlert = false
+    @Binding var showDeleteAlert: Bool
+    @Binding var deleteConfirmation: Bool
     
     var body: some View {
         Button(action: {
@@ -19,101 +21,79 @@ struct DeleteAccountButton: View {
         }) {
             Text("Delete Account")
                 .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.black) // Set text color to gray
+                .foregroundColor(.black)
                 .padding(15)
-                .background(Color.mkOrange) 
-                .cornerRadius(38) // Rounded corners
+                .background(Color.mkOrange)
+                .cornerRadius(38)
                 .overlay(
                     RoundedRectangle(cornerRadius: 38)
-                        .strokeBorder(Color.black, lineWidth: 2) // Border color
+                        .strokeBorder(Color.black, lineWidth: 2)
                         .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 20, x: 0, y: 0) // Shadow effect
                 )
         }
-        .alert(isPresented: $showDeleteAlert) {
-            Alert(
-                title: Text("Confirm Account Deletion"),
-                message: Text("Are you sure you want to delete your account? This action cannot be undone."),
-                primaryButton: .destructive(Text("Yes, Delete")) {
-                    deleteUserAccount() // Call delete function if user confirms
-                },
-                secondaryButton: .cancel()
-            )
+        .onChange(of: deleteConfirmation) { newValue in
+            if newValue {
+                deleteUserAccount()
+            }
         }
     }
     
-    private func deleteUserAccount() {
+    func deleteUserAccount() {
+        // Get the current user
         guard let user = Auth.auth().currentUser else {
+            print("No user is signed in.")
             return
         }
         
-        let userId = user.uid
-        let db = Firestore.firestore()
-        
-        // 1. Delete all dietPlans for the user
-        db.collection("dietPlans").whereField("userId", isEqualTo: userId).getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error fetching diet plans: \(error.localizedDescription)")
-            } else {
-                let batch = db.batch()
-                for document in querySnapshot?.documents ?? [] {
-                    batch.deleteDocument(document.reference)
-                }
-                batch.commit { error in
-                    if let error = error {
-                        print("Error deleting diet plans: \(error.localizedDescription)")
-                    } else {
-                        print("Successfully deleted diet plans.")
-                    }
-                }
+        // First, sign out from Firebase
+        do {
+            // Sign out from Firebase
+            try Auth.auth().signOut()
+
+            // Check if the user is signed in with Google
+            if let googleUser = GIDSignIn.sharedInstance.currentUser {
+                // Sign out from Google
+                GIDSignIn.sharedInstance.signOut()
+                print("User signed out from Google.")
             }
-        }
-        
-        // 2. Delete all healthData entries for the user
-        db.collection("healthData").whereField("userId", isEqualTo: userId).getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error fetching health data: \(error.localizedDescription)")
-            } else {
-                let batch = db.batch()
-                for document in querySnapshot?.documents ?? [] {
-                    batch.deleteDocument(document.reference)
-                }
-                batch.commit { error in
+            
+            // Check if the user is signed in with Apple
+            if let appleUser = user.providerData.first(where: { $0.providerID == "apple.com" }) {
+                // Sign out from Apple
+                let provider = OAuthProvider(providerID: "apple.com")
+                provider.getCredentialWith(nil) { credential, error in
                     if let error = error {
-                        print("Error deleting health data: \(error.localizedDescription)")
-                    } else {
-                        print("Successfully deleted health data.")
+                        print("Error signing out from Apple: \(error.localizedDescription)")
+                        return
                     }
-                }
-            }
-        }
-        
-        // 3. Delete the user's main document in the "users" collection
-        db.collection("users").document(userId).delete { error in
-            if let error = error {
-                print("Error deleting user document: \(error.localizedDescription)")
-            } else {
-                print("User document deleted successfully.")
-                
-                // 4. Delete the user from Firebase Authentication
-                user.delete { error in
-                    if let error = error {
-                        print("Error deleting user account: \(error.localizedDescription)")
-                    } else {
-                        do {
-                            try Auth.auth().signOut()
-                            AuthenticationManager.shared.logOut()
-                            print("User account deleted and signed out successfully.")
-                        } catch let signOutError as NSError {
-                            print("Error signing out: %@", signOutError)
+                    Auth.auth().currentUser?.link(with: credential!) { _, error in
+                        if let error = error {
+                            print("Apple sign-out error: \(error.localizedDescription)")
+                        } else {
+                            print("User signed out from Apple.")
                         }
                     }
                 }
             }
+
+            // Delete user data from Firestore
+            deleteUserDataFromFirestore(userIdentifier: user.uid)
+
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError.localizedDescription)")
         }
     }
-}
 
+    // Function to delete the user data from Firestore
+    func deleteUserDataFromFirestore(userIdentifier: String) {
+        let db = Firestore.firestore()
+        db.collection("users").document(userIdentifier).delete { error in
+            if let error = error {
+                print("Error deleting user data from Firestore: \(error.localizedDescription)")
+            } else {
+                print("User data deleted successfully from Firestore.")
+            }
+        }
+    }
 
-#Preview {
-    DeleteAccountButton()
 }

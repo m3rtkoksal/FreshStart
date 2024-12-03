@@ -102,22 +102,22 @@ struct RegisterView: View {
                     }
                 }
             }
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text(errorTitle),
-                    message: Text(errorMessage.description),
-                    dismissButton: .default(Text("OK")) {
+            .fsAlertModifier(
+                isPresented: $showAlert,
+                title: errorTitle,
+                message: errorMessage.description,
+                confirmButtonText: "Done",
+                confirmAction: {
+                    withAnimation {
                         showAlert = false
                         self.viewModel.showIndicator = false
                         if errorTitle.contains("success") {
                             self.viewModel.showIndicator = false
                             viewModel.goToHealthPermission = true
-                        } else {
-                            self.viewModel.showIndicator = false
                         }
                     }
-                )
-            }
+                }
+            )
             .navigationBarBackButtonHidden(true)
             .fullScreenCover(isPresented: $viewModel.goToLogin) {
                 NavigationStack {

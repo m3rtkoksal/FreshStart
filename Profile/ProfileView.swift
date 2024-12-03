@@ -14,6 +14,8 @@ import MessageUI
 import StoreKit
 
 struct ProfileView: View {
+    @State private var showDeleteAlert = false
+    @State private var deleteConfirmation = false
     @StateObject private var healthKitManager = HealthKitManager()
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
     @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate)
@@ -133,7 +135,7 @@ struct ProfileView: View {
                 HStack {
                     LogoutButton()
                     Spacer()
-                    DeleteAccountButton()
+                    DeleteAccountButton(showDeleteAlert: $showDeleteAlert, deleteConfirmation: $deleteConfirmation)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 40)
@@ -159,6 +161,22 @@ struct ProfileView: View {
             }
             .padding(.bottom, 50)
             .navigationBarBackButtonHidden(true)
+            .fsAlertModifier(
+                isPresented: $showDeleteAlert,
+                title: "Confirm Account Deletion",
+                message: "Are you sure you want to delete your account? This action cannot be undone.",
+                confirmButtonText: "Delete",
+                cancelButtonText: "Cancel",
+                confirmAction: {
+                    withAnimation {
+                        showDeleteAlert = false
+                        deleteConfirmation = true
+                    }
+                },
+                cancelAction: {
+                    showDeleteAlert = false
+                }
+            )
         }
     }
     

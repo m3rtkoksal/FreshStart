@@ -86,27 +86,26 @@ struct LoadingView: View {
         }
                .navigationTitle("")
                .navigationBarBackButtonHidden()
-               .alert(isPresented: $openAIManager.showAlert) {
-                   Alert(
-                    title: Text("Timeout"),
-                    message: Text(openAIManager.alertMessage),
-                    primaryButton: .default(Text("Retry")) {
-                        viewModel.generateDietPlan { newDietPlan in
-                            self.defaultDietPlan = newDietPlan
-                            if let newId = newDietPlan?.id {
-                                viewModel.saveDefaultPlanIdToFirestore(planId: newId)
-                                ProfileManager.shared.setDefaultDietPlanId(newId)
-                                viewModel.goToDietProgram = true
-                            } else {
-                                
-                            }
-                        }
-                    },
-                    secondaryButton: .cancel() {
-                        self.dismiss()
-                    }
-                   )
-               }
+               .fsAlertModifier(
+                   isPresented: $openAIManager.showAlert,
+                   title: "Timeout",
+                   message: "Something went wrong.",
+                   confirmButtonText: "Retry",
+                   confirmAction: {
+                       withAnimation {
+                           viewModel.generateDietPlan { newDietPlan in
+                               self.defaultDietPlan = newDietPlan
+                               if let newId = newDietPlan?.id {
+                                   viewModel.saveDefaultPlanIdToFirestore(planId: newId)
+                                   ProfileManager.shared.setDefaultDietPlanId(newId)
+                                   viewModel.goToDietProgram = true
+                               } else {
+                                   
+                               }
+                           }
+                       }
+                   }
+               )
     }
 }
 
