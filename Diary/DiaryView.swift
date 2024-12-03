@@ -82,7 +82,7 @@ struct DiaryView: View {
                                 .frame(height: 0, alignment: .top)
                             }
                         NutrientChartExplainText()
-                        SubscriptionElement()
+//                        SubscriptionElement()
                         InfoCardElement()
                         MealsView(selectedMeals: $selectedMeals)
                         DeleteButtonView()
@@ -249,10 +249,10 @@ struct DiaryView: View {
             FSTitle(
                 title: "Purchase Your First Diet Plan",
                 subtitle: "You currently do not have any diet plans.")
-            ScrollView {
-                SubscriptionElement()
-                    .padding(.top)
-            }
+//            ScrollView {
+//                SubscriptionElement()
+//                    .padding(.top)
+//            }
             Spacer()
             createRemainingPlansText()
             FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
