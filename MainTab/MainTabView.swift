@@ -136,5 +136,8 @@ struct MainTabView: View {
                 )
             }
             .navigationBarHidden(true)
+            .onAppear {
+                AuthenticationManager.shared.logIn()
+            }
     }
 }

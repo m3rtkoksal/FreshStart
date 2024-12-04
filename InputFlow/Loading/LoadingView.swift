@@ -20,31 +20,37 @@ struct LoadingView: View {
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
-               background: .black,
-               showIndicator: $viewModel.showIndicator) {
-            
-            NavigationStack {
-                VStack {
-                    FSTitle(
-                        title: "Creating your diet plan",
-                        subtitle: " Customizing your experience...  \n\n Analyzing your health data... \n\n Adding your goal... \n\n",
-                        color: .white)
-                    Spacer()
-                    ZStack {
-                        if !openAIManager.showAlert {
-                            LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
+                           background: .black,
+                           showIndicator: $viewModel.showIndicator) {
+            VStack {
+                FSTitle(
+                    title: "Creating your diet plan",
+                    subtitle: " Customizing your experience...  \n\n Analyzing your health data... \n\n Adding your goal... \n\n",
+                    color: .white)
+                Spacer()
+                ZStack {
+                    if !openAIManager.showAlert {
+                        GeometryReader { geometry in
+                            ZStack {
+                                LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
+                                    .frame(width: geometry.size.width)
+                                    .clipped()
+                                    .ignoresSafeArea(edges: .bottom)
+                            }
                         }
+                        
                     }
-                    .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
-                    
                 }
-                .navigationDestination(isPresented: $viewModel.goToDietProgram) {
+                .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
+            }
+            .navigationDestination(isPresented: $viewModel.goToDietProgram) {
+                withAnimation {
                     MainTabView()
                 }
             }
-            
             .onAppear {
                 // Check if diet plan has been generated
+                viewModel.generateAndSetUsername()
                 if !ProfileManager.shared.hasDietPlanBeenGenerated() {
                     viewModel.generateDietPlan { newDietPlan in
                         self.defaultDietPlan = newDietPlan
@@ -62,9 +68,9 @@ struct LoadingView: View {
                                 group.leave()
                             }
                             group.enter()
-                            viewModel.updateMaxPlanCountFirestore { success in
+                            viewModel.updateMaxCountFirestore { success in
                                 if !success {
-                                    print("Failed to update maxPlanCount.")
+                                    print("Failed to update maxCount.")
                                     allSuccess = false
                                 }
                                 group.leave()
@@ -74,39 +80,61 @@ struct LoadingView: View {
                                     viewModel.goToDietProgram = true
                                 } else {
                                     print("One or more Firestore operations failed. Navigation halted.")
+                                    viewModel.showFailAlert = true
                                 }
                             }
                         } else {
                             print("Failed to generate a new diet plan ID.")
+                            viewModel.showFailAlert = true
                         }
                     }
                     ProfileManager.shared.setDietPlanGenerated()
                 }
             }
         }
-               .navigationTitle("")
-               .navigationBarBackButtonHidden()
-               .alert(isPresented: $openAIManager.showAlert) {
-                   Alert(
-                    title: Text("Timeout"),
-                    message: Text(openAIManager.alertMessage),
-                    primaryButton: .default(Text("Retry")) {
-                        viewModel.generateDietPlan { newDietPlan in
-                            self.defaultDietPlan = newDietPlan
-                            if let newId = newDietPlan?.id {
-                                viewModel.saveDefaultPlanIdToFirestore(planId: newId)
-                                ProfileManager.shared.setDefaultDietPlanId(newId)
-                                viewModel.goToDietProgram = true
-                            } else {
-                                
+                           .navigationTitle("")
+                           .navigationBarBackButtonHidden()
+                           .fsAlertModifier(
+                            isPresented: $openAIManager.showAlert,
+                            title: "Timeout",
+                            message: "Something went wrong.",
+                            confirmButtonText: "Retry",
+                            confirmAction: {
+                                withAnimation {
+                                    viewModel.generateDietPlan { newDietPlan in
+                                        self.defaultDietPlan = newDietPlan
+                                        if let newId = newDietPlan?.id {
+                                            viewModel.saveDefaultPlanIdToFirestore(planId: newId)
+                                            ProfileManager.shared.setDefaultDietPlanId(newId)
+                                            viewModel.goToDietProgram = true
+                                        } else {
+                                            
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    },
-                    secondaryButton: .cancel() {
-                        self.dismiss()
-                    }
-                   )
-               }
+                           )
+                           .fsAlertModifier(
+                            isPresented: $viewModel.showFailAlert,
+                            title: "Timeout",
+                            message: "Something went wrong.",
+                            confirmButtonText: "Retry",
+                            confirmAction: {
+                                withAnimation {
+                                    viewModel.generateDietPlan { newDietPlan in
+                                        self.defaultDietPlan = newDietPlan
+                                        if let newId = newDietPlan?.id {
+                                            viewModel.saveDefaultPlanIdToFirestore(planId: newId)
+                                            ProfileManager.shared.setDefaultDietPlanId(newId)
+                                            viewModel.showFailAlert = false
+                                            viewModel.goToDietProgram = true
+                                        } else {
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                           )
     }
 }
 

@@ -120,6 +120,7 @@ struct DetailsAboutMeView: View {
                             self.goToDietPreference = true
                         }
                     }
+                    .conditionalOpacityAndDisable(isEnabled: !self.birthdayText.isEmpty)
                 }
                 .navigationBarBackButtonHidden()
                 .navigationBarItems(
@@ -219,6 +220,7 @@ struct DetailsAboutMeView: View {
                     .frame(width: 20, height: 20)
                     .foregroundColor(.mkPurple)
                     .padding(.trailing, 30)
+                    .zIndex(-1)
             }
             .frame(width: 50, height: 32)
             .background(Color.clear)

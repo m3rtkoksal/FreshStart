@@ -42,13 +42,17 @@ struct WalkthroughCardView3: View {
                 .padding(.leading, 30)
                 .lineSpacing(5)
             Spacer()
-            ZStack {
-                Image("walkthrough3ImageSet")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea(edges: .bottom)
+            GeometryReader { geometry in
+                ZStack {
+                    Image("walkthrough3ImageSet")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geometry.size.width)
+                        .clipped()
+                        .ignoresSafeArea(edges: .bottom)
+                }
             }
-            .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
         }
+        .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
     }
 }

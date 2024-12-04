@@ -23,27 +23,28 @@ struct WalkthroughCardView1: View {
                 .lineLimit(3)
                 .frame(width: UIScreen.screenWidth * 0.7)
                 .padding(.leading, 0)
+            
             HStack {
                 Spacer()
-                ZStack {
-                    Image("FreshStartCircle")
-                        .resizable()
-                    Text(walkthrough.headline ?? "")
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .font(.montserrat(.bold, size: 36))
-                }
-                .frame(width: 250, height: 102)
+                Image("FreshStartCircle")
+                    .resizable()
+                    .frame(width: 250, height: 102)
             }
             .padding(.trailing, 20)
+            
             Spacer()
-            ZStack {
-                Image("walkthrough1ImageSet")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea(edges: .bottom)
+            
+            GeometryReader { geometry in
+                ZStack {
+                    Image("walkthrough1ImageSet")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geometry.size.width)
+                        .clipped()
+                        .ignoresSafeArea(edges: .bottom)
+                }
             }
-            .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

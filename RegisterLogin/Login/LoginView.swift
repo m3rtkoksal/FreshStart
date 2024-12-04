@@ -110,6 +110,17 @@ struct LoginView: View {
                     }
                 )
             }
+            .fsAlertModifier(
+                isPresented: $viewModel.showAlert,
+                title: "Wrong email or password",
+                message: errorMessage,
+                confirmButtonText: "Try Again",
+                confirmAction: {
+                    withAnimation {
+                        showAlert = false
+                    }
+                }
+            )
         }
     }
     func signIn() {

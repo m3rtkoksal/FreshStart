@@ -29,11 +29,9 @@ struct FrequencyView: View {
                                 numberOfMeals: frequency.numberOfMeals,
                                 subtitle: frequency.subtitle,
                                 icons: frequency.icons,
-                                isSelected: frequency == selectedFrequency
-                            )
-                            .onTapGesture {
-                                selectedFrequency = frequency
-                            }
+                                isSelected: frequency == selectedFrequency) {
+                                    selectedFrequency = frequency
+                                }
                         }
                     }
                     .padding(.vertical, 10)
@@ -60,6 +58,9 @@ struct FrequencyView: View {
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }
                )
+               .onDisappear {
+                   viewModel.showIndicator = false
+               }
     }
 }
 #Preview {

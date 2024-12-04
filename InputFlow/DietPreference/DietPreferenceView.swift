@@ -75,6 +75,9 @@ struct DietPreferenceView: View {
                             .frame(width: UIScreen.screenWidth / Constant.progressTrailingScale)
                     }
                )
+               .onDisappear {
+                   viewModel.showIndicator = false
+               }
     }
 }
 

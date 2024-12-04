@@ -66,6 +66,7 @@ struct GenderPickerView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.mkPurple, lineWidth: 1)
                             )
+                            .contentShape(Rectangle())
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
@@ -74,6 +75,7 @@ struct GenderPickerView: View {
                 .frame(maxHeight: 200)
                 .transition(.opacity)
                 .animation(.easeInOut, value: isExpanded)
+                .padding(.bottom, 25)
             }
         }
         .padding()

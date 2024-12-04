@@ -35,6 +35,10 @@ class SavedPlanViewModel: BaseViewModel {
         ]
     }
     
+    func incrementMaxPlanCount() {
+        maxPlanCount += 1
+    }
+    
     func saveDefaultPlanToFirestore(planId: String) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         let userRef = Firestore.firestore().collection("users").document(userId)

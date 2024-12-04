@@ -38,117 +38,122 @@ struct HealthKitPermissionView: View {
     }
     
     var body: some View {
-        FreshStartBaseView(currentViewModel: viewModel,
-                           background: .solidWhite,
-                           showIndicator: $viewModel.showIndicator) {
-            ScrollView {
-                VStack {
-                    FSTitle(
-                        title: "Health Data",
-                        subtitle: "",
-                        bottomPadding: 20)
-                    VStack(spacing: 40) {
-                        Text("FreshStart uses your calorie intake, fitness activities, height and weight, and other health related data to provide you with our customized services. \n\n The core features of FreshStart can't function without such data. If you don't agree, you won't be able to use the app.")
-                            .foregroundColor(.black)
-                            .font(.montserrat(.medium, size: 14))
-                            .padding(.horizontal,20)
-                            .padding(.top,10)
-                            .fixedSize(horizontal: false, vertical: true)
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white)
-                            HStack {
-                                Image("health")
-                                    .foregroundColor(.red)
-                                Text("Export Data From Apple Health")
-                                    .foregroundColor(.black)
-                                    .font(.montserrat(.bold, size: 14))
-                                    .multilineTextAlignment(.leading)
-                                    .frame(width: UIScreen.screenWidth * 0.34)
-                                Spacer()
-                                Toggle("", isOn: $isOn)
-                                    .labelsHidden()
-                                    .toggleStyle(SwitchToggleStyle(tint: isOn ? Color.mkPurple.opacity(1) : Color.mkPurple.opacity(0.5)))
-                                    .onChange(of: isOn) { newValue in
-                                        if newValue == false {
-                                            if healthKitManager.isAuthorized {
-                                                if let url = URL(string: UIApplication.openSettingsURLString) {
-                                                    viewModel.goToBMIInputPage = false
-                                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        NavigationStack {
+            FreshStartBaseView(currentViewModel: viewModel,
+                               background: .solidWhite,
+                               showIndicator: $viewModel.showIndicator) {
+                ScrollView {
+                    VStack {
+                        FSTitle(
+                            title: "Health Data",
+                            subtitle: "",
+                            bottomPadding: 20)
+                        VStack(spacing: 40) {
+                            Text("FreshStart uses your calorie intake, fitness activities, height and weight, and other health related data to provide you with our customized services. \n\n The core features of FreshStart can't function without such data. If you don't agree, you won't be able to use the app.")
+                                .foregroundColor(.black)
+                                .font(.montserrat(.medium, size: 14))
+                                .padding(.horizontal,20)
+                                .padding(.top,10)
+                                .fixedSize(horizontal: false, vertical: true)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.white)
+                                HStack {
+                                    Image("health")
+                                        .foregroundColor(.red)
+                                    Text("Export Data From Apple Health")
+                                        .foregroundColor(.black)
+                                        .font(.montserrat(.bold, size: 14))
+                                        .multilineTextAlignment(.leading)
+                                        .frame(width: UIScreen.screenWidth * 0.34)
+                                    Spacer()
+                                    Toggle("", isOn: $isOn)
+                                        .labelsHidden()
+                                        .toggleStyle(SwitchToggleStyle(tint: isOn ? Color.mkPurple.opacity(1) : Color.mkPurple.opacity(0.5)))
+                                        .onChange(of: isOn) { newValue in
+                                            if newValue == false {
+                                                if healthKitManager.isAuthorized {
+                                                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                                                        viewModel.goToBMIInputPage = false
+                                                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                                    }
                                                 }
-                                            }
-                                        } else {
-                                            // Request authorization asynchronously
-                                            healthKitManager.requestAuthorization { success in
-                                                DispatchQueue.main.async {
-                                                    if success && healthKitManager.isAuthorized {
-                                                        isOn = true
-                                                        viewModel.showIndicator = true
-                                                        self.saveHealthDataToUserInputModel {
-                                                            self.isDataLoaded = true
-                                                            viewModel.showIndicator = false
-                                                            viewModel.goToBMIInputPage = true
+                                            } else {
+                                                // Request authorization asynchronously
+                                                healthKitManager.requestAuthorization { success in
+                                                    DispatchQueue.main.async {
+                                                        if success && healthKitManager.isAuthorized {
+                                                            isOn = true
+                                                            viewModel.showIndicator = true
+                                                            self.saveHealthDataToUserInputModel {
+                                                                self.isDataLoaded = true
+                                                                viewModel.showIndicator = false
+                                                                viewModel.goToBMIInputPage = true
+                                                            }
+                                                        } else {
+                                                            isOn = false
                                                         }
-                                                    } else {
-                                                        isOn = false
                                                     }
                                                 }
                                             }
                                         }
-                                    }
-                                
-                                    .onChange(of: healthKitManager.isAuthorized) { newValue in
-                                        isOn = newValue
-                                    }
-                                    .onAppear {
-                                        isOn = healthKitManager.isAuthorized
-                                    }
+                                    
+                                        .onChange(of: healthKitManager.isAuthorized) { newValue in
+                                            isOn = newValue
+                                        }
+                                        .onAppear {
+                                            isOn = healthKitManager.isAuthorized
+                                        }
+                                }
                             }
-                        }
-                        .frame(height: 73)
-                        .padding()
-                        .frame(maxWidth: UIScreen.screenWidth / 1.2)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .strokeBorder(lineWidth: 1)
-                        )
-                        .padding(.top)
-                        FreshStartDivider(title: "Or enter Manually")
-                        Spacer()
-                        FreshStartButton(text: "Enter Manually", backgroundColor: .mkOrange) {
-                            viewModel.goToBMIInputPage = true
-                        }
-                        Button(action: {
-                            viewModel.goToPrivacyPolicy = true
-                        }) {
-                            VStack(alignment: .leading, spacing: 30) {
-                                Text("By tapping 'Enter Manually', you agree to the processing of your health data.\n\n For more information have a look at our ")
-                                    .font(.montserrat(.medium, size: 14)) +
-                                Text("Privacy Policy.")
-                                    .font(.montserrat(.bold, size: 14))
+                            .frame(height: 73)
+                            .padding()
+                            .frame(maxWidth: UIScreen.screenWidth / 1.2)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(lineWidth: 1)
+                            )
+                            .padding(.top)
+                            FreshStartDivider(title: "Or enter Manually")
+                            Spacer()
+                            FreshStartButton(text: "Enter Manually", backgroundColor: .mkOrange) {
+                                viewModel.goToBMIInputPage = true
                             }
+                            Button(action: {
+                                viewModel.goToPrivacyPolicy = true
+                            }) {
+                                VStack(alignment: .leading, spacing: 30) {
+                                    Text("By tapping 'Enter Manually', you agree to the processing of your health data.\n\n For more information have a look at our ")
+                                        .font(.montserrat(.medium, size: 14)) +
+                                    Text("Privacy Policy.")
+                                        .font(.montserrat(.bold, size: 14))
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .multilineTextAlignment(.leading)
+                            }
+                            .foregroundColor(.black)
+                            .padding(.horizontal,33)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .multilineTextAlignment(.leading)
                         }
-                        .foregroundColor(.black)
-                        .padding(.horizontal,33)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     }
                     .navigationDestination(isPresented: $viewModel.goToBMIInputPage) {
                         DetailsAboutMeView()
                     }
                 }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(
+                    leading:
+                        FreshStartDismissButton()
+                )
+                .onDisappear {
+                    viewModel.showIndicator = false
+                }
             }
-            
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                leading:
-                    FreshStartDismissButton(presentationMode: presentationMode)
-            )
+                               .onChange(of: scenePhase, perform: handleScenePhaseChange)
         }
-                           .onChange(of: scenePhase, perform: handleScenePhaseChange)
     }
     
     private func checkHealthKitAuthorization() {

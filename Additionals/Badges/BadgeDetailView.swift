@@ -44,6 +44,7 @@ struct BadgeDetailView: View {
             VStack(spacing: 30) {
                 Text("Criteria: \(badge.criteria)")
                     .font(.montserrat(.regular, size: 14))
+                    .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.black)
                 
                 if let achievementDate = badge.achievementDate {

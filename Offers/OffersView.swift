@@ -55,16 +55,18 @@ struct OffersView: View {
         .navigationBarItems(
             leading: FreshStartBackButton()
         )
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(
-                title: Text("Error"),
-                message: Text(viewModel.errorMessage),
-                dismissButton: .default(Text("OK")) {
+        .fsAlertModifier(
+            isPresented: $viewModel.showAlert,
+            title: "Error",
+            message: "Something went wrong.",
+            confirmButtonText: "OK",
+            confirmAction: {
+                withAnimation {
                     viewModel.showAlert = false
                     viewModel.errorMessage = ""
                 }
-            )
-        }
+            }
+        )
         .onAppear {
             viewModel.fetchProducts()
         }

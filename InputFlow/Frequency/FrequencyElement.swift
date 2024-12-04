@@ -13,6 +13,7 @@ struct FrequencyElement: View {
     var subtitle: String
     var icons: [String]
     var isSelected: Bool
+    var onTap: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -44,5 +45,9 @@ struct FrequencyElement: View {
                 .stroke(isSelected ? Color.black : Color.black, lineWidth: 1)
         )
         .padding(.horizontal,20)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onTap()
+        }
     }
 }

@@ -9,15 +9,13 @@
 import SwiftUI
 
 struct FreshStartDismissButton: View {
-    @Environment(\.dismiss) private var dismiss
-    var presentationMode: Binding<PresentationMode>
-    var toRoot = false
     var color: Color = .black
     
     var body: some View {
         Button {
-            NavigationUtil.popToRootView()
-            self.presentationMode.wrappedValue.dismiss()
+            withAnimation {
+                AuthenticationManager.shared.logIn()
+            }
         } label: {
             Image(systemName: "xmark")
                 .foregroundColor(color)

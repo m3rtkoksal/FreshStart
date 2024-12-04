@@ -107,7 +107,7 @@ class OffersVM: BaseViewModel, SKPaymentTransactionObserver, SKProductsRequestDe
                 let dataToSave: [String: Any] = [
                     "subscriptionEndDate": currentEndDate,
                     "isPremiumUser": true,
-                    "maxmaxMealCount": 5,
+                    "maxMealCount": 5,
                     "maxPlanCount": 3 + (ProfileManager.shared.user.dietPlanCount ?? 0)
                 ]
                 

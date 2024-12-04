@@ -37,12 +37,14 @@ struct DietPreferenceInfoView: View {
                     .font(.montserrat(.bold, size: 20))
                 Text(dietPreference.infoCanEat.unsafelyUnwrapped)
                     .font(.montserrat(.medium, size: 14))
+                    .fixedSize(horizontal: false, vertical: true)
                 Text("You can NOT eat")
                     .foregroundColor(.mkOrange)
                     .underline(true, color: .mkOrange)
                     .font(.montserrat(.bold, size: 20))
-                Text(dietPreference.infoCanEat.unsafelyUnwrapped)
+                Text(dietPreference.infoCantEat.unsafelyUnwrapped)
                     .font(.montserrat(.medium, size: 14))
+                    .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
         }

@@ -28,7 +28,6 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
         ]
     }
     func signUpWithApple() {
-        self.showIndicator = true
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
 
@@ -55,6 +54,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
             self.showIndicator = false
             return
         }
+        print("Apple Sign-In Successful. Full Name: \(String(describing: fullName))")
         
         let credential = OAuthProvider.credential(providerID: .apple, idToken: idTokenString, rawNonce: "")
         
@@ -114,6 +114,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                     } else {
                         AnalyticsHelper.log("Apple Sign-In data updated successfully!",
                                             eventParameters: [:])
+                        AuthenticationManager.shared.isLoggedIn = true
                         self.showIndicator = false
                         completion()
                     }
@@ -134,6 +135,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                     } else {
                         AnalyticsHelper.log("Apple Sign-In data saved successfully!",
                                             eventParameters: [:])
+                        AuthenticationManager.shared.isLoggedIn = true
                         self.showIndicator = false
                         completion()
                     }
@@ -173,6 +175,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                 if let firebaseUser = authResult?.user {
                     AnalyticsHelper.log("User signed in",
                                         eventParameters: ["userId" : firebaseUser.uid])
+                    AuthenticationManager.shared.isLoggedIn = true
                     self?.saveGoogleUserToFirestore(userIdentifier: firebaseUser.uid, name: name,surname: surname, email: email) {
                         self?.showIndicator = true
                     }
@@ -251,6 +254,7 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
                                                               "surname": surname ?? "",
                                                               "email": email ?? "",
                                                               "date": Date().getFormattedDate(format: "dd.MM.yyyy HH:mm")])
+                        AuthenticationManager.shared.isLoggedIn = true
                         self.goToHealthPermission = true
                         completion()
                     }
@@ -258,5 +262,4 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
             }
         }
     }
-
 }

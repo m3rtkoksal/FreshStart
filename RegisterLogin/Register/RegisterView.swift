@@ -31,7 +31,7 @@ struct RegisterView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         FSTitle(
-                            title: "Registiration",
+                            title: "Registration",
                             subtitle: "Please enter your information to create new account",
                             bottomPadding: 10)
                         VStack(spacing: 10){
@@ -102,25 +102,25 @@ struct RegisterView: View {
                     }
                 }
             }
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text(errorTitle),
-                    message: Text(errorMessage.description),
-                    dismissButton: .default(Text("OK")) {
+            .fsAlertModifier(
+                isPresented: $showAlert,
+                title: errorTitle,
+                message: errorMessage.description,
+                confirmButtonText: "Done",
+                confirmAction: {
+                    withAnimation {
                         showAlert = false
                         self.viewModel.showIndicator = false
                         if errorTitle.contains("success") {
                             self.viewModel.showIndicator = false
                             viewModel.goToHealthPermission = true
-                        } else {
-                            self.viewModel.showIndicator = false
                         }
                     }
-                )
-            }
+                }
+            )
             .navigationBarBackButtonHidden(true)
             .fullScreenCover(isPresented: $viewModel.goToLogin) {
-                NavigationStack {
+                NavigationView {
                    LoginView()
                 }
                 .environmentObject(
@@ -128,12 +128,10 @@ struct RegisterView: View {
                 )
             }
             .fullScreenCover(isPresented: $viewModel.goToHealthPermission) {
-                NavigationStack {
-                   HealthKitPermissionView()
-                }
-                .environmentObject(
-                    BindingRouter($viewModel.goToHealthPermission)
-                )
+                HealthKitPermissionView()
+                    .environmentObject(
+                        BindingRouter($viewModel.goToHealthPermission)
+                    )
             }
             .onAppear {
                 viewModel.fetchMenuItems()
@@ -165,6 +163,7 @@ struct RegisterView: View {
                         self.errorTitle = "User signed up and data saved successfully!"
                         self.errorMessage = ""
                         self.showAlert = true
+                        self.viewModel.showIndicator = false
                     }
                 }
             }

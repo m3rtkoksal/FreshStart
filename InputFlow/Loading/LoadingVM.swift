@@ -17,6 +17,8 @@ class LoadingVM: BaseViewModel {
     @StateObject private var openAIManager = OpenAIManager()
     @Published var maxPlanCount: Int = 0
     @Published var maxMealCount: Int = 0
+    @Published var username: String = ""
+    @Published var showFailAlert: Bool = false
     
     func saveDefaultPlanIdToFirestore(planId: String) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -63,18 +65,22 @@ class LoadingVM: BaseViewModel {
         }
     }
     
-    func updateMaxPlanCountFirestore(completion: @escaping (Bool) -> Void) {
+    func updateMaxCountFirestore(completion: @escaping (Bool) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(false)
             return
         }
+        let updatedMaxPlanCount = max(maxPlanCount - 1, 0)
+        let updatedMaxMealCount = max(maxMealCount, 1)
         let userRef = Firestore.firestore().collection("users").document(userId)
-        userRef.updateData(["maxPlanCount": maxPlanCount - 1]) { error in
+        userRef.updateData(["maxPlanCount": updatedMaxPlanCount])
+        userRef.updateData(["maxMealCount": updatedMaxMealCount])
+        { error in
             if let error = error {
-                print("Error saving maxPlanCount: \(error.localizedDescription)")
+                print("Error saving maxCount: \(error.localizedDescription)")
                 completion(false)
             } else {
-                print("maxPlanCount saved successfully.")
+                print("maxCount saved successfully.")
                 completion(true)
             }
         }
@@ -93,14 +99,11 @@ class LoadingVM: BaseViewModel {
                 return
             }
             
-            guard let document = document, document.exists,
-                  let maxPlanCount = document.get("maxPlanCount") as? Int,
-                  let maxMealCount = document.get("maxMealCount") as? Int else {
-                completion(false)
-                return
-            }
-            self.maxMealCount = maxMealCount
-            self.maxPlanCount = maxPlanCount
+            let maxPlanCount = document?.get("maxPlanCount") as? Int
+            let maxMealCount = document?.get("maxMealCount") as? Int
+            
+            self.maxMealCount = maxMealCount ?? 4
+            self.maxPlanCount = maxPlanCount ?? 1
             print("Fetched max counts successfully.")
             completion(true)
         }
@@ -166,6 +169,45 @@ class LoadingVM: BaseViewModel {
                 print("Error saving diet plan: \(error.localizedDescription)")
             } else {
                 print("Diet plan saved successfully with recipes!")
+            }
+        }
+    }
+        
+    func generateAndSetUsername() {
+        let randomNumber = String(format: "%05d", Int.random(in: 0...99999))
+        self.username = "FreshStarter\(randomNumber)"
+        updateUsername(newUsername: self.username, userId: Auth.auth().currentUser?.uid ?? "") { successUsername in
+           print("Usrename updated: \(successUsername)")
+        }
+    }
+
+    func updateUsername(newUsername: String, userId: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let usersCollection = db.collection("users")
+        
+        // Check if the current user has a username, if not, assign a default one
+        usersCollection.document(userId).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user document: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            if document?.data()?["username"] == nil {
+                // If the user doesn't have a username, set the new one
+                usersCollection.document(userId).updateData(["username": newUsername]) { error in
+                    if let error = error {
+                        print("Error updating username: \(error.localizedDescription)")
+                        completion(false)
+                    } else {
+                        print("Username updated successfully to \(newUsername).")
+                        completion(true)
+                    }
+                }
+            } else {
+                print("User already has a username: \(newUsername).")
+                ProfileManager.shared.setUserName(newUsername)
+                completion(true)
             }
         }
     }

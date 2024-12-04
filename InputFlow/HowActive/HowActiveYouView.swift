@@ -33,6 +33,7 @@ struct HowActiveYouView: View {
                             }
                         }
                     }
+                    .padding(.top, 5)
                 }
                 .padding(.bottom)
                 Spacer()
@@ -50,6 +51,9 @@ struct HowActiveYouView: View {
                 if let activeEnergy = ProfileManager.shared.user.activeEnergy {
                     viewModel.selectActivityBasedOnEnergy(activeEnergy: activeEnergy)
                 }
+            }
+            .onDisappear {
+                viewModel.showIndicator = false
             }
         }
                .navigationBarBackButtonHidden()
