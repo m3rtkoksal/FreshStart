@@ -13,7 +13,9 @@ struct FreshStartDismissButton: View {
     
     var body: some View {
         Button {
-            AuthenticationManager.shared.logIn()
+            withAnimation {
+                AuthenticationManager.shared.logIn()
+            }
         } label: {
             Image(systemName: "xmark")
                 .foregroundColor(color)
