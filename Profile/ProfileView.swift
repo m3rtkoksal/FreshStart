@@ -84,10 +84,8 @@ struct ProfileView: View {
                                          isLastElement: true) { }
                     }
                 }
-                
-//                SubscriptionElement()
-//                    .padding(.vertical, -10)
-                
+                SubscriptionElement()
+                    .padding(.vertical, -10)
                 VStack {
                     HStack(spacing: 10) {
                         Image("generalMenuTitle")
