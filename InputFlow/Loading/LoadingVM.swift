@@ -17,6 +17,8 @@ class LoadingVM: BaseViewModel {
     @StateObject private var openAIManager = OpenAIManager()
     @Published var maxPlanCount: Int = 0
     @Published var maxMealCount: Int = 0
+    @Published var username: String = ""
+    @Published var showFailAlert: Bool = false
     
     func saveDefaultPlanIdToFirestore(planId: String) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -167,6 +169,45 @@ class LoadingVM: BaseViewModel {
                 print("Error saving diet plan: \(error.localizedDescription)")
             } else {
                 print("Diet plan saved successfully with recipes!")
+            }
+        }
+    }
+        
+    func generateAndSetUsername() {
+        let randomNumber = String(format: "%05d", Int.random(in: 0...99999))
+        self.username = "FreshStarter\(randomNumber)"
+        updateUsername(newUsername: self.username, userId: Auth.auth().currentUser?.uid ?? "") { successUsername in
+           print("Usrename updated: \(successUsername)")
+        }
+    }
+
+    func updateUsername(newUsername: String, userId: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let usersCollection = db.collection("users")
+        
+        // Check if the current user has a username, if not, assign a default one
+        usersCollection.document(userId).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user document: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            if document?.data()?["username"] == nil {
+                // If the user doesn't have a username, set the new one
+                usersCollection.document(userId).updateData(["username": newUsername]) { error in
+                    if let error = error {
+                        print("Error updating username: \(error.localizedDescription)")
+                        completion(false)
+                    } else {
+                        print("Username updated successfully to \(newUsername).")
+                        completion(true)
+                    }
+                }
+            } else {
+                print("User already has a username: \(newUsername).")
+                ProfileManager.shared.setUserName(newUsername)
+                completion(true)
             }
         }
     }

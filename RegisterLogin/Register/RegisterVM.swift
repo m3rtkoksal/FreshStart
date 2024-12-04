@@ -28,7 +28,6 @@ class RegisterVM: BaseViewModel, ASAuthorizationControllerDelegate, ASAuthorizat
         ]
     }
     func signUpWithApple() {
-        self.showIndicator = true
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
 

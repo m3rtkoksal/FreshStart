@@ -16,6 +16,7 @@ import StoreKit
 struct ProfileView: View {
     @State private var showDeleteAlert = false
     @State private var deleteConfirmation = false
+    @AppStorage("selectedTab") private var selectedTabRaw: String = MainTabView.Tab.profile.rawValue
     @StateObject private var healthKitManager = HealthKitManager()
     @StateObject private var emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate)
     @StateObject private var passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate)
@@ -39,6 +40,13 @@ struct ProfileView: View {
                     }
                     .padding(.leading, 20)
                     VStack {
+                        FreshStartProfileElement(title: "User Type",
+                                                 description: ProfileManager.shared.user.isPremium ?? false ? "Premium" : "Free",
+                                                 buttonIcon: ProfileManager.shared.user.isPremium  ?? false ? "" : "basket.fill") {
+                            withAnimation {
+                                selectedTabRaw = MainTabView.Tab.offerings.rawValue
+                            }
+                        }
                         FreshStartProfileElement(title: "Username",
                                          description: ProfileManager.shared.user.userName ?? "",
                                          buttonIcon: "pencil") {

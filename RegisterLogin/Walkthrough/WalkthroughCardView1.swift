@@ -26,15 +26,9 @@ struct WalkthroughCardView1: View {
             
             HStack {
                 Spacer()
-                ZStack {
-                    Image("FreshStartCircle")
-                        .resizable()
-                    Text(walkthrough.headline ?? "")
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .font(.montserrat(.bold, size: 36))
-                }
-                .frame(width: 250, height: 102)
+                Image("FreshStartCircle")
+                    .resizable()
+                    .frame(width: 250, height: 102)
             }
             .padding(.trailing, 20)
             

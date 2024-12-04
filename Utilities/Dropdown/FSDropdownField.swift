@@ -30,7 +30,7 @@ struct FSDropdownField: View {
                             .foregroundColor(.black)
                             .padding(.horizontal, 20)
                     }
-                    Text(chosenItem.text.isEmpty ? "Select From Menu" : chosenItem.text)
+                    Text(chosenItem.text.isEmpty ? "" : chosenItem.text)
                         .font(.montserrat(.medium, size: 14))
                         .foregroundColor(chosenItem.text.isEmpty ? .gray : .black)
                         .padding(.horizontal, 20)

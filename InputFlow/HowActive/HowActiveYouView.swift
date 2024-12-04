@@ -33,6 +33,7 @@ struct HowActiveYouView: View {
                             }
                         }
                     }
+                    .padding(.top, 5)
                 }
                 .padding(.bottom)
                 Spacer()

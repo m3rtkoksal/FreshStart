@@ -20,7 +20,7 @@ struct DeleteAccountButton: View {
             showDeleteAlert = true
         }) {
             Text("Delete Account")
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.black)
                 .padding(15)
                 .background(Color.mkOrange)
