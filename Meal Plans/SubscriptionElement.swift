@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SubscriptionElement: View {
-//    @AppStorage("selectedTab") private var selectedTabRaw: String = MainTabView.Tab.offerings.rawValue
+    @AppStorage("selectedTab") private var selectedTabRaw: String = MainTabView.Tab.offerings.rawValue
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -41,7 +41,7 @@ struct SubscriptionElement: View {
         .frame(height: 100)
         .padding(.top, 20)
         .onTapGesture {
-//            selectedTabRaw = MainTabView.Tab.offerings.rawValue
+            selectedTabRaw = MainTabView.Tab.offerings.rawValue
         }
     }
 }
