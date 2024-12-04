@@ -104,23 +104,23 @@ struct SavedPlanView: View {
         } else {
             return AnyView(
                 VStack {
-                    Text("You can watch an advertisement to create new plan")
+                    Text("You can buy more diet plans from offers")
                         .underline()
                         .padding()
                         .font(.montserrat(.medium, size: 14))
                         .foregroundColor(.black)
                         .hiddenConditionally(isHidden: viewModel.showIndicator)
                         .frame(alignment: .center)
-                    FreshStartButton(text: "Watch Ad earn new plan", backgroundColor: .mkPurple) {
-                        if let rootVC = UIApplication.shared.connectedScenes
-                            .compactMap({ $0 as? UIWindowScene })
-                            .flatMap({ $0.windows })
-                            .first(where: { $0.isKeyWindow })?.rootViewController {
-                            rewardManager.showAd(from: rootVC) {
-                                viewModel.incrementMaxPlanCount()
-                            }
-                        }
-                    }
+//                    FreshStartButton(text: "Watch Ad earn new plan", backgroundColor: .mkPurple) {
+//                        if let rootVC = UIApplication.shared.connectedScenes
+//                            .compactMap({ $0 as? UIWindowScene })
+//                            .flatMap({ $0.windows })
+//                            .first(where: { $0.isKeyWindow })?.rootViewController {
+//                            rewardManager.showAd(from: rootVC) {
+//                                viewModel.incrementMaxPlanCount()
+//                            }
+//                        }
+//                    }
                 }
             )
         }
