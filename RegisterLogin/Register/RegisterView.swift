@@ -31,7 +31,7 @@ struct RegisterView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         FSTitle(
-                            title: "Registiration",
+                            title: "Registration",
                             subtitle: "Please enter your information to create new account",
                             bottomPadding: 10)
                         VStack(spacing: 10){
