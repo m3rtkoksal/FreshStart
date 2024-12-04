@@ -11,6 +11,7 @@ import FirebaseAppCheck
 import GoogleSignIn
 import FirebaseFirestore
 import FirebaseAuth
+import GoogleMobileAds
 
 @main
 struct FreshStartApp: App {
@@ -174,6 +175,9 @@ struct FreshStartApp: App {
             FirebaseApp.configure()
             let providerFactory = DeviceCheckProviderFactory()
             AppCheck.setAppCheckProviderFactory(providerFactory)
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            // Set test device identifiers
+            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [GADSimulatorID]
             return true
         }
         

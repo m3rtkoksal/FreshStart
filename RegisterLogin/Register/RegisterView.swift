@@ -163,6 +163,7 @@ struct RegisterView: View {
                         self.errorTitle = "User signed up and data saved successfully!"
                         self.errorMessage = ""
                         self.showAlert = true
+                        self.viewModel.showIndicator = false
                     }
                 }
             }

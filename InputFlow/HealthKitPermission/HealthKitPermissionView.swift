@@ -148,6 +148,9 @@ struct HealthKitPermissionView: View {
                     leading:
                         FreshStartDismissButton()
                 )
+                .onDisappear {
+                    viewModel.showIndicator = false
+                }
             }
                                .onChange(of: scenePhase, perform: handleScenePhaseChange)
         }

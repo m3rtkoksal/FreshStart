@@ -23,6 +23,7 @@ struct ActivityElement: View {
                     .foregroundStyle(Color.black)
                     .font(.montserrat(.medium, size: 10))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         .padding()
         .background(isSelected ? Color.mkPurple.opacity(0.5) : Color.clear)
@@ -33,6 +34,5 @@ struct ActivityElement: View {
         )
         .shadow(color: Color(red: 0.51, green: 0.74, blue: 0.62, opacity: 0.3), radius: 10, x: 0, y: 0)
         .padding(.horizontal,20)
-        .frame(height: 70)
     }
 }

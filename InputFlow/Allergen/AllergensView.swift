@@ -88,6 +88,9 @@ struct AllergensView: View {
             .onAppear {
                 viewModel.fetchAllergens()
             }
+            .onDisappear {
+                viewModel.showIndicator = false
+            }
             .navigationTitle("")
             .navigationBarBackButtonHidden()
             .navigationBarItems(

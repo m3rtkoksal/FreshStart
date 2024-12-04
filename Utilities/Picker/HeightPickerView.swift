@@ -27,9 +27,10 @@ struct HeightPickerView: View {
                         isExpanded.toggle()
                     }
                 }) {
-                    Text("Done")
-                        .font(.montserrat(.medium, size: 17))
-                        .foregroundColor(.bottomBlue)
+                    Image("done-filled")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .padding(.leading, 40)
                 }
                 .padding()
             }

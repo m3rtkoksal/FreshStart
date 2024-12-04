@@ -51,6 +51,9 @@ struct HowActiveYouView: View {
                     viewModel.selectActivityBasedOnEnergy(activeEnergy: activeEnergy)
                 }
             }
+            .onDisappear {
+                viewModel.showIndicator = false
+            }
         }
                .navigationBarBackButtonHidden()
                .navigationBarItems(

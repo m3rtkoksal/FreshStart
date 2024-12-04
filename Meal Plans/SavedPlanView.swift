@@ -12,6 +12,7 @@ import FirebaseAuth
 
 struct SavedPlanView: View {
     @AppStorage("selectedTab") private var selectedTabRaw: String = MainTabView.Tab.mealPlans.rawValue
+    @StateObject private var rewardManager = RewardManager.shared
     @StateObject private var viewModel = SavedPlanViewModel()
     @StateObject private var healthKitManager = HealthKitManager()
     @State private var selectedDietPlan = DietPlan()
@@ -91,24 +92,37 @@ struct SavedPlanView: View {
     }
     
     func createRemainingPlansText() -> some View {
-        Group {
-            if viewModel.maxPlanCount > viewModel.dietPlans.count {
+        if viewModel.maxPlanCount > viewModel.dietPlans.count {
+            return AnyView(
                 Text("You can create \(viewModel.maxPlanCount - viewModel.dietPlans.count) more")
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
                     .foregroundColor(.black)
                     .hiddenConditionally(isHidden: viewModel.showIndicator)
-            } else {
-                Text("You can watch an advertisement to create new plan")
-                    .underline()
-                    .padding()
-                    .font(.montserrat(.medium, size: 14))
-                    .foregroundColor(.black)
-                    .hiddenConditionally(isHidden: viewModel.showIndicator)
-                    .frame(alignment: .center)
-            }
+            )
+        } else {
+            return AnyView(
+                VStack {
+                    Text("You can watch an advertisement to create new plan")
+                        .underline()
+                        .padding()
+                        .font(.montserrat(.medium, size: 14))
+                        .foregroundColor(.black)
+                        .hiddenConditionally(isHidden: viewModel.showIndicator)
+                        .frame(alignment: .center)
+                    FreshStartButton(text: "Watch Ad earn new plan", backgroundColor: .mkPurple) {
+                        if let rootVC = UIApplication.shared.connectedScenes
+                            .compactMap({ $0 as? UIWindowScene })
+                            .flatMap({ $0.windows })
+                            .first(where: { $0.isKeyWindow })?.rootViewController {
+                            rewardManager.showAd(from: rootVC) {
+                                viewModel.incrementMaxPlanCount()
+                            }
+                        }
+                    }
+                }
+            )
         }
-        .background(Color.clear)
     }
 }

@@ -18,7 +18,7 @@ struct FreshStartLoadingView: View {
                 .ignoresSafeArea()
 
             // Rotating Circle
-            LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
+            LottieView(lottieFile: "foodLottie", loopMode: .loop)
                 .frame(width: 100, height: 100)
         }
     }
