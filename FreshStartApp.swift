@@ -28,6 +28,7 @@ struct FreshStartApp: App {
         WindowGroup {
             if isKeysConfigured {
                 ContentView()
+                    .dynamicTypeSize(.large)
                     .environmentObject(router)
                     .onOpenURL { url in
                         GIDSignIn.sharedInstance.handle(url)

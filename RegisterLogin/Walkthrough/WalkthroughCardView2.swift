@@ -14,7 +14,7 @@ struct WalkthroughCardView2: View {
     let isLastCard: Bool
     let walkthrough2ListData: [String] = [
         "Track your diet, water intake",
-        "Create heatlhy habits",
+        "Create healthy habits",
         "Shape your lifestyle goals",
         "Track your activity",
         "Customize your meals"
