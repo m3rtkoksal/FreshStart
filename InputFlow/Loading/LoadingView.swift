@@ -32,10 +32,14 @@ struct LoadingView: View {
                     ZStack {
                         if !openAIManager.showAlert {
                             LottieView(lottieFile: "FreshStartLoading", loopMode: .loop)
-                                .ignoresSafeArea(edges: .bottom)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .scaleEffect(1.2)
+                                .clipped()
+                                .ignoresSafeArea(.all)
+                                .offset(y: 60)
                         }
                     }
-                    .frame(maxWidth: UIScreen.screenWidth, maxHeight: .infinity)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .navigationDestination(isPresented: $viewModel.goToDietProgram) {
                     withAnimation {
@@ -128,7 +132,6 @@ struct LoadingView: View {
                                 }
                                )
         }
-       
     }
 }
 
