@@ -19,6 +19,7 @@ class LoadingVM: BaseViewModel {
     @Published var maxMealCount: Int = 0
     @Published var username: String = ""
     @Published var showFailAlert: Bool = false
+    @Published var showDietPlanGenerationAlert: Bool = false
     
     func saveDefaultPlanIdToFirestore(planId: String) {
         guard let userId = Auth.auth().currentUser?.uid else { return }

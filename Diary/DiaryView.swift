@@ -31,15 +31,7 @@ struct DiaryView: View {
                            background: .solidWhite,
                            showIndicator: $viewModel.showIndicator
         ) {
-            if viewModel.showIndicator {
-                FreshStartLoadingView()
-            } else if ProfileManager.shared.user.defaultDietPlanId == nil {
-                // No diet plan exists, show a placeholder or empty state view
-                EmptyDietPlanView()
-                    .onAppear {
-                        viewModel.fetchMaxCountFromFirestore()
-                    }
-            } else {
+            if let defaultDietPlanId = ProfileManager.shared.user.defaultDietPlanId, !defaultDietPlanId.isEmpty {
                 ZStack(alignment: .top, content: {
                     HeaderView()
                         .zIndex(1)
@@ -85,7 +77,6 @@ struct DiaryView: View {
                         SubscriptionElement()
                         InfoCardElement()
                         MealsView(selectedMeals: $selectedMeals)
-                        DeleteButtonView()
                         WaterTrackView()
                         Spacer()
                             .frame(height: 90)
@@ -97,6 +88,7 @@ struct DiaryView: View {
                     isDataLoaded = true
                     viewModel.fetchMaxCountFromFirestore()
                     if let cachedDietPlan = ProfileManager.shared.user.defaultDietPlan {
+                        ProfileManager.shared.setDefaultDietPlanId(cachedDietPlan.id ?? "")
                         viewModel.dietPlan = cachedDietPlan
                         print("Using cached diet plan: \(cachedDietPlan)")
                         processDietPlan(cachedDietPlan)
@@ -135,6 +127,24 @@ struct DiaryView: View {
                         print("Updated diet plan: \(newDietPlan)")
                         processDietPlan(newDietPlan)
                     }
+                }
+            } else {
+                if let dietPlanCount = ProfileManager.shared.user.dietPlanCount, dietPlanCount > 1 {
+                    FreshStartAlertView(
+                        title: "Please select a default diet plan",
+                        message: "You have multiple diet plans. Please select a default one.",
+                        confirmButtonText: "OK",
+                        cancelButtonText: nil,
+                        confirmAction: {
+                            selectedTabRaw = MainTabView.Tab.mealPlans.rawValue
+                        },
+                        cancelAction: nil
+                    )
+                } else {
+                    EmptyDietPlanView()
+                        .onAppear {
+                            viewModel.fetchMaxCountFromFirestore()
+                        }
                 }
             }
         }
@@ -201,27 +211,6 @@ struct DiaryView: View {
                 .fill(Color.mkPurple.opacity(0.5))
         )
         .ignoresSafeArea(edges: .top)
-    }
-    
-    private func DeleteButtonView() -> some View {
-        VStack(spacing: 10) {
-            FreshStartButton(text: "Delete Plan", backgroundColor: .mkOrange, textColor: .black) {
-                viewModel.showIndicator = true
-                viewModel.deleteDietPlanEntry(dietPlan: viewModel.dietPlan) { result in
-                    viewModel.showIndicator = false
-                    switch result {
-                    case .success:
-                        if let userId = Auth.auth().currentUser?.uid {
-                            viewModel.updateMaxPlanCountInFirestore(userId: userId, maxPlanCount: viewModel.maxPlanCount)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    case .failure(let error):
-                        print("Error deleting diet plan: \(error.localizedDescription)")
-                    }
-                }
-            }
-        }
-        .padding(.top, 20)
     }
     
     func createRemainingPlansText() -> some View {

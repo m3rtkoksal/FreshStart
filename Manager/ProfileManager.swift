@@ -116,6 +116,24 @@ final class ProfileManager: ObservableObject {
         self.user.dietPlanCount = count
     }
     
+    func incrementDietPlanCount() {
+        if let currentCount = self.user.dietPlanCount {
+            self.user.dietPlanCount = currentCount + 1
+        } else {
+            self.user.dietPlanCount = 1
+        }
+        setUserDietPlanCount(self.user.dietPlanCount ?? 0)
+    }
+    
+    func decrementDietPlanCount() {
+        if let currentCount = self.user.dietPlanCount {
+            self.user.dietPlanCount = currentCount - 1
+        } else {
+            self.user.dietPlanCount = 1
+        }
+        setUserDietPlanCount(self.user.dietPlanCount ?? 0)
+    }
+    
     func setDefaultDietPlan(_ dietPlan: DietPlan) {
         self.user.defaultDietPlan = dietPlan
     }

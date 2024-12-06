@@ -102,7 +102,7 @@ struct MealCardElementView: View {
         // Reset only when needed (e.g., when meal changes)
         if !hasCalculatedHeight {
             cardHeight = Constant.bottomPadding + Constant.imageHeight
-            let itemHeight: CGFloat = 18
+            let itemHeight: CGFloat = 15
             cardHeight += CGFloat(meal.items.count) * itemHeight
         }
     }

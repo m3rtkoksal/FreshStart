@@ -64,22 +64,6 @@ class DiaryVM: BaseViewModel {
             fat: initialNutrients.fat - selectedNutrients.fat
         )
     }
-    func deleteDietPlanEntry(dietPlan: DietPlan, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let id = dietPlan.id, !id.isEmpty else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Diet plan ID is missing."])))
-            return
-        }
-        
-        let db = Firestore.firestore()
-        db.collection("dietPlans").document(id).delete { error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
-                self.showIndicator = false
-            }
-        }
-    }
     
     func updateMaxMealCountInFirestore(userId: String, maxMealCount: Int) {
         let db = Firestore.firestore()

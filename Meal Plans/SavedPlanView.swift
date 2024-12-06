@@ -17,6 +17,7 @@ struct SavedPlanView: View {
     @StateObject private var healthKitManager = HealthKitManager()
     @State private var selectedDietPlan = DietPlan()
     @Environment(\.dismiss) private var dismiss
+    @State private var shouldReload = false
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
@@ -73,7 +74,7 @@ struct SavedPlanView: View {
                 HealthKitPermissionView()
             }
             .sheet(isPresented: $viewModel.showDietPlanPreview) {
-                DietPlanSheetView(dietPlan: selectedDietPlan)
+                DietPlanSheetView(dietPlan: selectedDietPlan, shouldReload: $shouldReload)
                     .presentationDetents([.fraction(0.9)])
             }
             .onAppear {
@@ -81,6 +82,12 @@ struct SavedPlanView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     viewModel.fetchDietPlans()
                     viewModel.fetchMaxPlanCountFromFirestore()
+                }
+            }
+            .onChange(of: shouldReload) { newValue in
+                if newValue {
+                    viewModel.fetchDietPlans() // Reload data
+                    shouldReload = false
                 }
             }
             .navigationBarTitle("")
