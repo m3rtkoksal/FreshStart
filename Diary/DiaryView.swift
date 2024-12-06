@@ -277,15 +277,7 @@ struct DiaryView: View {
                     selectedMeals: selectedMeals.wrappedValue
                 )
                 .onTapGesture {
-                    let meal = viewModel.dietPlan.meals[index]
-                    
-                    if selectedMeals.wrappedValue.contains(meal) {
-                        selectedMeals.wrappedValue.remove(meal)
-                    } else {
-                        selectedMeals.wrappedValue.insert(meal)
-                    }
-                    notificationManager.startInactivityTimer()
-                    notificationManager.checkForgotToSelectReminder()
+                    toggleMealSelection(at: index)
                 }
                 .overlay(
                     VStack {
@@ -295,7 +287,8 @@ struct DiaryView: View {
                                                dietPlanId: viewModel.dietPlan.id ?? "",
                                                meal: $viewModel.dietPlan.meals[index],
                                                shouldRegenerateRecipe: $shouldRegenerateRecipe,
-                                               index: index)
+                                               index: index,
+                                               selectedMeals: $selectedMeals)
                             Divider()
                                 .frame(width: 1, height: 35)
                                 .background(Color.black)
@@ -324,6 +317,17 @@ struct DiaryView: View {
                 .padding(.top, 10)
         }
         .frame(maxWidth: UIScreen.screenWidth)
+    }
+    private func toggleMealSelection(at index: Int) {
+        let meal = viewModel.dietPlan.meals[index]
+        if selectedMeals.contains(meal) {
+            selectedMeals.remove(meal)
+        } else {
+            selectedMeals.insert(meal)
+        }
+        MealManager.shared.saveSelectedMeals(dietPlanId: viewModel.dietPlan.id ?? "", selectedMeals: selectedMeals)
+        notificationManager.startInactivityTimer()
+        notificationManager.checkForgotToSelectReminder()
     }
 }
 

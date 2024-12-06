@@ -28,6 +28,7 @@ class PrizeManager {
         let now = Date()
         if isSundayMidnight(now) {
             awardTop5Members()
+            resetRankings()
         }
     }
 
@@ -54,21 +55,24 @@ class PrizeManager {
 
         // Award the top 5 members in each category
         for (index, member) in top5FatMembers.enumerated() {
-            let days = self.getRewardForRank(rank: index + 1)
-            self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            if member.bodyFatChange > 0 {
+                let days = self.getRewardForRank(rank: index + 1)
+                self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            }
         }
 
         for (index, member) in top5MuscleMembers.enumerated() {
-            // Based on rank, assign the free plans and meals for muscle mass ranking
-            let days = self.getRewardForRank(rank: index + 1)
-            
-            // Update the user's plan and meal counts in Firestore
-            self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            if member.muscleGain > 0 {
+                let days = self.getRewardForRank(rank: index + 1)
+                self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            }
         }
 
         for (index, member) in top5LoginMembers.enumerated() {
-            let days = self.getRewardForRank(rank: index + 1)
-            self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            if member.dailyLoginCount > 0 {
+                let days = self.getRewardForRank(rank: index + 1)
+                self.updateSubscriptionEndDateInFirestore(userId: member.userId, days : days)
+            }
         }
     }
 
@@ -122,6 +126,12 @@ class PrizeManager {
                 }
             }
         }
+    }
+    
+    private func resetRankings() {
+        // Reset the rankings here (you can adjust based on your needs)
+        print("Rankings have been reset for the week.")
+        // Example: self.userRankingViewModel.resetWeeklyRankings() (adjust based on your implementation)
     }
     
     deinit {
