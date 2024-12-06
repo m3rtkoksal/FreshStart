@@ -93,7 +93,6 @@ struct MealCardElementView: View {
         if !hasCalculatedHeight {
             DispatchQueue.main.async {
                 cardHeight += itemHeight
-                print("updateCardHeight: \(cardHeight)")
                 hasCalculatedHeight = true
             }
         }
@@ -105,7 +104,6 @@ struct MealCardElementView: View {
             cardHeight = Constant.bottomPadding + Constant.imageHeight
             let itemHeight: CGFloat = 18
             cardHeight += CGFloat(meal.items.count) * itemHeight
-            print("resetCardHeight: \(cardHeight)")
         }
     }
 }

@@ -91,9 +91,8 @@ class DiaryVM: BaseViewModel {
     }
     
     func updateMaxPlanCountInFirestore(userId: String, maxPlanCount: Int) {
-        let validMaxPlanCount = max(maxPlanCount, 0)
         let db = Firestore.firestore()
-        db.collection("users").document(userId).setData(["maxPlanCount": validMaxPlanCount], merge: true) { error in
+        db.collection("users").document(userId).setData(["maxPlanCount": self.maxPlanCount], merge: true) { error in
             if error != nil {
             } else {
             }

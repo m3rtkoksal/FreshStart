@@ -13,8 +13,8 @@ import FirebaseAuth
 
 class LoadingVM: BaseViewModel {
     
-    @Published var goToDietProgram = false
-    @StateObject private var openAIManager = OpenAIManager()
+    @Published var goToDietProgram: Bool = false
+    @StateObject private var openAIManager = OpenAIManager.shared
     @Published var maxPlanCount: Int = 0
     @Published var maxMealCount: Int = 0
     @Published var username: String = ""
@@ -64,14 +64,33 @@ class LoadingVM: BaseViewModel {
             }
         }
     }
+    func fetchAndUpdateMaxCounts(completion: @escaping (Bool) -> Void) {
+        fetchMaxCountFromFirestore { fetchSuccess in
+            if fetchSuccess {
+                print("Fetched max counts successfully.")
+                self.updateMaxCountFirestore { updateSuccess in
+                    if updateSuccess {
+                        print("Updated max counts successfully.")
+                        completion(true)
+                    } else {
+                        print("Failed to update max counts.")
+                        completion(false)
+                    }
+                }
+            } else {
+                print("Failed to fetch max counts.")
+                completion(false)
+            }
+        }
+    }
     
     func updateMaxCountFirestore(completion: @escaping (Bool) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(false)
             return
         }
-        let updatedMaxPlanCount = max(maxPlanCount - 1, 0)
-        let updatedMaxMealCount = max(maxMealCount, 1)
+        let updatedMaxPlanCount = self.maxPlanCount - 1
+        let updatedMaxMealCount = self.maxMealCount
         let userRef = Firestore.firestore().collection("users").document(userId)
         userRef.updateData(["maxPlanCount": updatedMaxPlanCount])
         userRef.updateData(["maxMealCount": updatedMaxMealCount])
@@ -172,12 +191,30 @@ class LoadingVM: BaseViewModel {
             }
         }
     }
+    
+    func fetchUsername(completion: @escaping (Bool) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        let db = Firestore.firestore()
+        db.collection("users").document(userId).getDocument { document, error in
+            if error != nil {
+                completion(false)
+                return
+            } else if let document = document, document.exists {
+                let data = document.data()
+                ProfileManager.shared.setUserName(data?["username"] as? String ?? "")
+                print("Username exists: \(String(describing: ProfileManager.shared.user.userName))")
+                completion(true)
+            }
+        }
+    }
         
     func generateAndSetUsername() {
         let randomNumber = String(format: "%05d", Int.random(in: 0...99999))
         self.username = "FreshStarter\(randomNumber)"
         updateUsername(newUsername: self.username, userId: Auth.auth().currentUser?.uid ?? "") { successUsername in
-           print("Usrename updated: \(successUsername)")
+           print("Username updated: \(successUsername)")
         }
     }
 
