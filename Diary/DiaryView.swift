@@ -84,6 +84,7 @@ struct DiaryView: View {
                     .coordinateSpace(name: "ScrollView")
                 })
                 .onAppear {
+                    notificationManager.startInactivityTimer()
                     guard !isDataLoaded else { return }
                     isDataLoaded = true
                     viewModel.fetchMaxCountFromFirestore()
@@ -315,8 +316,10 @@ struct DiaryView: View {
             selectedMeals.insert(meal)
         }
         MealManager.shared.saveSelectedMeals(dietPlanId: viewModel.dietPlan.id ?? "", selectedMeals: selectedMeals)
-        notificationManager.startInactivityTimer()
-        notificationManager.checkForgotToSelectReminder()
+        notificationManager.lastInteractionDate = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.notificationManager.checkForgotToSelectReminder()
+        }
     }
 }
 

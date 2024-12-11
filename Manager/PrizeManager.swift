@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-class PrizeManager {
+class PrizeManager: ObservableObject {
     var userRankingViewModel = AdditionalRankingsVM()
     var timer: Timer?
 

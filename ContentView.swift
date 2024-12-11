@@ -13,6 +13,7 @@ import HealthKit
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var userInputModel = UserInputModel()
+    @StateObject private var prizeManager = PrizeManager()
     @ObservedObject private var authManager = AuthenticationManager.shared
     @ObservedObject private var notificationManager = NotificationManager.shared
     @State private var shouldShowRoot = true
