@@ -28,8 +28,8 @@ struct SavedPlanView: View {
                 ScrollView {
                     VStack {
                         FSTitle(
-                            title: "Your Saved Diet Plans",
-                            subtitle: "You can see details of your previous meal plans from this list",
+                            title: "your_saved_diet_plans".localized(),
+                            subtitle: "saved_diet_plans_subtitle".localized(),
                             bottomPadding: 0
                         )
                         Spacer()
@@ -58,7 +58,7 @@ struct SavedPlanView: View {
                         Spacer()
                         createRemainingPlansText()
                         
-                        FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+                        FreshStartButton(text: "create_new_plan_button".localized(), backgroundColor: .mkOrange) {
                             viewModel.goToCreateNewPlan = true
                         }
                         .padding(.bottom, 100)
@@ -101,7 +101,7 @@ struct SavedPlanView: View {
     func createRemainingPlansText() -> some View {
         if viewModel.maxPlanCount > viewModel.dietPlans.count {
             return AnyView(
-                Text("You can create \(viewModel.maxPlanCount - viewModel.dietPlans.count) more")
+                Text("more_plans_available".localized(viewModel.maxPlanCount - viewModel.dietPlans.count))
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
@@ -111,7 +111,7 @@ struct SavedPlanView: View {
         } else {
             return AnyView(
                 VStack {
-                    Text("You can buy more diet plans from offers")
+                    Text("buy_more_plans".localized())
                         .underline()
                         .padding()
                         .font(.montserrat(.medium, size: 14))

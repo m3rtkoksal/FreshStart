@@ -22,6 +22,7 @@ class DiaryVM: BaseViewModel {
     @Published var goToRecipeView: Bool = false
     @Published var savedRecipe: String = ""
     @Published var dietPlan = DietPlan()
+    @Published var defaultDietPlanId : String = ""
     private let db = Firestore.firestore()
     private let userId = Auth.auth().currentUser?.uid
     @Published var startMinY: CGFloat = 0
@@ -168,6 +169,10 @@ class DiaryVM: BaseViewModel {
                 completion(false)
             }
         }
+    }
+    
+    func compareLocalAndFirestoreDietPlanId() {
+        
     }
     
     func generateAndSaveNewMeal(dietPlanId: String, meal: Meal, index: Int, completion: @escaping (Meal?) -> Void) {

@@ -1,0 +1,505 @@
+/* 
+  Localizable.strings
+  FreshStart
+
+  Created by Mert Köksal on 11.12.2024.
+  
+*/
+//MARK: Badges
+"show_all_badges" = "Показати всі нагороди";
+"criteria" = "Критерії: ";
+"achieved_on" = "Досягнуто: ";
+"not_achieved_yet" = "Ще не досягнуто";
+"badge_view_title" = "Ваші досягнення";
+"badge_subtitle" = "Заробляйте нагороди, виконуючи виклики та досягаючи своїх цілей.";
+"empty_badge_text" = "Заробляйте нагороди, виконуючи виклики!";
+
+"top_fat_burner_badge_title" = "Топ спалювач жиру";
+"top_fat_burner_badge_description" = "Видається за спалювання найбільшої кількості жиру цього тижня.";
+"top_fat_burner_badge_criteria" = "Спаліть 2 кг жиру за один тиждень.";
+
+"ultimate_power_walker_badge_title" = "Найкращий ходок";
+"ultimate_power_walker_badge_description" = "Пройдіть 10 000 кроків і спаліть 500 активних калорій за один день.";
+"ultimate_power_walker_badge_criteria" = "Пройдіть 10 000 кроків і спаліть 500 активних калорій за один день.";
+
+"muscle_maker_badge_title" = "Майстер м’язів";
+"muscle_maker_badge_description" = "Видається за набір найбільшої кількості м’язів цього тижня.";
+"muscle_maker_badge_criteria" = "Наберіть 3 кг м’язів за один тиждень.";
+
+"healthy_starter_badge_title" = "Здоровий старт";
+"healthy_starter_badge_description" = "Успішно завершіть свій перший дієтичний план.";
+"healthy_starter_badge_criteria" = "Дотримуйтесь повного дієтичного плану протягом одного тижня.";
+
+"protein_pioneer_badge_title" = "Піонер білка";
+"protein_pioneer_badge_description" = "Досягніть 150 г білка за день.";
+"protein_pioneer_badge_criteria" = "Споживайте 150 г або більше білка за один день.";
+
+"calorie_crusher_badge_title" = "Руйнівник калорій";
+"calorie_crusher_badge_description" = "Видається за спалювання 500 активних калорій за один день.";
+"calorie_crusher_badge_criteria" = "Спаліть 500 активних калорій за один день.";
+
+"steady_metabolism_badge_title" = "Стійкий метаболізм";
+"steady_metabolism_badge_description" = "Зберігайте стабільний базовий рівень метаболізму протягом тижня.";
+"steady_metabolism_badge_criteria" = "Базова енергія спалювання більше 1500 калорій протягом 7 днів.";
+
+"body_builder_badge_title" = "Тілобудівник";
+"body_builder_badge_description" = "Наберіть 1 кг м’язової маси за два тижні.";
+"body_builder_badge_criteria" = "Збільшіть м’язову масу на 1 кг за два тижні.";
+
+"active_energy_burner_badge_title" = "Активний спалювач енергії";
+"active_energy_burner_badge_description" = "Видається за спалювання 20 000 ккал за один тиждень.";
+"active_energy_burner_badge_criteria" = "Спаліть найбільше активної енергії за один тиждень.";
+
+"strength_gainer_badge_title" = "Збільшувач сили";
+"strength_gainer_badge_description" = "Видається за збільшення м’язової маси за один місяць.";
+"strength_gainer_badge_criteria" = "Збільште м’язову масу на 1 кг за один місяць.";
+
+"weight_watcher_badge_title" = "Спостерігач ваги";
+"weight_watcher_badge_description" = "Видається за поступову втрату ваги протягом місяця.";
+"weight_watcher_badge_criteria" = "Втрата 2 кг ваги за місяць.";
+
+"step_master_badge_title" = "Майстер кроків";
+"step_master_badge_description" = "Видається за виконання 8 000 кроків сьогодні!";
+"step_master_badge_criteria" = "Зробіть 10 000 кроків за один день.";
+
+"slim_shady_badge_title" = "Тонкий";
+"slim_shady_badge_description" = "Видається за стабільну втрату 10 кг ваги.";
+"slim_shady_badge_criteria" = "Втрата 10 кг ваги.";
+
+"water_tank_badge_title" = "Водяний бак";
+"water_tank_badge_description" = "Видається за споживання 2 літрів води протягом 30 днів.";
+"water_tank_badge_criteria" = "Пийте 2 літри води протягом 30 днів.";
+
+"calm_pulse_badge_title" = "Спокійний пульс";
+"calm_pulse_badge_description" = "Тримайте свій пульс у спокої нижче 70 ударів на хвилину протягом тижня.";
+"calm_pulse_badge_criteria" = "Середній пульс у спокої ≤ 70 ударів на хвилину протягом 7 днів.";
+
+"balanced_rhythm_badge_title" = "Збалансований ритм";
+"balanced_rhythm_badge_description" = "Поліпшіть свій HRV на 10% протягом місяця.";
+"balanced_rhythm_badge_criteria" = "10% збільшення середнього HRV протягом 30 днів.";
+
+"stress_resistor_badge_title" = "Стресостійкість";
+"stress_resistor_badge_description" = "Зберігайте низький рівень стресу (<3) протягом 10 днів.";
+"stress_resistor_badge_criteria" = "Щоденний рівень стресу ≤ 3 протягом 10 днів.";
+
+"wellness_warrior_badge_title" = "Воїн здоров’я";
+"wellness_warrior_badge_description" = "Досягніть своїх цілей щодо пульсу, HRV та рівня стресу в один день.";
+"wellness_warrior_badge_criteria" = "Пульс у спокої ≤ 70 уд./хв., HRV збільшено на 5%, рівень стресу ≤ 3 за один день.";
+
+"notification_master_badge_title" = "Майстер сповіщень";
+"notification_master_badge_description" = "Переконайтесь, що локальні сповіщення увімкнені та заплановані.";
+"notification_master_badge_criteria" = "Локальні сповіщення увімкнені та хоча б одне сповіщення заплановано.";
+
+//MARK: Health Chart
+"no_data_available" = "Немає доступних даних.";
+"lost" = "втрачено";
+"gained" = "набрано";
+"body_fat_change_message" = "Ви втратили";
+"of_your_body_fat" = "вашого жиру.";
+"lean_body_mass_change_message" = "Ви набрали";
+"of_your_lean_body_mass" = "вашої м’язової маси.";
+"active_energy_change_message" = "Ви спалили";
+"kcal_active_energy" = "ккал активної енергії.";
+"change_message" = "Ви змінили";
+"kg_unit" = "кг.";
+"body_fat_percentage" = "Відсоток жиру в тілі";
+"lean_body_mass" = "М’язова маса";
+"active_energy" = "Активна енергія";
+"weight" = "Вага";
+"date" = "Дата";
+
+//MARK: Additional
+"charts" = "Графіки";
+"badges" = "Нагороди";
+"rankings" = "Рейтинги";
+
+//MARK: Rankings
+"show_all_rankings" = "Показати всі рейтинги";
+"user" = "Користувач";
+"fat_lose_percentage" = "Втрата жиру %";
+"muscle_gain" = "Набір м’язів";
+"score" = "Рейтинг";
+"muscle_mass" = "М’язова маса";
+"daily_login" = "Щоденний вхід";
+"all_rankings" = "Усі рейтинги";
+"prizes" = "Призи:";
+"1st" = "1-й";
+"2nd" = "2-й";
+"3rd" = "3-й";
+"4th" = "4-й";
+"5th" = "5-й";
+"7_days_premium" = "7 днів преміум підписки";
+"5_days_premium" = "5 днів преміум підписки";
+"3_days_premium" = "3 дні преміум підписки";
+"2_days_premium" = "2 дні преміум підписки";
+"1_day_premium" = "1 день преміум підписки";
+"sunday_midnight" = "Щонеділі о 00:00";
+"body_fat" = "Вміст жиру в тілі";
+
+//MARK: Diary
+"read_recipe_button" = "Читати рецепт";
+"recreate_meal_button" = "Перескласти це блюдо";
+"confirm_diet_plan_change_title" = "Підтвердити зміну дієтичного плану";
+"confirm_diet_plan_change_message" = "Ви впевнені, що хочете змінити свій основний дієтичний план?";
+"confirm_diet_plan_delete_title" = "Підтвердити видалення дієтичного плану";
+"confirm_diet_plan_delete_message" = "Ви впевнені, що хочете видалити цей дієтичний план?";
+"confirm" = "Підтвердити";
+"cancel" = "Скасувати";
+"n_a" = "Н/Д";
+"select_this_as_my_diet_plan" = "Вибрати цей як мій дієтичний план";
+"delete_plan" = "Видалити план";
+"your_recipe_for" = "Ваш рецепт для";
+"kcal" = "Ккал";
+"protein" = "Білки";
+"carbohydrate" = "Вуглеводи";
+"fat" = "Жири";
+"ingredients" = "Інгредієнти";
+"instructions" = "Інструкції";
+"please_select_default_diet_plan" = "Будь ласка, виберіть основний дієтичний план";
+"multiple_diet_plans_message" = "У вас є кілька дієтичних планів. Будь ласка, виберіть основний.";
+"ok_button_text" = "OK";
+"my_goal_is_to" = "Моя мета -";
+"you_can_create_more_plans" = "Ви можете створити %@ нових планів";
+"watch_ad_to_create_plan" = "Ви можете переглянути рекламу, щоб створити новий план";
+"purchase_first_diet_plan" = "Придбати свій перший дієтичний план";
+"no_diet_plans_available" = "Наразі у вас немає дієтичних планів.";
+"create_new_plan" = "Створити новий план";
+"learn_more_diet_nutrition" = "Дізнайтеся більше про дієту та харчування";
+"water" = "Вода";
+"tap_to_mark_meal_eaten" = "Натисніть “+”, щоб позначити страву як з’їдену. Вибрані страви скидатимуться щоночі автоматично.";
+"remember_to_stay_hydrated" = "Не забувайте пити воду!";
+
+//MARK: Input Flow
+//Allergens
+"allergens_title" = "Алергени";
+"allergens_subtitle" = "Якщо у вас є алергії, виберіть свої алергени зі списку.";
+"allergen" = "Алерген";
+"allergen_type" = "Тип алергену";
+"severity_level" = "Рівень серйозності";
+"add" = "Додати";
+"create_diet_plan" = "Створити дієтичний план";
+
+//DetailsAboutMe
+"details_about_you" = "Деталі про вас";
+"freshstart_needs_info" = "FreshStart потрібно знати трохи про вашу фізіологію, щоб створити найбільш підходящий план для вас.";
+"please_select_gender" = "Будь ласка, виберіть вашу стать";
+"date_of_birth" = "Дата народження";
+"how_tall_are_you" = "Який ваш зріст?";
+"how_much_do_you_weight" = "Яка ваша вага?";
+"next" = "Далі";
+"select_height" = "Виберіть зріст";
+"male" = "Чоловік";
+"female" = "Жінка";
+"other" = "Інше";
+"not_set" = "Не вказано";
+"unknown" = "Невідомо";
+
+//Diet Preference
+"can_eat" = "Ви можете їсти";
+"cannot_eat" = "Ви НЕ можете їсти";
+"diet_preference_title" = "Переваги в дієті";
+"diet_preference_subtitle" = "Будь ласка, оберіть вашу дієту";
+"recommended" = "Рекомендовано";
+
+"normal_title" = "Нормальна";
+"normal_description" = "Без дієтичних обмежень, включає всі види продуктів.";
+"normal_info_description" = "Нормальна дієта включає широкий вибір продуктів без конкретних обмежень. Вона підтримує збалансоване харчування і є найпоширенішим вибором для людей без дієтичних обмежень.";
+"normal_info_can_eat" = "Ви можете їсти широкий асортимент продуктів, включаючи м'ясо, овочі, фрукти, зернові, молочні продукти та жири.";
+"normal_info_cant_eat" = "Немає конкретних продуктів, яких потрібно уникати.";
+
+"vegan_title" = "Веган";
+"vegan_description" = "Виключає всі продукти тваринного походження, включаючи м'ясо, рибу, молочні продукти та яйця.";
+"vegan_info_description" = "Веганська дієта виключає всі продукти тваринного походження. Вона зосереджена на рослинних продуктах і намагається уникати будь-якої форми експлуатації тварин.";
+"vegan_info_can_eat" = "Ви можете їсти фрукти, овочі, бобові, зернові, горіхи, насіння та рослинні замінники молочних продуктів і м'яса.";
+"vegan_info_cant_eat" = "Ви повинні уникати всіх продуктів тваринного походження, включаючи м'ясо, рибу, яйця, молочні продукти, мед та будь-які продукти, що містять інгредієнти тваринного походження.";
+
+"vegetarian_title" = "Вегетаріанець";
+"vegetarian_description" = "Виключає все м'ясо та рибу, але включає молочні продукти та яйця.";
+"vegetarian_info_description" = "Вегетаріанська дієта виключає м'ясо та рибу, але включає інші продукти тваринного походження, такі як молочні продукти та яйця. Вона часто вибирається з етичних, здоров'я чи екологічних причин.";
+"vegetarian_info_can_eat" = "Ви можете їсти фрукти, овочі, бобові, зернові, молочні продукти, яйця, горіхи та насіння.";
+"vegetarian_info_cant_eat" = "Ви повинні уникати м'ясо, птицю, рибу та морепродукти.";
+
+"pescatarian_title" = "Пескатаріанець";
+"pescatarian_description" = "Виключає все м'ясо, але включає рибу, молочні продукти та яйця.";
+"pescatarian_info_description" = "Дієта пескатаріанця виключає м'ясо, але включає рибу, що робить її рибною дієтою, яка також дозволяє молочні продукти та яйця.";
+"pescatarian_info_can_eat" = "Ви можете їсти рибу, морепродукти, фрукти, овочі, зернові, молочні продукти, яйця, бобові, горіхи та насіння.";
+"pescatarian_info_cant_eat" = "Ви повинні уникати червоне м'ясо (яловичина, свинина) і птицю (курка, індичка).";
+
+"flexitarian_title" = "Флекситаріанець";
+"flexitarian_description" = "Основна дієта рослинного походження, але іноді включає м'ясо або рибу.";
+"flexitarian_info_description" = "Дієта флекситаріанця — це гнучкий підхід, що підкреслює рослинні продукти, але дозволяє час від часу їсти м'ясо або рибу. Це ідеальний вибір для тих, хто хоче переваги вегетаріанської дієти з певною гнучкістю.";
+"flexitarian_info_can_eat" = "Ви можете їсти переважно рослинні продукти, такі як овочі, фрукти, зернові, бобові та горіхи, але час від часу насолоджуватись м'ясом або рибою.";
+"flexitarian_info_cant_eat" = "Немає продуктів, яких слід суворо уникати, але рекомендується обмежити оброблене м'ясо та надмірне споживання продуктів тваринного походження.";
+
+"no_red_meat_title" = "Без червоного м'яса";
+"no_red_meat_description" = "Виключає яловичину, свинину та інше червоне м'ясо, але включає птицю, рибу, молочні продукти та яйця.";
+"no_red_meat_info_description" = "Дієта без червоного м'яса виключає червоне м'ясо, таке як яловичина та свинина, але дозволяє інші види тваринних білків, такі як птиця, риба та молочні продукти. Це часто обирається з медичних причин для зменшення ризику деяких захворювань.";
+"no_red_meat_info_can_eat" = "Ви можете їсти птицю, рибу, морепродукти, молочні продукти, яйця, овочі, фрукти та зернові.";
+"no_red_meat_info_cant_eat" = "Ви повинні уникати яловичину, свинину, баранину та будь-яке інше червоне м'ясо.";
+
+"poultry_only_title" = "Тільки птиця";
+"poultry_only_description" = "Включає тільки птицю (курку, індичку тощо), а також рибу, молочні продукти та яйця.";
+"poultry_only_info_description" = "Дієта, що включає тільки птицю, зосереджена на споживанні тільки птиці (наприклад, курка та індичка) разом з рибою, молочними продуктами та яйцями. Вона виключає червоне м'ясо і може бути вибрана з різних медичних або дієтичних причин.";
+"poultry_only_info_can_eat" = "Ви можете їсти птицю (курка, індичка), рибу, молочні продукти, яйця, овочі, фрукти та зернові.";
+"poultry_only_info_cant_eat" = "Ви повинні уникати червоне м'ясо (яловичина, свинина, баранина) та будь-які інші види м'яса, крім птиці.";
+
+//Frequency
+"meals_per_day" = "%d прийомів їжі на день:";
+"how_many_meals_title" = "Скільки прийомів їжі";
+"how_many_meals_subtitle" = "Оберіть, скільки прийомів їжі ви їсте на день, включаючи перекуси";
+"frequency_7_meals_subtitle" = "Сніданок, обід, вечеря та 4 перекуси";
+"frequency_6_meals_subtitle" = "Сніданок, обід, вечеря та 3 перекуси";
+"frequency_5_meals_subtitle" = "Сніданок, обід, вечеря та 2 перекуси";
+"frequency_4_meals_subtitle" = "Сніданок, обід, вечеря та 1 перекус";
+"frequency_3_meals_subtitle" = "Сніданок, обід і вечеря";
+"frequency_2_meals_subtitle" = "Сніданок та обід або вечеря";
+
+//HealthKitPermission
+"health_data_title" = "Дані про здоров'я";
+"health_data_description" = "FreshStart використовує ваші дані про споживання калорій, фізичну активність, зріст і вагу та інші дані про здоров'я для надання наших індивідуальних послуг. \n\nОсновні функції FreshStart не можуть працювати без таких даних. Якщо ви не погоджуєтеся, ви не зможете користуватися додатком.";
+"export_data_from_apple_health" = "Експортувати дані з Apple Health";
+"or_enter_manually" = "Або введіть вручну";
+"enter_manually_button" = "Ввести вручну";
+"agree_health_data_processing" = "Натискаючи 'Ввести вручну', ви погоджуєтесь на обробку ваших даних про здоров'я.\n\n Для додаткової інформації перегляньте нашу ";
+"privacy_policy" = "Політика конфіденційності.";
+
+//How Active
+"how_active_title" = "Наскільки ви активні?";
+"how_active_subtitle" = "Виключіть спортивні та виснажливі активності, як біг, баскетбол чи тренування.";
+"not_very_active" = "Не дуже активний";
+"lightly_active" = "Трохи активний";
+"active" = "Активний";
+"very_active" = "Дуже активний";
+
+"not_very_active_title" = "Не дуже активний";
+"lightly_active_title" = "Трохи активний";
+"active_title" = "Активний";
+"very_active_title" = "Дуже активний";
+
+"not_very_active_description" = "Більшу частину дня сидите (наприклад, на робочому місці, банківський працівник)";
+"lightly_active_description" = "Більшу частину дня на ногах (наприклад, вчитель, продавець)";
+"active_description" = "Більшу частину дня займаєтеся фізичною активністю (наприклад, офіціант, листоноша)";
+"very_active_description" = "Більшу частину дня займаєтеся важкою фізичною активністю (наприклад, будівельник, тесляр)";
+
+//Loading
+"creating_your_diet_plan" = "Створення вашого плану харчування";
+"customizing_your_experience" = "Налаштування вашого досвіду...";
+"analyzing_health_data" = "Аналіз ваших даних про здоров'я...";
+"adding_your_goal" = "Додавання вашої мети...";
+"timeout" = "Тайм-аут";
+"something_went_wrong" = "Щось пішло не так.";
+"retry" = "Спробувати ще раз";
+"diet_plan_already_generated" = "План харчування вже створено";
+"one_diet_plan_at_a_time" = "Ви можете створити лише один план харчування одночасно. Будь ласка, зачекайте перед тим, як спробувати ще раз.";
+"ok" = "ОК";
+
+//Purpose
+"whats_your_goal" = "Яка ваша мета?";
+"lets_focus_on_one_goal" = "Зосередимося на одній меті для початку.";
+"lose_weight" = "Скинути вагу";
+"maintain_weight" = "Підтримувати вагу";
+"gain_weight" = "Набрати вагу";
+"gain_muscle" = "Набрати м'язи";
+
+//MARK: Main Tab
+"diary_tab" = "Щоденник";
+"meal_plans_tab" = "Плани харчування";
+"additional_tab" = "Додатково";
+"profile_tab" = "Профіль";
+
+//MARK: Manager
+// HealthKit
+"severe_stress" = "Сильний стрес";
+"high_stress" = "Високий стрес";
+"moderate_stress" = "Помірний стрес";
+"low_stress" = "Низький стрес";
+
+//OpenAI
+"failed_to_fetch_response" = "Не вдалося отримати відповідь від OpenAI.";
+"failed_to_decode_recipe" = "Не вдалося декодувати рецепт.";
+"failed_to_convert_response" = "Не вдалося перетворити відповідь в дані.";
+"failed_to_parse_meal" = "Не вдалося розібрати прийом їжі з відповіді.";
+
+//Notification
+"meal_reminder_title" = "Нагадування";
+"meal_reminder_body" = "Здається, ви ще не вибрали страву. Не забудьте спланувати ваше харчування!";
+"global_inactivity_reminder_title" = "Ви давно не були активні!";
+"global_inactivity_reminder_body" = "Ви давно не взаємодіяли з додатком. Не забудьте перевірити ваш план харчування!";
+
+//MARK: Meal Plans
+//DonutChart
+"per_day" = "на день";
+"nutrients" = "Поживні речовини";
+"grams" = "%@ г";
+
+//SavedPlan
+"your_saved_diet_plans" = "Ваші збережені плани харчування";
+"saved_diet_plans_subtitle" = "Ви можете побачити деталі ваших попередніх планів харчування в цьому списку";
+"create_new_plan_button" = "Створити новий план";
+"more_plans_available" = "Ви можете створити ще %d";
+"buy_more_plans" = "Ви можете придбати більше планів харчування через пропозиції";
+
+//Stepview
+"steps_goal" = "%d кроків";
+"steps_label" = "Кроки";
+
+//SubscriptionElement
+"purchase_plans" = "Придбати плани";
+"purchase_description" = "Отримайте максимум від FreshStart. Створюйте більше планів харчування, контролюйте гідратацію, додавайте активність та вагу.";
+
+//MARK: Offers
+"purchase" = "Купити";
+"purchase_plans" = "Купити плани";
+"purchase_plans_subtitle" = "Ви можете переглядати пакети з цього списку";
+"no_offerings" = "Зараз немає доступних пропозицій";
+"error_title" = "Помилка";
+"error_message" = "Щось пішло не так.";
+"ok_button" = "OK";
+
+//MARK: Profile
+"information_of_you" = "Інформація про вас";
+"change_information" = "Ви можете змінити свою інформацію тут";
+"update" = "Оновити";
+"first_name" = "Ім'я";
+"surname" = "Прізвище";
+"username" = "Користувач";
+
+//Resources
+"disclaimer_and_data_privacy_title" = "Застереження та конфіденційність даних";
+"Disclaimer & Data Privacy" = "Застереження та конфіденційність даних";
+"Our Promise to You" = "Наша обіцянка вам";
+"Sources and Information Accuracy" = "Джерела та точність інформації";
+"How We Use Your Health Data" = "Як ми використовуємо ваші дані про здоров'я";
+"Our Commitment to Privacy and Security" = "Наше зобов'язання щодо конфіденційності та безпеки";
+"Questions?" = "Є питання?";
+
+//MARK: Profile
+"profile.personal" = "Особисте";
+"profile.user_type" = "Тип користувача";
+"profile.username" = "Ім'я користувача";
+"profile.name" = "Ім'я";
+"profile.surname" = "Прізвище";
+"profile.birthday" = "Дата народження";
+"profile.email" = "Електронна пошта";
+"profile.gender" = "Стать";
+"profile.height" = "Зріст";
+"profile.weight" = "Вага";
+"profile.body_fat_percentage" = "Відсоток жиру в тілі";
+"profile.lean_body_mass" = "М'язова маса";
+"profile.resting_energy" = "Енергія у спокої";
+"profile.active_energy" = "Активна енергія";
+"profile.language" = "Мова";
+"profile.change_language" = "Змінити мову";
+
+"profile.general" = "Загальне";
+"profile.notifications" = "Сповіщення";
+"profile.disclaimer" = "Застереження та конфіденційність даних";
+"profile.contact_support" = "Зв'язатися з підтримкою";
+"profile.leave_review" = "Залишити відгук";
+"profile.confirm_delete_account" = "Підтвердити видалення акаунта";
+"profile.delete_account_message" = "Ви впевнені, що хочете видалити свій акаунт? Цю дію не можна скасувати.";
+"profile.delete_button" = "Видалити";
+"profile.cancel_button" = "Скасувати";
+"profile.contact_subject" = "Запит до підтримки";
+"profile.contact_body" = "Будь ласка, опишіть вашу проблему тут.";
+
+//MARK: Register Login
+"login.welcome_title" = "Ласкаво просимо до FreshStart";
+"login.welcome_subtitle" = "Привіт, увійдіть, щоб продовжити!";
+"login.email_address" = "Електронна пошта";
+"login.password" = "Пароль";
+"login.forgot_password" = "Забули пароль?";
+"login.login_button" = "Увійти";
+"login.or_login_with" = "Або увійдіть за допомогою";
+"login.connect_with_google" = "Підключитися через Google";
+"login.connect_with_apple" = "Підключитися через Apple";
+"login.dont_have_account" = "Немає акаунта? ";
+"login.register_now" = "Зареєструватися!";
+"login.alert_wrong_credentials_title" = "Невірна електронна пошта або пароль";
+"login.alert_try_again" = "Спробуйте ще раз";
+
+//PasswordReset
+"password_reset.forgot_password_title" = "Забули пароль";
+"password_reset.forgot_password_subtitle" = "Будь ласка, введіть вашу електронну пошту для отримання коду скидання пароля";
+"password_reset.email_placeholder" = "Електронна пошта";
+"password_reset.reset_password_button" = "Скинути пароль";
+"password_reset.password_reset_alert_title" = "Скидання пароля";
+"password_reset.ok_button" = "OK";
+
+//Register
+"registration.title" = "Реєстрація";
+"registration.subtitle" = "Будь ласка, введіть вашу інформацію для створення нового акаунта";
+"registration.first_name_placeholder" = "Ім'я";
+"registration.last_name_placeholder" = "Прізвище";
+"registration.email_placeholder" = "Електронна пошта";
+"registration.password_placeholder" = "Пароль";
+"registration.create_account_button" = "Створити акаунт";
+"registration.or_register_with" = "або зареєструватися за допомогою";
+"registration.connect_with_google_button" = "Підключитися через Google";
+"registration.connect_with_apple_button" = "Підключитися через Apple";
+"registration.already_have_account" = "Вже маєте акаунт? ";
+"registration.login_button" = "Увійти!";
+"registration.done_button" = "Готово";
+
+//Walkthrough
+"walkthrough.track_diet_water" = "Відстежуйте свою дієту та споживання води";
+"walkthrough.create_healthy_habits" = "Створюйте здорові звички";
+"walkthrough.shape_lifestyle_goals" = "Формуйте свої цілі в житті";
+"walkthrough.track_activity" = "Відстежуйте свою активність";
+"walkthrough.customize_meals" = "Налаштуйте свої страви";
+"walkthrough.lose_weight" = "Схуднути";
+"walkthrough.gain_muscle" = "Набрати м'язи";
+"walkthrough.maintain_weight" = "Підтримати вагу";
+"walkthrough.gain_weight" = "Набрати вагу";
+"walkthrough.ai_help" = "За допомогою ШІ ми створимо ідеальний план харчування, який допоможе вам досягти вашої мети!";
+"walkthrough.ai_science_help" = "Ми використовуємо ШІ та науку, щоб допомогти вам побачити реальні результати.";
+"walkthrough.personalized_diet_plan" = "Ви отримаєте ідеально персоналізований план харчування, адаптований до ваших уподобань, обмежень у дієті та цілей у житті.";
+"walkthrough.know_more_about_you" = "Щоб точно визначити ваші цілі, нам потрібно дізнатися трохи більше про вас.";
+"walkthrough.lets_go" = "Поїхали";
+"walkthrough.next" = "Далі";
+"walkthrough.create_diet_plan_title" = "Створіть свій ідеальний план харчування з";
+"walkthrough.start_healthy_journey" = "Почніть свою здорову подорож зараз";
+"walkthrough.define_goal_title" = "Визначте свою мету";
+"walkthrough.welcome_to_new_you" = "Ласкаво просимо до нового себе!";
+"walkthrough.lets_go" = "Поїхали";
+"walkthrough.next" = "Далі";
+
+//MARK: Validation
+"validation.email_invalid" = "Невірний формат електронної пошти";
+"validation.password_invalid" = "Пароль повинен бути не менше 8 символів і містити цифру та спеціальний символ";
+"validation.first_name_invalid" = "Ім'я повинно бути від 2 до 30 символів і містити українські літери";
+"validation.last_name_invalid" = "Прізвище повинно бути від 2 до 30 символів і містити українські літери";
+"validation.username_invalid" = "Ім'я користувача повинно бути від 2 до 30 символів і може містити українські літери, цифри та дефіси";
+"validation.date_invalid" = "Дата повинна бути у форматі dd/MM/yyyy";
+
+"delete_account" = "Видалити акаунт";
+"log_out" = "Вийти з акаунта";
+
+//MARK: Prompts
+"prompt_create" = "Створіть персоналізований дієтичний план, враховуючи наступні вказівки та дані користувача. Дотримуйтесь суворо правил, незалежно від мети користувача (наприклад, втрата ваги, набір м'язів тощо). НЕ змінюйте формат прийомів їжі або будь-які інші інструкції залежно від мети.";
+
+"prompt_rules_json_format" = "1. **Формат JSON**: Відповідь повинна бути дійсним об'єктом JSON з наступною структурою: {\"totalNutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"meals\": [{\"name\": STRING, \"nutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"items\": [{\"item\": STRING, \"quantity\": STRING}]}]}";
+
+"prompt_rules_total_nutrients" = "2. **Загальні нутрієнти**: Включіть загальний добовий прийом нутрієнтів на початку об'єкта JSON у полі \"totalNutrients\".";
+
+"prompt_rules_meals" = "3. **Прийоми їжі**: Кожен прийом їжі повинен включати \"name\" (наприклад, \"Сніданок\"), \"nutrients\" (підсумок для прийому їжі) та масив \"items\" (список продуктів із кількостями).";
+
+"prompt_rules_meal_units" = "4. **Одиниці вимірювання прийомів їжі**: Давайте страви тільки в грамах або штуках.";
+
+"prompt_rules_strict_json_only" = "5. **Тільки суворий JSON**: Не включайте додатковий текст, коментарі або пояснення поза межами об'єкта JSON.";
+
+"prompt_user_data" = "Дані користувача: - Дієтичні уподобання: %@ - Алергени: %@ - Кількість прийомів їжі на день, включаючи перекуси: %@ - День народження: %@ - Зріст: %@ - Вага: %@ - Відсоток жиру в тілі: %@ - М'язова маса: %@ - Активна енергія: %@ - Рівень активності: %@ - Спокійна енергія: %@ - Стать: %@ - Мета: %@";
+
+"prompt_create_recipe" = "Створіть персоналізований рецепт на основі наступної інформації про страву. Включіть поля 'name', 'totalNutrients', 'ingredients' та 'instructions' у відповіді у форматі JSON. Використовуйте таку структуру: {...}";
+
+"prompt_generate_alternative_meal" = "Створіть альтернативу до наданого прийому їжі. Дотримуйтесь всіх правил точно та використовуйте різні інгредієнти для створення нової страви, яка буде мати подібні поживні властивості, але відрізнятися за смаком і способом приготування. Уникайте використання однакових основних інгредієнтів, наскільки це можливо.";
+
+"prompt_focus_on_variety" = "Зосередьтеся на різноманітності: - Вибирайте різні інгредієнти або стилі кухні, щоб забезпечити різноманітність у смаку та приготуванні. - Намагайтеся зберегти подібний харчовий профіль без повторення основних інгредієнтів.";
+
+"prompt_new_meal_name_and_ingredients" = "Назва нової страви та інгредієнти: - Назва нової страви буде Alternative \"%@\". - Дайте нову страву згідно з назвою. Не давайте лосося чи яловичину на сніданок. Намагайтеся зберегти ті самі поживні властивості та не робити значних змін.";
+
+//Validation
+"text_should_be_at_least" = "Текст повинен бути не менше ніж %d символів.";
+"invalid_input_format" = "Невірний формат введення.";
+
+"save" = "Зберегти";

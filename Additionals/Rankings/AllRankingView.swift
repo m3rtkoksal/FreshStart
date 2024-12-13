@@ -24,7 +24,7 @@ struct AllRankingView: View {
                     ),
                     segmentNames: viewModel.chartSegmentItems)
                 FSTitle(
-                    title: "All Rankings",
+                    title: "all_rankings".localized(),
                     subtitle: "",
                     bottomPadding: -5)
                 ScrollView {

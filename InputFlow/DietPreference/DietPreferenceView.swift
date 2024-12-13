@@ -19,8 +19,8 @@ struct DietPreferenceView: View {
             
             VStack(spacing: 15) {
                 FSTitle(
-                    title: "Diet Preference",
-                    subtitle: "Please select your diet preference",
+                    title: "diet_preference_title".localized(),
+                    subtitle: "diet_preference_subtitle".localized(),
                     bottomPadding: 0)
                 .padding(.leading, 20)
                 ScrollView {
@@ -36,7 +36,7 @@ struct DietPreferenceView: View {
                         }
                         if let normalPreference = viewModel.dietPreferenceItems.first, normalPreference.title == "Normal" {
                             VStack {
-                                Text("Recommended")
+                                Text("recommended".localized())
                                     .font(.montserrat(.medium, size: 8))
                                     .foregroundColor(.white)
                                     .background(
@@ -52,7 +52,7 @@ struct DietPreferenceView: View {
                     .padding(.top, 20)
                 }
                 Spacer()
-                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "next".localized(), backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserDietPreference(selectedDietPreference?.title ?? "")
                     viewModel.goToHowActiveView = true

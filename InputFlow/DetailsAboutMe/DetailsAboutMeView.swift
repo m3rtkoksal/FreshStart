@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import HealthKit
 
 struct DetailsAboutMeView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -37,11 +38,12 @@ struct DetailsAboutMeView: View {
                    showIndicator: $viewModel.showIndicator) {
                 VStack {
                     FSTitle(
-                        title: "Details About You",
-                        subtitle: "FreshStart needs to know a bit about your physiology to create the most suitable plan for you.")
+                        title: "details_about_you".localized(),
+                        subtitle: "freshstart_needs_info".localized()
+                    )
                     VStack(alignment: .leading, spacing: 0) {
                         FSDropdownField(
-                            title: "Please select your gender",
+                            title: "please_select_gender".localized(),
                             isExpanded: $isGenderExpanded,
                             chosenItem: $selectedGenderItem)
                         .onTapGesture {
@@ -55,7 +57,7 @@ struct DetailsAboutMeView: View {
                                 Spacer()
                                     .frame(height: 14)
                                 HStack {
-                                    Text(birthdayText.isEmpty ? "Date of Birth" : birthdayText)
+                                    Text(birthdayText.isEmpty ? "date_of_birth".localized() : birthdayText)
                                         .font(.montserrat(.medium, size: 14))
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -70,7 +72,7 @@ struct DetailsAboutMeView: View {
                             DatePickerView()
                         }
                         FSDropdownField(
-                            title: "How tall are you?",
+                            title: "how_tall_are_you".localized(),
                             isExpanded: $isLengthExpanded,
                             chosenItem: $selectedLengthItem
                         )
@@ -85,7 +87,7 @@ struct DetailsAboutMeView: View {
                             }
                         }
                         FSDropdownField(
-                            title: "How much do you weight?",
+                            title: "how_much_do_you_weight".localized(),
                             isExpanded: $isWeightExpanded,
                             chosenItem: $selectedWeightItem
                         )
@@ -104,7 +106,7 @@ struct DetailsAboutMeView: View {
                             .background(Color.black)
                     }
                     Spacer()
-                    FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
+                    FreshStartButton(text: "next".localized(), backgroundColor: .mkOrange) {
                         viewModel.showIndicator = true
                         if let hkBiologicalSex = viewModel.genderStringToHKBiologicalSex(viewModel.genderOptions[selectedGenderSegmentIndex].text) {
                             ProfileManager.shared.setUserGender(hkBiologicalSex)
@@ -141,7 +143,7 @@ struct DetailsAboutMeView: View {
                     viewModel.fetchLengthItems()
                     viewModel.fetchWeightItems()
                     if let gender = ProfileManager.shared.user.gender {
-                        let genderString = healthKitManager.hkBiologicalSexToGenderString(gender)
+                        let genderString = gender.toLocalizedString()
                         // Find the index by comparing the string with a property in SegmentTitle
                         selectedGenderItem = viewModel.genderOptions.first { $0.text.lowercased() == genderString.lowercased() } ?? FSDropdownItemModel(id: "", text: "")
                     }
@@ -153,7 +155,7 @@ struct DetailsAboutMeView: View {
                             birthdayText = birthdayString
                         }
                     } else {
-                        birthdayText = "Date of Birth"
+                        birthdayText = "date_of_birth".localized()
                     }
                     if let height = ProfileManager.shared.user.height {
                         let heightString = String(format: "%.0f", height * 100) // Convert height to string

@@ -38,3 +38,13 @@ extension String {
     }
 }
 
+extension String {
+    func localized() -> String {
+        return Bundle.localized.localizedString(forKey: self, value: nil, table: nil)
+    }
+    
+    func localized(_ arguments: CVarArg...) -> String {
+        let format = Bundle.localized.localizedString(forKey: self, value: nil, table: nil)
+        return String(format: format, arguments: arguments)
+    }
+}

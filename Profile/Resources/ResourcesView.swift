@@ -17,7 +17,7 @@ struct ResourcesView: View {
                  showIndicator: $viewModel.showIndicator) {
             VStack {
                 FSTitle(
-                    title: "Disclaimer & Data Privacy",
+                    title: "disclaimer_and_data_privacy_title".localized(),
                     subtitle: "",
                     bottomPadding: 0)
                 ScrollView {

@@ -24,61 +24,61 @@ class HealthDataChartVM: BaseViewModel {
     var bodyFatChangeDescription: String {
         guard let latestEntry = healthDataEntries.first?.bodyFatPercentage,
               let oldestEntry = healthDataEntries.last?.bodyFatPercentage else {
-            return "No data available."
+            return "no_data_available".localized()
         }
         
         // Calculate the percentage difference
         let change = (oldestEntry - latestEntry) * 100  // Scaling to percentage
-        let changeType = change > 0 ? "lost" : "gained"
+        let changeType = change > 0 ? "lost".localized() : "gained".localized()
         
-        return "You have \(changeType) \(String(format: "%.2f", abs(change)))% of your body fat."
+        return "\("body_fat_change_message".localized()) \(changeType) \(String(format: "%.2f", abs(change)))% \("of_your_body_fat".localized())"
     }
     
     var leanBodyMassChangeDescription: String {
         guard let latestEntry = healthDataEntries.first?.leanBodyMass,
               let oldestEntry = healthDataEntries.last?.leanBodyMass else {
-            return "No data available."
+            return "no_data_available".localized()
         }
         
         // Calculate the percentage difference
         let change = ((latestEntry - oldestEntry) / oldestEntry) * 100
-        let changeType = change > 0 ? "gained" : "lost"
+        let changeType = change > 0 ? "gained".localized() : "lost".localized()
         
-        return "You have \(changeType) \(String(format: "%.2f", abs(change)))% of your lean body mass."
+        return "\("lean_body_mass_change_message".localized()) \(changeType) \(String(format: "%.2f", abs(change)))% \("of_your_lean_body_mass".localized())"
     }
 
     var activeEnergyChangeDescription: String {
         guard let latestEntry = healthDataEntries.first?.activeEnergy,
               let oldestEntry = healthDataEntries.last?.activeEnergy else {
-            return "No data available."
+            return "no_data_available".localized()
         }
         
         // Calculate the percentage difference
         let change = latestEntry - oldestEntry
-        let changeType = change > 0 ? "gained" : "lost"
+        let changeType = change > 0 ? "gained".localized() : "lost".localized()
         
-        return "You have \(changeType) \(String(format: "%.2f", abs(change))) kcal active energy."
+        return "\("active_energy_change_message".localized()) \(changeType) \(String(format: "%.2f", abs(change))) \("kcal_active_energy".localized())"
     }
     
     var weightChangeDescription: String {
         guard let latestEntry = healthDataEntries.first?.weight,
               let oldestEntry = healthDataEntries.last?.weight else {
-            return "No data available."
+            return "no_data_available".localized()
         }
         
         // Calculate the percentage difference
         let change = latestEntry - oldestEntry
-        let changeType = change > 0 ? "gained" : "lost"
+        let changeType = change > 0 ? "gained".localized() : "lost".localized()
         
-        return "You have \(changeType) \(String(format: "%.2f", abs(change))) kg."
+        return "\("change_message".localized()) \(changeType) \(String(format: "%.2f", abs(change))) \("kg_unit".localized())"
     }
 
     func fetchChartSegments() {
         self.chartSegmentItems = [
-            SegmentTitle(title: "Body Fat %"),
-            SegmentTitle(title: "Lean Body Mass"),
-            SegmentTitle(title: "Active Energy"),
-            SegmentTitle(title: "Weight")
+            SegmentTitle(title: "body_fat_percentage".localized()),
+            SegmentTitle(title: "lean_body_mass".localized()),
+            SegmentTitle(title: "active_energy".localized()),
+            SegmentTitle(title: "weight".localized())
         ]
     }
     

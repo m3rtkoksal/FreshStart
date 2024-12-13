@@ -19,8 +19,8 @@ struct PurposeInputView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing: 20) {
                 FSTitle(
-                    title: "What’s your goal?",
-                    subtitle: "Let’s focus on one goal to begin with.")
+                    title: "whats_your_goal".localized(),
+                    subtitle: "lets_focus_on_one_goal".localized())
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(viewModel.purposeItems, id: \.self) { purpose in
@@ -34,7 +34,7 @@ struct PurposeInputView: View {
                         }
                     }
                 }
-                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "next".localized(), backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserCurrentPurpose(selectedPurpose?.title ?? "")
                     viewModel.goToFrequencyView = true

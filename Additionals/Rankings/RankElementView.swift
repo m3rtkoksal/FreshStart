@@ -34,11 +34,11 @@ struct RankElementView: View {
     var rankTypeString: String {
         switch selectedRankType {
         case .bodyFat:
-            return "Body Fat"
+            return "body_fat".localized()
         case .muscleMass:
-            return "Muscle Mass"
+            return "muscle_mass".localized()
         case .dailyLogin:
-            return "Daily Login"
+            return "daily_login".localized()
         }
     }
     var formattedText: String {

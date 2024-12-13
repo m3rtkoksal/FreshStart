@@ -15,7 +15,7 @@ struct LogoutButton: View {
         Button {
             signOut()
         } label: {
-            Text("Log out")
+            Text("log_out".localized())
                 .font(.montserrat(.bold, size: 17))
                 .foregroundColor(.black)
                 .underline()

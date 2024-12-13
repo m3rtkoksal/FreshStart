@@ -18,9 +18,9 @@ struct SubscriptionElement: View {
                 .overlay(
                     HStack {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Purchase Plans")
+                            Text("purchase_plans".localized())
                                 .font(.montserrat(.semiBold, size: 18))
-                            Text("Get the best out of FreshStart. Create more meal plans, control hydration, add activity and weight.")
+                            Text("purchase_description".localized())
                                 .font(.montserrat(.medium, size: 10))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }

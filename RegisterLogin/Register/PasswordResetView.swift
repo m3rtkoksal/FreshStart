@@ -22,17 +22,16 @@ struct PasswordResetView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack{
                 FSTitle(
-                    title: "Forgot Password",
-                    subtitle: "Please enter your email address to recieve your password reset code",
-                    color: .white)
-                
+                    title: "password_reset.forgot_password_title".localized(),
+                    subtitle: "password_reset.forgot_password_subtitle".localized(),
+                    color: .white
+                )
                 ValidatingTextField(
                     text: $validationModel.email,
                     validator: validationModel.emailValidator,
-                    placeholder: "Email Address"
+                    placeholder: "password_reset.email_placeholder".localized()
                 )
-                
-                FreshStartButton(text: "Reset Password", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "password_reset.reset_password_button".localized(), backgroundColor: .mkOrange) {
                     sendPasswordReset()
                     self.showAlert = true
                 }
@@ -53,9 +52,9 @@ struct PasswordResetView: View {
             )
             .fsAlertModifier(
                 isPresented: $showAlert,
-                title: "Password Reset",
+                title: "password_reset.password_reset_alert_title".localized(),
                 message: errorMessage,
-                confirmButtonText: "OK",
+                confirmButtonText: "password_reset.ok_button".localized(),
                 confirmAction: {
                     withAnimation {
                         showAlert = false
@@ -67,9 +66,9 @@ struct PasswordResetView: View {
     func sendPasswordReset() {
         Auth.auth().sendPasswordReset(withEmail: validationModel.email) { error in
             if let error = error {
-                self.errorMessage = "Error: \(error.localizedDescription)"
+                self.errorMessage = "password_reset.error_message".localized() + ": \(error.localizedDescription)"
             } else {
-                self.errorMessage = "Password reset email sent. Please check your inbox."
+                self.errorMessage = "password_reset.password_reset_email_sent".localized()
             }
         }
     }

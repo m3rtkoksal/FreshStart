@@ -30,7 +30,7 @@ struct CreateRecipeButton: View {
                     Divider()
                         .frame(height: 1)
                         .background(Color.black)
-                    Text("Read the recipe")
+                    Text("read_recipe_button".localized())
                         .frame(maxWidth: .infinity)
                         .frame(height: 33)
                         .background(Color.mkPurple.opacity(0.5))

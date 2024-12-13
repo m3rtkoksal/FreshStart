@@ -25,27 +25,23 @@ struct ContentView: View {
     @State private var fetchedDietPlans: [DietPlan] = []
     
     var body: some View {
-        ZStack {
-            if !authManager.hasSeenOnboarding {
-                NavigationStack {
+        NavigationStack {
+            ZStack {
+                if !authManager.hasSeenOnboarding {
                     WalkthroughView()
                         .environmentObject(userInputModel)
-                }
-            } else if authManager.isLoggedIn {
-                if isDataLoaded {
-                    NavigationStack {
+                } else if authManager.isLoggedIn {
+                    if isDataLoaded {
                         MainTabView()
                             .environmentObject(userInputModel)
+                    } else {
+                        LottieView(lottieFile: "foodLottie", loopMode: .loop)
+                            .background(Color.black)
+                            .onAppear {
+                                loadAllData()
+                            }
                     }
                 } else {
-                    LottieView(lottieFile: "foodLottie", loopMode: .loop)
-                        .background(Color.black)
-                        .onAppear {
-                            loadAllData()
-                        }
-                }
-            } else {
-                NavigationStack {
                     LoginView()
                         .environmentObject(userInputModel)
                 }
@@ -552,18 +548,5 @@ struct ContentView: View {
             ProfileManager.shared.setAllUsersDailyLoginCountList(userLoginCounts)
             completion(userLoginCounts)
         }
-    }
-
-    private func genderStringToHKBiologicalSex(_ gender: String) -> HKBiologicalSex? {
-        switch gender.lowercased() {
-        case "male":
-            return .male
-        case "female":
-            return .female
-        case "other":
-            return .other
-        default:
-            return nil
-        }
-    }
+    } 
 }

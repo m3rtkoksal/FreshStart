@@ -13,12 +13,12 @@ struct WalkthroughCardView2: View {
     let onNext: () -> Void
     let isLastCard: Bool
     let walkthrough2ListData: [String] = [
-        "Track your diet, water intake",
-        "Create healthy habits",
-        "Shape your lifestyle goals",
-        "Track your activity",
-        "Customize your meals"
-        ]
+        "walkthrough.track_diet_water".localized(),
+        "walkthrough.create_healthy_habits".localized(),
+        "walkthrough.shape_lifestyle_goals".localized(),
+        "walkthrough.track_activity".localized(),
+        "walkthrough.customize_meals".localized()
+    ]
     
     // MARK: - BODY
     var body: some View {

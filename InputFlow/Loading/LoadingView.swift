@@ -26,9 +26,10 @@ struct LoadingView: View {
                                showIndicator: $viewModel.showIndicator) {
                 VStack {
                     FSTitle(
-                        title: "Creating your diet plan",
-                        subtitle: " Customizing your experience...  \n\n Analyzing your health data... \n\n Adding your goal... \n\n",
-                        color: .white)
+                        title: "creating_your_diet_plan".localized(),
+                        subtitle: "\( "customizing_your_experience".localized() )\n\n\( "analyzing_health_data".localized() )\n\n\( "adding_your_goal".localized() )\n\n",
+                        color: .white
+                    )
                     Spacer()
                     ZStack {
                         if !openAIManager.showAlert {
@@ -57,21 +58,21 @@ struct LoadingView: View {
                                .navigationTitle("")
                                .navigationBarBackButtonHidden()
                                .fsAlertModifier(
-                                isPresented: $openAIManager.showAlert,
-                                title: "Timeout",
-                                message: "Something went wrong.",
-                                confirmButtonText: "Retry",
-                                confirmAction: {
-                                    withAnimation {
-                                        generateDietPlanAndFetchData()
-                                    }
-                                }
+                                   isPresented: $openAIManager.showAlert,
+                                   title: "timeout".localized(),
+                                   message: "something_went_wrong".localized(),
+                                   confirmButtonText: "retry".localized(),
+                                   confirmAction: {
+                                       withAnimation {
+                                           generateDietPlanAndFetchData()
+                                       }
+                                   }
                                )
                                .fsAlertModifier(
                                 isPresented: $viewModel.showFailAlert,
-                                title: "Timeout",
-                                message: "Something went wrong.",
-                                confirmButtonText: "Retry",
+                                title: "timeout".localized(),
+                                message: "something_went_wrong".localized(),
+                                confirmButtonText: "retry".localized(),
                                 confirmAction: {
                                     withAnimation {
                                         generateDietPlanAndFetchData()
@@ -80,9 +81,9 @@ struct LoadingView: View {
                                )
                                .fsAlertModifier(
                                 isPresented: $viewModel.showDietPlanGenerationAlert,
-                                title: "Diet Plan Already Generated",
-                                message: "You can only generate one diet plan at a time. Please wait before trying again.",
-                                confirmButtonText: "OK",
+                                title: "diet_plan_already_generated".localized(),
+                                message: "one_diet_plan_at_a_time".localized(),
+                                confirmButtonText: "ok".localized(),
                                 confirmAction: {
                                     withAnimation {
                                         selectedTabRaw = MainTabView.Tab.mealPlans.rawValue

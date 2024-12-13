@@ -13,7 +13,7 @@ class DetailsAboutMeVM: BaseViewModel {
     @Published var genderOptions: [FSDropdownItemModel] = []
     @Published var goToBMIInputPage = false
     @StateObject private var healthKitManager = HealthKitManager()
-    @Published var dropdownTitle: String = "Select Height"
+    @Published var dropdownTitle: String = "select_height".localized()
     @Published var lengthOptions: [FSDropdownItemModel] = []
     @Published var weightOptions: [FSDropdownItemModel] = []
     @Published var selectedLengthUnit: LengthUnit = .cm
@@ -21,8 +21,8 @@ class DetailsAboutMeVM: BaseViewModel {
     
     func fetchGenderItems() {
         self.genderOptions = [
-            FSDropdownItemModel(icon: "male", text: "Male"),
-            FSDropdownItemModel(icon: "female", text: "Female")
+            FSDropdownItemModel(icon: "male", text: "male".localized()),
+            FSDropdownItemModel(icon: "female", text: "female".localized())
         ]
     }
     
@@ -61,11 +61,11 @@ class DetailsAboutMeVM: BaseViewModel {
     
     func genderStringToHKBiologicalSex(_ gender: String) -> HKBiologicalSex? {
         switch gender.lowercased() {
-        case "male":
+        case "male".localized().lowercased():
             return .male
-        case "female":
+        case "female".localized().lowercased():
             return .female
-        case "other":
+        case "other".localized().lowercased():
             return .other
         default:
             return nil

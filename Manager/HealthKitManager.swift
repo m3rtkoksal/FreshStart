@@ -235,13 +235,13 @@ class HealthKitManager: ObservableObject {
                 let baselineHRV = 40.0
                 
                 if hrv < baselineHRV * 0.5 && heartRate > baselineHR + 25 {
-                    stressLevel = "Severe Stress"
+                    stressLevel = "severe_stress".localized()
                 } else if hrv < baselineHRV * 0.7 && heartRate > baselineHR + 15 {
-                    stressLevel = "High Stress"
+                    stressLevel = "high_stress".localized()
                 } else if hrv < baselineHRV * 0.85 || heartRate > baselineHR + 5 {
-                    stressLevel = "Moderate Stress"
+                    stressLevel = "moderate_stress".localized()
                 } else {
-                    stressLevel = "Low Stress"
+                    stressLevel = "low_stress".localized()
                 }
                 completion(stressLevel)
             }
@@ -404,6 +404,5 @@ class HealthKitManager: ObservableObject {
             }
         }
     }
-
 }
 

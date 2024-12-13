@@ -19,4 +19,5 @@ class ProfileVM: BaseViewModel {
     @Published var goToLeaveReview: Bool = false
     @Published var goToNotifications: Bool = false
     @Published var goToChangeUsername: Bool = false
+    @Published var goToChangeLanguage: Bool = false
 }

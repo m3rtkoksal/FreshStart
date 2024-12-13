@@ -11,11 +11,11 @@ import Foundation
 class FrequencyVM: BaseViewModel {
     @Published var goToAllergensView = false
     @Published var frequencyItems: [FrequencyItem] = [
-        FrequencyItem(numberOfMeals: 7, subtitle: "Breakfast, Lunch, Dinner and 4 Snacks",icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5", "Meal6", "Meal7"]),
-        FrequencyItem(numberOfMeals: 6, subtitle: "Breakfast, Lunch, Dinner and 3 Snacks", icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5", "Meal6"]),
-        FrequencyItem(numberOfMeals: 5, subtitle: "Breakfast, Lunch, Dinner and 2 Snacks", icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5"]),
-        FrequencyItem(numberOfMeals: 4, subtitle: "Breakfast, Lunch, Dinner and 1 Snack", icons: ["Meal1", "Meal2", "Meal3", "Meal5"]),
-        FrequencyItem(numberOfMeals: 3, subtitle: "Breakfast, Lunch and Dinner", icons: ["Meal1", "Meal3", "Meal5"]),
-        FrequencyItem(numberOfMeals: 2, subtitle: "Breakfast and Lunch or Dinner", icons: ["Meal1", "Meal3"]),
+        FrequencyItem(numberOfMeals: 7, subtitle: "frequency_7_meals_subtitle".localized(), icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5", "Meal6", "Meal7"]),
+        FrequencyItem(numberOfMeals: 6, subtitle: "frequency_6_meals_subtitle".localized(), icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5", "Meal6"]),
+        FrequencyItem(numberOfMeals: 5, subtitle: "frequency_5_meals_subtitle".localized(), icons: ["Meal1", "Meal2", "Meal3", "Meal4", "Meal5"]),
+        FrequencyItem(numberOfMeals: 4, subtitle: "frequency_4_meals_subtitle".localized(), icons: ["Meal1", "Meal2", "Meal3", "Meal5"]),
+        FrequencyItem(numberOfMeals: 3, subtitle: "frequency_3_meals_subtitle".localized(), icons: ["Meal1", "Meal3", "Meal5"]),
+        FrequencyItem(numberOfMeals: 2, subtitle: "frequency_2_meals_subtitle".localized(), icons: ["Meal1", "Meal3"]),
     ]
 }

@@ -42,18 +42,18 @@ struct BadgeDetailView: View {
             }
             .padding(20)
             VStack(spacing: 30) {
-                Text("Criteria: \(badge.criteria)")
+                Text("\("criteria".localized() )\(badge.criteria)")
                     .font(.montserrat(.regular, size: 14))
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.black)
                 
                 if let achievementDate = badge.achievementDate {
-                    Text("Achieved on: \(achievementDate.getShortDate())")
+                    Text("\("achieved_on".localized() )\(achievementDate.getShortDate())")
                         .foregroundColor(.green)
                         .underline()
                         .font(.montserrat(.bold, size: 20))
                 } else {
-                    Text("Not Achieved Yet")
+                    Text("not_achieved_yet".localized())
                         .font(.montserrat(.bold, size: 20))
                         .foregroundColor(.red)
                         .underline()

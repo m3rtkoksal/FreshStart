@@ -28,10 +28,10 @@ struct StepsView: View {
     var body: some View {
         VStack {
             HStack(spacing: 2) {
-                Text("\(Int(dailyStepGoal)) steps")
+                Text("steps_goal".localized(Int(dailyStepGoal)))
                     .font(.montserrat(.bold, size: 14))
                     .foregroundColor(.mkOrange)
-                Text("per day")
+                Text("per_day".localized())
                     .font(.montserrat(.semiBold, size: 14))
                     .foregroundColor(.black)
             }
@@ -82,7 +82,7 @@ struct Label: View {
                 Text(String(steps))
                     .font(.montserrat(.semiBold, size: 18))
                     .foregroundColor(.black)
-                Text("Steps")
+                Text("steps_label".localized())
                     .font(.montserrat(.medium, size: 10))
                     .foregroundColor(.black)
                     .underline()
