@@ -12,23 +12,23 @@ struct PrizeExplanationElement: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             HStack {
-                Text("Prizes:")
+                Text("prizes".localized())
                     .font(.montserrat(.bold, size: 14))
                 Spacer()
             }
             .padding(.leading, 20)
             
             VStack(alignment: .leading, spacing: 10) {
-                PrizeExplanationList(rankText: "1st", prizeText: "7 days premium subscription")
-                PrizeExplanationList(rankText: "2nd", prizeText: "5 days premium subscription")
-                PrizeExplanationList(rankText: "3rd", prizeText: "3 days premium subscription")
-                PrizeExplanationList(rankText: "4th", prizeText: "2 days premium subscription")
-                PrizeExplanationList(rankText: "5th", prizeText: "1 day premium subscription")
+                PrizeExplanationList(rankText: "1st".localized(), prizeText: "7_days_premium".localized())
+                PrizeExplanationList(rankText: "2nd".localized(), prizeText: "5_days_premium".localized())
+                PrizeExplanationList(rankText: "3rd".localized(), prizeText: "3_days_premium".localized())
+                PrizeExplanationList(rankText: "4th".localized(), prizeText: "2_days_premium".localized())
+                PrizeExplanationList(rankText: "5th".localized(), prizeText: "1_day_premium".localized())
             }
             .padding(.vertical)
             
             HStack {
-                Text("Every Sunday at 00:00")
+                Text("sunday_midnight".localized())
                     .font(.montserrat(.semiBold, size: 14))
                     .underline()
                 Spacer()

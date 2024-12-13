@@ -15,11 +15,11 @@ struct ActivityElement: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-                Text(title)
+            Text(title.localized())
                     .foregroundStyle(.black)
                     .font(.montserrat(.bold, size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(subtitle)
+            Text(subtitle.localized())
                     .foregroundStyle(Color.black)
                     .font(.montserrat(.medium, size: 10))
                     .frame(maxWidth: .infinity, alignment: .leading)

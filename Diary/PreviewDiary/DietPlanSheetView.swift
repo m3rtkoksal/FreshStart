@@ -32,10 +32,10 @@ struct DietPlanSheetView: View {
         .background(Color.white)
         .fsAlertModifier(
             isPresented: $viewModel.showChangeAlert,
-            title: "Confirm Diet Plan Change",
-            message: "Are you sure you want to change your default diet plan?",
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel",
+            title: "confirm_diet_plan_change_title".localized(),
+            message: "confirm_diet_plan_change_message".localized(),
+            confirmButtonText: "confirm".localized(),
+            cancelButtonText: "cancel".localized(),
             confirmAction: {
                 withAnimation {
                     viewModel.saveDefaultPlanToFirestore(planId: dietPlan.id ?? "")
@@ -50,10 +50,10 @@ struct DietPlanSheetView: View {
         )
         .fsAlertModifier(
             isPresented: $viewModel.showDeleteAlert,
-            title: "Confirm Diet Plan Delete",
-            message: "Are you sure you want to delete this diet plan?",
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel",
+            title: "confirm_diet_plan_delete_title".localized(),
+            message: "confirm_diet_plan_delete_message".localized(),
+            confirmButtonText: "confirm".localized(),
+            cancelButtonText: "cancel".localized(),
             confirmAction: {
                 withAnimation {
                     viewModel.showIndicator = true
@@ -106,7 +106,7 @@ struct DietPlanSheetView: View {
     
     func ChangeDefaultButtonView() -> some View {
         VStack {
-            FreshStartButton(text: "Select This As My Diet Plan", backgroundColor: .mkPurple) {
+            FreshStartButton(text: "select_this_as_my_diet_plan".localized(), backgroundColor: .mkPurple) {
                 viewModel.showChangeAlert = true
             }
             .conditionalOpacityAndDisable(isEnabled: (dietPlan.id ?? "") != (ProfileManager.shared.user.defaultDietPlanId ?? ""))
@@ -119,7 +119,7 @@ struct DietPlanSheetView: View {
     }
     private func DeleteButtonView() -> some View {
         VStack(spacing: 10) {
-            FreshStartButton(text: "Delete Plan", backgroundColor: .mkOrange, textColor: .black) {
+            FreshStartButton(text: "delete_plan".localized(), backgroundColor: .mkOrange, textColor: .black) {
                 viewModel.showDeleteAlert = true
             }
         }

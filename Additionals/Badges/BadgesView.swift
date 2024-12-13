@@ -20,12 +20,12 @@ struct BadgesView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack {
                 FSTitle(
-                    title: "Your Achievements",
-                    subtitle: "Earn badges by completing challenges and reaching your goals.",
+                    title: "badge_view_title".localized(),
+                    subtitle: "badge_subtitle".localized(),
                     bottomPadding: -5,
                     color: .white)
                 if viewModel.badges.isEmpty {
-                    Text("Earn badges by completing challenges!")
+                    Text("empty_badge_text".localized())
                         .font(.montserrat(.medium, size: 16))
                         .foregroundColor(.gray)
                         .padding(.horizontal)

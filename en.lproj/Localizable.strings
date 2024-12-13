@@ -1,0 +1,507 @@
+/* 
+  Localizable.strings
+  FreshStart
+
+  Created by Mert Köksal on 11.12.2024.
+  
+*/
+
+//MARK: Badges
+"show_all_badges" = "Show All Badges";
+"criteria" = "Criteria: ";
+"achieved_on" = "Achieved on: ";
+"not_achieved_yet" = "Not Achieved Yet";
+"badge_view_title" = "Your Achievements";
+"badge_subtitle" = "Earn badges by completing challenges and reaching your goals.";
+"empty_badge_text" = "Earn badges by completing challenges!";
+
+"top_fat_burner_badge_title" = "Top Fat Burner";
+"top_fat_burner_badge_description" = "Awarded for burning the most fat this week.";
+"top_fat_burner_badge_criteria" = "Burn 2kg of fat in one week.";
+
+"ultimate_power_walker_badge_title" = "The Ultimate Power Walker";
+"ultimate_power_walker_badge_description" = "Complete 10,000 steps and burn 500 active calories in a single day.";
+"ultimate_power_walker_badge_criteria" = "Complete 10,000 steps and burn 500 active calories in a single day.";
+
+"muscle_maker_badge_title" = "Muscle Maker";
+"muscle_maker_badge_description" = "Awarded for gaining the most muscle this week.";
+"muscle_maker_badge_criteria" = "Gain 3kg of muscle in one week.";
+
+"healthy_starter_badge_title" = "Healthy Starter";
+"healthy_starter_badge_description" = "Successfully complete your first diet plan.";
+"healthy_starter_badge_criteria" = "Follow a full diet plan for one week.";
+
+"protein_pioneer_badge_title" = "Protein Pioneer";
+"protein_pioneer_badge_description" = "Achieve 150g of protein intake in a day.";
+"protein_pioneer_badge_criteria" = "Consume 150g or more protein in a single day.";
+
+"calorie_crusher_badge_title" = "Calorie Crusher";
+"calorie_crusher_badge_description" = "Awarded for burning 500 active calories in a single day.";
+"calorie_crusher_badge_criteria" = "Burn 500 active calories in one day.";
+
+"steady_metabolism_badge_title" = "Steady Metabolism";
+"steady_metabolism_badge_description" = "Maintain a consistent basal metabolic rate for a week.";
+"steady_metabolism_badge_criteria" = "Basal energy burn of 1500+ calories for 7 days.";
+
+"body_builder_badge_title" = "Body Builder";
+"body_builder_badge_description" = "Gain 1kg of lean body mass within two weeks.";
+"body_builder_badge_criteria" = "Increase lean body mass by 1 kg over two weeks.";
+
+"active_energy_burner_badge_title" = "Active Energy Burner";
+"active_energy_burner_badge_description" = "Awarded for burning 20,000 kcal in one week.";
+"active_energy_burner_badge_criteria" = "Burn the most active energy in a single week.";
+
+"strength_gainer_badge_title" = "Strength Gainer";
+"strength_gainer_badge_description" = "Awarded for increasing lean body mass in one month.";
+"strength_gainer_badge_criteria" = "Increase lean body mass by 1 kg in one month.";
+
+"weight_watcher_badge_title" = "Weight Watcher";
+"weight_watcher_badge_description" = "Awarded for losing weight consistently over the course of a month.";
+"weight_watcher_badge_criteria" = "Lose 2 kg of body weight in one month.";
+
+"step_master_badge_title" = "Step Master";
+"step_master_badge_description" = "Awarded for completing 8,000 steps today!";
+"step_master_badge_criteria" = "Complete 10,000 steps in a day.";
+
+"slim_shady_badge_title" = "Slim Shady";
+"slim_shady_badge_description" = "Awarded for losing 10kg weight consistently.";
+"slim_shady_badge_criteria" = "Lose 10 kg of body weight.";
+
+"water_tank_badge_title" = "Water Tank";
+"water_tank_badge_description" = "Awarded for drinking 2 litres of water for 30 days.";
+"water_tank_badge_criteria" = "Drink 2 litres of water for 30 days.";
+
+"calm_pulse_badge_title" = "Calm Pulse";
+"calm_pulse_badge_description" = "Keep your resting heart rate under 70 bpm for a week.";
+"calm_pulse_badge_criteria" = "Average resting heart rate ≤ 70 bpm for 7 consecutive days.";
+
+"balanced_rhythm_badge_title" = "Balanced Rhythm";
+"balanced_rhythm_badge_description" = "Improve your HRV by 10% within a month.";
+"balanced_rhythm_badge_criteria" = "10% increase in average HRV over 30 days.";
+
+"stress_resistor_badge_title" = "Stress Resistor";
+"stress_resistor_badge_description" = "Maintain a low stress score (<3) for 10 days.";
+"stress_resistor_badge_criteria" = "Daily stress score of ≤ 3 for 10 consecutive days.";
+
+"wellness_warrior_badge_title" = "Wellness Warrior";
+"wellness_warrior_badge_description" = "Meet your heart rate, HRV, and stress level goals in a single day.";
+"wellness_warrior_badge_criteria" = "Resting heart rate ≤ 70 bpm, HRV increase by 5%, stress score ≤ 3 for a day.";
+
+"notification_master_badge_title" = "Notification Master";
+"notification_master_badge_description" = "Ensure that local notifications are enabled and scheduled.";
+"notification_master_badge_criteria" = "Local notifications enabled and at least one notification scheduled.";
+
+//MARK: Health Chart
+"no_data_available" = "No data available.";
+"lost" = "lost";
+"gained" = "gained";
+"body_fat_change_message" = "You have";
+"of_your_body_fat" = "of your body fat.";
+"lean_body_mass_change_message" = "You have";
+"of_your_lean_body_mass" = "of your lean body mass.";
+"active_energy_change_message" = "You have";
+"kcal_active_energy" = "kcal active energy.";
+"change_message" = "You have";
+"kg_unit" = "kg.";
+"body_fat_percentage" = "Body Fat %";
+"lean_body_mass" = "Lean Body Mass";
+"active_energy" = "Active Energy";
+"weight" = "Weight";
+"date" = "Date";
+
+//MARK: Additional
+"charts" = "Charts";
+"badges" = "Badges";
+"rankings" = "Rankings";
+
+//MARK: Rankings
+"show_all_rankings" = "Show All Rankings";
+"user" = "User";
+"fat_lose_percentage" = "Fat Lose %";
+"muscle_gain" = "Muscle Gain";
+"score" = "Score";
+"muscle_mass" = "Muscle Mass";
+"daily_login" = "Daily Login";
+"all_rankings" = "All Rankings";
+"prizes" = "Prizes:";
+"1st" = "1st";
+"2nd" = "2nd";
+"3rd" = "3rd";
+"4th" = "4th";
+"5th" = "5th";
+"7_days_premium" = "7 days premium subscription";
+"5_days_premium" = "5 days premium subscription";
+"3_days_premium" = "3 days premium subscription";
+"2_days_premium" = "2 days premium subscription";
+"1_day_premium" = "1 day premium subscription";
+"sunday_midnight" = "Every Sunday at 00:00";
+"body_fat" = "Body Fat";
+
+//MARK: Diary
+"read_recipe_button" = "Read the recipe";
+"recreate_meal_button" = "Recreate this meal";
+"confirm_diet_plan_change_title" = "Confirm Diet Plan Change";
+"confirm_diet_plan_change_message" = "Are you sure you want to change your default diet plan?";
+"confirm_diet_plan_delete_title" = "Confirm Diet Plan Delete";
+"confirm_diet_plan_delete_message" = "Are you sure you want to delete this diet plan?";
+"confirm" = "Confirm";
+"cancel" = "Cancel";
+"n_a" = "N/A";
+"select_this_as_my_diet_plan" = "Select This As My Diet Plan";
+"delete_plan" = "Delete Plan";
+"your_recipe_for" = "Your Recipe For";
+"kcal" = "Kcal";
+"protein" = "Protein";
+"carbohydrate" = "Carbohydrate";
+"fat" = "Fat";
+"ingredients" = "Ingredients";
+"instructions" = "Instructions";
+"please_select_default_diet_plan" = "Please select a default diet plan";
+"multiple_diet_plans_message" = "You have multiple diet plans. Please select a default one.";
+"ok_button_text" = "OK";
+"my_goal_is_to" = "My goal is to";
+"you_can_create_more_plans" = "You can create %@ more plan(s)";
+"watch_ad_to_create_plan" = "You can watch an advertisement to create a new plan";
+"purchase_first_diet_plan" = "Purchase Your First Diet Plan";
+"no_diet_plans_available" = "You currently do not have any diet plans.";
+"create_new_plan" = "Create New Plan";
+"learn_more_diet_nutrition" = "Learn more about diet and nutrition";
+"water" = "Water";
+"tap_to_mark_meal_eaten" = "Tap “+” to mark your meal as eaten. Selected meals will reset each night automatically.";
+"remember_to_stay_hydrated" = "Remember to stay hydrated!";
+
+//MARK: Input Flow
+//Allergens
+"allergens_title" = "Allergens";
+"allergens_subtitle" = "If you have any allergies, please select your allergens from the list.";
+"allergen" = "Allergen";
+"allergen_type" = "Allergen Type";
+"severity_level" = "Severity Level";
+"add" = "Add";
+"create_diet_plan" = "Create Diet Plan";
+
+//DetailsAboutMe
+"details_about_you" = "Details About You";
+"freshstart_needs_info" = "FreshStart needs to know a bit about your physiology to create the most suitable plan for you.";
+"please_select_gender" = "Please select your gender";
+"date_of_birth" = "Date of Birth";
+"how_tall_are_you" = "How tall are you?";
+"how_much_do_you_weight" = "How much do you weigh?";
+"next" = "Next";
+"select_height" = "Select Height";
+"male" = "Male";
+"female" = "Female";
+"other" = "Other";
+"not_set" = "Not Set";
+"unknown" = "Unknown";
+
+//Diet Preference
+"can_eat" = "You can eat";
+"cannot_eat" = "You can NOT eat";
+"diet_preference_title" = "Diet Preference";
+"diet_preference_subtitle" = "Please select your diet preference";
+"recommended" = "Recommended";
+
+"normal_title" = "Normal";
+"normal_description" = "No dietary restrictions, includes all food types.";
+"normal_info_description" = "The normal diet includes a wide variety of foods without any specific restrictions. It supports a balanced diet, and is the most common choice for people without dietary limitations.";
+"normal_info_can_eat" = "You can eat a wide range of foods including meats, vegetables, fruits, grains, dairy products, and fats.";
+"normal_info_cant_eat" = "There are no specific foods that need to be avoided.";
+
+"vegan_title" = "Vegan";
+"vegan_description" = "Excludes all animal products, including meat, fish, dairy, and eggs.";
+"vegan_info_description" = "A vegan diet excludes all animal-derived foods. It focuses on plant-based foods and aims to avoid all forms of animal exploitation.";
+"vegan_info_can_eat" = "You can eat fruits, vegetables, legumes, grains, nuts, seeds, and plant-based alternatives for dairy and meat.";
+"vegan_info_cant_eat" = "You must avoid all animal products including meat, fish, eggs, dairy, honey, and any products made with animal-derived ingredients.";
+
+"vegetarian_title" = "Vegetarian";
+"vegetarian_description" = "Excludes all meat and fish but includes dairy and eggs.";
+"vegetarian_info_description" = "A vegetarian diet excludes meat and fish, but includes other animal-derived products like dairy and eggs. It's often chosen for ethical, health, or environmental reasons.";
+"vegetarian_info_can_eat" = "You can eat fruits, vegetables, legumes, grains, dairy products, eggs, nuts, and seeds.";
+"vegetarian_info_cant_eat" = "You must avoid meat, poultry, fish, and seafood.";
+
+"pescatarian_title" = "Pescatarian";
+"pescatarian_description" = "Excludes all meat but includes fish, dairy, and eggs.";
+"pescatarian_info_description" = "A pescatarian diet excludes meat but includes fish, making it a fish-based diet that also allows for dairy and eggs.";
+"pescatarian_info_can_eat" = "You can eat fish, seafood, fruits, vegetables, grains, dairy, eggs, legumes, nuts, and seeds.";
+"pescatarian_info_cant_eat" = "You must avoid red meat (beef, pork) and poultry (chicken, turkey).";
+
+"flexitarian_title" = "Flexitarian";
+"flexitarian_description" = "Primarily plant-based but occasionally includes meat or fish.";
+"flexitarian_info_description" = "A flexitarian diet is a flexible approach that emphasizes plant-based foods but allows for occasional meat or fish. It’s perfect for those who want the benefits of a vegetarian diet but with flexibility.";
+"flexitarian_info_can_eat" = "You can eat mostly plant-based foods like vegetables, fruits, grains, legumes, and nuts, but occasionally enjoy meat or fish.";
+"flexitarian_info_cant_eat" = "There are no foods that are strictly prohibited, but limiting processed meats and excessive animal products is advised.";
+
+"no_red_meat_title" = "No Red Meat";
+"no_red_meat_description" = "Excludes beef, pork, and other red meats, but includes poultry, fish, dairy, and eggs.";
+"no_red_meat_info_description" = "A 'No Red Meat' diet eliminates red meats like beef and pork but allows for other types of animal protein like poultry, fish, and dairy. It’s often chosen for health reasons to reduce the risk of certain diseases.";
+"no_red_meat_info_can_eat" = "You can eat poultry, fish, seafood, dairy products, eggs, vegetables, fruits, and grains.";
+"no_red_meat_info_cant_eat" = "You must avoid beef, pork, lamb, and any other red meats.";
+
+"poultry_only_title" = "Poultry Only";
+"poultry_only_description" = "Includes only poultry (chicken, turkey, etc.), along with fish, dairy, and eggs.";
+"poultry_only_info_description" = "A poultry-only diet focuses on eating only poultry (such as chicken and turkey) along with fish, dairy, and eggs. It excludes red meat and may be chosen for various health reasons or dietary preferences.";
+"poultry_only_info_can_eat" = "You can eat poultry (chicken, turkey), fish, dairy, eggs, vegetables, fruits, and grains.";
+"poultry_only_info_cant_eat" = "You must avoid red meats (beef, pork, lamb) and any other meat sources besides poultry.";
+
+//Frequency
+"meals_per_day" = "%d meals per day:";
+"how_many_meals_title" = "How many meals";
+"how_many_meals_subtitle" = "Select how many meals do you eat a day including snacks";
+"frequency_7_meals_subtitle" = "Breakfast, Lunch, Dinner and 4 Snacks";
+"frequency_6_meals_subtitle" = "Breakfast, Lunch, Dinner and 3 Snacks";
+"frequency_5_meals_subtitle" = "Breakfast, Lunch, Dinner and 2 Snacks";
+"frequency_4_meals_subtitle" = "Breakfast, Lunch, Dinner and 1 Snack";
+"frequency_3_meals_subtitle" = "Breakfast, Lunch and Dinner";
+"frequency_2_meals_subtitle" = "Breakfast and Lunch or Dinner";
+
+//HealthKitPermission
+"health_data_title" = "Health Data";
+"health_data_description" = "FreshStart uses your calorie intake, fitness activities, height and weight, and other health related data to provide you with our customized services. \n\nThe core features of FreshStart can't function without such data. If you don't agree, you won't be able to use the app.";
+"export_data_from_apple_health" = "Export Data From Apple Health";
+"or_enter_manually" = "Or enter Manually";
+"enter_manually_button" = "Enter Manually";
+"agree_health_data_processing" = "By tapping 'Enter Manually', you agree to the processing of your health data.\n\n For more information have a look at our ";
+"privacy_policy" = "Privacy Policy.";
+
+//How Active
+"how_active_title" = "How active are you?";
+"how_active_subtitle" = "Exclude sports and strenuous activities like running, playing basketball, or working out.";
+"not_very_active" = "Not very active";
+"lightly_active" = "Lightly active";
+"active" = "Active";
+"very_active" = "Very active";
+
+"not_very_active_title" = "Not very active";
+"lightly_active_title" = "Lightly active";
+"active_title" = "Active";
+"very_active_title" = "Very active";
+
+"not_very_active_description" = "Spend most of the day sitting (e.g. desk job, bank teller)";
+"lightly_active_description" = "Spend a good part of the day on your feet (e.g. teacher, salesperson)";
+"active_description" = "Spend a good part of the day doing some physical activity (e.g. waiter, postal carrier)";
+"very_active_description" = "Spend most of the day doing heavy physical activity (e.g. construction worker, carpenter)";
+
+//Loading
+"creating_your_diet_plan" = "Creating your diet plan";
+"customizing_your_experience" = "Customizing your experience...";
+"analyzing_health_data" = "Analyzing your health data...";
+"adding_your_goal" = "Adding your goal...";
+"timeout" = "Timeout";
+"something_went_wrong" = "Something went wrong.";
+"retry" = "Retry";
+"diet_plan_already_generated" = "Diet Plan Already Generated";
+"one_diet_plan_at_a_time" = "You can only generate one diet plan at a time. Please wait before trying again.";
+"ok" = "OK";
+
+//Purpose
+"whats_your_goal" = "What’s your goal?";
+"lets_focus_on_one_goal" = "Let’s focus on one goal to begin with.";
+"lose_weight" = "Lose weight";
+"maintain_weight" = "Maintain weight";
+"gain_weight" = "Gain weight";
+"gain_muscle" = "Gain muscle";
+
+//MARK: Main Tab
+"diary_tab" = "Diary";
+"meal_plans_tab" = "Meal Plans";
+"additional_tab" = "Additional";
+"profile_tab" = "Profile";
+
+//MARK: Manager
+// HealthKit
+"severe_stress" = "Severe Stress";
+"high_stress" = "High Stress";
+"moderate_stress" = "Moderate Stress";
+"low_stress" = "Low Stress";
+
+//OpenAI
+"failed_to_fetch_response" = "Failed to fetch response from OpenAI.";
+"failed_to_decode_recipe" = "Failed to decode recipe data.";
+"failed_to_convert_response" = "Failed to convert response text to data.";
+"failed_to_parse_meal" = "Failed to parse meal from response.";
+
+//Notification
+"meal_reminder_title" = "Reminder";
+"meal_reminder_body" = "It looks like you haven't selected a meal yet. Don't forget to plan your meals!";
+"global_inactivity_reminder_title" = "It's been a while!";
+"global_inactivity_reminder_body" = "You haven't interacted with the app for a while. Don't forget to check your meal plan!";
+
+//MARK: Meal Plans
+//DonutChart
+"per_day" = "per day";
+"nutrients" = "Nutrients";
+"grams" = "%@ gr";
+
+//SavedPlan
+"your_saved_diet_plans" = "Your Saved Diet Plans";
+"saved_diet_plans_subtitle" = "You can see details of your previous meal plans from this list";
+"create_new_plan_button" = "Create New Plan";
+"more_plans_available" = "You can create %d more";
+"buy_more_plans" = "You can buy more diet plans from offers";
+
+//Stepview
+"steps_goal" = "%d steps";
+"steps_label" = "Steps";
+
+//SubscriptionElement
+"purchase_plans" = "Purchase Plans";
+"purchase_description" = "Get the best out of FreshStart. Create more meal plans, control hydration, add activity and weight.";
+
+//MARK: Offers
+"purchase" = "Purchase";
+"purchase_plans" = "Purchase Plans";
+"purchase_plans_subtitle" = "You can see packages from this list";
+"no_offerings" = "There are currently no offerings";
+"error_title" = "Error";
+"error_message" = "Something went wrong.";
+"ok_button" = "OK";
+
+//MARK: Profile
+"information_of_you" = "Information of You";
+"change_information" = "You can change your information in here";
+"update" = "Update";
+"first_name" = "First Name";
+"surname" = "Last name";
+"username" = "User name";
+
+//Resources
+"disclaimer_and_data_privacy_title" = "Disclaimer & Data Privacy";
+"Disclaimer & Data Privacy" = "Disclaimer & Data Privacy";
+"Our Promise to You" = "Our Promise to You";
+"Sources and Information Accuracy" = "Sources and Information Accuracy";
+"How We Use Your Health Data" = "How We Use Your Health Data";
+"Our Commitment to Privacy and Security" = "Our Commitment to Privacy and Security";
+"Questions?" = "Questions?";
+
+//MARK: Profile
+"profile.personal" = "Personal";
+"profile.user_type" = "User Type";
+"profile.username" = "Username";
+"profile.name" = "Name";
+"profile.surname" = "Surname";
+"profile.birthday" = "Birthday";
+"profile.email" = "Email";
+"profile.gender" = "Gender";
+"profile.height" = "Height";
+"profile.weight" = "Weight";
+"profile.body_fat_percentage" = "Body Fat Percentage";
+"profile.lean_body_mass" = "Lean Body Mass";
+"profile.resting_energy" = "Resting Energy";
+"profile.active_energy" = "Active Energy";
+"profile.language" = "Language";
+"profile.change_language" = "Change Language";
+
+"profile.general" = "General";
+"profile.notifications" = "Notifications";
+"profile.disclaimer" = "Disclaimer & Data Privacy";
+"profile.contact_support" = "Contact support";
+"profile.leave_review" = "Leave a review";
+"profile.confirm_delete_account" = "Confirm Account Deletion";
+"profile.delete_account_message" = "Are you sure you want to delete your account? This action cannot be undone.";
+"profile.delete_button" = "Delete";
+"profile.cancel_button" = "Cancel";
+"profile.contact_subject" = "Support Request";
+"profile.contact_body" = "Please describe your issue here.";
+
+//MARK: Register Login
+"login.welcome_title" = "Welcome to FreshStart";
+"login.welcome_subtitle" = "Hello there, sign in to continue!";
+"login.email_address" = "Email Address";
+"login.password" = "Password";
+"login.forgot_password" = "Forgot Password?";
+"login.login_button" = "Login";
+"login.or_login_with" = "Or Login with";
+"login.connect_with_google" = "Connect with Google";
+"login.connect_with_apple" = "Connect with Apple";
+"login.dont_have_account" = "Don’t have an account? ";
+"login.register_now" = "Register!";
+"login.alert_wrong_credentials_title" = "Wrong email or password";
+"login.alert_try_again" = "Try Again";
+
+//PasswordReset
+"password_reset.forgot_password_title" = "Forgot Password";
+"password_reset.forgot_password_subtitle" = "Please enter your email address to receive your password reset code";
+"password_reset.email_placeholder" = "Email Address";
+"password_reset.reset_password_button" = "Reset Password";
+"password_reset.password_reset_alert_title" = "Password Reset";
+"password_reset.ok_button" = "OK";
+
+//Register
+"registration.title" = "Registration";
+"registration.subtitle" = "Please enter your information to create new account";
+"registration.first_name_placeholder" = "First name";
+"registration.last_name_placeholder" = "Last name";
+"registration.email_placeholder" = "Email Address";
+"registration.password_placeholder" = "Password";
+"registration.create_account_button" = "Create Account";
+"registration.or_register_with" = "or Register with";
+"registration.connect_with_google_button" = "Connect with Google";
+"registration.connect_with_apple_button" = "Connect with Apple";
+"registration.already_have_account" = "Already have an account? ";
+"registration.login_button" = "Login!";
+"registration.done_button" = "Done";
+
+//Walkthrough
+"walkthrough.track_diet_water" = "Track your diet, water intake";
+"walkthrough.create_healthy_habits" = "Create healthy habits";
+"walkthrough.shape_lifestyle_goals" = "Shape your lifestyle goals";
+"walkthrough.track_activity" = "Track your activity";
+"walkthrough.customize_meals" = "Customize your meals";
+"walkthrough.lose_weight" = "Lose weight";
+"walkthrough.gain_muscle" = "Gain muscle";
+"walkthrough.maintain_weight" = "Maintain weight";
+"walkthrough.gain_weight" = "Gain weight";
+"walkthrough.ai_help" = "With the help of AI we will create a perfect diet plan that will help you to achieve your goal!";
+"walkthrough.ai_science_help" = "We use AI and science to help you see real results.";
+"walkthrough.personalized_diet_plan" = "You will get perfectly personalized Diet Plan tailored to your unique preferences, dietary restrictions, and lifestyle goals.";
+"walkthrough.know_more_about_you" = "To accurately set your goals, we’d like to know a bit more about you.";
+"walkthrough.lets_go" = "Let's go";
+"walkthrough.next" = "Next";
+"walkthrough.create_diet_plan_title" = "Create your perfect diet plan with";
+"walkthrough.start_healthy_journey" = "Start your healthy journey now";
+"walkthrough.define_goal_title" = "Define your goal";
+"walkthrough.welcome_to_new_you" = "Welcome to the new you!";
+"walkthrough.lets_go" = "Let's go";
+"walkthrough.next" = "Next";
+
+//MARK: Validation
+"validation.email_invalid" = "Invalid email format";
+"validation.password_invalid" = "Password must be at least 8 characters long and contain a number and special character";
+"validation.first_name_invalid" = "First name must be 2-30 characters long and use Turkish characters";
+"validation.last_name_invalid" = "Last name must be 2-30 characters long and use Turkish characters";
+"validation.username_invalid" = "Username must be 2-30 characters long and can contain Turkish characters, numbers, and dashes";
+"validation.date_invalid" = "Date must be in the format dd/MM/yyyy";
+
+"delete_account" = "Delete Account";
+"log_out" = "Log out";
+
+//MARK: Prompts
+"prompt_create" = "Create a personalized diet plan based on the following guidelines and user data. Make sure to strictly follow the rules, regardless of the user's purpose (e.g., weight loss, muscle gain, etc.). DO NOT change the meal format or any other instructions based on the purpose.";
+
+"prompt_rules_json_format" = "1. **JSON Format**: The response must be a valid JSON object with the following structure: {\"totalNutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"meals\": [{\"name\": STRING, \"nutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"items\": [{\"item\": STRING, \"quantity\": STRING}]}]}";
+
+"prompt_rules_total_nutrients" = "2. **Total Nutrients**: Include the total daily nutrient intake at the start of the JSON object in the \"totalNutrients\" field.";
+
+"prompt_rules_meals" = "3. **Meals**: Each meal must include a \"name\" (e.g., \"Breakfast\"), \"nutrients\" (summary for the meal), and an \"items\" array (list of food items with quantities).";
+
+"prompt_rules_meal_units" = "4. **Meal Units**: Only give meals in grams or pieces.";
+
+"prompt_rules_strict_json_only" = "5. **Strict JSON Only**: Do not include any additional text, comments, or explanations outside of the JSON object.";
+
+"prompt_user_data" = "User's Data: - Diet Preference: %@ - Allergens: %@ - Meals a day including snacks: %@ - Birthday: %@ - Height: %@ - Weight: %@ - Body Fat Percentage: %@ - Lean Body Mass: %@ - Active Energy: %@ - Activity Level: %@ - Resting Energy: %@ - Gender: %@ - Purpose: %@";
+
+"prompt_create_recipe" = "Create a personalized recipe based on the following meal information. Include 'name', 'totalNutrients', 'ingredients', and 'instructions' fields in the JSON response. Use this structure: {...}";
+
+"prompt_generate_alternative_meal" = "Generate a distinct alternative to the meal provided below. Follow all rules precisely and use different ingredients to create a new meal that is nutritionally similar but diverse in taste and preparation. Avoid using the same primary ingredients as much as possible.";
+
+"prompt_focus_on_variety" = "Focus on Variety: - Choose different ingredients or cuisine styles to ensure variety in taste and preparation. - Aim for a similar nutritional profile without repeating the original main ingredients.";
+
+"prompt_new_meal_name_and_ingredients" = "New Meal Name and Ingredients: - Name of the new meal will be Alternative \"%@\". - Give new meal according to title. Do not give salmon or beef if it is breakfast. Try to keep nutrients the same and do not make significant changes.";
+
+//Validation
+"text_should_be_at_least" = "Text should be at least %d characters long.";
+"invalid_input_format" = "Invalid input format.";
+
+"save" = "Save";
+

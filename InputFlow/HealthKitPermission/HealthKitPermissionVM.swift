@@ -24,8 +24,8 @@ class HealthKitPermissionVM: BaseViewModel {
     
     func fetchMenuItems() {
         self.menuPickerItems = [
-            FSDropdownItemModel(id: "0", icon: "male", text: "Male", hasArrow: false),
-            FSDropdownItemModel(id: "1", icon: "female", text: "Female", hasArrow: false)
+            FSDropdownItemModel(id: "0", icon: "male", text: "male".localized(), hasArrow: false),
+            FSDropdownItemModel(id: "1", icon: "female", text: "female".localized(), hasArrow: false)
         ]
     }
 }

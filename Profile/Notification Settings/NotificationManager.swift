@@ -134,8 +134,8 @@ class NotificationManager: ObservableObject {
         guard areNotificationsEnabled else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "Reminder"
-        content.body = "It looks like you haven't selected a meal yet. Don't forget to plan your meals!"
+        content.title = "meal_reminder_title".localized()
+        content.body = "meal_reminder_body".localized()
         content.sound = .default
         
         // Send notification immediately
@@ -160,8 +160,8 @@ class NotificationManager: ObservableObject {
         guard areNotificationsEnabled else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "It's been a while!"
-        content.body = "You haven't interacted with the app for a while. Don't forget to check your meal plan!"
+        content.title = "global_inactivity_reminder_title".localized()
+        content.body = "global_inactivity_reminder_body".localized()
         content.sound = .default
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)

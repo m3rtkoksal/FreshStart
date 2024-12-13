@@ -25,7 +25,7 @@ struct AdditionalBadgesView: View {
                     viewModel.goToBadgeView = true
                 } label: {
                     HStack {
-                        Text("Show All Badges")
+                        Text("show_all_badges")
                         Image(systemName: "chevron.right")
                     }
                     .font(.montserrat(.bold, size: 12))

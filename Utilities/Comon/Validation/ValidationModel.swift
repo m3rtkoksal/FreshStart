@@ -29,12 +29,30 @@ class ValidationModel: ObservableObject {
     }
 
     init() {
-        self.emailValidator = DefaultTextValidator(predicate: ValidatorHelper.emailPredicate, validationMessage: "Invalid email format")
-        self.passwordValidator = DefaultTextValidator(predicate: ValidatorHelper.passwordPredicate, validationMessage: "Password must be at least 8 characters long and contain a number and special character")
-        self.firstNameValidator = DefaultTextValidator(predicate: ValidatorHelper.firstNamePredicate, validationMessage: "First name must be 2-30 characters long and use Turkish characters")
-        self.lastNameValidator = DefaultTextValidator(predicate: ValidatorHelper.lastNamePredicate, validationMessage: "Last name must be 2-30 characters long and use Turkish characters")
-        self.usernameValidator = DefaultTextValidator(predicate: ValidatorHelper.usernamePredicate, validationMessage: "Username must be 2-30 characters long and can contain Turkish characters, numbers, and dashes")
-        self.dateValidator = DefaultTextValidator(predicate: ValidatorHelper.datePredicate, validationMessage: "Date must be in the format dd/MM/yyyy")
+        self.emailValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.emailPredicate,
+            validationMessage: "validation.email_invalid".localized()
+        )
+        self.passwordValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.passwordPredicate,
+            validationMessage: "validation.password_invalid".localized()
+        )
+        self.firstNameValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.firstNamePredicate,
+            validationMessage: "validation.first_name_invalid".localized()
+        )
+        self.lastNameValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.lastNamePredicate,
+            validationMessage: "validation.last_name_invalid".localized()
+        )
+        self.usernameValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.usernamePredicate,
+            validationMessage: "validation.username_invalid".localized()
+        )
+        self.dateValidator = DefaultTextValidator(
+            predicate: ValidatorHelper.datePredicate,
+            validationMessage: "validation.date_invalid".localized()
+        )
     }
 
     // Optionally validate all fields manually

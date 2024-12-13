@@ -19,9 +19,10 @@ struct FrequencyView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing:20) {
                 FSTitle(
-                    title: "How many meals",
-                    subtitle: "Select how many meals do you eat a day including snacks",
-                    bottomPadding: 0)
+                    title: "how_many_meals_title".localized(),
+                    subtitle: "how_many_meals_subtitle".localized(),
+                    bottomPadding: 0
+                )
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 15) {
                         ForEach(viewModel.frequencyItems, id: \.self) { frequency in
@@ -36,7 +37,7 @@ struct FrequencyView: View {
                     }
                     .padding(.vertical, 10)
                 }
-                FreshStartButton(text: "Next", backgroundColor: .mkOrange.opacity(0.9)) {
+                FreshStartButton(text: "next".localized(), backgroundColor: .mkOrange.opacity(0.9)) {
                     viewModel.showIndicator = true
                     ProfileManager.shared.setUserMealFrequency(selectedFrequency?.numberOfMeals ?? 0)
                     viewModel.goToAllergensView = true

@@ -47,28 +47,28 @@ struct DiaryElement: View {
                     
                     HStack {
                         VStack {
-                            Text("Kcal")
+                            Text("kcal".localized())
                                 .foregroundColor(.mkPurple)
                             Text("\(self.kcal)")
                                 .foregroundColor(.black)
                         }
                         .frame(maxWidth: .infinity)
                         VStack {
-                            Text("Protein")
+                            Text("protein".localized())
                                 .foregroundColor(.mkPurple)
                             Text("\(self.protein) gr")
                                 .foregroundColor(.black)
                         }
                         .frame(maxWidth: .infinity)
                         VStack {
-                            Text("Carbohydrate")
+                            Text("carbohydrate".localized())
                                 .foregroundColor(.mkPurple)
                             Text("\(self.carbohydrate) gr")
                                 .foregroundColor(.black)
                         }
                         .frame(maxWidth: .infinity)
                         VStack {
-                            Text("Fat")
+                            Text("fat".localized())
                                 .foregroundColor(.mkPurple)
                             Text("\(self.fat) gr")
                                 .foregroundColor(.black)

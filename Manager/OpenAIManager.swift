@@ -39,7 +39,7 @@ class OpenAIManager: ObservableObject {
                     }
                 } else {
                     self.showAlert = true
-                    self.alertMessage = "Failed to fetch response from OpenAI."
+                    self.alertMessage = "failed_to_fetch_response".localized()
                     completion(nil)
                 }
             }
@@ -60,7 +60,7 @@ class OpenAIManager: ObservableObject {
             DispatchQueue.main.async {
                 guard let responseText = responseText, !responseText.isEmpty else {
                     self.showAlert = true
-                    self.alertMessage = "Failed to fetch response from OpenAI."
+                    self.alertMessage = "failed_to_fetch_response".localized()
                     completion(nil)
                     return
                 }
@@ -76,12 +76,12 @@ class OpenAIManager: ObservableObject {
                     } catch {
                         print("Failed to decode JSON: \(error)")
                         self.showAlert = true
-                        self.alertMessage = "Failed to decode recipe data."
+                        self.alertMessage = "failed_to_decode_recipe".localized()
                         completion(nil)
                     }
                 } else {
                     self.showAlert = true
-                    self.alertMessage = "Failed to convert response text to data."
+                    self.alertMessage = "failed_to_convert_response".localized()
                     completion(nil)
                 }
             }
@@ -118,13 +118,13 @@ class OpenAIManager: ObservableObject {
                         } catch {
                             print("Failed to decode JSON: \(error)")
                             self.showAlert = true
-                            self.alertMessage = "Failed to parse meal from response."
+                            self.alertMessage = "failed_to_parse_meal".localized()
                             completion(nil)
                         }
                     } else {
                         print("Failed to convert responseText to Data")
                         self.showAlert = true
-                        self.alertMessage = "Failed to parse meal from response."
+                        self.alertMessage = "failed_to_convert_response".localized()
                         completion(nil)
                     }
                 }

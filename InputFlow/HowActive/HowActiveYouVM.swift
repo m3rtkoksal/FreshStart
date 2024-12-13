@@ -9,21 +9,33 @@
 import SwiftUI
 
 enum ActivityLevel: String, CaseIterable {
-    case notVeryActive = "Not very active"
-    case lightlyActive = "Lightly active"
-    case active = "Active"
-    case veryActive = "Very active"
+    case notVeryActive = "not_very_active"
+    case lightlyActive = "lightly_active"
+    case active = "active"
+    case veryActive = "very_active"
     
+    var localizedTitle: String {
+        switch self {
+        case .notVeryActive:
+            return "not_very_active_title".localized()
+        case .lightlyActive:
+            return "lightly_active_title".localized()
+        case .active:
+            return "active_title".localized()
+        case .veryActive:
+            return "very_active_title".localized()
+        }
+    }
     var description: String {
         switch self {
         case .notVeryActive:
-            return "Spend most of the day sitting (e.g. desk job, bank teller)"
+            return "not_very_active_description".localized()
         case .lightlyActive:
-            return "Spend a good part of the day on your feet (e.g. teacher, salesperson)"
+            return "lightly_active_description".localized()
         case .active:
-            return "Spend a good part of the day doing some physical activity (e.g. waiter, postal carrier)"
+            return "active_description".localized()
         case .veryActive:
-            return "Spend most of the day doing heavy physical activity (e.g. construction worker, carpenter)"
+            return "very_active_description".localized()
         }
     }
 }
@@ -35,7 +47,7 @@ class HowActiveYouVM: BaseViewModel {
     
     func fetchActivityItems() {
         self.activityItems = ActivityLevel.allCases.map { level in
-            ActivityItem(title: level.rawValue, subtitle: level.description)
+            ActivityItem(title: level.localizedTitle, subtitle: level.description)
         }
     }
     
@@ -52,7 +64,7 @@ class HowActiveYouVM: BaseViewModel {
                 activityLevel = .veryActive
             }
             
-            self.selectedActivity = activityItems.first { $0.title == activityLevel.rawValue }
+        self.selectedActivity = activityItems.first { $0.title == activityLevel.localizedTitle }
         }
 }
     

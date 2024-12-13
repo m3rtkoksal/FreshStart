@@ -18,13 +18,13 @@ struct OffersView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack {
                 FSTitle(
-                    title: "Purchase Plans",
-                    subtitle: "You can see packages from this list",
+                    title: "purchase_plans".localized(),
+                    subtitle: "purchase_plans_subtitle".localized(),
                     bottomPadding: -20)
                 
                 if viewModel.offers.isEmpty {
                     Spacer()
-                    Text("There are currently no offerings")
+                    Text("no_offerings".localized())
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     Spacer()
@@ -57,9 +57,9 @@ struct OffersView: View {
         )
         .fsAlertModifier(
             isPresented: $viewModel.showAlert,
-            title: "Error",
-            message: "Something went wrong.",
-            confirmButtonText: "OK",
+            title: "error_title".localized(),
+            message: "error_message".localized(),
+            confirmButtonText: "ok_button".localized(),
             confirmAction: {
                 withAnimation {
                     viewModel.showAlert = false

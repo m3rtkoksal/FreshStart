@@ -20,9 +20,9 @@ class AdditionalRankingsVM: BaseViewModel {
     @Published var isTopFive: Bool = false
     @Published var showAllRanking: Bool = false
     @Published var chartSegmentItems: [SegmentTitle] = [
-        SegmentTitle(title: "Body Fat %"),
-        SegmentTitle(title: "Muscle Mass"),
-        SegmentTitle(title: "Daily Login")
+        SegmentTitle(title: "body_fat_percentage".localized()),
+        SegmentTitle(title: "muscle_mass".localized()),
+        SegmentTitle(title: "daily_login".localized())
     ]
     @Published var bodyFatRankings: [UserRanking] = []
     @Published var muscleMassRankings: [UserRanking] = []

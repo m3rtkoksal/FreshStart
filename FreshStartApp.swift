@@ -16,6 +16,20 @@ import GoogleMobileAds
 @main
 struct FreshStartApp: App {
     init() {
+        // Check if a selected language exists in UserDefaults
+        if let savedLanguageRawValue = UserDefaults.standard.string(forKey: "selectedLanguage"),
+           let savedLanguage = LanguageType(rawValue: savedLanguageRawValue) {
+            // If there's a saved language, use it
+            LanguageHelper.shared.setLanguage(savedLanguage)
+            print("Using saved language: \(savedLanguage.rawValue)")
+        } else {
+            // If no saved language, use the device's preferred language
+            let deviceLanguage = LanguageHelper.shared.deviceLanguage
+            LanguageHelper.shared.setLanguage(deviceLanguage)
+            print("Using device language: \(deviceLanguage.rawValue)")
+        }
+        
+        // Disable bounces on UIScrollView globally
         UIScrollView.appearance().bounces = false
     }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -61,7 +75,7 @@ struct FreshStartApp: App {
                 }
                 
             case .background:
-                NotificationManager.shared.stopInactivityTimer()   // Stop timer when app goes to background
+                NotificationManager.shared.stopInactivityTimer()
             default:
                 break
             }

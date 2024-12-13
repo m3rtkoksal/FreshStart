@@ -29,7 +29,7 @@ class ValidatorHelper {
     static func validateText(_ text: String, predicate: NSPredicate, minLength: Int? = nil) -> (isValid: Bool, errorMessage: String) {
         // Check minLength
         if let minLength = minLength, text.count < minLength {
-            return (false, "Text should be at least \(minLength) characters long.")
+            return (false, "text_should_be_at_least".localized(minLength))
         }
         
         // Check predicate validation
@@ -37,7 +37,7 @@ class ValidatorHelper {
         if isValid {
             return (true, "")
         } else {
-            return (false, "Invalid input format.")
+            return (false, "invalid_input_format".localized())
         }
     }
     

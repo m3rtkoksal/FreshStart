@@ -29,10 +29,11 @@ struct PurposeElement: View {
                         .resizable()
                         .frame(width: 45, height: 45)
                 }
-                .padding(.horizontal)
+                .padding(.leading, 30)
+                .padding(.trailing, 3)
             }
             .frame(height: 46)
-            .padding(.horizontal, 33)
+            .padding(.horizontal, 20)
             .contentShape(Rectangle())
     }
 }

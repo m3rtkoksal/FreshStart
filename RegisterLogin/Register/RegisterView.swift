@@ -31,28 +31,29 @@ struct RegisterView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         FSTitle(
-                            title: "Registration",
-                            subtitle: "Please enter your information to create new account",
-                            bottomPadding: 10)
+                            title: "registration.title".localized(),
+                            subtitle: "registration.subtitle".localized(),
+                            bottomPadding: 10
+                        )
                         VStack(spacing: 10){
                             ValidatingTextField(text: $validationModel.firstName,
                                                 validator: validationModel.firstNameValidator,
-                                                placeholder: "First name")
+                                                placeholder: "registration.first_name_placeholder".localized())
                             .autocapitalization(.none)
                             ValidatingTextField(text: $validationModel.lastName,
                                                 validator: validationModel.lastNameValidator,
-                                                placeholder: "Last name")
+                                                placeholder: "registration.last_name_placeholder".localized())
                             .autocapitalization(.none)
                             ValidatingTextField(text: $validationModel.email,
                                                 validator: validationModel.emailValidator,
-                                                placeholder: "Email Address")
+                                                placeholder: "registration.email_placeholder".localized())
                             .autocapitalization(.none)
                             
                             SecureValidatingTextField(text: $validationModel.password,
                                                       validator: validationModel.passwordValidator,
-                                                      placeholder: "Password")
+                                                      placeholder: "registration.password_placeholder".localized())
                             VStack(spacing: 40) {
-                                FreshStartButton(text: "Create Account", backgroundColor: .mkOrange) {
+                                FreshStartButton(text: "registration.create_account_button".localized(), backgroundColor: .mkOrange) {
                                     self.viewModel.showIndicator = true
                                     self.signUp(
                                         email: validationModel.email,
@@ -68,17 +69,17 @@ struct RegisterView: View {
                                     validationModel.lastNameValidator.isValid
                                 )
                                 Spacer(minLength: geometry.size.height * 0.1)
-                                FreshStartDivider(title: "or Register with")
+                                FreshStartDivider(title: "registration.or_register_with".localized())
                                 VStack(spacing: 10) {
                                     FreshStartButton(
                                         image: "google-icon",
-                                        text: "Connect with Google",
+                                        text: "registration.connect_with_google_button".localized(),
                                         backgroundColor: .white) {
                                             viewModel.signUpWithGoogle()
                                         }
                                     FreshStartButton(
                                         image: "apple_icon",
-                                        text: "Connect with Apple  ",
+                                        text: "registration.connect_with_apple_button".localized(),
                                         backgroundColor: .mkPurple,
                                         textColor: .white) {
                                             viewModel.signUpWithApple()
@@ -88,9 +89,9 @@ struct RegisterView: View {
                                 Button(action: {
                                     viewModel.goToLogin = true
                                 }) {
-                                    Text("Already have an account? ")
+                                    Text("registration.already_have_account".localized())
                                         .font(.montserrat(.medium, size: 15)) +
-                                    Text("Login!")
+                                    Text("registration.login_button".localized())
                                         .font(.montserrat(.bold, size: 15))
                                 }
                                 .foregroundColor(.black)
@@ -104,9 +105,9 @@ struct RegisterView: View {
             }
             .fsAlertModifier(
                 isPresented: $showAlert,
-                title: errorTitle,
+                title: errorTitle.localized(),
                 message: errorMessage.description,
-                confirmButtonText: "Done",
+                confirmButtonText: "registration.done_button".localized(),
                 confirmAction: {
                     withAnimation {
                         showAlert = false

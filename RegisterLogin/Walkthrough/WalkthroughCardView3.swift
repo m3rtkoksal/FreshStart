@@ -13,11 +13,11 @@ struct WalkthroughCardView3: View {
     let onNext: () -> Void
     let isLastCard: Bool
     let walkthrough3ListData: [String] = [
-        "Lose weight",
-        "Gain muscle",
-        "Maintain weight",
-        "Gain weight"
-        ]
+        "walkthrough.lose_weight".localized(),
+        "walkthrough.gain_muscle".localized(),
+        "walkthrough.maintain_weight".localized(),
+        "walkthrough.gain_weight".localized()
+    ]
     
     // MARK: - BODY
     var body: some View {
@@ -35,7 +35,7 @@ struct WalkthroughCardView3: View {
             }
             .padding(.top,40)
             .padding(.leading, 30)
-            Text("With the help of AI we will create a perfect diet plan that will help you to achieve your goal!")
+            Text("walkthrough.ai_help".localized())
                 .font(.montserrat(.regular, size: 20))
                 .foregroundStyle(.white)
                 .padding(.top,40)

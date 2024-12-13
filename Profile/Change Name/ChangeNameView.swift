@@ -32,8 +32,8 @@ struct ChangeNameView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack {
                 FSTitle(
-                    title: "Information of You",
-                    subtitle: "You can change your information in here")
+                    title: "information_of_you".localized(),
+                    subtitle: "change_information".localized())
                 ValidatingTextField(
                     text: getFieldBinding(),
                     validator: getFieldValidator(),
@@ -43,7 +43,7 @@ struct ChangeNameView: View {
                     validateField(newValue)
                 }
                 Spacer()
-                FreshStartButton(text: "Update", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "update".localized(), backgroundColor: .mkOrange) {
                     self.updateFieldValue()
                     self.dismiss()
                 }
@@ -78,9 +78,9 @@ struct ChangeNameView: View {
     
     private func getPlaceholder() -> String {
         switch fieldType {
-        case .firstName: return ProfileManager.shared.user.firstName ?? "First name"
-        case .surname: return ProfileManager.shared.user.lastName ?? "Surname"
-        case .username: return ProfileManager.shared.user.userName ?? "Username"
+        case .firstName: return ProfileManager.shared.user.firstName ?? "first_name".localized()
+        case .surname: return ProfileManager.shared.user.lastName ?? "surname".localized()
+        case .username: return ProfileManager.shared.user.userName ?? "username".localized()
         }
     }
     private func updateFieldValue() {

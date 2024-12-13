@@ -90,7 +90,11 @@ struct DiaryView: View {
                     viewModel.fetchMaxCountFromFirestore()
                     if let cachedDietPlan = ProfileManager.shared.user.defaultDietPlan {
                         ProfileManager.shared.setDefaultDietPlanId(cachedDietPlan.id ?? "")
-                        viewModel.dietPlan = cachedDietPlan
+                        if viewModel.dietPlan.id != cachedDietPlan.id {
+                            viewModel.fetchDietPlan { dietPlan in
+                                viewModel.dietPlan = dietPlan ?? cachedDietPlan
+                            }
+                        }
                         print("Using cached diet plan: \(cachedDietPlan)")
                         processDietPlan(cachedDietPlan)
                         viewModel.showIndicator = false
@@ -120,6 +124,7 @@ struct DiaryView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         viewModel.dietPlan = newDietPlan
                         processDietPlan(newDietPlan)
+                        
                     }
                 }
                 .onChange(of: ProfileManager.shared.user.defaultDietPlan) { newDietPlan in
@@ -132,9 +137,9 @@ struct DiaryView: View {
             } else {
                 if let dietPlanCount = ProfileManager.shared.user.dietPlanCount, dietPlanCount > 1 {
                     FreshStartAlertView(
-                        title: "Please select a default diet plan",
-                        message: "You have multiple diet plans. Please select a default one.",
-                        confirmButtonText: "OK",
+                        title: "please_select_default_diet_plan".localized(),
+                        message: "multiple_diet_plans_message".localized(),
+                        confirmButtonText: "ok_button_text".localized(),
                         cancelButtonText: nil,
                         confirmAction: {
                             selectedTabRaw = MainTabView.Tab.mealPlans.rawValue
@@ -185,7 +190,7 @@ struct DiaryView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
                     Spacer()
-                    Text("My goal is to")
+                    Text("my_goal_is_to".localized())
                         .font(.montserrat(.medium, size: 14))
                     Text(viewModel.dietPlan.purpose ?? "")
                         .font(.montserrat(.bold, size: 24))
@@ -217,14 +222,14 @@ struct DiaryView: View {
     func createRemainingPlansText() -> some View {
         Group {
             if viewModel.maxPlanCount > ProfileManager.shared.user.dietPlanCount ?? 0 {
-                Text("You can create \(viewModel.maxPlanCount - (ProfileManager.shared.user.dietPlanCount ?? 0)) more")
+                Text("you_can_create_more_plans".localized("\(viewModel.maxPlanCount - (ProfileManager.shared.user.dietPlanCount ?? 0))"))
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
                     .foregroundColor(.black)
                     .hiddenConditionally(isHidden: viewModel.showIndicator)
             } else {
-                Text("You can watch an advertisement to create new plan")
+                Text("watch_ad_to_create_plan".localized())
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
@@ -238,15 +243,15 @@ struct DiaryView: View {
     private func EmptyDietPlanView() -> some View {
         VStack {
             FSTitle(
-                title: "Purchase Your First Diet Plan",
-                subtitle: "You currently do not have any diet plans.")
+                title: "purchase_first_diet_plan".localized(),
+                subtitle: "no_diet_plans_available".localized())
             ScrollView {
                 SubscriptionElement()
                     .padding(.top)
             }
             Spacer()
             createRemainingPlansText()
-            FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+            FreshStartButton(text: "create_new_plan".localized(), backgroundColor: .mkOrange) {
                 viewModel.goToCreateNewPlan = true
             }
             .padding(.bottom, 150)
@@ -299,7 +304,7 @@ struct DiaryView: View {
                 leading:
                     FreshStartBackButton()
             )
-            Link("Learn more about diet and nutrition", destination: URL(string: "https://www.niddk.nih.gov/health-information/diet-nutrition")!)
+            Link("learn_more_diet_nutrition".localized(), destination: URL(string: "https://www.niddk.nih.gov/health-information/diet-nutrition")!)
                 .font(.montserrat(.medium, size: 14))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
@@ -326,7 +331,7 @@ struct DiaryView: View {
 struct InfoCardElement: View {
     var body:some View {
         HStack {
-            Text("Tap “+” to mark your meal as eaten. Selected meals will reset each night automatically.")
+            Text("tap_to_mark_meal_eaten".localized())
                 .font(.montserrat(.medium, size: 14))
             Spacer()
         }
@@ -344,9 +349,9 @@ struct NutrientChartExplainText: View {
                 .frame(height: 30)
             HStack(spacing: 15) {
                 Spacer()
-                NutrientChartText(color: .black, text: "Protein")
-                NutrientChartText(color: .mkOrange, text: "Carbohydrate")
-                NutrientChartText(color: .mkPurple, text: "Fat")
+                NutrientChartText(color: .black, text: "protein".localized())
+                NutrientChartText(color: .mkOrange, text: "carbohydrate".localized())
+                NutrientChartText(color: .mkPurple, text: "fat".localized())
             }
         }
         .padding(.trailing, 20)
@@ -374,7 +379,7 @@ struct WaterTrackView: View {
                     .overlay(
                         VStack {
                             HStack{
-                                Text("Water")
+                                Text("water".localized())
                                     .font(.montserrat(.semiBold, size: 18))
                                     .foregroundColor(.white)
                                     .underline()
@@ -394,7 +399,7 @@ struct WaterTrackView: View {
                             .padding(.horizontal, 40)
                             HStack{
                                 Spacer()
-                                Text("Remember to stay hydrated!")
+                                Text("remember_to_stay_hydrated".localized())
                                     .font(.montserrat(.medium, size: 12))
                                     .foregroundColor(.white)
                                 Image("infoWater")

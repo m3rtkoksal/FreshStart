@@ -9,23 +9,18 @@ import SwiftUI
 
 let walkthroughData: [Walkthrough] = [
     Walkthrough(
-        title: "Create your perfect diet plan with",
+        title: "walkthrough.create_diet_plan_title".localized(),
         headline: "FreshStart"
     ),
     Walkthrough(
-        title: "Start your healthy journey now"
+        title: "walkthrough.start_healthy_journey".localized()
     ),
     Walkthrough(
-        title: "Define your goal",
-        headline: "With the help of AI we will create a perfect diet plan that will help you to achieve your goal!"
+        title: "walkthrough.define_goal_title".localized(),
+        headline: "walkthrough.ai_help".localized()
     ),
     Walkthrough(
-        title: "Welcome to the new you!",
+        title: "walkthrough.welcome_to_new_you".localized(),
         headline: "FreshStart"
     )
 ]
-
-
-//"We use AI and science to help you see real results.",
-//"You will get perfectly personalized Diet Plan tailored to your unique preferences, dietary restrictions and lifestyle goals.",
-//"To accurately set your goals, we’d like to know a bit more about you."

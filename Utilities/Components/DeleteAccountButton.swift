@@ -19,7 +19,7 @@ struct DeleteAccountButton: View {
         Button(action: {
             showDeleteAlert = true
         }) {
-            Text("Delete Account")
+            Text("delete_account".localized())
                 .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.black)
                 .padding(15)

@@ -52,7 +52,7 @@ struct MainTabView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .opacity(selectedTab == .diary ? 1 : 0.3)
-                            Text("Diary")
+                            Text("diary_tab".localized())
                                 .font(.montserrat(.medium, size: 10))
                                 .foregroundColor(selectedTab == .diary ? Color.black : .otherGray)
                         }
@@ -69,7 +69,7 @@ struct MainTabView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .opacity(selectedTab == .mealPlans ? 1 : 0.3)
-                            Text("Meal Plans")
+                            Text("meal_plans_tab".localized())
                                 .font(.montserrat(.medium, size: 10))
                                 .foregroundColor(selectedTab == .mealPlans ? Color.black : .otherGray)
                         }
@@ -85,7 +85,7 @@ struct MainTabView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .opacity(selectedTab == .additional ? 1 : 0.3)
-                            Text("Additional")
+                            Text("additional_tab".localized())
                                 .font(.montserrat(.medium, size: 10))
                                 .foregroundColor(selectedTab == .additional ? Color.black : .otherGray)
                         }
@@ -102,7 +102,7 @@ struct MainTabView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .opacity(selectedTab == .profile ? 1 : 0.3)
-                            Text("Profile")
+                            Text("profile_tab".localized())
                                 .font(.montserrat(.medium, size: 10))
                                 .foregroundColor(selectedTab == .profile ? Color.black : .otherGray)
                         }

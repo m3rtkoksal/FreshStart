@@ -18,9 +18,10 @@ struct HowActiveYouView: View {
                showIndicator: $viewModel.showIndicator) {
             VStack(spacing:20) {
                 FSTitle(
-                    title: "How active are you?",
-                    subtitle: "Exclude sports and strenuous activities like running, playing basketball, or working out.",
-                    bottomPadding: 0)
+                    title: "how_active_title".localized(),
+                    subtitle: "how_active_subtitle".localized(),
+                    bottomPadding: 0
+                )
                 ScrollView {
                     VStack(spacing: 15) {
                         ForEach(viewModel.activityItems, id: \.self) { activity in
@@ -37,7 +38,7 @@ struct HowActiveYouView: View {
                 }
                 .padding(.bottom)
                 Spacer()
-                FreshStartButton(text: "Next", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "next".localized(), backgroundColor: .mkOrange) {
                     ProfileManager.shared.setUserActivity(viewModel.selectedActivity?.title ?? "")
                     viewModel.goToPurpose = true
                 }

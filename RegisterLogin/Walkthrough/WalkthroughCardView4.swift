@@ -14,9 +14,9 @@ struct WalkthroughCardView4: View {
     let onNext: () -> Void
     let isLastCard: Bool
     let walkthrough4ListData: [Walkthrough4Item] = [
-        Walkthrough4Item(text: "We use AI and science to help you see real results.", image: "AI"),
-        Walkthrough4Item(text: "You will get perfectly personalized Diet Plan tailored to your unique preferences, dietary restrictions and lifestyle goals.", image: "Notebook"),
-        Walkthrough4Item(text: "To accurately set your goals, we’d like to know a bit more about you.", image: "VectorHuman")
+        Walkthrough4Item(text: "walkthrough.ai_science_help".localized(), image: "AI"),
+        Walkthrough4Item(text: "walkthrough.personalized_diet_plan".localized(), image: "Notebook"),
+        Walkthrough4Item(text: "walkthrough.know_more_about_you".localized(), image: "VectorHuman")
     ]
     
     // MARK: - BODY
@@ -40,7 +40,7 @@ struct WalkthroughCardView4: View {
                 Spacer()
             }
             .padding(.top,40)
-            FreshStartButton(text: "Let's go", backgroundColor: .mkOrange, textColor: .black) {
+            FreshStartButton(text: isLastCard ? "walkthrough.lets_go".localized() : "walkthrough.next".localized(), backgroundColor: .mkOrange, textColor: .black) {
                 onNext()
             }
             .padding(.top,50)

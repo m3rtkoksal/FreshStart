@@ -47,7 +47,7 @@ struct ReCreateMealButton: View {
                 Divider()
                     .frame(height: 1)
                     .background(Color.black)
-                Text("Recreate this meal")
+                Text("recreate_meal_button".localized())
                     .frame(maxWidth: .infinity)
                     .frame(height: 33)
                     .background(Color.mkOrange.opacity(0.5))

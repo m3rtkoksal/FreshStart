@@ -26,18 +26,18 @@ struct AllergensView: View {
         ) {
             VStack {
                 FSTitle(
-                    title: "Allergens",
-                    subtitle: "If you have any allergies, please select your   allergens from the list.",
+                    title: "allergens_title".localized(),
+                    subtitle: "allergens_subtitle".localized(),
                     bottomPadding: 0)
                 ScrollView {
                     HStack {
-                        Text("Allergen")
+                        Text("allergen".localized())
                             .frame(width: allergenWidth, alignment: .center)
-                        Text("Allergen Type")
+                        Text("allergen_type".localized())
                             .frame(width: typeWidth, alignment: .center)
-                        Text("Severity Level")
+                        Text("severity_level".localized())
                             .frame(width: severityWidth, alignment: .center)
-                        Text("Add")
+                        Text("add".localized())
                             .frame(width: addWidth, alignment: .center)
                     }
                     .padding(.horizontal, 20)
@@ -66,7 +66,7 @@ struct AllergensView: View {
                         .frame(height: 30)
                 }
                 .padding(.top, 30)
-                FreshStartButton(text: "Create Diet Plan", backgroundColor: .mkOrange) {
+                FreshStartButton(text: "create_diet_plan".localized(), backgroundColor: .mkOrange) {
                     viewModel.showIndicator = true
                     // Set selected allergens to user input model
                     ProfileManager.shared.setUserAllergens(

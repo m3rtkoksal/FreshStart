@@ -36,7 +36,7 @@ struct AdditionalRankingsView: View {
                     viewModel.showAllRanking = true
                 } label: {
                     HStack {
-                        Text("Show All Rankings")
+                        Text("show_all_rankings".localized())
                         Image(systemName: "chevron.right")
                     }
                     .font(.montserrat(.bold, size: 12))
@@ -87,11 +87,11 @@ struct BodyFatRankingView: View {
                 FreshStartLoadingView()
             } else {
                 HStack {
-                    Text("Ranking")
-                    Text("User")
+                    Text("ranking".localized())
+                    Text("user".localized())
                         .padding(.leading, 40)
                     Spacer()
-                    Text("Fat Lose %")
+                    Text("fat_lose_percentage".localized())
                         .frame(alignment: .trailing)
                 }
                 .font(.montserrat(.medium, size: 10))
@@ -129,11 +129,11 @@ struct MuscleMassRankingView: View {
                 FreshStartLoadingView()
             } else {
                 HStack {
-                    Text("Ranking")
-                    Text("User")
+                    Text("ranking".localized())
+                    Text("user".localized())
                         .padding(.leading, 40)
                     Spacer()
-                    Text("Muscle Gain")
+                    Text("muscle_gain".localized())
                         .frame(alignment: .trailing)
                 }
                 .font(.montserrat(.medium, size: 10))
@@ -167,11 +167,11 @@ struct DailyLoginRankingView: View {
                 FreshStartLoadingView()
             } else {
                 HStack {
-                    Text("Ranking")
-                    Text("User")
+                    Text("ranking".localized())
+                    Text("user".localized())
                         .padding(.leading, 40)
                     Spacer()
-                    Text("Score")
+                    Text("score".localized())
                         .frame(alignment: .trailing)
                 }
                 .padding(.trailing, 50)
