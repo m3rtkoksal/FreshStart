@@ -43,11 +43,23 @@ struct LanguageElement: View {
                 return flag.image(style: .roundedRect)
             }
         case .EN:
-            if let flag = Flag(countryCode: "GB") {  // Using "GB" for English flag
+            if let flag = Flag(countryCode: "GB") {
                 return flag.image(style: .roundedRect)
             }
         case .UK:
-            if let flag = Flag(countryCode: "UA") {  // Using "UA" for Ukraine flag
+            if let flag = Flag(countryCode: "UA") {
+                return flag.image(style: .roundedRect)
+            }
+        case .ES:
+            if let flag = Flag(countryCode: "ES") {
+                return flag.image(style: .roundedRect)
+            }
+        case .FR:
+            if let flag = Flag(countryCode: "FR") {
+                return flag.image(style: .roundedRect)
+            }
+        case .DE:
+            if let flag = Flag(countryCode: "DE") {
                 return flag.image(style: .roundedRect)
             }
         }
