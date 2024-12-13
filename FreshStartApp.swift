@@ -22,11 +22,13 @@ struct FreshStartApp: App {
             // If there's a saved language, use it
             LanguageHelper.shared.setLanguage(savedLanguage)
             print("Using saved language: \(savedLanguage.rawValue)")
+            ProfileManager.shared.setLanguage(savedLanguage.string)
         } else {
             // If no saved language, use the device's preferred language
             let deviceLanguage = LanguageHelper.shared.deviceLanguage
             LanguageHelper.shared.setLanguage(deviceLanguage)
             print("Using device language: \(deviceLanguage.rawValue)")
+            ProfileManager.shared.setLanguage(deviceLanguage.string)
         }
         
         // Disable bounces on UIScrollView globally

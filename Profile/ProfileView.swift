@@ -109,8 +109,8 @@ struct ProfileView: View {
                         Divider()
                             .background(Color.black)
                         FreshStartProfileElement(title: "profile.language".localized(),
-                                         description: "",
-                                         buttonIcon: "pencil") {
+                                        description: ProfileManager.shared.user.language?.localized() ?? "",
+                                        buttonIcon: "pencil") {
                             viewModel.goToChangeLanguage = true
                         }
                         FreshStartProfileElement(title: "profile.notifications".localized(),

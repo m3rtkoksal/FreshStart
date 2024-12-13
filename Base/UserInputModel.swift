@@ -45,6 +45,7 @@ class UserInputModel: ObservableObject {
     @Published var hrv: Double?
     @Published var stressLevel: String?
     @Published var heartRate: Double?
+    @Published var language: String?
 }
 
 struct DietPlan: Codable, Equatable, Identifiable {

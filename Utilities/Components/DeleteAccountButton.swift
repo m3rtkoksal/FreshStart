@@ -14,6 +14,7 @@ import GoogleSignIn
 struct DeleteAccountButton: View {
     @Binding var showDeleteAlert: Bool
     @Binding var deleteConfirmation: Bool
+    @State private var currentLanguage = LanguageHelper.shared.currentLanguage
     
     var body: some View {
         Button(action: {
@@ -25,6 +26,9 @@ struct DeleteAccountButton: View {
                 .padding(15)
                 .background(Color.mkOrange)
                 .cornerRadius(38)
+                .onChange(of: LanguageHelper.shared.currentLanguage) { newValue in
+                    currentLanguage = newValue
+                }
                 .overlay(
                     RoundedRectangle(cornerRadius: 38)
                         .strokeBorder(Color.black, lineWidth: 2)

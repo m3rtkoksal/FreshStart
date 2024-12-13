@@ -20,22 +20,25 @@ struct ChangeLanguageView: View {
             VStack {
                 FSTitle(
                     title: "profile.change_language".localized(),
-                    subtitle: "")
-                
+                    subtitle: "",
+                    bottomPadding: 0)
                 ScrollView {
-                    ForEach(LanguageType.allCases, id: \.self) { language in
-                        LanguageElement(language: language,
-                                        isSelected: language == selectedLanguage)
-                        .padding(.top)
-                        .onTapGesture {
-                            selectedLanguage = language
+                    VStack(spacing: 15) {
+                        ForEach(LanguageType.allCases, id: \.self) { language in
+                            LanguageElement(language: language,
+                                            isSelected: language == selectedLanguage)
+                            .onTapGesture {
+                                selectedLanguage = language
+                            }
                         }
                     }
+                    .padding(.top, 10)
                 }
                 
                 FreshStartButton(text: "save".localized(), backgroundColor: .mkOrange) {
                     if let selectedLanguage = selectedLanguage {
                         LanguageHelper.shared.setLanguage(selectedLanguage)
+                        ProfileManager.shared.setLanguage(selectedLanguage.string)
                         self.dismiss()
                     }
                 }

@@ -32,6 +32,10 @@ final class ProfileManager: ObservableObject {
         AnalyticsHelper.setUserId(userId: id)
     }
     
+    func setLanguage(_ language: String) {
+        self.user.language = language
+    }
+    
     func setUserEmail(_ email: String) {
         self.user.email = email
     }

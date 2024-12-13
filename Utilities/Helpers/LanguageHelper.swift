@@ -40,11 +40,17 @@ enum LanguageType: String, CaseIterable {
 final class LanguageHelper {
     static let shared = LanguageHelper()
     private let defaults = UserDefaults.standard
+    var currentLanguage: LanguageType {
+        didSet {
+            UserDefaults.standard.set(currentLanguage.rawValue, forKey: "selectedLanguage")
+            Bundle.setLanguage(currentLanguage)
+            ProfileManager.shared.setLanguage(currentLanguage.string)
+        }
+    }
 
     // Function to set language
     func setLanguage(_ language: LanguageType) {
-        Bundle.setLanguage(language)  // Directly pass the LanguageType
-        UserDefaults.standard.set(language.rawValue, forKey: "selectedLanguage")
+        currentLanguage = language
     }
 
     var deviceLanguage: LanguageType {
@@ -80,11 +86,12 @@ final class LanguageHelper {
     }
 
     private init() {
+        currentLanguage = .EN
         if let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage"),
            let language = LanguageType(rawValue: savedLanguage) {
-            setLanguage(language)
+            currentLanguage = language
         } else {
-            setLanguage(deviceLanguage)
+            currentLanguage = deviceLanguage
         }
     }
 }
