@@ -1,0 +1,505 @@
+/* 
+  Localizable.strings
+  FreshStart
+
+  Created by Mert Köksal on 11.12.2024.
+  
+*/
+//MARK: Badges
+"show_all_badges" = "Afficher tous les badges";
+"criteria" = "Critères : ";
+"achieved_on" = "Atteint le : ";
+"not_achieved_yet" = "Pas encore atteint";
+"badge_view_title" = "Vos succès";
+"badge_subtitle" = "Gagnez des badges en relevant des défis et en atteignant vos objectifs.";
+"empty_badge_text" = "Gagnez des badges en relevant des défis !";
+
+"top_fat_burner_badge_title" = "Meilleur brûleur de graisse";
+"top_fat_burner_badge_description" = "Décerné pour avoir brûlé le plus de graisse cette semaine.";
+"top_fat_burner_badge_criteria" = "Brûlez 2 kg de graisse en une semaine.";
+
+"ultimate_power_walker_badge_title" = "Marcheur ultime";
+"ultimate_power_walker_badge_description" = "Complétez 10 000 pas et brûlez 500 calories actives en une journée.";
+"ultimate_power_walker_badge_criteria" = "Faites 10 000 pas et brûlez 500 calories actives en une journée.";
+
+"muscle_maker_badge_title" = "Constructeur de muscles";
+"muscle_maker_badge_description" = "Décerné pour avoir gagné le plus de muscles cette semaine.";
+"muscle_maker_badge_criteria" = "Gagnez 3 kg de muscle en une semaine.";
+
+"healthy_starter_badge_title" = "Démarrage sain";
+"healthy_starter_badge_description" = "Terminez avec succès votre premier plan de régime.";
+"healthy_starter_badge_criteria" = "Suivez un plan de régime complet pendant une semaine.";
+
+"protein_pioneer_badge_title" = "Pionnier des protéines";
+"protein_pioneer_badge_description" = "Atteignez un apport de 150 g de protéines en une journée.";
+"protein_pioneer_badge_criteria" = "Consommez 150 g ou plus de protéines en une journée.";
+
+"calorie_crusher_badge_title" = "Écraseur de calories";
+"calorie_crusher_badge_description" = "Décerné pour avoir brûlé 500 calories actives en une journée.";
+"calorie_crusher_badge_criteria" = "Brûlez 500 calories actives en une journée.";
+
+"steady_metabolism_badge_title" = "Métabolisme constant";
+"steady_metabolism_badge_description" = "Maintenez un taux métabolique basal constant pendant une semaine.";
+"steady_metabolism_badge_criteria" = "Brûlez 1500+ calories basales pendant 7 jours.";
+
+"body_builder_badge_title" = "Constructeur de corps";
+"body_builder_badge_description" = "Gagnez 1 kg de masse corporelle maigre en deux semaines.";
+"body_builder_badge_criteria" = "Augmentez la masse corporelle maigre de 1 kg en deux semaines.";
+
+"active_energy_burner_badge_title" = "Brûleur d'énergie actif";
+"active_energy_burner_badge_description" = "Décerné pour avoir brûlé 20 000 kcal en une semaine.";
+"active_energy_burner_badge_criteria" = "Brûlez le plus d'énergie active en une semaine.";
+
+"strength_gainer_badge_title" = "Gagnant en force";
+"strength_gainer_badge_description" = "Décerné pour avoir augmenté la masse corporelle maigre en un mois.";
+"strength_gainer_badge_criteria" = "Augmentez la masse corporelle maigre de 1 kg en un mois.";
+
+"weight_watcher_badge_title" = "Surveillant de poids";
+"weight_watcher_badge_description" = "Décerné pour avoir perdu du poids de manière constante pendant un mois.";
+"weight_watcher_badge_criteria" = "Perdez 2 kg de poids corporel en un mois.";
+
+"step_master_badge_title" = "Maître des pas";
+"step_master_badge_description" = "Décerné pour avoir fait 8 000 pas aujourd'hui.";
+"step_master_badge_criteria" = "Faites 10 000 pas en une journée.";
+
+"slim_shady_badge_title" = "Maigre et constant";
+"slim_shady_badge_description" = "Décerné pour avoir perdu 10 kg de poids de manière cohérente.";
+"slim_shady_badge_criteria" = "Perdez 10 kg de poids corporel.";
+
+"water_tank_badge_title" = "Réservoir d'eau";
+"water_tank_badge_description" = "Décerné pour avoir bu 2 litres d'eau pendant 30 jours.";
+"water_tank_badge_criteria" = "Buvez 2 litres d'eau pendant 30 jours.";
+
+"calm_pulse_badge_title" = "Pouls calme";
+"calm_pulse_badge_description" = "Maintenez votre fréquence cardiaque au repos en dessous de 70 bpm pendant une semaine.";
+"calm_pulse_badge_criteria" = "Fréquence cardiaque au repos moyenne ≤ 70 bpm pendant 7 jours consécutifs.";
+
+"balanced_rhythm_badge_title" = "Rythme équilibré";
+"balanced_rhythm_badge_description" = "Améliorez votre VRC de 10 % en un mois.";
+"balanced_rhythm_badge_criteria" = "Augmentez la VRC moyenne de 10 % en 30 jours.";
+
+"stress_resistor_badge_title" = "Résistant au stress";
+"stress_resistor_badge_description" = "Maintenez un score de stress faible (<3) pendant 10 jours.";
+"stress_resistor_badge_criteria" = "Score de stress quotidien ≤ 3 pendant 10 jours consécutifs.";
+
+"wellness_warrior_badge_title" = "Guerrier du bien-être";
+"wellness_warrior_badge_description" = "Atteignez vos objectifs de fréquence cardiaque, VRC et niveau de stress en une journée.";
+"wellness_warrior_badge_criteria" = "Fréquence cardiaque au repos ≤ 70 bpm, augmentation de la VRC de 5 %, score de stress ≤ 3 en une journée.";
+
+"notification_master_badge_title" = "Maître des notifications";
+"notification_master_badge_description" = "Assurez-vous que les notifications locales sont activées et programmées.";
+"notification_master_badge_criteria" = "Notifications locales activées et au moins une notification programmée.";
+
+//MARK: Health Chart
+"no_data_available" = "Aucune donnée disponible.";
+"lost" = "perdu";
+"gained" = "gagné";
+"body_fat_change_message" = "Vous avez";
+"of_your_body_fat" = "de votre masse grasse.";
+"lean_body_mass_change_message" = "Vous avez";
+"of_your_lean_body_mass" = "de votre masse maigre.";
+"active_energy_change_message" = "Vous avez";
+"kcal_active_energy" = "kcal d'énergie active.";
+"change_message" = "Vous avez";
+"kg_unit" = "kg.";
+"body_fat_percentage" = "% Masse Grasse";
+"lean_body_mass" = "Masse Maigre";
+"active_energy" = "Énergie Active";
+"weight" = "Poids";
+"date" = "Date";
+
+//MARK: Additional
+"charts" = "Graphiques";
+"badges" = "Badges";
+"rankings" = "Classements";
+
+//MARK: Rankings
+"show_all_rankings" = "Voir tous les classements";
+"user" = "Utilisateur";
+"fat_lose_percentage" = "% Perte de Graisse";
+"muscle_gain" = "Gain Musculaire";
+"score" = "Score";
+"muscle_mass" = "Masse Musculaire";
+"daily_login" = "Connexion Quotidienne";
+"all_rankings" = "Tous les Classements";
+"prizes" = "Prix :";
+"1st" = "1er";
+"2nd" = "2e";
+"3rd" = "3e";
+"4th" = "4e";
+"5th" = "5e";
+"7_days_premium" = "7 jours d'abonnement premium";
+"5_days_premium" = "5 jours d'abonnement premium";
+"3_days_premium" = "3 jours d'abonnement premium";
+"2_days_premium" = "2 jours d'abonnement premium";
+"1_day_premium" = "1 jour d'abonnement premium";
+"sunday_midnight" = "Tous les dimanches à 00:00";
+"body_fat" = "Masse Grasse";
+
+//MARK: Diary
+"read_recipe_button" = "Lire la recette";
+"recreate_meal_button" = "Recréer ce repas";
+"confirm_diet_plan_change_title" = "Confirmer le changement de plan alimentaire";
+"confirm_diet_plan_change_message" = "Êtes-vous sûr de vouloir changer votre plan alimentaire par défaut ?";
+"confirm_diet_plan_delete_title" = "Confirmer la suppression du plan alimentaire";
+"confirm_diet_plan_delete_message" = "Êtes-vous sûr de vouloir supprimer ce plan alimentaire ?";
+"confirm" = "Confirmer";
+"cancel" = "Annuler";
+"n_a" = "N/A";
+"select_this_as_my_diet_plan" = "Sélectionner ceci comme mon plan alimentaire";
+"delete_plan" = "Supprimer le plan";
+"your_recipe_for" = "Votre recette pour";
+"kcal" = "Kcal";
+"protein" = "Protéines";
+"carbohydrate" = "Glucides";
+"fat" = "Graisses";
+"ingredients" = "Ingrédients";
+"instructions" = "Instructions";
+"please_select_default_diet_plan" = "Veuillez sélectionner un plan alimentaire par défaut";
+"multiple_diet_plans_message" = "Vous avez plusieurs plans alimentaires. Veuillez en sélectionner un par défaut.";
+"ok_button_text" = "OK";
+"my_goal_is_to" = "Mon objectif est de";
+"you_can_create_more_plans" = "Vous pouvez créer %@ plan(s) supplémentaire(s)";
+"watch_ad_to_create_plan" = "Vous pouvez regarder une publicité pour créer un nouveau plan";
+"purchase_first_diet_plan" = "Achetez votre premier plan alimentaire";
+"no_diet_plans_available" = "Vous n'avez actuellement aucun plan alimentaire.";
+"create_new_plan" = "Créer un Nouveau Plan";
+"learn_more_diet_nutrition" = "En savoir plus sur le régime et la nutrition";
+"water" = "Eau";
+"tap_to_mark_meal_eaten" = "Touchez “+” pour marquer votre repas comme consommé. Les repas sélectionnés seront réinitialisés automatiquement chaque nuit.";
+"remember_to_stay_hydrated" = "N'oubliez pas de rester hydraté !";
+
+//MARK: Input Flow
+//Allergens
+"allergens_title" = "Allergènes";
+"allergens_subtitle" = "Si vous avez des allergies, veuillez sélectionner vos allergènes dans la liste.";
+"allergen" = "Allergène";
+"allergen_type" = "Type d'allergène";
+"severity_level" = "Niveau de sévérité";
+"add" = "Ajouter";
+"create_diet_plan" = "Créer un plan alimentaire";
+
+//DetailsAboutMe
+"details_about_you" = "Détails sur vous";
+"freshstart_needs_info" = "FreshStart a besoin de connaître un peu votre physiologie pour créer le plan le plus adapté pour vous.";
+"please_select_gender" = "Veuillez sélectionner votre sexe";
+"date_of_birth" = "Date de naissance";
+"how_tall_are_you" = "Quelle est votre taille ?";
+"how_much_do_you_weight" = "Quel est votre poids ?";
+"next" = "Suivant";
+"select_height" = "Sélectionnez la taille";
+"male" = "Homme";
+"female" = "Femme";
+"other" = "Autre";
+"not_set" = "Non défini";
+"unknown" = "Inconnu";
+
+//Diet Preference
+"can_eat" = "Vous pouvez manger";
+"cannot_eat" = "Vous ne pouvez PAS manger";
+"diet_preference_title" = "Préférences alimentaires";
+"diet_preference_subtitle" = "Veuillez sélectionner vos préférences alimentaires";
+"recommended" = "Recommandé";
+
+"normal_title" = "Normal";
+"normal_description" = "Aucune restriction alimentaire, inclut tous les types d'aliments.";
+"normal_info_description" = "Le régime normal inclut une grande variété d'aliments sans aucune restriction spécifique. Il favorise une alimentation équilibrée et est le choix le plus courant pour les personnes sans limitations alimentaires.";
+"normal_info_can_eat" = "Vous pouvez manger une large gamme d'aliments, y compris des viandes, des légumes, des fruits, des céréales, des produits laitiers et des graisses.";
+"normal_info_cant_eat" = "Il n'y a pas d'aliments spécifiques à éviter.";
+
+"vegan_title" = "Végétalien";
+"vegan_description" = "Exclut tous les produits d'origine animale, y compris la viande, le poisson, les produits laitiers et les œufs.";
+"vegan_info_description" = "Un régime végétalien exclut tous les aliments d'origine animale. Il se concentre sur les aliments à base de plantes et vise à éviter toute forme d'exploitation animale.";
+"vegan_info_can_eat" = "Vous pouvez manger des fruits, des légumes, des légumineuses, des céréales, des noix, des graines et des alternatives végétales pour les produits laitiers et la viande.";
+"vegan_info_cant_eat" = "Vous devez éviter tous les produits d'origine animale, y compris la viande, le poisson, les œufs, les produits laitiers, le miel et tout produit fabriqué avec des ingrédients d'origine animale.";
+
+"vegetarian_title" = "Végétarien";
+"vegetarian_description" = "Exclut toute viande et tout poisson, mais inclut les produits laitiers et les œufs.";
+"vegetarian_info_description" = "Un régime végétarien exclut la viande et le poisson, mais inclut d'autres produits d'origine animale comme les produits laitiers et les œufs. Il est souvent choisi pour des raisons éthiques, de santé ou environnementales.";
+"vegetarian_info_can_eat" = "Vous pouvez manger des fruits, des légumes, des légumineuses, des céréales, des produits laitiers, des œufs, des noix et des graines.";
+"vegetarian_info_cant_eat" = "Vous devez éviter la viande, la volaille, le poisson et les fruits de mer.";
+
+"pescatarian_title" = "Pescétarien";
+"pescatarian_description" = "Exclut toute viande mais inclut le poisson, les produits laitiers et les œufs.";
+"pescatarian_info_description" = "Un régime pescétarien exclut la viande mais inclut le poisson, ce qui en fait un régime basé sur le poisson qui permet également les produits laitiers et les œufs.";
+"pescatarian_info_can_eat" = "Vous pouvez manger du poisson, des fruits de mer, des fruits, des légumes, des céréales, des produits laitiers, des œufs, des légumineuses, des noix et des graines.";
+"pescatarian_info_cant_eat" = "Vous devez éviter la viande rouge (bœuf, porc) et la volaille (poulet, dinde).";
+
+"flexitarian_title" = "Flexitarien";
+"flexitarian_description" = "Principalement à base de plantes mais inclut occasionnellement de la viande ou du poisson.";
+"flexitarian_info_description" = "Un régime flexitarien est une approche flexible qui met l'accent sur les aliments à base de plantes mais permet occasionnellement de la viande ou du poisson. C'est parfait pour ceux qui veulent les avantages d'un régime végétarien avec de la flexibilité.";
+"flexitarian_info_can_eat" = "Vous pouvez manger principalement des aliments à base de plantes comme les légumes, les fruits, les céréales, les légumineuses et les noix, mais profiter occasionnellement de viande ou de poisson.";
+"flexitarian_info_cant_eat" = "Il n'y a pas d'aliments strictement interdits, mais il est conseillé de limiter les viandes transformées et les excès de produits animaux.";
+
+"no_red_meat_title" = "Sans viande rouge";
+"no_red_meat_description" = "Exclut le bœuf, le porc et autres viandes rouges, mais inclut la volaille, le poisson, les produits laitiers et les œufs.";
+"no_red_meat_info_description" = "Un régime 'Sans viande rouge' élimine les viandes rouges comme le bœuf et le porc mais permet d'autres types de protéines animales comme la volaille, le poisson et les produits laitiers. Il est souvent choisi pour des raisons de santé afin de réduire le risque de certaines maladies.";
+"no_red_meat_info_can_eat" = "Vous pouvez manger de la volaille, du poisson, des fruits de mer, des produits laitiers, des œufs, des légumes, des fruits et des céréales.";
+"no_red_meat_info_cant_eat" = "Vous devez éviter le bœuf, le porc, l'agneau et toutes les autres viandes rouges.";
+
+"poultry_only_title" = "Uniquement volaille";
+"poultry_only_description" = "Inclut uniquement la volaille (poulet, dinde, etc.), ainsi que le poisson, les produits laitiers et les œufs.";
+"poultry_only_info_description" = "Un régime 'Uniquement volaille' se concentre sur la consommation de volaille (comme le poulet et la dinde) ainsi que de poisson, de produits laitiers et d'œufs. Il exclut la viande rouge et peut être choisi pour diverses raisons de santé ou de préférences alimentaires.";
+"poultry_only_info_can_eat" = "Vous pouvez manger de la volaille (poulet, dinde), du poisson, des produits laitiers, des œufs, des légumes, des fruits et des céréales.";
+"poultry_only_info_cant_eat" = "Vous devez éviter les viandes rouges (bœuf, porc, agneau) et toutes les autres sources de viande sauf la volaille.";
+
+//Frequency
+"meals_per_day" = "%d repas par jour :";
+"how_many_meals_title" = "Combien de repas ?";
+"how_many_meals_subtitle" = "Sélectionnez le nombre de repas que vous mangez par jour, y compris les collations.";
+"frequency_7_meals_subtitle" = "Petit-déjeuner, Déjeuner, Dîner et 4 Collations";
+"frequency_6_meals_subtitle" = "Petit-déjeuner, Déjeuner, Dîner et 3 Collations";
+"frequency_5_meals_subtitle" = "Petit-déjeuner, Déjeuner, Dîner et 2 Collations";
+"frequency_4_meals_subtitle" = "Petit-déjeuner, Déjeuner, Dîner et 1 Collation";
+"frequency_3_meals_subtitle" = "Petit-déjeuner, Déjeuner et Dîner";
+"frequency_2_meals_subtitle" = "Petit-déjeuner et Déjeuner ou Dîner";
+
+//HealthKitPermission
+"health_data_title" = "Données de santé";
+"health_data_description" = "FreshStart utilise votre apport calorique, vos activités physiques, votre taille, votre poids et d'autres données de santé pour vous fournir des services personnalisés. \n\nLes fonctionnalités principales de FreshStart ne peuvent pas fonctionner sans ces données. Si vous n'êtes pas d'accord, vous ne pourrez pas utiliser l'application.";
+"export_data_from_apple_health" = "Exporter les données depuis Apple Health";
+"or_enter_manually" = "Ou saisir manuellement";
+"enter_manually_button" = "Saisir manuellement";
+"agree_health_data_processing" = "En appuyant sur 'Saisir manuellement', vous acceptez le traitement de vos données de santé.\n\n Pour plus d'informations, consultez notre ";
+"privacy_policy" = "Politique de confidentialité.";
+
+//How Active
+"how_active_title" = "Quel est votre niveau d'activité ?";
+"how_active_subtitle" = "Excluez les sports et les activités intenses comme courir, jouer au basketball ou vous entraîner.";
+"not_very_active" = "Pas très actif";
+"lightly_active" = "Légèrement actif";
+"active" = "Actif";
+"very_active" = "Très actif";
+
+"not_very_active_title" = "Pas très actif";
+"lightly_active_title" = "Légèrement actif";
+"active_title" = "Actif";
+"very_active_title" = "Très actif";
+
+"not_very_active_description" = "Passez la majorité de la journée assis (par ex. travail de bureau, guichetier de banque).";
+"lightly_active_description" = "Passez une bonne partie de la journée debout (par ex. enseignant, vendeur).";
+"active_description" = "Passez une bonne partie de la journée à faire une activité physique (par ex. serveur, facteur).";
+"very_active_description" = "Passez la majorité de la journée à faire une activité physique intense (par ex. ouvrier, charpentier).";
+
+//Loading
+"creating_your_diet_plan" = "Création de votre plan alimentaire";
+"customizing_your_experience" = "Personnalisation de votre expérience...";
+"analyzing_health_data" = "Analyse de vos données de santé...";
+"adding_your_goal" = "Ajout de votre objectif...";
+"timeout" = "Temps écoulé";
+"something_went_wrong" = "Quelque chose a mal tourné.";
+"retry" = "Réessayer";
+"diet_plan_already_generated" = "Plan alimentaire déjà généré";
+"one_diet_plan_at_a_time" = "Vous pouvez générer un seul plan alimentaire à la fois. Veuillez attendre avant de réessayer.";
+"ok" = "OK";
+
+//Purpose
+"whats_your_goal" = "Quel est votre objectif ?";
+"lets_focus_on_one_goal" = "Concentrons-nous sur un seul objectif pour commencer.";
+"lose_weight" = "Perdre du poids";
+"maintain_weight" = "Maintenir le poids";
+"gain_weight" = "Prendre du poids";
+"gain_muscle" = "Gagner du muscle";
+
+//MARK: Main Tab
+"diary_tab" = "Journal";
+"meal_plans_tab" = "Plans de repas";
+"additional_tab" = "Supplémentaire";
+"profile_tab" = "Profil";
+
+//MARK: Manager
+// HealthKit
+"severe_stress" = "Stress sévère";
+"high_stress" = "Stress élevé";
+"moderate_stress" = "Stress modéré";
+"low_stress" = "Stress faible";
+
+//OpenAI
+"failed_to_fetch_response" = "Échec de récupération de la réponse d'OpenAI.";
+"failed_to_decode_recipe" = "Échec du décodage des données de la recette.";
+"failed_to_convert_response" = "Échec de conversion du texte de réponse en données.";
+"failed_to_parse_meal" = "Échec de l'analyse du repas de la réponse.";
+
+//Notification
+"meal_reminder_title" = "Rappel";
+"meal_reminder_body" = "On dirait que vous n'avez pas encore sélectionné de repas. N'oubliez pas de planifier vos repas !";
+"global_inactivity_reminder_title" = "Ça fait un moment !";
+"global_inactivity_reminder_body" = "Vous n'avez pas interagi avec l'application depuis un moment. N'oubliez pas de vérifier votre plan de repas !";
+
+//MARK: Meal Plans
+//DonutChart
+"per_day" = "par jour";
+"nutrients" = "Nutriments";
+"grams" = "%@ gr";
+
+//SavedPlan
+"your_saved_diet_plans" = "Vos Plans de Régime Enregistrés";
+"saved_diet_plans_subtitle" = "Vous pouvez voir les détails de vos anciens plans de repas depuis cette liste";
+"create_new_plan_button" = "Créer un Nouveau Plan";
+"more_plans_available" = "Vous pouvez en créer encore %d";
+"buy_more_plans" = "Vous pouvez acheter plus de plans de régime depuis les offres";
+
+//Stepview
+"steps_goal" = "%d pas";
+"steps_label" = "Pas";
+
+//SubscriptionElement
+"purchase_plans" = "Acheter des Plans";
+"purchase_description" = "Profitez au maximum de FreshStart. Créez plus de plans de repas, contrôlez votre hydratation, ajoutez des activités et surveillez votre poids.";
+
+//MARK: Offers
+"purchase" = "Acheter";
+"purchase_plans" = "Acheter des Plans";
+"purchase_plans_subtitle" = "Vous pouvez voir les forfaits depuis cette liste";
+"no_offerings" = "Il n'y a actuellement aucune offre";
+"error_title" = "Erreur";
+"error_message" = "Quelque chose s'est mal passé.";
+"ok_button" = "OK";
+
+//MARK: Profile
+"information_of_you" = "Vos Informations";
+"change_information" = "Vous pouvez modifier vos informations ici";
+"update" = "Mettre à jour";
+"first_name" = "Prénom";
+"surname" = "Nom de Famille";
+"username" = "Nom d'utilisateur";
+
+//Resources
+"disclaimer_and_data_privacy_title" = "Mentions Légales et Confidentialité des Données";
+"Disclaimer & Data Privacy" = "Mentions Légales et Confidentialité des Données";
+"Our Promise to You" = "Notre Promesse pour Vous";
+"Sources and Information Accuracy" = "Sources et Précision des Informations";
+"How We Use Your Health Data" = "Comment Nous Utilisons Vos Données de Santé";
+"Our Commitment to Privacy and Security" = "Notre Engagement pour la Confidentialité et la Sécurité";
+"Questions?" = "Questions ?";
+
+//MARK: Profile
+"profile.personal" = "Personnel";
+"profile.user_type" = "Type d'utilisateur";
+"profile.username" = "Nom d'utilisateur";
+"profile.name" = "Prénom";
+"profile.surname" = "Nom";
+"profile.birthday" = "Anniversaire";
+"profile.email" = "E-mail";
+"profile.gender" = "Genre";
+"profile.height" = "Taille";
+"profile.weight" = "Poids";
+"profile.body_fat_percentage" = "Pourcentage de Graisse Corporelle";
+"profile.lean_body_mass" = "Masse Corporelle Maigre";
+"profile.resting_energy" = "Énergie au Repos";
+"profile.active_energy" = "Énergie Active";
+"profile.language" = "Langue";
+"profile.change_language" = "Changer la Langue";
+
+"profile.general" = "Général";
+"profile.notifications" = "Notifications";
+"profile.disclaimer" = "Mentions Légales et Confidentialité";
+"profile.contact_support" = "Contacter le Support";
+"profile.leave_review" = "Laisser un Avis";
+"profile.confirm_delete_account" = "Confirmer la Suppression du Compte";
+"profile.delete_account_message" = "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.";
+"profile.delete_button" = "Supprimer";
+"profile.cancel_button" = "Annuler";
+"profile.contact_subject" = "Demande de Support";
+"profile.contact_body" = "Veuillez décrire votre problème ici.";
+
+//MARK: Register Login
+"login.welcome_title" = "Bienvenue sur FreshStart";
+"login.welcome_subtitle" = "Bonjour, connectez-vous pour continuer !";
+"login.email_address" = "Adresse E-mail";
+"login.password" = "Mot de Passe";
+"login.forgot_password" = "Mot de passe oublié ?";
+"login.login_button" = "Connexion";
+"login.or_login_with" = "Ou connectez-vous avec";
+"login.connect_with_google" = "Se connecter avec Google";
+"login.connect_with_apple" = "Se connecter avec Apple";
+"login.dont_have_account" = "Vous n'avez pas de compte ? ";
+"login.register_now" = "Inscrivez-vous !";
+"login.alert_wrong_credentials_title" = "E-mail ou mot de passe incorrect";
+"login.alert_try_again" = "Réessayez";
+
+// PasswordReset
+"password_reset.forgot_password_title" = "Mot de passe oublié";
+"password_reset.forgot_password_subtitle" = "Veuillez entrer votre adresse e-mail pour recevoir votre code de réinitialisation de mot de passe";
+"password_reset.email_placeholder" = "Adresse e-mail";
+"password_reset.reset_password_button" = "Réinitialiser le mot de passe";
+"password_reset.password_reset_alert_title" = "Réinitialisation du mot de passe";
+"password_reset.ok_button" = "OK";
+
+// Register
+"registration.title" = "Inscription";
+"registration.subtitle" = "Veuillez entrer vos informations pour créer un nouveau compte";
+"registration.first_name_placeholder" = "Prénom";
+"registration.last_name_placeholder" = "Nom";
+"registration.email_placeholder" = "Adresse e-mail";
+"registration.password_placeholder" = "Mot de passe";
+"registration.create_account_button" = "Créer un compte";
+"registration.or_register_with" = "ou Inscrivez-vous avec";
+"registration.connect_with_google_button" = "Se connecter avec Google";
+"registration.connect_with_apple_button" = "Se connecter avec Apple";
+"registration.already_have_account" = "Vous avez déjà un compte ? ";
+"registration.login_button" = "Connexion !";
+"registration.done_button" = "Terminé";
+
+// Walkthrough
+"walkthrough.track_diet_water" = "Suivez votre alimentation, consommation d'eau";
+"walkthrough.create_healthy_habits" = "Créez des habitudes saines";
+"walkthrough.shape_lifestyle_goals" = "Définissez vos objectifs de style de vie";
+"walkthrough.track_activity" = "Suivez votre activité";
+"walkthrough.customize_meals" = "Personnalisez vos repas";
+"walkthrough.lose_weight" = "Perdez du poids";
+"walkthrough.gain_muscle" = "Prenez du muscle";
+"walkthrough.maintain_weight" = "Maintenez votre poids";
+"walkthrough.gain_weight" = "Prenez du poids";
+"walkthrough.ai_help" = "Avec l'aide de l'IA, nous créerons un plan de régime parfait pour atteindre votre objectif !";
+"walkthrough.ai_science_help" = "Nous utilisons l'IA et la science pour vous aider à obtenir des résultats réels.";
+"walkthrough.personalized_diet_plan" = "Vous recevrez un plan diététique parfaitement personnalisé, adapté à vos préférences, restrictions alimentaires et objectifs de style de vie.";
+"walkthrough.know_more_about_you" = "Pour définir vos objectifs avec précision, nous aimerions en savoir un peu plus sur vous.";
+"walkthrough.lets_go" = "Allons-y";
+"walkthrough.next" = "Suivant";
+"walkthrough.create_diet_plan_title" = "Créez votre plan diététique parfait avec";
+"walkthrough.start_healthy_journey" = "Commencez votre voyage vers la santé maintenant";
+"walkthrough.define_goal_title" = "Définissez votre objectif";
+"walkthrough.welcome_to_new_you" = "Bienvenue dans votre nouvelle vie !";
+"walkthrough.lets_go" = "Allons-y";
+"walkthrough.next" = "Suivant";
+
+// MARK: Validation
+"validation.email_invalid" = "Format d'email invalide";
+"validation.password_invalid" = "Le mot de passe doit contenir au moins 8 caractères, un chiffre et un caractère spécial";
+"validation.first_name_invalid" = "Le prénom doit comporter entre 2 et 30 caractères et utiliser des caractères turcs";
+"validation.last_name_invalid" = "Le nom doit comporter entre 2 et 30 caractères et utiliser des caractères turcs";
+"validation.username_invalid" = "Le nom d'utilisateur doit comporter entre 2 et 30 caractères et peut contenir des caractères turcs, des chiffres et des tirets";
+"validation.date_invalid" = "La date doit être au format jj/MM/aaaa";
+
+"delete_account" = "Supprimer le compte";
+"log_out" = "Se déconnecter";
+
+// MARK: Prompts
+"prompt_create" = "Créez un plan diététique personnalisé basé sur les directives et les données utilisateur suivantes. Assurez-vous de suivre strictement les règles, quel que soit l'objectif de l'utilisateur (par ex., perte de poids, prise de muscle, etc.). NE modifiez PAS le format des repas ou d'autres instructions en fonction de l'objectif.";
+
+"prompt_rules_json_format" = "1. **Format JSON** : La réponse doit être un objet JSON valide avec la structure suivante : {\"totalNutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"meals\": [{\"name\": STRING, \"nutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"items\": [{\"item\": STRING, \"quantity\": STRING}]}]}";
+
+"prompt_rules_total_nutrients" = "2. **Nutriments Totaux** : Incluez l'apport total en nutriments quotidiens au début de l'objet JSON dans le champ \"totalNutrients\".";
+
+"prompt_rules_meals" = "3. **Repas** : Chaque repas doit inclure un \"name\" (par ex., \"Petit-déjeuner\"), \"nutrients\" (résumé pour le repas) et un tableau \"items\" (liste des aliments avec quantités).";
+
+"prompt_rules_meal_units" = "4. **Unités des Repas** : Donnez uniquement les repas en grammes ou pièces.";
+
+"prompt_rules_strict_json_only" = "5. **Strictement JSON Uniquement** : Ne pas inclure de texte, commentaires ou explications supplémentaires en dehors de l'objet JSON.";
+
+"prompt_user_data" = "Données de l'utilisateur : - Préférence alimentaire : %@ - Allergènes : %@ - Repas par jour y compris les collations : %@ - Date de naissance : %@ - Taille : %@ - Poids : %@ - Pourcentage de graisse corporelle : %@ - Masse corporelle maigre : %@ - Énergie active : %@ - Niveau d'activité : %@ - Énergie au repos : %@ - Genre : %@ - Objectif : %@";
+
+"prompt_create_recipe" = "Créez une recette personnalisée basée sur les informations suivantes sur le repas. Incluez les champs \"name\", \"totalNutrients\", \"ingredients\" et \"instructions\" dans la réponse JSON. Utilisez cette structure : {...}";
+
+"prompt_generate_alternative_meal" = "Générez une alternative distincte au repas fourni ci-dessous. Suivez strictement toutes les règles et utilisez des ingrédients différents pour créer un nouveau repas qui est similaire sur le plan nutritionnel mais diversifié en goût et en préparation. Évitez d'utiliser autant que possible les mêmes ingrédients principaux.";
+
+"prompt_focus_on_variety" = "Concentrez-vous sur la variété : - Choisissez des ingrédients ou des styles de cuisine différents pour assurer une variété de goûts et de préparation. - Visez un profil nutritionnel similaire sans répéter les principaux ingrédients originaux.";
+
+"prompt_new_meal_name_and_ingredients" = "Nom et ingrédients du nouveau repas : - Le nom du nouveau repas sera \"Alternative %@\". - Donnez un nouveau repas selon le titre. N'incluez pas de saumon ou de bœuf si c'est un petit-déjeuner. Essayez de conserver les mêmes nutriments sans effectuer de changements significatifs.";
+
+// Validation
+"text_should_be_at_least" = "Le texte doit contenir au moins %d caractères.";
+"invalid_input_format" = "Format d'entrée invalide.";
+
+"save" = "Enregistrer";

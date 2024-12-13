@@ -11,6 +11,8 @@ enum LanguageType: String, CaseIterable {
     case TR
     case EN
     case UK
+    case ES
+    case FR
     
     var string: String {
         switch self {
@@ -19,7 +21,11 @@ enum LanguageType: String, CaseIterable {
         case .EN:
             return "English"
         case .UK:
-            return "Yкраїнська"
+            return "Українська"
+        case .ES:
+            return "Español"
+        case .FR:
+            return "Français"
         }
     }
     
@@ -57,6 +63,10 @@ final class LanguageHelper {
                 return .EN
             case "uk":
                 return .UK
+            case "es":
+                return .ES
+            case "fr":
+                return .FR
             default:
                 return .EN  // Default to English if unknown language code
             }
