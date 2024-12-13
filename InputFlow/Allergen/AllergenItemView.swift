@@ -26,14 +26,14 @@ struct AllergenItemView: View {
                 .frame(width: UIScreen.screenWidth, height: 1)
                 .background(Color.black.opacity(0.3))
             HStack {
-                Text(allergen.name?.capitalized ?? "")
+                Text(allergen.id?.capitalized.localized() ?? "")
                     .frame(width: nameWidth, alignment: .leading)
                     .lineLimit(1)
                     .fixedSize(horizontal: true, vertical: false)
                 Divider()
                     .frame(height: 36)
                     .background(Color.black.opacity(0.3))
-                Text(allergen.type ?? "")
+                Text(allergen.type?.localized() ?? "")
                     .frame(width: typeWidth, alignment: .center)
                 Divider()
                     .frame(height: 36)
@@ -59,13 +59,4 @@ struct AllergenItemView: View {
         }
         .frame(height: 35)
     }
-}
-
-#Preview {
-    VStack(alignment: .center, spacing: 0) {
-        AllergenItemView(allergen: Allergen(name: "Buckwheat", severityLevel: 3, type: "fruit"), selectedAllergen: [])
-        AllergenItemView(allergen:Allergen(id: "2", name: "Sunflower seed", severityLevel: 2, type: "Environmental"),selectedAllergen: [])
-        AllergenItemView(allergen:Allergen(id: "3", name: "Milk", severityLevel: 1, type: "Food"),selectedAllergen: [])
-    }
-    
 }

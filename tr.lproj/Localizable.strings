@@ -506,3 +506,49 @@
 "invalid_input_format" = "Geçersiz giriş formatı.";
 
 "save" = "Kaydet";
+
+// Resources
+"disclaimer_and_data_privacy_title" = "Feragatname & Veri Gizliliği";
+"disclaimer_and_data_privacy_text" = "FreshStart'a sağlığınızla ilgili yolculuğunuzda güvendiğiniz için teşekkür ederiz! Size en iyi diyet önerilerini sunabilmek için verilerinizi nasıl kullandığımız konusunda tamamen şeffaf olmak istiyoruz. Size Verdiğimiz Söz: FreshStart, sağlıklı yaşam hedeflerinize destek olmak için burada—sağlık hizmeti sağlayıcınızdan herhangi bir tıbbi tavsiye veya tedavi yerine geçmek için değil. Bu uygulama, dengeli ve bilinçli bir şekilde beslenmeyi teşvik eden genel sağlık amaçlıdır. Tıbbi bir uygulama değildir ve herhangi bir tıbbi durumu teşhis etmez, tedavi etmez, iyileştirmez veya engellemez. Bu uygulamada sağlanan tüm bilgiler yalnızca bilgilendirme amaçlıdır.";
+"our_promise_to_you_title" = "Size Verdiğimiz Söz";
+"our_promise_to_you_text" = "FreshStart, sağlıklı yaşam hedeflerinize destek olmak için burada—sağlık hizmeti sağlayıcınızdan herhangi bir tıbbi tavsiye veya tedavi yerine geçmek için değil. Bu uygulama, dengeli ve bilinçli bir şekilde beslenmeyi teşvik eden genel sağlık amaçlıdır. Tıbbi bir uygulama değildir ve herhangi bir tıbbi durumu teşhis etmez, tedavi etmez, iyileştirmez veya engellemez. Bu uygulamada sağlanan tüm bilgiler yalnızca bilgilendirme amaçlıdır.";
+"sources_and_information_accuracy_title" = "Kaynaklar ve Bilgi Doğruluğu";
+"sources_and_information_accuracy_text" = "FreshStart tarafından sağlanan diyet planları ve öneriler, OpenAI'nin ChatGPT'si tarafından geniş çapta kabul görmüş sağlık ilkelerine dayalı olarak oluşturulmaktadır. Bu öneriler, belirli tıbbi kaynaklara veya alıntılara dayanmamaktadır, ancak genel sağlık bilgilerine dayanmaktadır. Kişiselleştirilmiş tavsiye gerekiyorsa, özel ihtiyaçlarınıza göre rehberlik sağlayabilecek bir sağlık profesyoneline danışmanızı öneririz. Doğru ve güncel sağlık bilgisi için, Dünya Sağlık Örgütü (WHO) veya Hastalık Kontrol ve Önleme Merkezleri (CDC) gibi güvenilir kaynakları danışmanızı öneririz.";
+"how_we_use_your_health_data_title" = "Sağlık Verilerinizi Nasıl Kullanıyoruz";
+"how_we_use_your_health_data_text" = "HealthKit'i etkinleştirdiğinizde, ihtiyaçlarınıza göre özelleştirilmiş diyet planları oluşturmak için ağırlık, boy ve BMI gibi ilgili sağlık verilerini toplarız. Bu bilgiler, kişiselleştirilmiş rehberlik sağlayabilmemizi mümkün kılacak şekilde OpenAI'nin ChatGPT API'si kullanılarak işlenir. Endişelenmeyin, verileriniz yalnızca bu planları oluşturmak için kullanılır ve sektör standartlarında güvenlik önlemleriyle korunur.";
+"our_commitment_to_privacy_and_security_title" = "Gizlilik ve Güvenlik Konusundaki Taahhüdümüz";
+"our_commitment_to_privacy_and_security_text" = "Sağlık bilgilerinin kişisel olduğunu anlıyoruz ve bunları koruma taahhüdündeyiz. Verileriniz güvenli bir şekilde işlenir ve yalnızca güvenilir yapay zeka sağlayıcımız OpenAI ile diyet planlaması amacıyla paylaşılır. İzninizi istediğiniz zaman geri çekebilirsiniz ve ayrıca verilerinize erişme, değiştirme veya silme hakkınız bulunmaktadır. Sağlık verilerinizin korunmasına yönelik yasal düzenlemelere uygun olarak verilerinizi sorumlu bir şekilde kullanmaya ve size destek olmaya kararlıyız.";
+"questions_title" = "Sorular?";
+"questions_text" = "Herhangi bir sorunuz varsa veya veri uygulamalarımız hakkında daha fazla bilgi almak isterseniz, lütfen mertkoksal@mail.com adresinden bizimle iletişime geçin.";
+
+//Allergen
+"Apple" = "Elma";
+"Buckwheat" = "Karabuğday";
+"Celery" = "Kereviz";
+"Corn" = "Mısır";
+"Egg" = "Yumurta";
+"Lupin" = "Acı bakla";
+"Milk" = "Süt";
+"Mollusk" = "Yumuşakça";
+"Mustard" = "Hardal";
+"Peach" = "Şeftali";
+"Peanut" = "Yer fıstığı";
+"Poppy Seed" = "Haşhaş tohumu";
+"Sesame" = "Susam";
+"Shellfish" = "Kabuklu deniz ürünleri";
+"Soy" = "Soya";
+"Sulphite" = "Sülfit";
+"Sunflower Seed" = "Ayçiçeği tohumu";
+"Tree Nut" = "Ağaç kuruyemişi";
+"Wheat" = "Buğday";
+"fruit" = "Meyve";
+"grain" = "Tahıl";
+"vegetable" = "Sebze";
+"dairy" = "Süt ürünü";
+"legume" = "Baklagil";
+"seafood" = "Deniz ürünü";
+"spice" = "Baharat";
+"nut" = "Kuruyemiş";
+"seed" = "Tohum";
+"additive" = "Katkı maddesi";
+

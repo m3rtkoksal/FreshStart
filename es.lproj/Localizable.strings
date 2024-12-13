@@ -503,3 +503,49 @@
 "invalid_input_format" = "Formato de entrada inválido.";
 
 "save" = "Guardar";
+
+// Resources
+"disclaimer_and_data_privacy_title" = "Descargo de responsabilidad y privacidad de datos";
+"disclaimer_and_data_privacy_text" = "¡Gracias por confiar en FreshStart en tu viaje de bienestar! Queremos ser completamente transparentes sobre cómo utilizamos tus datos para proporcionarte las mejores recomendaciones dietéticas posibles. Nuestra promesa para ti: FreshStart está aquí para apoyar tus objetivos de estilo de vida saludable, no para reemplazar los consejos médicos o tratamientos de tu proveedor de atención médica. Esta aplicación está diseñada para fines de bienestar general, fomentando una alimentación equilibrada y consciente. No es una aplicación médica y no diagnostica, trata, cura ni previene ninguna condición médica. Toda la información proporcionada en esta aplicación es solo para fines informativos.";
+"our_promise_to_you_title" = "Nuestra promesa para ti";
+"our_promise_to_you_text" = "FreshStart está aquí para apoyar tus objetivos de estilo de vida saludable, no para reemplazar los consejos médicos o tratamientos de tu proveedor de atención médica. Esta aplicación está diseñada para fines de bienestar general, fomentando una alimentación equilibrada y consciente. No es una aplicación médica y no diagnostica, trata, cura ni previene ninguna condición médica. Toda la información proporcionada en esta aplicación es solo para fines informativos.";
+"sources_and_information_accuracy_title" = "Fuentes y precisión de la información";
+"sources_and_information_accuracy_text" = "Los planes de dieta y las recomendaciones proporcionadas por FreshStart son generados por ChatGPT de OpenAI basándose en principios de bienestar ampliamente aceptados. Estas recomendaciones no se basan en fuentes médicas específicas ni en citas, sino en información general sobre salud. Si necesitas consejos personalizados, consulta a un profesional de la salud que pueda proporcionarte orientación adaptada a tus necesidades únicas. Para obtener información precisa y actualizada sobre salud, animamos a los usuarios a consultar fuentes reputadas como la Organización Mundial de la Salud (OMS) o los Centros para el Control y la Prevención de Enfermedades (CDC).";
+"how_we_use_your_health_data_title" = "Cómo utilizamos tus datos de salud";
+"how_we_use_your_health_data_text" = "Cuando habilitas HealthKit, recopilamos datos de salud relevantes, como peso, altura e IMC, para generar planes de dieta personalizados según tus necesidades. Esta información se procesa utilizando la API de ChatGPT de OpenAI, lo que nos permite proporcionarte orientación personalizada. Ten la seguridad de que tus datos se utilizan únicamente para crear estos planes y están protegidos con medidas de seguridad estándar de la industria.";
+"our_commitment_to_privacy_and_security_title" = "Nuestro compromiso con la privacidad y seguridad";
+"our_commitment_to_privacy_and_security_text" = "Entendemos que la información de salud es personal y estamos comprometidos con su protección. Tus datos se procesan de forma segura y nunca los compartiremos con nadie más que con nuestro proveedor de inteligencia artificial de confianza, OpenAI, exclusivamente para fines de planificación dietética. Puedes retirar tu consentimiento en cualquier momento y también tienes derecho a acceder, modificar o eliminar tus datos de acuerdo con las leyes de protección de datos. Estamos aquí para hacer tu viaje de bienestar lo más personalizado y de apoyo posible, y estamos comprometidos a utilizar tus datos de manera responsable para ayudarte a alcanzar tus objetivos.";
+"questions_title" = "¿Preguntas?";
+"questions_text" = "Si tienes alguna pregunta o deseas obtener más información sobre nuestras prácticas de datos, contáctanos en mertkoksal@mail.com.";
+
+//Allergens
+"Apple" = "Manzana";
+"Buckwheat" = "Trigo sarraceno";
+"Celery" = "Apio";
+"Corn" = "Maíz";
+"Egg" = "Huevo";
+"Lupin" = "Altramuz";
+"Milk" = "Leche";
+"Mollusk" = "Molusco";
+"Mustard" = "Mostaza";
+"Peach" = "Durazno";
+"Peanut" = "Cacahuate";
+"Poppy Seed" = "Semilla de amapola";
+"Sesame" = "Sésamo";
+"Shellfish" = "Mariscos";
+"Soy" = "Soya";
+"Sulphite" = "Sulfito";
+"Sunflower Seed" = "Semilla de girasol";
+"Tree Nut" = "Fruto seco";
+"Wheat" = "Trigo";
+"fruit" = "Fruta";
+"grain" = "Grano";
+"vegetable" = "Verdura";
+"dairy" = "Lácteo";
+"legume" = "Legumbre";
+"seafood" = "Mariscos";
+"spice" = "Especia";
+"nut" = "Nuez";
+"seed" = "Semilla";
+"additive" = "Aditivo";
+

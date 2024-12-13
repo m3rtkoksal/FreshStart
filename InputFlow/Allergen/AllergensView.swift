@@ -85,9 +85,6 @@ struct AllergensView: View {
             .navigationDestination(isPresented: $viewModel.goToLoadingView) {
                 LoadingView()
             }
-            .onAppear {
-                viewModel.fetchAllergens()
-            }
             .onDisappear {
                 viewModel.showIndicator = false
             }

@@ -13,7 +13,7 @@ import HealthKit
 class PromptCreationHelper {
     
     static func createPrompt() -> String {
-        let allergensList = ProfileManager.shared.user.allergens.map { $0.name ?? "Unknown Allergen" }
+        let allergensList = ProfileManager.shared.user.allergens.map { $0.id ?? "Unknown Allergen" }
         return """
         \( "prompt_create".localized() )
         

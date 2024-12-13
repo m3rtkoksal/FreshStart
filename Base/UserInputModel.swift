@@ -183,7 +183,6 @@ struct TotalNutrients: Codable, Equatable, Hashable {
 
 struct Allergen: Identifiable, Codable {
     var id: String?
-    var name: String?
     var severityLevel: Int?
     var type: String?
 }

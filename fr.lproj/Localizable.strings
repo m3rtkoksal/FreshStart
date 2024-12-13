@@ -503,3 +503,49 @@
 "invalid_input_format" = "Format d'entrée invalide.";
 
 "save" = "Enregistrer";
+
+// Resources
+"disclaimer_and_data_privacy_title" = "Avertissement et confidentialité des données";
+"disclaimer_and_data_privacy_text" = "Merci de faire confiance à FreshStart dans votre parcours de bien-être ! Nous souhaitons être totalement transparents sur la façon dont nous utilisons vos données pour vous fournir les meilleures recommandations diététiques possibles. Notre promesse pour vous : FreshStart est là pour soutenir vos objectifs de mode de vie sain, et non pour remplacer les conseils ou traitements médicaux de votre professionnel de santé. Cette application est conçue à des fins de bien-être général, en encourageant une alimentation équilibrée et consciente. Ce n'est pas une application médicale et elle ne diagnostique, ne traite, ne guérit ni ne prévient les maladies. Toutes les informations fournies dans cette application sont à titre informatif seulement.";
+"our_promise_to_you_title" = "Notre promesse pour vous";
+"our_promise_to_you_text" = "FreshStart est là pour soutenir vos objectifs de mode de vie sain, et non pour remplacer les conseils ou traitements médicaux de votre professionnel de santé. Cette application est conçue à des fins de bien-être général, en encourageant une alimentation équilibrée et consciente. Ce n'est pas une application médicale et elle ne diagnostique, ne traite, ne guérit ni ne prévient les maladies. Toutes les informations fournies dans cette application sont à titre informatif seulement.";
+"sources_and_information_accuracy_title" = "Sources et exactitude des informations";
+"sources_and_information_accuracy_text" = "Les plans de régime et les recommandations fournis par FreshStart sont générés par ChatGPT d'OpenAI en fonction des principes de bien-être largement acceptés. Ces recommandations ne sont pas basées sur des sources médicales spécifiques ou des citations, mais sur des informations générales sur la santé. Si vous avez besoin de conseils personnalisés, veuillez consulter un professionnel de santé qui pourra vous fournir des recommandations adaptées à vos besoins uniques. Pour des informations de santé précises et à jour, nous encourageons les utilisateurs à consulter des sources réputées telles que l'Organisation mondiale de la santé (OMS) ou les Centers for Disease Control and Prevention (CDC).";
+"how_we_use_your_health_data_title" = "Comment nous utilisons vos données de santé";
+"how_we_use_your_health_data_text" = "Lorsque vous activez HealthKit, nous collectons les données de santé pertinentes, telles que le poids, la taille et l'IMC, pour générer des plans de régime personnalisés en fonction de vos besoins. Ces informations sont traitées à l'aide de l'API ChatGPT d'OpenAI, ce qui nous permet de fournir des recommandations personnalisées. Soyez assuré que vos données sont utilisées uniquement pour créer ces plans et sont protégées par des mesures de sécurité conformes aux normes de l'industrie.";
+"our_commitment_to_privacy_and_security_title" = "Notre engagement envers la confidentialité et la sécurité";
+"our_commitment_to_privacy_and_security_text" = "Nous comprenons que les informations de santé sont personnelles et nous nous engageons à les protéger. Vos données sont traitées de manière sécurisée et nous ne les partagerons jamais avec d'autres personnes, à l'exception de notre fournisseur de technologie d'IA, OpenAI, exclusivement à des fins de planification diététique. Vous pouvez retirer votre consentement à tout moment et vous avez également le droit d'accéder à vos données, de les modifier ou de les supprimer conformément aux lois sur la protection des données. Nous sommes là pour rendre votre parcours de bien-être aussi personnalisé et soutenant que possible, et nous nous engageons à utiliser vos données de manière responsable pour vous aider à atteindre vos objectifs.";
+"questions_title" = "Questions ?";
+"questions_text" = "Si vous avez des questions ou si vous souhaitez obtenir plus d'informations sur nos pratiques en matière de données, veuillez nous contacter à l'adresse mertkoksal@mail.com.";
+
+//Allergen
+"Apple" = "Pomme";
+"Buckwheat" = "Sarrasin";
+"Celery" = "Céleri";
+"Corn" = "Maïs";
+"Egg" = "Œuf";
+"Lupin" = "Lupin";
+"Milk" = "Lait";
+"Mollusk" = "Mollusque";
+"Mustard" = "Moutarde";
+"Peach" = "Pêche";
+"Peanut" = "Cacahuète";
+"Poppy Seed" = "Graines de pavot";
+"Sesame" = "Sésame";
+"Shellfish" = "Fruits de mer";
+"Soy" = "Soja";
+"Sulphite" = "Sulfite";
+"Sunflower Seed" = "Graines de tournesol";
+"Tree Nut" = "Fruit à coque";
+"Wheat" = "Blé";
+"fruit" = "Fruit";
+"grain" = "Céréale";
+"vegetable" = "Légume";
+"dairy" = "Produit laitier";
+"legume" = "Légumineuse";
+"seafood" = "Fruits de mer";
+"spice" = "Épice";
+"nut" = "Noix";
+"seed" = "Graine";
+"additive" = "Additif";
+
