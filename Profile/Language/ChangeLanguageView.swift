@@ -68,6 +68,8 @@ struct ChangeLanguageView: View {
                                            selectedLanguage = .ES
                                        case "fr":
                                            selectedLanguage = .FR
+                                       case "de":
+                                           selectedLanguage = .DE
                                        default:
                                            // Fallback to a default language (English) if no match
                                            selectedLanguage = .EN
