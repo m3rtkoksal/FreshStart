@@ -32,7 +32,7 @@ class PrizeManager: ObservableObject {
         self.timer = timer
     }
     
-    @objc private func checkIfItIsPrizeTime() {
+    @objc func checkIfItIsPrizeTime() {
         guard !isProcessing else { return }
         isProcessing = true
         

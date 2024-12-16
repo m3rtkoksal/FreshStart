@@ -69,6 +69,7 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
+                prizeManager.checkIfItIsPrizeTime()
                 if authManager.isLoggedIn && !isDataLoaded {
                     loadAllData()
                 }
