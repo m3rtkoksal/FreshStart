@@ -364,55 +364,101 @@ struct WaterTrackView: View {
         return latestEntry?.waterIntake ?? 0
     }()
     @State private var filledGlasses: Int = MealManager.shared.loadFilledGlasses()
+    @State private var secondCircleFilled: Bool = false
+    
     var body: some View {
-        Button {
-            if filledGlasses < 8 {
-                waterIntake += 250
-                filledGlasses += 1
-                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
-            }
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .foregroundColor(Color.mkPurple)
-                    .frame(width: UIScreen.screenWidth - 40, height: 160)
-                    .overlay(
-                        VStack {
-                            HStack{
-                                Text("water".localized())
-                                    .font(.montserrat(.semiBold, size: 18))
-                                    .foregroundColor(.white)
-                                    .underline()
-                                Spacer()
-                                Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.horizontal, 30)
-                            HStack {
-                                ForEach(0..<8){ index in
-                                    Image("glassWater")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                        .opacity(index < filledGlasses ? 1 : 0.3)
-                                }
-                            }
-                            .padding(.horizontal, 40)
-                            HStack{
-                                Spacer()
-                                Text("remember_to_stay_hydrated".localized())
-                                    .font(.montserrat(.medium, size: 12))
-                                    .foregroundColor(.white)
-                                Image("infoWater")
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.top, 25)
+        ZStack {
+            RoundedRectangle(cornerRadius: 30)
+                .foregroundColor(Color.mkPurple)
+                .frame(width: UIScreen.screenWidth - 40, height: 200)
+                .overlay(
+                    VStack {
+                        HStack {
+                            Text("water".localized())
+                                .font(.montserrat(.semiBold, size: 18))
+                                .foregroundColor(.white)
+                                .underline()
+                            Spacer()
+                            Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
+                                .foregroundColor(.white)
                         }
-                            .padding(.vertical,20)
-                    )
-            }
+                        .padding(.horizontal, 30)
+                        CustomScrollView(secondCircleFilled: $secondCircleFilled,
+                                         contentWidth: CGFloat(9 * (35 + 15)),
+                                         visibleWidth: UIScreen.screenWidth * 0.7) {
+                            ForEach(0..<8) { index in
+                                Image("glassWater")
+                                    .resizable()
+                                    .frame(width: 35, height: 35)
+                                    .opacity(index < filledGlasses ? 1 : 0.3)
+                            }
+                        }
+                                         .padding(.vertical)
+                        ShowCircles()
+                        HStack {
+                            Spacer()
+                            Text("remember_to_stay_hydrated".localized())
+                                .font(.montserrat(.medium, size: 12))
+                                .foregroundColor(.white)
+                            Image("infoWater")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                        .padding(.top, 20)
+                        .padding(.vertical, 20)
+                )
+                .overlay(
+                    HStack {
+                        Button(action: {
+                            if waterIntake > 0 {
+                                waterIntake -= 250
+                                filledGlasses -= 1
+                                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
+                            }
+                        }) {
+                            Image(systemName: "minus.circle.fill")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .background(Color.mkPurple)
+                                .clipShape(Circle())
+                        }
+                        .padding(.leading, -13)
+                        Spacer()
+                        Button(action: {
+                            if filledGlasses < 8 {
+                                waterIntake += 250
+                                filledGlasses += 1
+                                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
+                            }
+                        }) {
+                            Image(systemName: "plus.circle.fill")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .background(Color.mkOrange)
+                                .clipShape(Circle())
+                        }
+                        .padding(.trailing, -13)
+                    }
+                )
         }
         .padding(.vertical, 50)
+    }
+    // Display the circles with filled or unfilled states
+    func ShowCircles() -> some View {
+        HStack {
+            Circle()
+                .frame(width: 8, height: 8)
+                .foregroundColor(.white)
+            Circle()
+                .frame(width: 8, height: 8)
+                .foregroundColor(secondCircleFilled ? .white : .white.opacity(0.5))
+        }
+        .padding(.top, 10)
     }
 }
