@@ -15,13 +15,23 @@ struct SegmentTitle {
 struct SegmentedControlView: View {
     @Binding var selectedIndex: Int
     var segmentNames: [SegmentTitle]
-    
+    @State private var fontSize: CGFloat = 14
     private var segmentWidth: CGFloat {
         UIScreen.screenWidth * 0.85 / CGFloat(segmentNames.count)
     }
     
     private var totalWidth: CGFloat {
         segmentWidth * CGFloat(segmentNames.count)
+    }
+    private func adjustFontSize() -> CGFloat {
+        let longestText = segmentNames.max { $0.title.count < $1.title.count }
+        let textWidth = longestText?.title.width(using: .montserrat(.semiBold, size: fontSize)) ?? 0
+        
+        if textWidth > segmentWidth {
+            return 10
+        } else {
+            return fontSize
+        }
     }
     
     var body: some View {
@@ -37,7 +47,8 @@ struct SegmentedControlView: View {
                             }
                         }) {
                             Text(segmentNames[index].title)
-                                .font(.montserrat(.semiBold, size: 14))
+                                .font(.montserrat(.semiBold, size: adjustFontSize()))
+                                .lineLimit(1)
                                 .frame(width: segmentWidth, height: 40)
                                 .foregroundColor(.white)
                                 .background(selectedIndex == index ? Color.mkPurple : Color.clear)

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUICore
 
 extension String {
     func trimmingAllSpaces(using characterSet: CharacterSet = .whitespacesAndNewlines) -> String {
@@ -46,5 +48,15 @@ extension String {
     func localized(_ arguments: CVarArg...) -> String {
         let format = Bundle.localized.localizedString(forKey: self, value: nil, table: nil)
         return String(format: format, arguments: arguments)
+    }
+}
+
+extension String {
+    // Helper function to calculate the width of the text with a given font
+    func width(using font: Font) -> CGFloat {
+        let uiFont = font.toUIFont(size: 14)  // Default size, you can adjust based on needs
+        let attributes: [NSAttributedString.Key: Any] = [.font: uiFont]
+        let size = (self as NSString).size(withAttributes: attributes)
+        return size.width
     }
 }
