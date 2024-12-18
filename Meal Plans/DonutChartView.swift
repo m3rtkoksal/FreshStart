@@ -32,7 +32,7 @@ struct DonutChartView: View {
                     Text("\(totalNutrients.kcal) kcal")
                         .font(.montserrat(.bold, size: 14))
                         .foregroundColor(.mkOrange)
-                    Text("per day")
+                    Text("per_day".localized())
                         .font(.montserrat(.semiBold, size: 14))
                         .foregroundColor(.black)
                 }
@@ -73,7 +73,7 @@ struct DonutChartView: View {
                         let labelPosition = CGPoint(x: center.x + labelRadius * cos(labelAngle),
                                                     y: center.y + labelRadius * sin(labelAngle))
                         if animatedProgress >= 1.0 {
-                            Text("\(nutrients[index].1) gr")
+                            Text("grams".localized("\(nutrients[index].1)"))
                                 .font(.system(size: size * 0.04, weight: .bold))
                                 .foregroundColor(.white)
                                 .position(labelPosition)
@@ -81,7 +81,7 @@ struct DonutChartView: View {
                     }
                     
                     // Add centered text
-                    Text("Nutrients")
+                    Text("nutrients".localized())
                         .font(.system(size: size * 0.06, weight: .bold))
                         .foregroundColor(.black)
                         .underline()

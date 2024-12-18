@@ -14,7 +14,7 @@ class NotificationManager: ObservableObject {
 
     @Published var areNotificationsEnabled: Bool = false
     private var inactivityTimer: Timer?
-    private var lastInteractionDate: Date?
+    var lastInteractionDate: Date?
 
     private init() {
         checkNotificationSettings()
@@ -69,20 +69,26 @@ class NotificationManager: ObservableObject {
     }
 
     // Check if the user has been inactive for more than 4 hours
-    private func checkGlobalInactivity() {
-        guard let lastInteractionDate = lastInteractionDate else { return }
+    func checkGlobalInactivity() {
+        guard let lastInteractionDate = lastInteractionDate else {
+            print("No last interaction date set.")
+            return
+        }
+        let inactivityThreshold: TimeInterval = 4 * 60 * 60 // 4 hours (or 10 seconds for testing)
+        let timeElapsed = Date().timeIntervalSince(lastInteractionDate)
         
-        let inactivityThreshold: TimeInterval = 4 * 60 * 60 // 4 hours
-        if Date().timeIntervalSince(lastInteractionDate) > inactivityThreshold {
-            self.sendGlobalInactivityReminder()
+        if timeElapsed > inactivityThreshold {
+            print("User has been inactive for \(timeElapsed) seconds. Sending reminder.")
+            sendMealReminderNotification()
+        } else {
+            print("User is still active. Time elapsed: \(timeElapsed) seconds.")
         }
     }
 
     // Check if the user has been inactive for too long to trigger "forgot to select" reminder
     func checkForgotToSelectReminder() {
         guard let lastInteractionDate = lastInteractionDate else { return }
-        
-        let inactivityThreshold: TimeInterval = 2 * 60 * 60 // 2 hours
+        let inactivityThreshold: TimeInterval = 2 * 60 * 60
         if Date().timeIntervalSince(lastInteractionDate) > inactivityThreshold {
             self.sendMealReminderNotification()
         }
@@ -90,12 +96,36 @@ class NotificationManager: ObservableObject {
 
     // Start or reset the inactivity timer when the user interacts
     func startInactivityTimer() {
+        print("Starting inactivity timer")
         lastInteractionDate = Date()
-        
-        // Reset timer to prevent multiple timers from running
         inactivityTimer?.invalidate()
         inactivityTimer = Timer.scheduledTimer(withTimeInterval: 4 * 60 * 60, repeats: true) { _ in
+            print("Inactivity timer fired")
             self.checkGlobalInactivity()
+        }
+    }
+
+    func invalidateInactivityTimer() {
+        inactivityTimer?.invalidate()
+        inactivityTimer = nil
+    }
+    
+    func sendReminderNotification(title: String, body: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        
+        // Trigger notification immediately
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled successfully: \(title) - \(body)")
+            }
         }
     }
 
@@ -104,8 +134,8 @@ class NotificationManager: ObservableObject {
         guard areNotificationsEnabled else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "Reminder"
-        content.body = "It looks like you haven't selected a meal yet. Don't forget to plan your meals!"
+        content.title = "meal_reminder_title".localized()
+        content.body = "meal_reminder_body".localized()
         content.sound = .default
         
         // Send notification immediately
@@ -130,8 +160,8 @@ class NotificationManager: ObservableObject {
         guard areNotificationsEnabled else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "It's been a while!"
-        content.body = "You haven't interacted with the app for a while. Don't forget to check your meal plan!"
+        content.title = "global_inactivity_reminder_title".localized()
+        content.body = "global_inactivity_reminder_body".localized()
         content.sound = .default
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)

@@ -11,15 +11,19 @@ import FirebaseAuth
 import GoogleSignIn
 
 struct LogoutButton: View {
+    @State private var currentLanguage = LanguageHelper.shared.currentLanguage
     var body: some View {
         Button {
             signOut()
         } label: {
-            Text("Log out")
+            Text("log_out".localized())
                 .font(.montserrat(.bold, size: 17))
                 .foregroundColor(.black)
                 .underline()
                 .padding(15)
+                .onChange(of: LanguageHelper.shared.currentLanguage) { newValue in
+                    currentLanguage = newValue
+                }
         }
     }
     

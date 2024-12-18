@@ -17,6 +17,7 @@ class SavedPlanViewModel: BaseViewModel {
     @Published var maxPlanCount: Int = 0
     @Published var showDietPlanPreview: Bool = false
     @Published var showChangeAlert: Bool = false
+    @Published var showDeleteAlert: Bool = false
     @Published var changeAlertMessage: String = ""
     @StateObject private var healthKitManager = HealthKitManager()
     @State private var activeAlert: AlertType?
@@ -48,6 +49,31 @@ class SavedPlanViewModel: BaseViewModel {
                 print("Error saving default plan: \(error.localizedDescription)")
             } else {
                 print("Default diet plan saved successfully.")
+            }
+        }
+    }
+    
+    func deleteDietPlanEntry(dietPlanId: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("dietPlans").document(dietPlanId).delete { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let userId = Auth.auth().currentUser?.uid else {
+                completion(.failure(NSError(domain: "No user ID found.", code: 0, userInfo: nil)))
+                return
+            }
+            
+            let userRef = db.collection("users").document(userId)
+            userRef.updateData([
+                "defaultDietPlanId": FieldValue.delete()
+            ]) { error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                completion(.success(()))
             }
         }
     }

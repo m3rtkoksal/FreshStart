@@ -20,9 +20,9 @@ class AdditionalRankingsVM: BaseViewModel {
     @Published var isTopFive: Bool = false
     @Published var showAllRanking: Bool = false
     @Published var chartSegmentItems: [SegmentTitle] = [
-        SegmentTitle(title: "Body Fat %"),
-        SegmentTitle(title: "Muscle Mass"),
-        SegmentTitle(title: "Daily Login")
+        SegmentTitle(title: "body_fat_percentage".localized()),
+        SegmentTitle(title: "muscle_mass".localized()),
+        SegmentTitle(title: "daily_login".localized())
     ]
     @Published var bodyFatRankings: [UserRanking] = []
     @Published var muscleMassRankings: [UserRanking] = []
@@ -119,8 +119,29 @@ class AdditionalRankingsVM: BaseViewModel {
         case .dailyLogin:
             rankingsArray.sort { ($0.dailyLoginCount) > ($1.dailyLoginCount) } // Sort by daily login count (descending)
         }
-        // Optionally, you can limit to the top 5 users
+        var currentRank = 1
+        for i in 0..<rankingsArray.count {
+            if i > 0 {
+                let prevRanking = rankingsArray[i - 1]
+                let currentRanking = rankingsArray[i]
+                if compareRankingValues(prevRanking, currentRanking, selectedRankType: selectedRankType) {
+                    currentRank = prevRanking.rank
+                } else {
+                    currentRank = i + 1
+                }
+            }
+            rankingsArray[i].rank = currentRank
+        }
         return isTopFive ? Array(rankingsArray.prefix(5)) : rankingsArray
     }
-
+    func compareRankingValues(_ prevRanking: UserRanking, _ currentRanking: UserRanking, selectedRankType: RankListType) -> Bool {
+        switch selectedRankType {
+        case .bodyFat:
+            return prevRanking.bodyFatChange == currentRanking.bodyFatChange
+        case .muscleMass:
+            return prevRanking.muscleGain == currentRanking.muscleGain
+        case .dailyLogin:
+            return prevRanking.dailyLoginCount == currentRanking.dailyLoginCount
+        }
+    }
 }

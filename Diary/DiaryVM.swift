@@ -22,6 +22,7 @@ class DiaryVM: BaseViewModel {
     @Published var goToRecipeView: Bool = false
     @Published var savedRecipe: String = ""
     @Published var dietPlan = DietPlan()
+    @Published var defaultDietPlanId : String = ""
     private let db = Firestore.firestore()
     private let userId = Auth.auth().currentUser?.uid
     @Published var startMinY: CGFloat = 0
@@ -64,22 +65,6 @@ class DiaryVM: BaseViewModel {
             fat: initialNutrients.fat - selectedNutrients.fat
         )
     }
-    func deleteDietPlanEntry(dietPlan: DietPlan, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let id = dietPlan.id, !id.isEmpty else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Diet plan ID is missing."])))
-            return
-        }
-        
-        let db = Firestore.firestore()
-        db.collection("dietPlans").document(id).delete { error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
-                self.showIndicator = false
-            }
-        }
-    }
     
     func updateMaxMealCountInFirestore(userId: String, maxMealCount: Int) {
         let db = Firestore.firestore()
@@ -91,9 +76,8 @@ class DiaryVM: BaseViewModel {
     }
     
     func updateMaxPlanCountInFirestore(userId: String, maxPlanCount: Int) {
-        let validMaxPlanCount = max(maxPlanCount, 0)
         let db = Firestore.firestore()
-        db.collection("users").document(userId).setData(["maxPlanCount": validMaxPlanCount], merge: true) { error in
+        db.collection("users").document(userId).setData(["maxPlanCount": self.maxPlanCount], merge: true) { error in
             if error != nil {
             } else {
             }
@@ -185,6 +169,10 @@ class DiaryVM: BaseViewModel {
                 completion(false)
             }
         }
+    }
+    
+    func compareLocalAndFirestoreDietPlanId() {
+        
     }
     
     func generateAndSaveNewMeal(dietPlanId: String, meal: Meal, index: Int, completion: @escaping (Meal?) -> Void) {

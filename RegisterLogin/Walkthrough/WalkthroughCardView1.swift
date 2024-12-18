@@ -20,10 +20,10 @@ struct WalkthroughCardView1: View {
                 .foregroundColor(Color.white)
                 .font(.montserrat(.medium, size: 40))
                 .multilineTextAlignment(.leading)
-                .lineLimit(3)
+                .lineLimit(nil)
+                .minimumScaleFactor(0.5)
                 .frame(width: UIScreen.screenWidth * 0.7)
-                .padding(.leading, 0)
-            
+                .padding(.leading, 20)
             HStack {
                 Spacer()
                 Image("FreshStartCircle")

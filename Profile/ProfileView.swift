@@ -33,60 +33,60 @@ struct ProfileView: View {
                         Image("profileTab")
                             .resizable()
                             .frame(width: 25, height: 25)
-                        Text("Personal")
+                        Text("profile.personal".localized())
                             .font(.montserrat(.semiBold, size: 18))
                             .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.leading, 20)
                     VStack {
-                        FreshStartProfileElement(title: "User Type",
+                        FreshStartProfileElement(title: "profile.user_type".localized(),
                                                  description: ProfileManager.shared.user.isPremium ?? false ? "Premium" : "Free",
                                                  buttonIcon: ProfileManager.shared.user.isPremium  ?? false ? "" : "basket.fill") {
                             withAnimation {
                                 selectedTabRaw = MainTabView.Tab.offerings.rawValue
                             }
                         }
-                        FreshStartProfileElement(title: "Username",
+                        FreshStartProfileElement(title: "profile.username".localized(),
                                          description: ProfileManager.shared.user.userName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeUsername = true
                         }
-                        FreshStartProfileElement(title: "Name",
+                        FreshStartProfileElement(title: "profile.name".localized(),
                                          description: ProfileManager.shared.user.firstName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeFirstName = true
                         }
-                        FreshStartProfileElement(title: "Surname",
+                        FreshStartProfileElement(title: "profile.surname".localized(),
                                          description: ProfileManager.shared.user.lastName ?? "",
                                          buttonIcon: "pencil") {
                             viewModel.goToChangeSurname = true
                         }
-                        FreshStartProfileElement(title: "Birthday",
+                        FreshStartProfileElement(title: "profile.birthday".localized(),
                                          description: ProfileManager.shared.user.birthday ?? "",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Email",
+                        FreshStartProfileElement(title: "profile.email".localized(),
                                          description: ProfileManager.shared.user.email ?? "",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Gender",
-                                         description: healthKitManager.hkBiologicalSexToGenderString(ProfileManager.shared.user.gender ?? HKBiologicalSex(rawValue: 3)!),
-                                         buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Height",
+                        FreshStartProfileElement(title: "profile.gender".localized(),
+                                         description: (ProfileManager.shared.user.gender?.toLocalizedString() ?? HKBiologicalSex.notSet.toLocalizedString()),
+                                        buttonIcon: nil) { }
+                        FreshStartProfileElement(title: "profile.height".localized(),
                                          description: "\(Int((ProfileManager.shared.user.height ?? 0.0) * 100)) cm",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Weight",
+                        FreshStartProfileElement(title: "profile.weight".localized(),
                                          description: "\(Int((ProfileManager.shared.user.weight ?? 0.0))) kg",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Body Fat Percentage",
+                        FreshStartProfileElement(title: "profile.body_fat_percentage".localized(),
                                          description: "\(Int((ProfileManager.shared.user.bodyFatPercentage ?? 0.0) * 100)) %",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Lean Body Mass",
+                        FreshStartProfileElement(title: "profile.lean_body_mass".localized(),
                                          description: "\(Int((ProfileManager.shared.user.leanBodyMass ?? 0.0))) kg",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Resting Energy",
+                        FreshStartProfileElement(title: "profile.resting_energy".localized(),
                                          description: "\(Int((ProfileManager.shared.user.restingEnergy ?? 0.0))) kcal",
                                          buttonIcon: nil) { }
-                        FreshStartProfileElement(title: "Active Energy",
+                        FreshStartProfileElement(title: "profile.active_energy".localized(),
                                          description: "\(Int((ProfileManager.shared.user.activeEnergy ?? 0.0))) kcal",
                                          buttonIcon: nil,
                                          isLastElement: true) { }
@@ -100,7 +100,7 @@ struct ProfileView: View {
                         Image("generalMenuTitle")
                             .resizable()
                             .frame(width: 25, height: 25)
-                        Text("General")
+                        Text("profile.general".localized())
                             .font(.montserrat(.semiBold, size: 18))
                             .foregroundColor(.black)
                         Spacer()
@@ -109,24 +109,29 @@ struct ProfileView: View {
                     VStack {
                         Divider()
                             .background(Color.black)
-                        FreshStartProfileElement(title: "Notifications",
+                        FreshStartProfileElement(title: "profile.language".localized(),
+                                        description: ProfileManager.shared.user.language?.localized() ?? "",
+                                        buttonIcon: "pencil") {
+                            viewModel.goToChangeLanguage = true
+                        }
+                        FreshStartProfileElement(title: "profile.notifications".localized(),
                                          description: "",
                                          buttonIcon: notificationIcon()) {
                             if let url = URL(string: UIApplication.openSettingsURLString) {
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }
                         }
-                        FreshStartProfileElement(title: "Disclaimer & Data Privacy",
+                        FreshStartProfileElement(title: "profile.disclaimer".localized(),
                                          description: "",
                                          buttonIcon: "chevron.compact.right") {
                             viewModel.goToResources = true
                         }
-                        FreshStartProfileElement(title: "Contact support",
+                        FreshStartProfileElement(title: "profile.contact_support".localized(),
                                          description: "",
                                          buttonIcon: "chevron.compact.right") {
                             viewModel.goToContactSupport = true
                         }
-                        FreshStartProfileElement(title: "Leave a review",
+                        FreshStartProfileElement(title: "profile.leave_review".localized(),
                                          description: "",
                                          buttonIcon: "chevron.compact.right",
                                          isLastElement: true) {
@@ -156,13 +161,16 @@ struct ProfileView: View {
                 .navigationDestination(isPresented: $viewModel.goToChangeUsername) {
                     ChangeNameView(fieldType: .username)
                 }
+                .navigationDestination(isPresented: $viewModel.goToChangeLanguage) {
+                    ChangeLanguageView()
+                }
                 .navigationDestination(isPresented: $viewModel.goToResources) {
                     ResourcesView()
                 }
                 .sheet(isPresented: $viewModel.goToContactSupport) {
                     MailView(isShowing: $viewModel.goToContactSupport,
-                             subject: "Support Request",
-                             body: "Please describe your issue here.",
+                             subject: "profile.contact_subject".localized(),
+                             body: "profile.contact_body".localized(),
                              toRecipients: ["mertkoksal@mail.com"])
                 }
             }
@@ -170,10 +178,10 @@ struct ProfileView: View {
             .navigationBarBackButtonHidden(true)
             .fsAlertModifier(
                 isPresented: $showDeleteAlert,
-                title: "Confirm Account Deletion",
-                message: "Are you sure you want to delete your account? This action cannot be undone.",
-                confirmButtonText: "Delete",
-                cancelButtonText: "Cancel",
+                title: "profile.confirm_delete_account".localized(),
+                message: "profile.delete_account_message".localized(),
+                confirmButtonText: "profile.delete_button".localized(),
+                cancelButtonText: "profile.cancel_button".localized(),
                 confirmAction: {
                     withAnimation {
                         showDeleteAlert = false

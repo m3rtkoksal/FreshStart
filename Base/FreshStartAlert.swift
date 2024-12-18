@@ -41,7 +41,7 @@ struct FreshStartAlertView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color.mkPurple.opacity(0.5))
-                                .cornerRadius(10)
+                                .cornerRadius(38)
                         }
                     }
                     Button(action: confirmAction) {
@@ -51,11 +51,12 @@ struct FreshStartAlertView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color.mkOrange)
-                            .cornerRadius(10)
+                            .cornerRadius(38)
                     }
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
+                .padding(.bottom)
             }
             .padding()
             .background(Color.black)

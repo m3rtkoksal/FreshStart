@@ -17,7 +17,7 @@ struct FrequencyElement: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(numberOfMeals) meals per day: ")
+            Text("meals_per_day".localized(numberOfMeals))
                 .foregroundStyle(.black)
                 .font(.montserrat(.bold, size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -56,7 +56,7 @@ struct OfferElement: View, Identifiable {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 38)
                                         .fill(Color.mkOrange)
-                                    Text("Purchase")
+                                    Text("purchase".localized())
                                         .font(.montserrat(.bold, size: 17))
                                         .foregroundColor(.black)
                                 }

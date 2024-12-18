@@ -12,60 +12,60 @@ class DietPreferenceVM: BaseViewModel {
     @Published var goToHowActiveView = false
     @Published var dietPreferenceItems: [DietPreferenceItem] = [
         DietPreferenceItem(
-            title: "Normal",
-            description: "No dietary restrictions, includes all food types.",
+            title: "normal_title".localized(),
+            description: "normal_description".localized(),
             icon: "normal",
-            infoDescription: "The normal diet includes a wide variety of foods without any specific restrictions. It supports a balanced diet, and is the most common choice for people without dietary limitations.",
-            infoCanEat: "You can eat a wide range of foods including meats, vegetables, fruits, grains, dairy products, and fats.",
-            infoCantEat: "There are no specific foods that need to be avoided."
+            infoDescription: "normal_info_description".localized(),
+            infoCanEat: "normal_info_can_eat".localized(),
+            infoCantEat: "normal_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "Vegan",
-            description: "Excludes all animal products, including meat, fish, dairy, and eggs.",
+            title: "vegan_title".localized(),
+            description: "vegan_description".localized(),
             icon: "vegan",
-            infoDescription: "A vegan diet excludes all animal-derived foods. It focuses on plant-based foods and aims to avoid all forms of animal exploitation.",
-            infoCanEat: "You can eat fruits, vegetables, legumes, grains, nuts, seeds, and plant-based alternatives for dairy and meat.",
-            infoCantEat: "You must avoid all animal products including meat, fish, eggs, dairy, honey, and any products made with animal-derived ingredients."
+            infoDescription: "vegan_info_description".localized(),
+            infoCanEat: "vegan_info_can_eat".localized(),
+            infoCantEat: "vegan_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "Vegetarian",
-            description: "Excludes all meat and fish but includes dairy and eggs.",
+            title: "vegetarian_title".localized(),
+            description: "vegetarian_description".localized(),
             icon: "vegetarian",
-            infoDescription: "A vegetarian diet excludes meat and fish, but includes other animal-derived products like dairy and eggs. It's often chosen for ethical, health, or environmental reasons.",
-            infoCanEat: "You can eat fruits, vegetables, legumes, grains, dairy products, eggs, nuts, and seeds.",
-            infoCantEat: "You must avoid meat, poultry, fish, and seafood."
+            infoDescription: "vegetarian_info_description".localized(),
+            infoCanEat: "vegetarian_info_can_eat".localized(),
+            infoCantEat: "vegetarian_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "Pescatarian",
-            description: "Excludes all meat but includes fish, dairy, and eggs.",
+            title: "pescatarian_title".localized(),
+            description: "pescatarian_description".localized(),
             icon: "pescatarian",
-            infoDescription: "A pescatarian diet excludes meat but includes fish, making it a fish-based diet that also allows for dairy and eggs.",
-            infoCanEat: "You can eat fish, seafood, fruits, vegetables, grains, dairy, eggs, legumes, nuts, and seeds.",
-            infoCantEat: "You must avoid red meat (beef, pork) and poultry (chicken, turkey)."
+            infoDescription: "pescatarian_info_description".localized(),
+            infoCanEat: "pescatarian_info_can_eat".localized(),
+            infoCantEat: "pescatarian_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "Flexitarian",
-            description: "Primarily plant-based but occasionally includes meat or fish.",
+            title: "flexitarian_title".localized(),
+            description: "flexitarian_description".localized(),
             icon: "flexitarian",
-            infoDescription: "A flexitarian diet is a flexible approach that emphasizes plant-based foods but allows for occasional meat or fish. It’s perfect for those who want the benefits of a vegetarian diet but with flexibility.",
-            infoCanEat: "You can eat mostly plant-based foods like vegetables, fruits, grains, legumes, and nuts, but occasionally enjoy meat or fish.",
-            infoCantEat: "There are no foods that are strictly prohibited, but limiting processed meats and excessive animal products is advised."
+            infoDescription: "flexitarian_info_description".localized(),
+            infoCanEat: "flexitarian_info_can_eat".localized(),
+            infoCantEat: "flexitarian_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "No Red Meat",
-            description: "Excludes beef, pork, and other red meats, but includes poultry, fish, dairy, and eggs.",
+            title: "no_red_meat_title".localized(),
+            description: "no_red_meat_description".localized(),
             icon: "no-red-meat",
-            infoDescription: "A 'No Red Meat' diet eliminates red meats like beef and pork but allows for other types of animal protein like poultry, fish, and dairy. It’s often chosen for health reasons to reduce the risk of certain diseases.",
-            infoCanEat: "You can eat poultry, fish, seafood, dairy products, eggs, vegetables, fruits, and grains.",
-            infoCantEat: "You must avoid beef, pork, lamb, and any other red meats."
+            infoDescription: "no_red_meat_info_description".localized(),
+            infoCanEat: "no_red_meat_info_can_eat".localized(),
+            infoCantEat: "no_red_meat_info_cant_eat".localized()
         ),
         DietPreferenceItem(
-            title: "Poultry Only",
-            description: "Includes only poultry (chicken, turkey, etc.), along with fish, dairy, and eggs.",
+            title: "poultry_only_title".localized(),
+            description: "poultry_only_description".localized(),
             icon: "poultry-only",
-            infoDescription: "A poultry-only diet focuses on eating only poultry (such as chicken and turkey) along with fish, dairy, and eggs. It excludes red meat and may be chosen for various health reasons or dietary preferences.",
-            infoCanEat: "You can eat poultry (chicken, turkey), fish, dairy, eggs, vegetables, fruits, and grains.",
-            infoCantEat: "You must avoid red meats (beef, pork, lamb) and any other meat sources besides poultry."
+            infoDescription: "poultry_only_info_description".localized(),
+            infoCanEat: "poultry_only_info_can_eat".localized(),
+            infoCantEat: "poultry_only_info_cant_eat".localized()
         )
     ]
 }

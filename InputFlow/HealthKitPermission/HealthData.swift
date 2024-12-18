@@ -90,7 +90,7 @@ struct HealthData: Identifiable, Codable {
         
         // Encoding the gender - using the hkBiologicalSexToString method
         if let gender = gender {
-            let genderString = hkBiologicalSexToString(gender)
+            let genderString = gender.toLocalizedString()
             try container.encode(genderString, forKey: .gender)
         }
         
@@ -104,27 +104,11 @@ struct HealthData: Identifiable, Codable {
     // Existing function to map gender string to HKBiologicalSex enum
     func hkBiologicalSexFromString(_ value: String) -> HKBiologicalSex? {
         switch value.lowercased() {
-        case "male": return .male
-        case "female": return .female
-        case "other": return .other
-        case "not set": return .notSet
+        case "male".localized().lowercased(): return .male
+        case "female".localized().lowercased(): return .female
+        case "other".localized().lowercased(): return .other
+        case "not_set".localized().lowercased(): return .notSet
         default: return nil
-        }
-    }
-
-    // Existing function to map HKBiologicalSex enum to string
-    func hkBiologicalSexToString(_ biologicalSex: HKBiologicalSex) -> String {
-        switch biologicalSex {
-        case .male:
-            return "Male"
-        case .female:
-            return "Female"
-        case .other:
-            return "Other"
-        case .notSet:
-            return "Not Set"
-        @unknown default:
-            return "Unknown"
         }
     }
 }

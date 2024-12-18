@@ -11,33 +11,28 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class AllergensVM: BaseViewModel {
-    @Published var fetchedAllergens: [Allergen] = []
+    @Published var fetchedAllergens: [Allergen] = [
+        Allergen(id: "Apple", severityLevel: 2, type: "fruit"),
+        Allergen(id: "Buckwheat", severityLevel: 2, type: "grain"),
+        Allergen(id: "Celery", severityLevel: 3, type: "vegetable"),
+        Allergen(id: "Corn", severityLevel: 2, type: "grain"),
+        Allergen(id: "Egg", severityLevel: 3, type: "dairy"),
+        Allergen(id: "Lupin", severityLevel: 2, type: "legume"),
+        Allergen(id: "Milk", severityLevel: 4, type: "dairy"),
+        Allergen(id: "Mollusk", severityLevel: 4, type: "seafood"),
+        Allergen(id: "Mustard", severityLevel: 3, type: "spice"),
+        Allergen(id: "Peach", severityLevel: 2, type: "fruit"),
+        Allergen(id: "Peanut", severityLevel: 5, type: "nut"),
+        Allergen(id: "Poppy Seed", severityLevel: 2, type: "seed"),
+        Allergen(id: "Sesame", severityLevel: 3, type: "seed"),
+        Allergen(id: "Shellfish", severityLevel: 5, type: "seafood"),
+        Allergen(id: "Soy", severityLevel: 3, type: "legume"),
+        Allergen(id: "Sulphite", severityLevel: 3, type: "additive"),
+        Allergen(id: "Sunflower Seed", severityLevel: 2, type: "seed"),
+        Allergen(id: "Tree Nut", severityLevel: 5, type: "nut"),
+        Allergen(id: "Wheat", severityLevel: 3, type: "grain")
+    ]
     @Published var goToLoadingView = false
-
-    func fetchAllergens() {
-        let db = Firestore.firestore()
-        db.collection("allergens").getDocuments { (querySnapshot, error) in
-            // Handle errors
-            if error != nil {
-                return
-            }
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
-            self.fetchedAllergens.removeAll()
-            for document in documents {
-                do {
-                    var allergen = try document.data(as: Allergen.self)
-                    allergen.id = document.documentID
-                    self.fetchedAllergens.append(allergen)
-                } catch {
-                }
-            }
-            DispatchQueue.main.async {
-                self.fetchedAllergens = self.fetchedAllergens
-            }
-        }
-    }
     
     func saveHealthDataToFirestore() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

@@ -34,6 +34,21 @@ extension Font {
     static func montserrat(_ type: MontserratFont, size: CGFloat = 24) -> Font {
         .custom(type.name, size: size)
     }
+    
+    func toUIFont(size: CGFloat) -> UIFont {
+        UIFont(name: self.name(for: size), size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    
+    private func name(for size: CGFloat) -> String {
+        switch self {
+        case .montserrat(.bold): return "Montserrat-Bold"
+        case .montserrat(.semiBold): return "Montserrat-SemiBold"
+        case .montserrat(.medium): return "Montserrat-Medium"
+        case .montserrat(.regular): return "Montserrat-Regular"
+        case .montserrat(.light): return "Montserrat-Light"
+        default: return "System"
+        }
+    }
 }
 
 

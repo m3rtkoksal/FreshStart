@@ -88,7 +88,6 @@ class MealManager {
     
     // Load filled glasses for the most recent day from UserDefaults
     func loadFilledGlasses() -> Int {
-        let defaults = UserDefaults.standard
         let waterEntries = loadWaterEntries() // Load all water entries
         
         // Check if there are any water entries available

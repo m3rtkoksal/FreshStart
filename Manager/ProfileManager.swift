@@ -32,6 +32,10 @@ final class ProfileManager: ObservableObject {
         AnalyticsHelper.setUserId(userId: id)
     }
     
+    func setLanguage(_ language: String) {
+        self.user.language = language
+    }
+    
     func setUserEmail(_ email: String) {
         self.user.email = email
     }
@@ -114,6 +118,24 @@ final class ProfileManager: ObservableObject {
     
     func setUserDietPlanCount(_ count: Int) {
         self.user.dietPlanCount = count
+    }
+    
+    func incrementDietPlanCount() {
+        if let currentCount = self.user.dietPlanCount {
+            self.user.dietPlanCount = currentCount + 1
+        } else {
+            self.user.dietPlanCount = 1
+        }
+        setUserDietPlanCount(self.user.dietPlanCount ?? 0)
+    }
+    
+    func decrementDietPlanCount() {
+        if let currentCount = self.user.dietPlanCount {
+            self.user.dietPlanCount = currentCount - 1
+        } else {
+            self.user.dietPlanCount = 1
+        }
+        setUserDietPlanCount(self.user.dietPlanCount ?? 0)
     }
     
     func setDefaultDietPlan(_ dietPlan: DietPlan) {

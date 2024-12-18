@@ -13,9 +13,10 @@ struct MealCardElementView: View {
     var icon: String
     var selectedMeals: Set<Meal>
     @State private var cardHeight: CGFloat = 0
+    @State private var hasCalculatedHeight = false
     private var isSelected: Bool {
-            selectedMeals.contains(meal)
-        }
+        selectedMeals.contains(meal)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +25,7 @@ struct MealCardElementView: View {
                     .foregroundColor(Color.white)
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(Color.black, lineWidth: 1)
-                  
+                
                     .overlay(
                         VStack(alignment: .leading) {
                             HStack(alignment: .center, spacing: 10) {
@@ -43,18 +44,21 @@ struct MealCardElementView: View {
                                     HStack {
                                         Circle()
                                             .fill(index % 2 == 0 ? Color.mkOrange : Color.mkPurple)
-                                            .frame(width: 2, height: 2) // Adjust the size for visibility
+                                            .frame(width: 2, height: 2)
                                         Text("\(meal.items[index].item) - \(meal.items[index].quantity)")
                                             .foregroundColor(.black)
                                             .font(.montserrat(.medium, size: 12))
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     }
-                                        .fixedSize(horizontal: false, vertical: true) // Ensure text expands vertically
-                                        .background(GeometryReader { geometry in
-                                            Color.clear.onAppear {
-                                                updateCardHeight(with: geometry.size.height * 1.1)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .background(GeometryReader { geometry in
+                                        Color.clear.onAppear {
+                                            if !hasCalculatedHeight {
+                                                // Only update the height once when the view appears
+                                                updateCardHeight(with: geometry.size.height)
                                             }
-                                        })
+                                        }
+                                    })
                                 }
                                 .padding(.leading, 33)
                             }
@@ -74,7 +78,7 @@ struct MealCardElementView: View {
         }
         .background(Color.clear)
         .cornerRadius(10)
-        .frame(height: cardHeight) // Use dynamic height
+        .frame(height: cardHeight)
         
         .onChange(of: meal) { newMeal in
             resetCardHeight()
@@ -85,14 +89,21 @@ struct MealCardElementView: View {
     }
     
     private func updateCardHeight(with itemHeight: CGFloat) {
-        DispatchQueue.main.async {
-            // Dynamically add item height to the total card height
-            cardHeight += itemHeight
+        // Only update the height once
+        if !hasCalculatedHeight {
+            DispatchQueue.main.async {
+                cardHeight += itemHeight
+                hasCalculatedHeight = true
+            }
         }
     }
     
     private func resetCardHeight() {
-        // Start with base height
-        cardHeight = Constant.imageHeight + Constant.bottomPadding
+        // Reset only when needed (e.g., when meal changes)
+        if !hasCalculatedHeight {
+            cardHeight = Constant.bottomPadding + Constant.imageHeight
+            let itemHeight: CGFloat = 15
+            cardHeight += CGFloat(meal.items.count) * itemHeight
+        }
     }
 }

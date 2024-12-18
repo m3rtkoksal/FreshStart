@@ -13,12 +13,12 @@ struct WalkthroughCardView2: View {
     let onNext: () -> Void
     let isLastCard: Bool
     let walkthrough2ListData: [String] = [
-        "Track your diet, water intake",
-        "Create heatlhy habits",
-        "Shape your lifestyle goals",
-        "Track your activity",
-        "Customize your meals"
-        ]
+        "walkthrough.track_diet_water".localized(),
+        "walkthrough.create_healthy_habits".localized(),
+        "walkthrough.shape_lifestyle_goals".localized(),
+        "walkthrough.track_activity".localized(),
+        "walkthrough.customize_meals".localized()
+    ]
     
     // MARK: - BODY
     var body: some View {
@@ -27,10 +27,11 @@ struct WalkthroughCardView2: View {
                 .foregroundColor(Color.white)
                 .font(.montserrat(.medium, size: 36))
                 .multilineTextAlignment(.leading)
-                .lineLimit(2)
+                .lineLimit(nil)
+                .minimumScaleFactor(0.5)
                 .lineSpacing(10)
                 .frame(width: UIScreen.screenWidth * 0.9)
-                .padding(.leading, 0)
+                .padding(.leading, 20)
             VStack {
                 ForEach(walkthrough2ListData.indices, id: \.self) { index in
                     Walkthrough2ListElement(text: walkthrough2ListData[index])
@@ -63,6 +64,8 @@ struct Walkthrough2ListElement: View {
                 .frame(width: 10, height: 10)
             Text(text)
                 .font(.montserrat(.medium, size: 20))
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
                 .foregroundStyle(.white)
                 .padding(.leading, 15)
             Spacer()

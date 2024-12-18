@@ -20,7 +20,8 @@ struct NextButton: View {
                     .shadow(radius: 10)
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.white)
-                Text(isLastCard ? "Let's go" : "Next")
+                Text(isLastCard ? "walkthrough.lets_go".localized() : "walkthrough.next".localized())
+
                     .font(.montserrat(.semiBold, size: 14))
                     .foregroundColor(.black)
             }

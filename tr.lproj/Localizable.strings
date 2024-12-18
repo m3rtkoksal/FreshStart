@@ -1,0 +1,554 @@
+/* 
+  Localizable.strings
+  FreshStart
+
+  Created by Mert Köksal on 11.12.2024.
+  
+*/
+//MARK: Badges
+"show_all_badges" = "Tüm Rozetleri Göster";
+"criteria" = "Kriter: ";
+"achieved_on" = "Gerçekleştirildiği Tarih: ";
+"not_achieved_yet" = "Henüz Gerçekleştirilmedi";
+"badge_view_title" = "Başarılarınız";
+"badge_subtitle" = "Zorlukları tamamlayarak ve hedeflerinize ulaşarak rozet kazanın.";
+"empty_badge_text" = "Zorlukları tamamlayarak rozet kazanın!";
+
+"top_fat_burner_badge_title" = "En İyi Yağ Yakıcı";
+"top_fat_burner_badge_description" = "Bu hafta en fazla yağı yakan kişiye verilir.";
+"top_fat_burner_badge_criteria" = "Bir hafta içinde 2kg yağ yak.";
+
+"ultimate_power_walker_badge_title" = "Sonuçların Güç Yürüyücüsü";
+"ultimate_power_walker_badge_description" = "Bir günde 10.000 adım at ve 500 aktif kalori yak.";
+"ultimate_power_walker_badge_criteria" = "Bir günde 10.000 adım at ve 500 aktif kalori yak.";
+
+"muscle_maker_badge_title" = "Kas Yapıcı";
+"muscle_maker_badge_description" = "Bu hafta en fazla kas kazanan kişiye verilir.";
+"muscle_maker_badge_criteria" = "Bir hafta içinde 3kg kas kazan.";
+
+"healthy_starter_badge_title" = "Sağlıklı Başlangıç";
+"healthy_starter_badge_description" = "İlk diyet planınızı başarıyla tamamladığınızda verilir.";
+"healthy_starter_badge_criteria" = "Bir hafta boyunca tam bir diyet planı takip et.";
+
+"protein_pioneer_badge_title" = "Protein Öncüsü";
+"protein_pioneer_badge_description" = "Bir günde 150g protein alarak bu rozet kazanılır.";
+"protein_pioneer_badge_criteria" = "Bir günde 150g veya daha fazla protein tüket.";
+
+"calorie_crusher_badge_title" = "Kalori Kırıcısı";
+"calorie_crusher_badge_description" = "Bir günde 500 aktif kalori yakan kişiye verilir.";
+"calorie_crusher_badge_criteria" = "Bir günde 500 aktif kalori yak.";
+
+"steady_metabolism_badge_title" = "Dengeli Metabolizma";
+"steady_metabolism_badge_description" = "Bir hafta boyunca istikrarlı bir bazal metabolizma hızını koruyun.";
+"steady_metabolism_badge_criteria" = "7 gün boyunca 1500+ kalori bazal enerji yak.";
+
+"body_builder_badge_title" = "Vücut Geliştirici";
+"body_builder_badge_description" = "İki hafta içinde 1kg kas kütlesi kazandığınızda verilir.";
+"body_builder_badge_criteria" = "İki hafta içinde 1kg yağsız vücut kütlesi artır.";
+
+"active_energy_burner_badge_title" = "Aktif Enerji Yakıcı";
+"active_energy_burner_badge_description" = "Bir hafta içinde 20.000 kcal yakan kişiye verilir.";
+"active_energy_burner_badge_criteria" = "Bir hafta içinde en fazla aktif enerji yak.";
+
+"strength_gainer_badge_title" = "Güç Kazanıcı";
+"strength_gainer_badge_description" = "Bir ay içinde yağsız vücut kütlesini artırdığınızda verilir.";
+"strength_gainer_badge_criteria" = "Bir ay içinde 1kg yağsız vücut kütlesi artır.";
+
+"weight_watcher_badge_title" = "Ağırlık İzleyici";
+"weight_watcher_badge_description" = "Bir ay boyunca düzenli olarak kilo veren kişiye verilir.";
+"weight_watcher_badge_criteria" = "Bir ayda 2kg vücut ağırlığı kaybet.";
+
+"step_master_badge_title" = "Adım Ustası";
+"step_master_badge_description" = "Bugün 8.000 adım tamamlayan kişiye verilir!";
+"step_master_badge_criteria" = "Bir günde 10.000 adım tamamla.";
+
+"slim_shady_badge_title" = "Slim Shady";
+"slim_shady_badge_description" = "Düzenli olarak 10kg kilo veren kişiye verilir.";
+"slim_shady_badge_criteria" = "10 kg vücut ağırlığı kaybet.";
+
+"water_tank_badge_title" = "Su Deposu";
+"water_tank_badge_description" = "30 gün boyunca 2 litre su içen kişiye verilir.";
+"water_tank_badge_criteria" = "30 gün boyunca 2 litre su iç.";
+
+"calm_pulse_badge_title" = "Sakin Nabız";
+"calm_pulse_badge_description" = "Bir hafta boyunca dinlenme kalp atış hızınızı 70 bpm'in altında tutun.";
+"calm_pulse_badge_criteria" = "7 gün boyunca ortalama dinlenme kalp atış hızı ≤ 70 bpm.";
+
+"balanced_rhythm_badge_title" = "Dengeli Ritm";
+"balanced_rhythm_badge_description" = "Bir ay içinde HRV'nizi %10 oranında iyileştirin.";
+"balanced_rhythm_badge_criteria" = "30 gün içinde ortalama HRV'yi %10 artır.";
+
+"stress_resistor_badge_title" = "Stres Direnççisi";
+"stress_resistor_badge_description" = "10 gün boyunca düşük stres puanını (≤3) koruyun.";
+"stress_resistor_badge_criteria" = "10 gün boyunca günlük stres puanı ≤ 3 olsun.";
+
+"wellness_warrior_badge_title" = "Sağlık Savaşçısı";
+"wellness_warrior_badge_description" = "Bir gün içinde kalp atış hızınızı, HRV'nizi ve stres seviyenizi hedeflere uygun şekilde tamamlayın.";
+"wellness_warrior_badge_criteria" = "Dinlenme kalp atış hızı ≤ 70 bpm, HRV artışı %5, stres puanı ≤ 3 bir gün boyunca.";
+
+"notification_master_badge_title" = "Bildirim Ustası";
+"notification_master_badge_description" = "Yerel bildirimlerin etkin olduğundan ve planlandığından emin olun.";
+"notification_master_badge_criteria" = "Yerel bildirimler etkinleştirildi ve en az bir bildirim planlandı.";
+
+//MARK: Health Chart
+"no_data_available" = "Veri mevcut değil.";
+"lost" = "kaybedildi";
+"gained" = "kazanıldı";
+"body_fat_change_message" = "Vücut yağınızda ";
+"of_your_body_fat" = "vücut yağınızdan.";
+"lean_body_mass_change_message" = "Yağsız vücut kütlenizde ";
+"of_your_lean_body_mass" = "yağsız vücut kütlenizden.";
+"active_energy_change_message" = "Aktif enerji olarak ";
+"kcal_active_energy" = "kcal aktif enerji.";
+"change_message" = "Değişiminiz ";
+"kg_unit" = "kg.";
+"body_fat_percentage" = "Vücut Yağ Oranı";
+"lean_body_mass" = "Yağsız Vücut Kütlesi";
+"active_energy" = "Aktif Enerji";
+"weight" = "Ağırlık";
+"date" = "Tarih";
+
+//MARK: Additional
+"charts" = "Grafikler";
+"badges" = "Rozetler";
+"rankings" = "Sıralamalar";
+
+//MARK: Rankings
+"show_all_rankings" = "Tüm Sıralamaları Göster";
+"user" = "Kullanıcı";
+"fat_lose_percentage" = "Yağ Kaybı %";
+"muscle_gain" = "Kas Kazancı";
+"score" = "Puan";
+"muscle_mass" = "Kas Kütlesi";
+"daily_login" = "Günlük Giriş";
+"all_rankings" = "Tüm Sıralamalar";
+"prizes" = "Ödüller:";
+"1st" = "1.";
+"2nd" = "2.";
+"3rd" = "3.";
+"4th" = "4.";
+"5th" = "5.";
+"7_days_premium" = "7 gün premium abone";
+"5_days_premium" = "5 gün premium abone";
+"3_days_premium" = "3 gün premium abone";
+"2_days_premium" = "2 gün premium abone";
+"1_day_premium" = "1 gün premium abone";
+"sunday_midnight" = "Her Pazar 00:00";
+"body_fat" = "Vücut Yağı";
+
+//MARK: Diary
+"read_recipe_button" = "Tarifi Oku";
+"recreate_meal_button" = "Bu Yemeği Yeniden Oluştur";
+"confirm_diet_plan_change_title" = "Diyet Planı Değişikliği Onayı";
+"confirm_diet_plan_change_message" = "Varsayılan diyet planınızı değiştirmek istediğinizden emin misiniz?";
+"confirm_diet_plan_delete_title" = "Diyet Planı Silme Onayı";
+"confirm_diet_plan_delete_message" = "Bu diyet planını silmek istediğinizden emin misiniz?";
+"confirm" = "Onayla";
+"cancel" = "İptal";
+"n_a" = "Geçerli Değil";
+"select_this_as_my_diet_plan" = "Bunu Benim Diyet Planım Olarak Seç";
+"delete_plan" = "Planı Sil";
+"your_recipe_for" = "Tarifiniz";
+"kcal" = "Kcal";
+"protein" = "Protein";
+"carbohydrate" = "Karbonhidrat";
+"fat" = "Yağ";
+"ingredients" = "Malzemeler";
+"instructions" = "Yapılış";
+"please_select_default_diet_plan" = "Lütfen varsayılan bir diyet planı seçin";
+"multiple_diet_plans_message" = "Birden fazla diyet planınız var. Lütfen birini varsayılan olarak seçin.";
+"ok_button_text" = "Tamam";
+"my_goal_is_to" = "Amacım";
+"you_can_create_more_plans" = "Daha fazla plan oluşturabilirsiniz: %@ adet";
+"watch_ad_to_create_plan" = "Yeni bir plan oluşturmak için bir reklam izleyebilirsiniz";
+"purchase_first_diet_plan" = "İlk Diyet Planınızı Satın Alın";
+"no_diet_plans_available" = "Şu anda hiç diyet planınız yok.";
+"create_new_plan" = "Yeni Plan Oluştur";
+"learn_more_diet_nutrition" = "Diyet ve beslenme hakkında daha fazla bilgi edinin";
+"water" = "Su";
+"tap_to_mark_meal_eaten" = "Yemeğinizi yedi olarak işaretlemek için “+” butonuna tıklayın. Seçilen öğünler her gece otomatik olarak sıfırlanacaktır.";
+"remember_to_stay_hydrated" = "Suyu unutmayın!";
+
+
+//MARK: Input Flow
+//Allergens
+"allergens_title" = "Alerjenler";
+"allergens_subtitle" = "Eğer herhangi bir alerjiniz varsa, lütfen alerjenlerinizi listeden seçin.";
+"allergen" = "Alerjen";
+"allergen_type" = "Alerjen Türü";
+"severity_level" = "Şiddet Düzeyi";
+"add" = "Ekle";
+"create_diet_plan" = "Diyet Planı Oluştur";
+
+//DetailsAboutMe
+"details_about_you" = "Hakkınızda Detaylar";
+"freshstart_needs_info" = "FreshStart, sizin için en uygun planı oluşturabilmek için biraz fiziğiniz hakkında bilgiye ihtiyaç duyar.";
+"please_select_gender" = "Lütfen cinsiyetinizi seçin";
+"date_of_birth" = "Doğum Tarihi";
+"how_tall_are_you" = "Boyunuz ne kadar?";
+"how_much_do_you_weight" = "Kilolu musunuz?";
+"next" = "İleri";
+"select_height" = "Boy Seçin";
+"male" = "Erkek";
+"female" = "Kadın";
+"other" = "Diğer";
+"not_set" = "Belirtilmedi";
+"unknown" = "Bilinmiyor";
+
+//Diet Preference
+"can_eat" = "Yiyebilirsiniz";
+"cannot_eat" = "Yiyemezsiniz";
+"diet_preference_title" = "Diyet Tercihi";
+"diet_preference_subtitle" = "Lütfen diyet tercihinizi seçin";
+"recommended" = "Tavsiye Edilen";
+
+"normal_title" = "Normal";
+"normal_description" = "Hiçbir diyet kısıtlaması yok, tüm gıda türlerini içerir.";
+"normal_info_description" = "Normal diyet, belirli bir kısıtlama olmadan geniş bir yiyecek yelpazesi içerir. Dengeli bir diyeti destekler ve diyet kısıtlaması olmayan kişiler için en yaygın tercihtir.";
+"normal_info_can_eat" = "Etler, sebzeler, meyveler, tahıllar, süt ürünleri ve yağlar dahil olmak üzere geniş bir yiyecek yelpazesi yiyebilirsiniz.";
+"normal_info_cant_eat" = "Kaçınılması gereken özel bir gıda yoktur.";
+
+"vegan_title" = "Vegan";
+"vegan_description" = "Tüm hayvansal ürünleri, et, balık, süt ve yumurtayı içermez.";
+"vegan_info_description" = "Vegan diyet, tüm hayvan kaynaklı gıdaları içermez. Bitkisel gıdalara odaklanır ve tüm hayvan sömürüsü biçimlerinden kaçınmayı amaçlar.";
+"vegan_info_can_eat" = "Meyveler, sebzeler, baklagiller, tahıllar, kuruyemişler, tohumlar ve süt ve et alternatiflerini içeren bitkisel ürünleri yiyebilirsiniz.";
+"vegan_info_cant_eat" = "Et, balık, yumurta, süt, bal ve hayvansal ürünlerden yapılan herhangi bir ürün dahil olmak üzere tüm hayvansal ürünlerden kaçınmalısınız.";
+
+"vegetarian_title" = "Vejeteryan";
+"vegetarian_description" = "Tüm et ve balığı içermez, ancak süt ve yumurtayı içerir.";
+"vegetarian_info_description" = "Vejeteryan diyet, et ve balığı içermez, ancak süt ve yumurta gibi diğer hayvansal ürünleri içerir. Genellikle etik, sağlık veya çevresel nedenlerle tercih edilir.";
+"vegetarian_info_can_eat" = "Meyveler, sebzeler, baklagiller, tahıllar, süt ürünleri, yumurtalar, kuruyemişler ve tohumlar yiyebilirsiniz.";
+"vegetarian_info_cant_eat" = "Et, tavuk, balık ve deniz ürünlerinden kaçınmalısınız.";
+
+"pescatarian_title" = "Peskatarian";
+"pescatarian_description" = "Tüm eti içermez, ancak balık, süt ve yumurta içerir.";
+"pescatarian_info_description" = "Peskatarian diyet, et içermez ancak balık içerir, bu da balığa dayalı bir diyettir ve aynı zamanda süt ve yumurta içerir.";
+"pescatarian_info_can_eat" = "Balık, deniz ürünleri, meyveler, sebzeler, tahıllar, süt ürünleri, yumurtalar, baklagiller, kuruyemişler ve tohumlar yiyebilirsiniz.";
+"pescatarian_info_cant_eat" = "Kırmızı et (sığır, domuz) ve tavuk (tavuk, hindi) yememelisiniz.";
+
+"flexitarian_title" = "Fleksitarian";
+"flexitarian_description" = "Başlıca bitkisel bazlıdır, ancak ara sıra et veya balık içerir.";
+"flexitarian_info_description" = "Fleksitarian diyeti, bitkisel gıdalara öncelik verir ancak ara sıra et veya balık içermesine izin verir. Vejeteryan diyeti ile esneklik isteyenler için mükemmeldir.";
+"flexitarian_info_can_eat" = "Çoğunlukla sebzeler, meyveler, tahıllar, baklagiller ve kuruyemişler gibi bitkisel bazlı gıdalar yiyebilirsiniz, ancak ara sıra et veya balık yiyebilirsiniz.";
+"flexitarian_info_cant_eat" = "Kesinlikle yasaklanan gıdalar yoktur, ancak işlenmiş etleri ve aşırı hayvansal ürünleri sınırlamak önerilir.";
+
+"no_red_meat_title" = "Kırmızı Et Yok";
+"no_red_meat_description" = "Sığır, domuz ve diğer kırmızı etleri içermez, ancak tavuk, balık, süt ve yumurtayı içerir.";
+"no_red_meat_info_description" = "Kırmızı Et Yok diyeti, sığır ve domuz gibi kırmızı etleri içermez ancak diğer hayvan proteinlerini, örneğin tavuk, balık ve sütü içerir. Genellikle bazı hastalık risklerini azaltmak için sağlık nedenleriyle tercih edilir.";
+"no_red_meat_info_can_eat" = "Tavuk, balık, deniz ürünleri, süt ürünleri, yumurtalar, sebzeler, meyveler ve tahılları yiyebilirsiniz.";
+"no_red_meat_info_cant_eat" = "Sığır, domuz, kuzu ve diğer kırmızı etlerden kaçınmalısınız.";
+
+"poultry_only_title" = "Yalnızca Kanatlı Et";
+"poultry_only_description" = "Yalnızca tavuk ve hindi gibi kanatlı etler ile balık, süt ve yumurta içerir.";
+"poultry_only_info_description" = "Yalnızca kanatlı et diyeti, sadece tavuk ve hindi gibi kanatlı etleri yer, ayrıca balık, süt ve yumurta içerir. Kırmızı etten kaçınılır ve çeşitli sağlık nedenleri veya diyet tercihlerine göre tercih edilebilir.";
+"poultry_only_info_can_eat" = "Tavuk, hindi, balık, süt, yumurta, sebzeler, meyveler ve tahılları yiyebilirsiniz.";
+"poultry_only_info_cant_eat" = "Sığır eti, domuz, kuzu ve diğer kırmızı etleri içeren her türlü eti yememelisiniz.";
+
+//Frequency
+"meals_per_day" = "%d öğün gün içinde:";
+"how_many_meals_title" = "Kaç öğün";
+"how_many_meals_subtitle" = "Bir günde kaç öğün yediğinizi, atıştırmalıklar dahil seçin";
+"frequency_7_meals_subtitle" = "Kahvaltı, Öğle Yemeği, Akşam Yemeği ve 4 Atıştırmalık";
+"frequency_6_meals_subtitle" = "Kahvaltı, Öğle Yemeği, Akşam Yemeği ve 3 Atıştırmalık";
+"frequency_5_meals_subtitle" = "Kahvaltı, Öğle Yemeği, Akşam Yemeği ve 2 Atıştırmalık";
+"frequency_4_meals_subtitle" = "Kahvaltı, Öğle Yemeği, Akşam Yemeği ve 1 Atıştırmalık";
+"frequency_3_meals_subtitle" = "Kahvaltı, Öğle Yemeği ve Akşam Yemeği";
+"frequency_2_meals_subtitle" = "Kahvaltı ve Öğle Yemeği veya Akşam Yemeği";
+
+// HealthKitPermission
+"health_data_title" = "Sağlık Verisi";
+"health_data_description" = "FreshStart, kalori alımınız, fitness aktiviteleriniz, boy ve kilonuz ve diğer sağlıkla ilgili verilerinizi, size özel hizmetler sunmak için kullanır. \n\n FreshStart'ın temel özellikleri, bu verilere ihtiyaç duyar. Eğer kabul etmezseniz, uygulamayı kullanamayacaksınız.";
+"export_data_from_apple_health" = "Apple Health'ten Verileri Dışa Aktar";
+"or_enter_manually" = "Ya da Manuel Giriş Yapın";
+"enter_manually_button" = "Manuel Giriş Yap";
+"agree_health_data_processing" = "'Manuel Giriş Yap' butonuna tıklayarak sağlık verilerinizin işlenmesini kabul ediyorsunuz.\n\n Daha fazla bilgi için ";
+"privacy_policy" = "Gizlilik Politikası'na" ;
+
+// How Active
+"how_active_title" = "Ne kadar aktifsiniz?";
+"how_active_subtitle" = "Koşma, basketbol oynama veya spor yapma gibi zorlayıcı aktiviteler hariç tutun.";
+"not_very_active" = "Çok aktif değil";
+"lightly_active" = "Hafif aktif";
+"active" = "Aktif";
+"very_active" = "Çok aktif";
+
+"not_very_active_title" = "Çok aktif değil";
+"lightly_active_title" = "Hafif aktif";
+"active_title" = "Aktif";
+"very_active_title" = "Çok aktif";
+
+"not_very_active_description" = "Günün çoğunu oturarak geçirirsiniz (örneğin, masa başı iş, bankacı)";
+"lightly_active_description" = "Günün büyük kısmını ayakta geçirirsiniz (örneğin, öğretmen, satış elemanı)";
+"active_description" = "Günün büyük kısmını fiziksel aktivite ile geçirirsiniz (örneğin, garson, posta dağıtıcısı)";
+"very_active_description" = "Günün çoğunu yoğun fiziksel aktivite ile geçirirsiniz (örneğin, inşaat işçisi, marangoz)";
+
+// Loading
+"creating_your_diet_plan" = "Diyet planınızı oluşturuyoruz";
+"customizing_your_experience" = "Deneyiminizi özelleştiriyoruz...";
+"analyzing_health_data" = "Sağlık verilerinizi analiz ediyoruz...";
+"adding_your_goal" = "Hedefinizi ekliyoruz...";
+"timeout" = "Zaman aşımı";
+"something_went_wrong" = "Bir şeyler ters gitti.";
+"retry" = "Yeniden Dene";
+"diet_plan_already_generated" = "Diyet Planı Zaten Oluşturulmuş";
+"one_diet_plan_at_a_time" = "Bir seferde yalnızca bir diyet planı oluşturabilirsiniz. Lütfen tekrar denemeden önce bekleyin.";
+"ok" = "Tamam";
+
+// Purpose
+"whats_your_goal" = "Hedefiniz nedir?";
+"lets_focus_on_one_goal" = "Başlangıçta bir hedefe odaklanalım.";
+"lose_weight" = "Kilo kaybetmek";
+"maintain_weight" = "Kilo korumak";
+"gain_weight" = "Kilo almak";
+"gain_muscle" = "Kas kazanmak";
+
+// MARK: Main Tab
+"diary_tab" = "Günlük";
+"meal_plans_tab" = "Yemek Planları";
+"additional_tab" = "Ekstra";
+"profile_tab" = "Profil";
+
+// MARK: Manager
+// HealthKit
+"severe_stress" = "Şiddetli Stres";
+"high_stress" = "Yüksek Stres";
+"moderate_stress" = "Orta Seviye Stres";
+"low_stress" = "Düşük Stres";
+
+// OpenAI
+"failed_to_fetch_response" = "OpenAI'dan yanıt alınamadı.";
+"failed_to_decode_recipe" = "Tarif verisi çözümlenemedi.";
+"failed_to_convert_response" = "Yanıt metni veriye dönüştürülemedi.";
+"failed_to_parse_meal" = "Yemek yanıtı çözümlenemedi.";
+
+// Notification
+"meal_reminder_title" = "Hatırlatma";
+"meal_reminder_body" = "Henüz bir yemek seçmediniz gibi görünüyor. Yemeklerinizi planlamayı unutmayın!";
+"global_inactivity_reminder_title" = "Bir süredir bir şey yapmadınız!";
+"global_inactivity_reminder_body" = "Bir süredir uygulama ile etkileşime geçmediniz. Yemek planınızı kontrol etmeyi unutmayın!";
+
+// MARK: Meal Plans
+// DonutChart
+"per_day" = "günlük";
+"nutrients" = "Besinler";
+"grams" = "%@ gr";
+
+// SavedPlan
+"your_saved_diet_plans" = "Kaydedilen Diyet Planlarınız";
+"saved_diet_plans_subtitle" = "Önceki yemek planlarınızın detaylarına buradan ulaşabilirsiniz";
+"create_new_plan_button" = "Yeni Plan Oluştur";
+"more_plans_available" = "%d daha fazla oluşturabilirsiniz";
+"buy_more_plans" = "Diyet planlarını tekliflerimizden satın alabilirsiniz";
+
+// Stepview
+"steps_goal" = "%d adım";
+"steps_label" = "Adımlar";
+
+// SubscriptionElement
+"purchase_plans" = "Planları Satın Al";
+"purchase_description" = "FreshStart'tan en iyi şekilde yararlanın. Daha fazla yemek planı oluşturun, hidrasyonu kontrol edin, aktivite ve ağırlık ekleyin.";
+
+// MARK: Offers
+"purchase" = "Satın Al";
+"purchase_plans" = "Planları Satın Al";
+"purchase_plans_subtitle" = "Bu listeden paketleri görebilirsiniz";
+"no_offerings" = "Şu anda hiçbir teklif yok";
+"error_title" = "Hata";
+"error_message" = "Bir şeyler ters gitti.";
+"ok_button" = "Tamam";
+
+// MARK: Profile
+"information_of_you" = "Bilgileriniz";
+"change_information" = "Bilgilerinizi burada değiştirebilirsiniz";
+"update" = "Güncelle";
+"first_name" = "Ad";
+"surname" = "Soyad";
+"username" = "Kullanıcı adı";
+
+// Resources
+"disclaimer_and_data_privacy_title" = "Feragatname ve Veri Gizliliği";
+"Disclaimer & Data Privacy" = "Feragatname & Veri Gizliliği";
+"Our Promise to You" = "Size Verdiğimiz Söz";
+"Sources and Information Accuracy" = "Kaynaklar ve Bilgi Doğruluğu";
+"How We Use Your Health Data" = "Sağlık Verilerinizi Nasıl Kullanıyoruz";
+"Our Commitment to Privacy and Security" = "Gizlilik ve Güvenlik Konusundaki Taahhüdümüz";
+"Questions?" = "Sorular?";
+
+//MARK: Profile
+"profile.personal" = "Kişisel";
+"profile.user_type" = "Kullanıcı Tipi";
+"profile.username" = "Kullanıcı Adı";
+"profile.name" = "Ad";
+"profile.surname" = "Soyad";
+"profile.birthday" = "Doğum Tarihi";
+"profile.email" = "E-posta";
+"profile.gender" = "Cinsiyet";
+"profile.height" = "Boy";
+"profile.weight" = "Kilo";
+"profile.body_fat_percentage" = "Vücut Yağ Yüzdesi";
+"profile.lean_body_mass" = "Yağsız Vücut Kütlesi";
+"profile.resting_energy" = "Dinlenme Enerjisi";
+"profile.active_energy" = "Aktif Enerji";
+"profile.language" = "Dil";
+"profile.change_language" = "Dil Değiştir";
+
+
+"profile.general" = "Genel";
+"profile.notifications" = "Bildirimler";
+"profile.disclaimer" = "Feragatname & Veri Gizliliği";
+"profile.contact_support" = "Destekle İletişime Geç";
+"profile.leave_review" = "Değerlendirme Bırak";
+"profile.confirm_delete_account" = "Hesap Silme Onayı";
+"profile.delete_account_message" = "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.";
+"profile.delete_button" = "Sil";
+"profile.cancel_button" = "İptal";
+"profile.contact_subject" = "Destek Talebi";
+"profile.contact_body" = "Lütfen sorununuzu buraya yazın.";
+
+//MARK: Register Login
+"login.welcome_title" = "FreshStart'a Hoşgeldiniz";
+"login.welcome_subtitle" = "Merhaba, devam etmek için giriş yapın!";
+"login.email_address" = "E-posta Adresi";
+"login.password" = "Şifre";
+"login.forgot_password" = "Şifrenizi mi unuttunuz?";
+"login.login_button" = "Giriş Yap";
+"login.or_login_with" = "Veya giriş yaparak";
+"login.connect_with_google" = "Google ile Bağlan";
+"login.connect_with_apple" = "Apple ile Bağlan";
+"login.dont_have_account" = "Hesabınız yok mu? ";
+"login.register_now" = "Hemen Kayıt Ol!";
+"login.alert_wrong_credentials_title" = "Yanlış e-posta veya şifre";
+"login.alert_try_again" = "Tekrar Deneyin";
+
+//PasswordReset
+"password_reset.forgot_password_title" = "Şifreyi Unuttum";
+"password_reset.forgot_password_subtitle" = "Şifrenizi sıfırlama kodunu almak için lütfen e-posta adresinizi girin";
+"password_reset.email_placeholder" = "E-posta Adresi";
+"password_reset.reset_password_button" = "Şifreyi Sıfırla";
+"password_reset.password_reset_alert_title" = "Şifre Sıfırlama";
+"password_reset.ok_button" = "Tamam";
+
+//Register
+"registration.title" = "Kayıt";
+"registration.subtitle" = "Yeni bir hesap oluşturmak için bilgilerinizi girin";
+"registration.first_name_placeholder" = "Ad";
+"registration.last_name_placeholder" = "Soyad";
+"registration.email_placeholder" = "E-posta Adresi";
+"registration.password_placeholder" = "Şifre";
+"registration.create_account_button" = "Hesap Oluştur";
+"registration.or_register_with" = "ya da Şununla Kayıt Ol";
+"registration.connect_with_google_button" = "Google ile Kayıt Ol";
+"registration.connect_with_apple_button" = "Apple ile Kayıt Ol";
+"registration.already_have_account" = "Zaten bir hesabınız var mı? ";
+"registration.login_button" = "Giriş Yap!";
+"registration.done_button" = "Tamam";
+
+//Walkthrough
+"walkthrough.track_diet_water" = "Diyetinizi ve su alımınızı takip edin";
+"walkthrough.create_healthy_habits" = "Sağlıklı alışkanlıklar oluşturun";
+"walkthrough.shape_lifestyle_goals" = "Yaşam tarzı hedeflerinizi şekillendirin";
+"walkthrough.track_activity" = "Aktivitenizi takip edin";
+"walkthrough.customize_meals" = "Yemeklerinizi özelleştirin";
+"walkthrough.lose_weight" = "Kilo verin";
+"walkthrough.gain_muscle" = "Kas kazanın";
+"walkthrough.maintain_weight" = "Kilo koruyun";
+"walkthrough.gain_weight" = "Kilo alın";
+"walkthrough.ai_help" = "Yapay zeka ile size mükemmel bir diyet planı oluşturacağız!";
+"walkthrough.ai_science_help" = "Yapay zeka ve bilim ile gerçek sonuçlar görmenizi sağlıyoruz.";
+"walkthrough.personalized_diet_plan" = "Eşsiz tercihleriniz, diyet kısıtlamalarınız ve yaşam tarzı hedeflerinize göre tamamen kişiselleştirilmiş bir diyet planı alacaksınız.";
+"walkthrough.know_more_about_you" = "Hedeflerinizi doğru bir şekilde belirlemek için sizinle ilgili biraz daha bilgi edinmemiz gerek.";
+"walkthrough.lets_go" = "Hadi başlayalım";
+"walkthrough.next" = "Sonraki";
+"walkthrough.create_diet_plan_title" = "Mükemmel diyet planınızı oluşturun";
+"walkthrough.start_healthy_journey" = "Sağlıklı yolculuğunuza şimdi başlayın";
+"walkthrough.define_goal_title" = "Hedefinizi belirleyin";
+"walkthrough.welcome_to_new_you" = "Yeni size hoşgeldiniz!";
+"walkthrough.lets_go" = "Hadi başlayalım";
+"walkthrough.next" = "Sonraki";
+
+//MARK: Validation
+"validation.email_invalid" = "Geçersiz e-posta formatı";
+"validation.password_invalid" = "Şifre en az 8 karakter uzunluğunda olmalı ve bir rakam ile özel karakter içermelidir";
+"validation.first_name_invalid" = "Ad 2-30 karakter uzunluğunda olmalı ve Türkçe karakterler kullanılmalıdır";
+"validation.last_name_invalid" = "Soyad 2-30 karakter uzunluğunda olmalı ve Türkçe karakterler kullanılmalıdır";
+"validation.username_invalid" = "Kullanıcı adı 2-30 karakter uzunluğunda olmalı ve Türkçe karakterler, rakamlar ve tireler içerebilir";
+"validation.date_invalid" = "Tarih dd/AA/yyyy formatında olmalıdır";
+
+"delete_account" = "Hesabı Sil";
+"log_out" = "Çıkış Yap";
+
+
+//MARK: Prompts
+"prompt_create" = "Aşağıdaki yönergeler ve kullanıcı verileri doğrultusunda kişiselleştirilmiş bir diyet planı oluşturun. Kullanıcının amacı (örneğin, kilo kaybı, kas kazanımı vb.) ne olursa olsun kurallara sıkı bir şekilde uyduğunuzdan emin olun. Öğün formatını veya diğer talimatları amaca göre değiştirmeyin.";
+
+"prompt_rules_json_format" = "1. **JSON Formatı**: Yanıt, aşağıdaki yapıyı takip eden geçerli bir JSON nesnesi olmalıdır: {\"totalNutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"meals\": [{\"name\": STRING, \"nutrients\": {\"kcal\": INT, \"protein\": INT, \"carbohydrate\": INT, \"fat\": INT}, \"items\": [{\"item\": STRING, \"quantity\": STRING}]}]}";
+
+"prompt_rules_total_nutrients" = "2. **Toplam Besin Değerleri**: JSON nesnesinin başında \"totalNutrients\" alanında toplam günlük besin alımını ekleyin.";
+
+"prompt_rules_meals" = "3. **Öğünler**: Her öğün, bir \"isim\" (örneğin, \"Kahvaltı\"), \"besin değerleri\" (öğün için özet) ve bir \"items\" dizisi (yemek öğeleri ile miktarların listesi) içermelidir.";
+
+"prompt_rules_meal_units" = "4. **Öğün Birimleri**: Yalnızca gram veya adet cinsinden öğün verin.";
+
+"prompt_rules_strict_json_only" = "5. **Sadece JSON**: JSON nesnesi dışında herhangi bir ek metin, yorum veya açıklama eklemeyin.";
+
+"prompt_user_data" = "Kullanıcı Verileri: - Diyet Tercihi: %@ - Alerjenler: %@ - Günlük öğün sayısı (atıştırmalıklar dahil): %@ - Doğum Tarihi: %@ - Boy: %@ - Ağırlık: %@ - Vücut Yağ Yüzdesi: %@ - Yağsız Vücut Kütlesi: %@ - Aktif Enerji: %@ - Aktivite Seviyesi: %@ - Dinlenme Enerjisi: %@ - Cinsiyet: %@ - Amaç: %@";
+
+"prompt_create_recipe" = "Aşağıdaki öğün bilgilerine dayanarak kişiselleştirilmiş bir tarif oluşturun. Yanıtta 'isim', 'toplam besin değerleri', 'malzemeler' ve 'talimatlar' alanlarını içeren bir JSON yanıtı verin. Bu yapıyı kullanın: {...}";
+
+"prompt_generate_alternative_meal" = "Aşağıda verilen öğüne belirgin bir alternatif oluşturun. Tüm kurallara tam olarak uyun ve yeni bir öğün oluşturmak için farklı malzemeler kullanarak besin değeri benzer, ancak tat ve hazırlık açısından çeşitlilik sağlayın. Aynı ana malzemeleri mümkün olduğunca kullanmamaya özen gösterin.";
+
+"prompt_focus_on_variety" = "Çeşitliliğe Odaklanın: - Tat ve hazırlık açısından çeşitlilik sağlamak için farklı malzemeler veya mutfak stilleri seçin. - Orijinal ana malzemeleri tekrar etmeden benzer bir besin profili hedefleyin.";
+
+"prompt_new_meal_name_and_ingredients" = "Yeni Öğün İsmi ve Malzemeleri: - Yeni öğün adı \"%@\" olacak. - Başlık doğrultusunda yeni öğünü verin. Eğer kahvaltı ise somon veya dana eti vermeyin. Besin değerlerini mümkün olduğunca aynı tutun ve önemli değişiklikler yapmayın.";
+
+//Validation
+"text_should_be_at_least" = "Metin en az %d karakter uzunluğunda olmalıdır.";
+"invalid_input_format" = "Geçersiz giriş formatı.";
+
+"save" = "Kaydet";
+
+// Resources
+"disclaimer_and_data_privacy_title" = "Feragatname & Veri Gizliliği";
+"disclaimer_and_data_privacy_text" = "FreshStart'a sağlığınızla ilgili yolculuğunuzda güvendiğiniz için teşekkür ederiz! Size en iyi diyet önerilerini sunabilmek için verilerinizi nasıl kullandığımız konusunda tamamen şeffaf olmak istiyoruz. Size Verdiğimiz Söz: FreshStart, sağlıklı yaşam hedeflerinize destek olmak için burada—sağlık hizmeti sağlayıcınızdan herhangi bir tıbbi tavsiye veya tedavi yerine geçmek için değil. Bu uygulama, dengeli ve bilinçli bir şekilde beslenmeyi teşvik eden genel sağlık amaçlıdır. Tıbbi bir uygulama değildir ve herhangi bir tıbbi durumu teşhis etmez, tedavi etmez, iyileştirmez veya engellemez. Bu uygulamada sağlanan tüm bilgiler yalnızca bilgilendirme amaçlıdır.";
+"our_promise_to_you_title" = "Size Verdiğimiz Söz";
+"our_promise_to_you_text" = "FreshStart, sağlıklı yaşam hedeflerinize destek olmak için burada—sağlık hizmeti sağlayıcınızdan herhangi bir tıbbi tavsiye veya tedavi yerine geçmek için değil. Bu uygulama, dengeli ve bilinçli bir şekilde beslenmeyi teşvik eden genel sağlık amaçlıdır. Tıbbi bir uygulama değildir ve herhangi bir tıbbi durumu teşhis etmez, tedavi etmez, iyileştirmez veya engellemez. Bu uygulamada sağlanan tüm bilgiler yalnızca bilgilendirme amaçlıdır.";
+"sources_and_information_accuracy_title" = "Kaynaklar ve Bilgi Doğruluğu";
+"sources_and_information_accuracy_text" = "FreshStart tarafından sağlanan diyet planları ve öneriler, OpenAI'nin ChatGPT'si tarafından geniş çapta kabul görmüş sağlık ilkelerine dayalı olarak oluşturulmaktadır. Bu öneriler, belirli tıbbi kaynaklara veya alıntılara dayanmamaktadır, ancak genel sağlık bilgilerine dayanmaktadır. Kişiselleştirilmiş tavsiye gerekiyorsa, özel ihtiyaçlarınıza göre rehberlik sağlayabilecek bir sağlık profesyoneline danışmanızı öneririz. Doğru ve güncel sağlık bilgisi için, Dünya Sağlık Örgütü (WHO) veya Hastalık Kontrol ve Önleme Merkezleri (CDC) gibi güvenilir kaynakları danışmanızı öneririz.";
+"how_we_use_your_health_data_title" = "Sağlık Verilerinizi Nasıl Kullanıyoruz";
+"how_we_use_your_health_data_text" = "HealthKit'i etkinleştirdiğinizde, ihtiyaçlarınıza göre özelleştirilmiş diyet planları oluşturmak için ağırlık, boy ve BMI gibi ilgili sağlık verilerini toplarız. Bu bilgiler, kişiselleştirilmiş rehberlik sağlayabilmemizi mümkün kılacak şekilde OpenAI'nin ChatGPT API'si kullanılarak işlenir. Endişelenmeyin, verileriniz yalnızca bu planları oluşturmak için kullanılır ve sektör standartlarında güvenlik önlemleriyle korunur.";
+"our_commitment_to_privacy_and_security_title" = "Gizlilik ve Güvenlik Konusundaki Taahhüdümüz";
+"our_commitment_to_privacy_and_security_text" = "Sağlık bilgilerinin kişisel olduğunu anlıyoruz ve bunları koruma taahhüdündeyiz. Verileriniz güvenli bir şekilde işlenir ve yalnızca güvenilir yapay zeka sağlayıcımız OpenAI ile diyet planlaması amacıyla paylaşılır. İzninizi istediğiniz zaman geri çekebilirsiniz ve ayrıca verilerinize erişme, değiştirme veya silme hakkınız bulunmaktadır. Sağlık verilerinizin korunmasına yönelik yasal düzenlemelere uygun olarak verilerinizi sorumlu bir şekilde kullanmaya ve size destek olmaya kararlıyız.";
+"questions_title" = "Sorular?";
+"questions_text" = "Herhangi bir sorunuz varsa veya veri uygulamalarımız hakkında daha fazla bilgi almak isterseniz, lütfen mertkoksal@mail.com adresinden bizimle iletişime geçin.";
+
+//Allergen
+"Apple" = "Elma";
+"Buckwheat" = "Karabuğday";
+"Celery" = "Kereviz";
+"Corn" = "Mısır";
+"Egg" = "Yumurta";
+"Lupin" = "Acı bakla";
+"Milk" = "Süt";
+"Mollusk" = "Yumuşakça";
+"Mustard" = "Hardal";
+"Peach" = "Şeftali";
+"Peanut" = "Yer fıstığı";
+"Poppy Seed" = "Haşhaş tohumu";
+"Sesame" = "Susam";
+"Shellfish" = "Kabuklu deniz ürünleri";
+"Soy" = "Soya";
+"Sulphite" = "Sülfit";
+"Sunflower Seed" = "Ayçiçeği tohumu";
+"Tree Nut" = "Ağaç kuruyemişi";
+"Wheat" = "Buğday";
+"fruit" = "Meyve";
+"grain" = "Tahıl";
+"vegetable" = "Sebze";
+"dairy" = "Süt ürünü";
+"legume" = "Baklagil";
+"seafood" = "Deniz ürünü";
+"spice" = "Baharat";
+"nut" = "Kuruyemiş";
+"seed" = "Tohum";
+"additive" = "Katkı maddesi";
+

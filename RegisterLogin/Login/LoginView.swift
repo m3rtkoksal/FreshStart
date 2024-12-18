@@ -23,20 +23,20 @@ struct LoginView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         FSTitle(
-                            title: "Welcome to FreshStart",
-                            subtitle: "Hello there, sign in to  continue!")
+                            title: "login.welcome_title".localized(),
+                            subtitle: "login.welcome_subtitle".localized())
                         
                         ValidatingTextField(text: $validationModel.email,
                                             validator: validationModel.emailValidator,
-                                            placeholder: "Email Address")
+                                            placeholder: "login.email_address".localized())
                         
                         SecureValidatingTextField(text: $validationModel.password,
                                                   validator: validationModel.passwordValidator,
-                                                  placeholder: "Password")
+                                                  placeholder: "login.password".localized())
                         .padding(.top, 20)
                         HStack {
                             Spacer()
-                            Button("Forgot Password?") {
+                            Button("login.forgot_password".localized()) {
                                 viewModel.goToPasswordReset = true
                             }
                             .font(.montserrat(.semiBold, size: 14))
@@ -44,23 +44,23 @@ struct LoginView: View {
                             .padding(.trailing, 20)
                         }
                         .padding(.top,10)
-                        FreshStartButton(text: "Login", backgroundColor: .mkOrange, textColor: .black) {
+                        FreshStartButton(text: "login.login_button".localized(), backgroundColor: .mkOrange, textColor: .black) {
                             signIn()
                         }
                         .padding(.top, 20)
                         Spacer(minLength: geometry.size.height * 0.2)
                         VStack(spacing: 50){
-                            FreshStartDivider(title: "Or Login with")
+                            FreshStartDivider(title: "login.or_login_with".localized())
                             VStack(spacing:10) {
                                 FreshStartButton(
                                     image: "google-icon",
-                                    text: "Connect with Google",
+                                    text: "login.connect_with_google".localized(),
                                     backgroundColor: .white) {
                                         viewModel.signUpWithGoogle()
                                     }
                                 FreshStartButton(
                                     image: "apple_icon",
-                                    text: "Connect with Apple  ",
+                                    text: "login.connect_with_apple".localized(),
                                     backgroundColor: .mkPurple,
                                     textColor: .white) {
                                         viewModel.signInWithApple()
@@ -69,9 +69,9 @@ struct LoginView: View {
                             Button(action: {
                                 viewModel.goToRegister = true
                             }) {
-                                Text("Don’t have an account? ")
+                                Text("login.dont_have_account".localized())
                                     .font(.montserrat(.medium, size: 15)) +
-                                Text("Register!")
+                                Text("login.register_now".localized())
                                     .font(.montserrat(.bold, size: 15))
                             }
                             .foregroundColor(.black)
@@ -101,20 +101,23 @@ struct LoginView: View {
             }
             
             .navigationBarBackButtonHidden(true)
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Wrong email or password"),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("Try Again")) {
-                        showAlert = false
-                    }
-                )
-            }
+           
             .fsAlertModifier(
                 isPresented: $viewModel.showAlert,
-                title: "Wrong email or password",
+                title: "login.alert_wrong_credentials_title".localized(),
                 message: errorMessage,
-                confirmButtonText: "Try Again",
+                confirmButtonText: "login.alert_try_again".localized(),
+                confirmAction: {
+                    withAnimation {
+                        showAlert = false
+                    }
+                }
+            )
+            .fsAlertModifier(
+                isPresented: $showAlert,
+                title: "login.alert_wrong_credentials_title".localized(),
+                message: errorMessage,
+                confirmButtonText: "login.alert_try_again".localized(),
                 confirmAction: {
                     withAnimation {
                         showAlert = false

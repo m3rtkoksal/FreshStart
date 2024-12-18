@@ -31,15 +31,7 @@ struct DiaryView: View {
                            background: .solidWhite,
                            showIndicator: $viewModel.showIndicator
         ) {
-            if viewModel.showIndicator {
-                FreshStartLoadingView()
-            } else if ProfileManager.shared.user.defaultDietPlanId == nil {
-                // No diet plan exists, show a placeholder or empty state view
-                EmptyDietPlanView()
-                    .onAppear {
-                        viewModel.fetchMaxCountFromFirestore()
-                    }
-            } else {
+            if let defaultDietPlanId = ProfileManager.shared.user.defaultDietPlanId, !defaultDietPlanId.isEmpty {
                 ZStack(alignment: .top, content: {
                     HeaderView()
                         .zIndex(1)
@@ -85,7 +77,6 @@ struct DiaryView: View {
                         SubscriptionElement()
                         InfoCardElement()
                         MealsView(selectedMeals: $selectedMeals)
-                        DeleteButtonView()
                         WaterTrackView()
                         Spacer()
                             .frame(height: 90)
@@ -93,11 +84,17 @@ struct DiaryView: View {
                     .coordinateSpace(name: "ScrollView")
                 })
                 .onAppear {
+                    notificationManager.startInactivityTimer()
                     guard !isDataLoaded else { return }
                     isDataLoaded = true
                     viewModel.fetchMaxCountFromFirestore()
                     if let cachedDietPlan = ProfileManager.shared.user.defaultDietPlan {
-                        viewModel.dietPlan = cachedDietPlan
+                        ProfileManager.shared.setDefaultDietPlanId(cachedDietPlan.id ?? "")
+                        if viewModel.dietPlan.id != cachedDietPlan.id {
+                            viewModel.fetchDietPlan { dietPlan in
+                                viewModel.dietPlan = dietPlan ?? cachedDietPlan
+                            }
+                        }
                         print("Using cached diet plan: \(cachedDietPlan)")
                         processDietPlan(cachedDietPlan)
                         viewModel.showIndicator = false
@@ -127,6 +124,7 @@ struct DiaryView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         viewModel.dietPlan = newDietPlan
                         processDietPlan(newDietPlan)
+                        
                     }
                 }
                 .onChange(of: ProfileManager.shared.user.defaultDietPlan) { newDietPlan in
@@ -135,6 +133,24 @@ struct DiaryView: View {
                         print("Updated diet plan: \(newDietPlan)")
                         processDietPlan(newDietPlan)
                     }
+                }
+            } else {
+                if let dietPlanCount = ProfileManager.shared.user.dietPlanCount, dietPlanCount > 1 {
+                    FreshStartAlertView(
+                        title: "please_select_default_diet_plan".localized(),
+                        message: "multiple_diet_plans_message".localized(),
+                        confirmButtonText: "ok_button_text".localized(),
+                        cancelButtonText: nil,
+                        confirmAction: {
+                            selectedTabRaw = MainTabView.Tab.mealPlans.rawValue
+                        },
+                        cancelAction: nil
+                    )
+                } else {
+                    EmptyDietPlanView()
+                        .onAppear {
+                            viewModel.fetchMaxCountFromFirestore()
+                        }
                 }
             }
         }
@@ -174,7 +190,7 @@ struct DiaryView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
                     Spacer()
-                    Text("My goal is to")
+                    Text("my_goal_is_to".localized())
                         .font(.montserrat(.medium, size: 14))
                     Text(viewModel.dietPlan.purpose ?? "")
                         .font(.montserrat(.bold, size: 24))
@@ -203,38 +219,17 @@ struct DiaryView: View {
         .ignoresSafeArea(edges: .top)
     }
     
-    private func DeleteButtonView() -> some View {
-        VStack(spacing: 10) {
-            FreshStartButton(text: "Delete Plan", backgroundColor: .mkOrange, textColor: .black) {
-                viewModel.showIndicator = true
-                viewModel.deleteDietPlanEntry(dietPlan: viewModel.dietPlan) { result in
-                    viewModel.showIndicator = false
-                    switch result {
-                    case .success:
-                        if let userId = Auth.auth().currentUser?.uid {
-                            viewModel.updateMaxPlanCountInFirestore(userId: userId, maxPlanCount: viewModel.maxPlanCount)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    case .failure(let error):
-                        print("Error deleting diet plan: \(error.localizedDescription)")
-                    }
-                }
-            }
-        }
-        .padding(.top, 20)
-    }
-    
     func createRemainingPlansText() -> some View {
         Group {
             if viewModel.maxPlanCount > ProfileManager.shared.user.dietPlanCount ?? 0 {
-                Text("You can create \(viewModel.maxPlanCount - (ProfileManager.shared.user.dietPlanCount ?? 0)) more")
+                Text("you_can_create_more_plans".localized("\(viewModel.maxPlanCount - (ProfileManager.shared.user.dietPlanCount ?? 0))"))
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
                     .foregroundColor(.black)
                     .hiddenConditionally(isHidden: viewModel.showIndicator)
             } else {
-                Text("You can watch an advertisement to create new plan")
+                Text("watch_ad_to_create_plan".localized())
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
@@ -248,15 +243,15 @@ struct DiaryView: View {
     private func EmptyDietPlanView() -> some View {
         VStack {
             FSTitle(
-                title: "Purchase Your First Diet Plan",
-                subtitle: "You currently do not have any diet plans.")
+                title: "purchase_first_diet_plan".localized(),
+                subtitle: "no_diet_plans_available".localized())
             ScrollView {
                 SubscriptionElement()
                     .padding(.top)
             }
             Spacer()
             createRemainingPlansText()
-            FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+            FreshStartButton(text: "create_new_plan".localized(), backgroundColor: .mkOrange) {
                 viewModel.goToCreateNewPlan = true
             }
             .padding(.bottom, 150)
@@ -277,15 +272,7 @@ struct DiaryView: View {
                     selectedMeals: selectedMeals.wrappedValue
                 )
                 .onTapGesture {
-                    let meal = viewModel.dietPlan.meals[index]
-                    
-                    if selectedMeals.wrappedValue.contains(meal) {
-                        selectedMeals.wrappedValue.remove(meal)
-                    } else {
-                        selectedMeals.wrappedValue.insert(meal)
-                    }
-                    notificationManager.startInactivityTimer()
-                    notificationManager.checkForgotToSelectReminder()
+                    toggleMealSelection(at: index)
                 }
                 .overlay(
                     VStack {
@@ -295,7 +282,8 @@ struct DiaryView: View {
                                                dietPlanId: viewModel.dietPlan.id ?? "",
                                                meal: $viewModel.dietPlan.meals[index],
                                                shouldRegenerateRecipe: $shouldRegenerateRecipe,
-                                               index: index)
+                                               index: index,
+                                               selectedMeals: $selectedMeals)
                             Divider()
                                 .frame(width: 1, height: 35)
                                 .background(Color.black)
@@ -316,7 +304,7 @@ struct DiaryView: View {
                 leading:
                     FreshStartBackButton()
             )
-            Link("Learn more about diet and nutrition", destination: URL(string: "https://www.niddk.nih.gov/health-information/diet-nutrition")!)
+            Link("learn_more_diet_nutrition".localized(), destination: URL(string: "https://www.niddk.nih.gov/health-information/diet-nutrition")!)
                 .font(.montserrat(.medium, size: 14))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
@@ -325,12 +313,25 @@ struct DiaryView: View {
         }
         .frame(maxWidth: UIScreen.screenWidth)
     }
+    private func toggleMealSelection(at index: Int) {
+        let meal = viewModel.dietPlan.meals[index]
+        if selectedMeals.contains(meal) {
+            selectedMeals.remove(meal)
+        } else {
+            selectedMeals.insert(meal)
+        }
+        MealManager.shared.saveSelectedMeals(dietPlanId: viewModel.dietPlan.id ?? "", selectedMeals: selectedMeals)
+        notificationManager.lastInteractionDate = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.notificationManager.checkForgotToSelectReminder()
+        }
+    }
 }
 
 struct InfoCardElement: View {
     var body:some View {
         HStack {
-            Text("Tap “+” to mark your meal as eaten. Selected meals will reset each night automatically.")
+            Text("tap_to_mark_meal_eaten".localized())
                 .font(.montserrat(.medium, size: 14))
             Spacer()
         }
@@ -348,9 +349,9 @@ struct NutrientChartExplainText: View {
                 .frame(height: 30)
             HStack(spacing: 15) {
                 Spacer()
-                NutrientChartText(color: .black, text: "Protein")
-                NutrientChartText(color: .mkOrange, text: "Carbohydrate")
-                NutrientChartText(color: .mkPurple, text: "Fat")
+                NutrientChartText(color: .black, text: "protein".localized())
+                NutrientChartText(color: .mkOrange, text: "carbohydrate".localized())
+                NutrientChartText(color: .mkPurple, text: "fat".localized())
             }
         }
         .padding(.trailing, 20)
@@ -363,55 +364,101 @@ struct WaterTrackView: View {
         return latestEntry?.waterIntake ?? 0
     }()
     @State private var filledGlasses: Int = MealManager.shared.loadFilledGlasses()
+    @State private var secondCircleFilled: Bool = false
+    
     var body: some View {
-        Button {
-            if filledGlasses < 8 {
-                waterIntake += 250
-                filledGlasses += 1
-                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
-            }
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .foregroundColor(Color.mkPurple)
-                    .frame(width: UIScreen.screenWidth - 40, height: 160)
-                    .overlay(
-                        VStack {
-                            HStack{
-                                Text("Water")
-                                    .font(.montserrat(.semiBold, size: 18))
-                                    .foregroundColor(.white)
-                                    .underline()
-                                Spacer()
-                                Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.horizontal, 30)
-                            HStack {
-                                ForEach(0..<8){ index in
-                                    Image("glassWater")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                        .opacity(index < filledGlasses ? 1 : 0.3)
-                                }
-                            }
-                            .padding(.horizontal, 40)
-                            HStack{
-                                Spacer()
-                                Text("Remember to stay hydrated!")
-                                    .font(.montserrat(.medium, size: 12))
-                                    .foregroundColor(.white)
-                                Image("infoWater")
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.top, 25)
+        ZStack {
+            RoundedRectangle(cornerRadius: 30)
+                .foregroundColor(Color.mkPurple)
+                .frame(width: UIScreen.screenWidth - 40, height: 200)
+                .overlay(
+                    VStack {
+                        HStack {
+                            Text("water".localized())
+                                .font(.montserrat(.semiBold, size: 18))
+                                .foregroundColor(.white)
+                                .underline()
+                            Spacer()
+                            Text("\(waterIntake / 1000).\(waterIntake % 1000 / 100)L / 2L")
+                                .foregroundColor(.white)
                         }
-                            .padding(.vertical,20)
-                    )
-            }
+                        .padding(.horizontal, 30)
+                        CustomScrollView(secondCircleFilled: $secondCircleFilled,
+                                         contentWidth: CGFloat(9 * (35 + 15)),
+                                         visibleWidth: UIScreen.screenWidth * 0.7) {
+                            ForEach(0..<8) { index in
+                                Image("glassWater")
+                                    .resizable()
+                                    .frame(width: 35, height: 35)
+                                    .opacity(index < filledGlasses ? 1 : 0.3)
+                            }
+                        }
+                                         .padding(.vertical)
+                        ShowCircles()
+                        HStack {
+                            Spacer()
+                            Text("remember_to_stay_hydrated".localized())
+                                .font(.montserrat(.medium, size: 12))
+                                .foregroundColor(.white)
+                            Image("infoWater")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                        .padding(.top, 20)
+                        .padding(.vertical, 20)
+                )
+                .overlay(
+                    HStack {
+                        Button(action: {
+                            if waterIntake > 0 {
+                                waterIntake -= 250
+                                filledGlasses -= 1
+                                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
+                            }
+                        }) {
+                            Image(systemName: "minus.circle.fill")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .background(Color.mkPurple)
+                                .clipShape(Circle())
+                        }
+                        .padding(.leading, -13)
+                        Spacer()
+                        Button(action: {
+                            if filledGlasses < 8 {
+                                waterIntake += 250
+                                filledGlasses += 1
+                                MealManager.shared.saveWaterData(waterIntake: waterIntake, filledGlasses: filledGlasses)
+                            }
+                        }) {
+                            Image(systemName: "plus.circle.fill")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .background(Color.mkOrange)
+                                .clipShape(Circle())
+                        }
+                        .padding(.trailing, -13)
+                    }
+                )
         }
         .padding(.vertical, 50)
+    }
+    // Display the circles with filled or unfilled states
+    func ShowCircles() -> some View {
+        HStack {
+            Circle()
+                .frame(width: 8, height: 8)
+                .foregroundColor(.white)
+            Circle()
+                .frame(width: 8, height: 8)
+                .foregroundColor(secondCircleFilled ? .white : .white.opacity(0.5))
+        }
+        .padding(.top, 10)
     }
 }

@@ -9,52 +9,29 @@
 import Foundation
 import HealthKit
 
+
 class PromptCreationHelper {
     
     static func createPrompt() -> String {
-        let allergensList = ProfileManager.shared.user.allergens.map { $0.name ?? "Unknown Allergen" }
+        let allergensList = ProfileManager.shared.user.allergens.map { $0.id ?? "Unknown Allergen" }
         return """
-        Create a personalized diet plan based on the following guidelines and user data. Make sure to strictly follow the rules, regardless of the user's purpose (e.g., weight loss, muscle gain, etc.). DO NOT change the meal format or any other instructions based on the purpose.
+        \( "prompt_create".localized() )
         
         **Rules**:
         1. **JSON Format**:
-              The response must be a valid JSON object with the following structure:
-              {
-                  "totalNutrients": {
-                      "kcal": INT,
-                      "protein": INT,
-                      "carbohydrate": INT,
-                      "fat": INT
-                  },
-                  "meals": [
-                      {
-                          "name": STRING,
-                          "nutrients": {
-                              "kcal": INT,
-                              "protein": INT,
-                              "carbohydrate": INT,
-                              "fat": INT
-                          },
-                          "items": [
-                              {"item": STRING, "quantity": STRING},
-                              ...
-                          ]
-                      },
-                      ...
-                  ]
-              }
+              \( "prompt_rules_json_format".localized() )
         
-           2. **Total Nutrients**:
-              Include the total daily nutrient intake at the start of the JSON object in the "totalNutrients" field.
+        2. **Total Nutrients**:
+              \( "prompt_rules_total_nutrients".localized() )
         
-           3. **Meals**:
-              Each meal must include a "name" (e.g., "Breakfast"), "nutrients" (summary for the meal), and an "items" array (list of food items with quantities).
+        3. **Meals**:
+              \( "prompt_rules_meals".localized() )
         
-            4. **Meal Units**:
-              Only give meals in grams or pieces
+        4. **Meal Units**:
+              \( "prompt_rules_meal_units".localized() )
         
-           5. **Strict JSON Only**:
-              Do not include any additional text, comments, or explanations outside of the JSON object.
+        5. **Strict JSON Only**:
+              \( "prompt_rules_strict_json_only".localized() )
         
         **User's Data**:
         - Diet Preference: \(ProfileManager.shared.user.dietPreference != nil ? "\(ProfileManager.shared.user.dietPreference!)" : "none")
@@ -68,7 +45,7 @@ class PromptCreationHelper {
         - Active Energy: \(ProfileManager.shared.user.activeEnergy != nil ? "\(ProfileManager.shared.user.activeEnergy!) kcal" : "unknown active energy")
         - Activity Level: \(ProfileManager.shared.user.activity != nil ? "\(ProfileManager.shared.user.activity!)" : "unknown activity")
         - Resting Energy: \(ProfileManager.shared.user.restingEnergy != nil ? "\(ProfileManager.shared.user.restingEnergy!) kcal" : "unknown resting energy aka basal metabolism")
-        - Gender: \(ProfileManager.shared.user.gender != nil ? hkBiologicalSexToGenderString(ProfileManager.shared.user.gender!) : "unknown gender")
+        - Gender: \(ProfileManager.shared.user.gender?.toLocalizedString() ?? "unknown gender")
         - Purpose: \(ProfileManager.shared.user.currentPurpose != nil ? "\(ProfileManager.shared.user.currentPurpose!)" : "unknown purpose")
         """
     }
@@ -92,7 +69,7 @@ class PromptCreationHelper {
             }
             """
         return """
-            Create a personalized recipe based on the following meal information. Include 'name', 'totalNutrients', 'ingredients', and 'instructions' fields in the JSON response. Use this structure:
+            \( "prompt_create_recipe".localized() )
             {
                 "name": "<String>",
                 "totalNutrients": {
@@ -115,7 +92,7 @@ class PromptCreationHelper {
             }
             """
     }
-
+    
     static func createNewMealPrompt(from meal: Meal) -> String {
         // Convert meal items to a dictionary format
         let itemsArray = meal.items.map { item in
@@ -124,7 +101,7 @@ class PromptCreationHelper {
                 "quantity": item.quantity
             ]
         }
-
+        
         // Nutrients data
         let nutrients: [String: Any] = [
             "kcal": meal.nutrients?.kcal ?? 0,
@@ -162,70 +139,30 @@ class PromptCreationHelper {
         } else {
             jsonString = "{}" // Return empty JSON if something goes wrong
         }
-
+        
         // Create the full prompt with the meal data in JSON format
         return """
-        Generate a distinct alternative to the meal provided below. Follow all rules precisely and use different ingredients to create a new meal that is nutritionally similar but diverse in taste and preparation. Avoid using the same primary ingredients as much as possible.
-
-        **Rules**:
-        1. **JSON Format**: The response must be a valid JSON object with the following structure:
-        {
-            "totalNutrients": {
-                "kcal": INT,
-                "protein": INT,
-                "carbohydrate": INT,
-                "fat": INT
-            },
-            "meals": [
-                {
-                    "name": STRING,
-                    "nutrients": {
-                        "kcal": INT,
-                        "protein": INT,
-                        "carbohydrate": INT,
-                        "fat": INT
-                    },
-                    "items": [
-                        {"item": STRING, "quantity": STRING},
-                        ...
-                    ]
-                },
-                ...
-            ]
-        }
+        \( "prompt_generate_alternative_meal".localized() )
+        **\( "rules".localized() )**:
+        1. **\( "json_format".localized() )**: \( "response_structure".localized() )
         
-        2. **Strict JSON Only**: Do not include any additional text, comments, or explanations outside of the JSON object.
+        2. **\( "strict_json_only".localized() )**: \( "no_extra_text".localized() )
         
-        3. **Focus on Variety**:
-            - Choose different ingredients or cuisine styles to ensure variety in taste and preparation.
-            - Aim for a similar nutritional profile without repeating the original main ingredients.
+        3. **\( "focus_on_variety".localized() )**:
+            - \( "choose_different_ingredients".localized() )
+            - \( "aim_for_similar_nutritional_profile".localized() )
         
-        4. **New Meal Name and Ingredients**:
-            - Name of the new meal will be Alternative "\(meal.name)".
-            - Give new meal according to title. Do not give salmon or beef it is breakfast
-            - Try to keep nutrients the same do not make significant changes
-            - Only give meals in grams or pieces
+        4. **\( "new_meal_name_and_ingredients".localized() )**:
+            - \( "alternative_meal_name".localized() ) "\(meal.name)"
+            - \( "do_not_give_salmon_or_beef_for_breakfast".localized() )
+            - \( "keep_nutrients_same".localized() )
+            - \( "provide_meals_in_grams_or_pieces".localized() )
+        
+        5. **\( "diet_preference".localized() )**:
+            - \( "diet_preference_value".localized(ProfileManager.shared.user.dietPreference != nil ? "\(ProfileManager.shared.user.dietPreference!)" : "none") )
             
-        5. **Diet Preference**:
-            - Diet Preference: \(ProfileManager.shared.user.dietPreference != nil ? "\(ProfileManager.shared.user.dietPreference!)" : "none")
-            
-        **Original Meal**:
+        **\( "original_meal".localized() )**:
         \(jsonString)
         """
-    }
-    
-    static func hkBiologicalSexToGenderString(_ biologicalSex: HKBiologicalSex) -> String {
-        switch biologicalSex {
-        case .male:
-            return "Male"
-        case .female:
-            return "Female"
-        case .other:
-            return "Other"
-        case .notSet:
-            return "Not Set"
-        @unknown default:
-            return "Unknown"
-        }
     }
 }

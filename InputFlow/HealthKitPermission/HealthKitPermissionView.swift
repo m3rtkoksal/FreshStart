@@ -45,11 +45,11 @@ struct HealthKitPermissionView: View {
                 ScrollView {
                     VStack {
                         FSTitle(
-                            title: "Health Data",
+                            title: "health_data_title".localized(),
                             subtitle: "",
                             bottomPadding: 20)
                         VStack(spacing: 40) {
-                            Text("FreshStart uses your calorie intake, fitness activities, height and weight, and other health related data to provide you with our customized services. \n\n The core features of FreshStart can't function without such data. If you don't agree, you won't be able to use the app.")
+                            Text("health_data_description".localized())
                                 .foregroundColor(.black)
                                 .font(.montserrat(.medium, size: 14))
                                 .padding(.horizontal,20)
@@ -61,7 +61,7 @@ struct HealthKitPermissionView: View {
                                 HStack {
                                     Image("health")
                                         .foregroundColor(.red)
-                                    Text("Export Data From Apple Health")
+                                    Text("export_data_from_apple_health".localized())
                                         .foregroundColor(.black)
                                         .font(.montserrat(.bold, size: 14))
                                         .multilineTextAlignment(.leading)
@@ -116,18 +116,18 @@ struct HealthKitPermissionView: View {
                                     .strokeBorder(lineWidth: 1)
                             )
                             .padding(.top)
-                            FreshStartDivider(title: "Or enter Manually")
+                            FreshStartDivider(title: "or_enter_manually".localized())
                             Spacer()
-                            FreshStartButton(text: "Enter Manually", backgroundColor: .mkOrange) {
+                            FreshStartButton(text: "enter_manually_button".localized(), backgroundColor: .mkOrange) {
                                 viewModel.goToBMIInputPage = true
                             }
                             Button(action: {
                                 viewModel.goToPrivacyPolicy = true
                             }) {
                                 VStack(alignment: .leading, spacing: 30) {
-                                    Text("By tapping 'Enter Manually', you agree to the processing of your health data.\n\n For more information have a look at our ")
+                                    Text("agree_health_data_processing".localized())
                                         .font(.montserrat(.medium, size: 14)) +
-                                    Text("Privacy Policy.")
+                                    Text("privacy_policy".localized())
                                         .font(.montserrat(.bold, size: 14))
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)

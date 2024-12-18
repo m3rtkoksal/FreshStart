@@ -71,15 +71,15 @@ struct HealthDataChartView: View {
                 Circle()
                     .fill(Color.mkOrange)
                     .frame(width: 10, height:  10)
-                Text("Body Fat %")
+                Text("body_fat_percentage".localized())
                     .font(.montserrat(.medium, size: 12))
             }
             .padding(.top, 20)
             Chart(viewModel.healthDataEntries) { entry in
                 if let bodyFat = entry.bodyFatPercentage {
                     LineMark(
-                        x: .value("Date", entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
-                        y: .value("Body Fat %", bodyFat * 100)
+                        x: .value("date".localized(), entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
+                        y: .value("body_fat_percentage".localized(), bodyFat * 100)
                     )
                     .foregroundStyle(Color.mkOrange)
                 }
@@ -90,9 +90,9 @@ struct HealthDataChartView: View {
             .chartYAxis {
                 AxisMarks(position: .leading, values: .automatic)
             }
-            .chartYAxisLabel("Body Fat %", position: .top)
+            .chartYAxisLabel("body_fat_percentage".localized(), position: .top)
             .foregroundColor(.mkPurple)
-            .chartXAxisLabel("Date", position: .bottomTrailing)
+            .chartXAxisLabel("date".localized(), position: .bottomTrailing)
             .foregroundColor(.mkPurple)
         }
     }
@@ -103,21 +103,21 @@ struct HealthDataChartView: View {
                 Circle()
                     .fill(Color.mkPurple)
                     .frame(width: 10, height:  10)
-                Text("Lean Body Mass")
+                Text("lean_body_mass".localized())
                     .font(.montserrat(.medium, size: 12))
             }
             .padding(.top, 20)
             Chart(viewModel.healthDataEntries) { entry in
                 if let leanBodyMass = entry.leanBodyMass {
                     LineMark(
-                        x: .value("Date", entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
-                        y: .value("Lean Body Mass", leanBodyMass)
+                        x: .value("date".localized(), entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
+                        y: .value("lean_body_mass".localized(), leanBodyMass)
                     )
                     .foregroundStyle(Color.mkPurple)
                 }
             }
-            .chartYAxisLabel("Lean Body Mass")
-            .chartXAxisLabel("Date", position: .bottomTrailing)
+            .chartYAxisLabel("lean_body_mass".localized())
+            .chartXAxisLabel("date".localized(), position: .bottomTrailing)
             .padding(.horizontal)
             .chartXAxis {
                 AxisMarks(position: .bottom, values: .automatic)
@@ -134,20 +134,20 @@ struct HealthDataChartView: View {
                 Circle()
                     .fill(Color.mkOrange)
                     .frame(width: 10, height:  10)
-                Text("Active Energy")
+                Text("active_energy".localized())
                     .font(.montserrat(.medium, size: 12))
             } .padding(.top, 20)
             Chart(viewModel.healthDataEntries) { entry in
                 if let activeEnergy = entry.activeEnergy {
                     LineMark(
-                        x: .value("Date", entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
-                        y: .value("Active Energy", activeEnergy)
+                        x: .value("date".localized(), entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
+                        y: .value("active_energy".localized(), activeEnergy)
                     )
                     .foregroundStyle(Color.mkOrange)
                 }
             }
-            .chartYAxisLabel("Active Energy")
-            .chartXAxisLabel("Date", position: .bottomTrailing)
+            .chartYAxisLabel("active_energy".localized())
+            .chartXAxisLabel("date".localized(), position: .bottomTrailing)
             .padding(.horizontal)
             .chartXAxis {
                 AxisMarks(position: .bottom, values: .automatic)
@@ -163,20 +163,20 @@ struct HealthDataChartView: View {
                 Circle()
                     .fill(Color.mkPurple)
                     .frame(width: 10, height:  10)
-                Text("Weight")
+                Text("weight".localized())
                     .font(.montserrat(.medium, size: 12))
             } .padding(.top, 20)
             Chart(viewModel.healthDataEntries) { entry in
                 if let weight = entry.weight {
                     LineMark(
-                        x: .value("Date", entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
-                        y: .value("Weight", weight)
+                        x: .value("date".localized(), entry.createdAt?.toDDMMDateFormat() ?? Date().toDDMMDateFormat()),
+                        y: .value("weight".localized(), weight)
                     )
                     .foregroundStyle(Color.mkPurple)
                 }
             }
-            .chartYAxisLabel("Weight")
-            .chartXAxisLabel("Date", position: .bottomTrailing)
+            .chartYAxisLabel("weight".localized())
+            .chartXAxisLabel("date".localized(), position: .bottomTrailing)
             .padding(.horizontal)
             .chartXAxis {
                 AxisMarks(position: .bottom, values: .automatic)

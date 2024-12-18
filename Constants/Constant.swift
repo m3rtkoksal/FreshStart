@@ -9,8 +9,8 @@
 import Foundation
 
 struct Constant {
-    static let imageHeight: CGFloat = 40.0
-    static let bottomPadding: CGFloat = 90.0
+    static let imageHeight: CGFloat = 46.0
+    static let bottomPadding: CGFloat = 46.0
     static let bottomPreviewPadding: CGFloat = 30.0
     static let progressTrailingScale = 3.6
     static let progressCount: Int = 8

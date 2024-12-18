@@ -17,6 +17,7 @@ struct SavedPlanView: View {
     @StateObject private var healthKitManager = HealthKitManager()
     @State private var selectedDietPlan = DietPlan()
     @Environment(\.dismiss) private var dismiss
+    @State private var shouldReload = false
     
     var body: some View {
         FreshStartBaseView(currentViewModel: viewModel,
@@ -27,8 +28,8 @@ struct SavedPlanView: View {
                 ScrollView {
                     VStack {
                         FSTitle(
-                            title: "Your Saved Diet Plans",
-                            subtitle: "You can see details of your previous meal plans from this list",
+                            title: "your_saved_diet_plans".localized(),
+                            subtitle: "saved_diet_plans_subtitle".localized(),
                             bottomPadding: 0
                         )
                         Spacer()
@@ -57,7 +58,7 @@ struct SavedPlanView: View {
                         Spacer()
                         createRemainingPlansText()
                         
-                        FreshStartButton(text: "Create New Plan", backgroundColor: .mkOrange) {
+                        FreshStartButton(text: "create_new_plan_button".localized(), backgroundColor: .mkOrange) {
                             viewModel.goToCreateNewPlan = true
                         }
                         .padding(.bottom, 100)
@@ -73,7 +74,7 @@ struct SavedPlanView: View {
                 HealthKitPermissionView()
             }
             .sheet(isPresented: $viewModel.showDietPlanPreview) {
-                DietPlanSheetView(dietPlan: selectedDietPlan)
+                DietPlanSheetView(dietPlan: selectedDietPlan, shouldReload: $shouldReload)
                     .presentationDetents([.fraction(0.9)])
             }
             .onAppear {
@@ -81,6 +82,12 @@ struct SavedPlanView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     viewModel.fetchDietPlans()
                     viewModel.fetchMaxPlanCountFromFirestore()
+                }
+            }
+            .onChange(of: shouldReload) { newValue in
+                if newValue {
+                    viewModel.fetchDietPlans() // Reload data
+                    shouldReload = false
                 }
             }
             .navigationBarTitle("")
@@ -94,7 +101,7 @@ struct SavedPlanView: View {
     func createRemainingPlansText() -> some View {
         if viewModel.maxPlanCount > viewModel.dietPlans.count {
             return AnyView(
-                Text("You can create \(viewModel.maxPlanCount - viewModel.dietPlans.count) more")
+                Text("more_plans_available".localized(viewModel.maxPlanCount - viewModel.dietPlans.count))
                     .underline()
                     .padding(.bottom)
                     .font(.montserrat(.medium, size: 14))
@@ -104,7 +111,7 @@ struct SavedPlanView: View {
         } else {
             return AnyView(
                 VStack {
-                    Text("You can buy more diet plans from offers")
+                    Text("buy_more_plans".localized())
                         .underline()
                         .padding()
                         .font(.montserrat(.medium, size: 14))

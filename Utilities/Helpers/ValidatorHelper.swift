@@ -22,14 +22,14 @@ class ValidatorHelper {
     static var heightPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?:[0-9]|[1-9][0-9]|[1-2][0-9][0-9]|300)$")
     static var weightPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?:[0-9]|[1-9][0-9]|[1-2][0-9][0-9]|300)$")
     static var emailPredicate = NSPredicate(format: "SELF MATCHES %@", "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")
-    static var passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
+    static var passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
     static var datePredicate = NSPredicate(format: "SELF MATCHES %@", "^(0?[1-9]|1\\d|2\\d|3[01])[\\.\\/](0?[1-9]|1[0-2])[\\.\\/](19|20)\\d{2}$")
     
     // Helper function to validate the input text based on predicate and optional minLength
     static func validateText(_ text: String, predicate: NSPredicate, minLength: Int? = nil) -> (isValid: Bool, errorMessage: String) {
         // Check minLength
         if let minLength = minLength, text.count < minLength {
-            return (false, "Text should be at least \(minLength) characters long.")
+            return (false, "text_should_be_at_least".localized(minLength))
         }
         
         // Check predicate validation
@@ -37,7 +37,7 @@ class ValidatorHelper {
         if isValid {
             return (true, "")
         } else {
-            return (false, "Invalid input format.")
+            return (false, "invalid_input_format".localized())
         }
     }
     
