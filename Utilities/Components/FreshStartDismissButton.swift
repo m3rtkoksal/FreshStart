@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct FreshStartDismissButton: View {
+    @Environment(\.dismiss) private var dismiss
     var color: Color = .black
     
     var body: some View {
         Button {
             withAnimation {
                 AuthenticationManager.shared.logIn()
+                self.dismiss()
             }
         } label: {
             Image(systemName: "xmark")

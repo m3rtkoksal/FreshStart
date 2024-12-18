@@ -32,6 +32,7 @@ struct LogoutButton: View {
         do {
             try Auth.auth().signOut()
             AuthenticationManager.shared.logOut()
+            ProfileManager.shared.clearAll()
             print("User signed out successfully!")
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

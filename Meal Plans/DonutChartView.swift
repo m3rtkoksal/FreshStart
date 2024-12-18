@@ -94,6 +94,12 @@ struct DonutChartView: View {
                         animatedProgress = 1.0
                     }
                 }
+                .onChange(of: totalNutrients) { _ in
+                    animatedProgress = 0 // Reset the progress
+                    withAnimation(.easeOut(duration: 1.5)) {
+                        animatedProgress = 1.0 // Animate to full progress
+                    }
+                }
             }
             .offset(y: -geometry.size.height * 0.06)
             

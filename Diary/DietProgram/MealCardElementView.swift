@@ -68,6 +68,7 @@ struct MealCardElementView: View {
                     )
                     .overlay(
                         Image(isSelected ? "selectedMeal" : "deselectedMeal")
+                            .animation(.spring(), value: isSelected)
                         ,
                         alignment: .topTrailing
                     )

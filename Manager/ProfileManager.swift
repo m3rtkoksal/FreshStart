@@ -197,4 +197,9 @@ final class ProfileManager: ObservableObject {
         self.user.stressLevel = stressLevel
     }
     
+    func clearAll() {
+        self.user = UserInputModel() // Reset to a fresh instance of UserInputModel
+        _hasGeneratedDietPlan = false
+        print("ProfileManager cache cleared.")
+    }
 }
